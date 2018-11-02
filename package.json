@@ -65,5 +65,8 @@
   },
   "peerDependencies": {
     "react": ">=15"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
