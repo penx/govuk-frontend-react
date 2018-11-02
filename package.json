@@ -2,9 +2,9 @@
   "name": "govuk-frontend-react",
   "version": "0.0.5",
   "description": "govuk-frontend as React components",
-  "main": "lib/as-nav-link.js",
-  "module": "es/as-nav-link.js",
-  "jsnext:main": "es/as-nav-link.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:lib && npm run build:es",
     "build:lib": "rimraf lib && babel src -d lib --source-maps",
