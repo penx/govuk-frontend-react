@@ -1,6 +1,6 @@
 {
   "name": "govuk-frontend-react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "govuk-frontend as React components",
   "main": "lib/as-nav-link.js",
   "module": "es/as-nav-link.js",
