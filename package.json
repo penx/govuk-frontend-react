@@ -7,8 +7,8 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "npm run build:lib && npm run build:es",
-    "build:lib": "rimraf lib && babel src -d lib --source-maps",
-    "build:es": "rimraf es && cross-env BABEL_ENV=es babel src -d es --source-maps"
+    "build:lib": "rimraf lib && copyup \"./src/**/*.scss\" ./lib && babel src -d lib --source-maps",
+    "build:es": "rimraf es && copyup \"./src/**/*.scss\" ./es && cross-env BABEL_ENV=es babel src -d es --source-maps"
   },
   "repository": {
     "type": "git",
@@ -54,6 +54,7 @@
     "govuk-frontend": "^2.3.0"
   },
   "devDependencies": {
+    "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
