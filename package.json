@@ -8,7 +8,9 @@
   "scripts": {
     "build": "npm run build:lib && npm run build:es",
     "build:lib": "rimraf lib && copyup \"./src/**/*.scss\" ./lib && babel src -d lib --source-maps",
-    "build:es": "rimraf es && copyup \"./src/**/*.scss\" ./es && cross-env BABEL_ENV=es babel src -d es --source-maps"
+    "build:es": "rimraf es && copyup \"./src/**/*.scss\" ./es && cross-env BABEL_ENV=es babel src -d es --source-maps",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,10 @@
   },
   "homepage": "https://github.com/penx/govuk-frontend-react#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
+    "govuk-frontend": "^2.3.0"
+  },
+  "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -46,14 +52,15 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.0.12",
+    "@storybook/addon-links": "^4.0.12",
+    "@storybook/addons": "^4.0.12",
+    "@storybook/react": "^4.0.12",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-react-remove-prop-types": "^3.0.0",
-    "classnames": "^2.2.6",
-    "govuk-frontend": "^2.3.0"
-  },
-  "devDependencies": {
     "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
@@ -61,8 +68,12 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "node-sass": "^4.10.0",
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
-    "rimraf": "^2.6.2"
+    "react-dom": "^16.6.3",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.1.0"
   },
   "peerDependencies": {
     "react": ">=15"
