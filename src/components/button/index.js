@@ -20,11 +20,13 @@ const Button = ({ className, as: T, ...props }) => {
 
 Button.propTypes = {
   // we use as instead of element
-  as: PropTypes.any, // could be a, button or a custom type
+  as: PropTypes.oneOfType(
+    [PropTypes.string, PropTypes.func],
+  ), // could be a, button or a custom type
 };
 
 Button.defaultProps = {
-  as: ''
-}
+  as: '',
+};
 
 export default Button;

@@ -14,6 +14,9 @@ module.exports = {
       "aspects": [ "noHref", "invalidHref", "preferButton" ]
     }]
   },
+  "settings": {
+    "import/core-modules": ['prop-types']
+  },
   "overrides": [
     {
       "files": [ "test.js", "**.test.js" ],
