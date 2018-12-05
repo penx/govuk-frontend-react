@@ -18,4 +18,5 @@ storiesOf('Button', module)
         😀 😎 👍 💯
       </span>
     </Button>
-  ));
+  ))
+  .add('as a link', () => <Button href="http://google.com">Hello Button</Button>);

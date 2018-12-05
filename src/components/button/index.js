@@ -3,18 +3,28 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './_button.module.scss';
 
-// tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
-const Button = ({ className, as: Type, ...props }) => (
-  <button type="button" className={cx(styles['govuk-button'], className)} {...props} />
-);
+/**
+ *  Tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
+ */
+const Button = ({ className, as: T, ...props }) => {
+  let Type = T;
+  if (T === '') {
+    if (props.href) {
+      Type = 'a';
+    } else {
+      Type = 'button';
+    }
+  }
+  return <Type type="button" className={cx(styles['govuk-button'], className)} {...props} />;
+};
 
 Button.propTypes = {
   // we use as instead of element
-  as: PropTypes.any,
+  as: PropTypes.any, // could be a, button or a custom type
 };
 
 Button.defaultProps = {
-  as: 'button'
+  as: ''
 }
 
 export default Button;
