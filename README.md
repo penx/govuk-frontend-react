@@ -27,3 +27,5 @@ element:as
 [ ] Date Input
 [ ] Code coverage
 [ ] Unit test to contrast with nunjucks html output
+[ ] Prettier
+[ ] TypeScript or Flow

@@ -1,0 +1,50 @@
+@import "~govuk-frontend/components/header/header";
+
+.govuk-header {
+  composes: govuk-header;
+}
+.govuk-header__container {
+  composes: govuk-header__container;
+  // composes: govuk-width-container;
+}
+.govuk-header__logo {
+  composes: govuk-header__logo;
+}
+.govuk-header__link {
+  composes: govuk-header__link;
+}
+.govuk-header__link--homepage {
+  composes: govuk-header__link;
+  composes: govuk-header__link--homepage;
+}
+.govuk-header__logotype {
+  composes: govuk-header__logotype;
+}
+.govuk-header__logotype-crown {
+  composes: govuk-header__logotype-crown;
+}
+.govuk-header__logotype-text {
+  composes: govuk-header__logotype-text;
+}
+.govuk-header__product-name {
+  composes: govuk-header__product-name;
+}
+.govuk-header__content {
+  composes: govuk-header__content;
+}
+.govuk-header__link--service-name {
+  composes: govuk-header__link;
+  composes: govuk-header__link--service-name;
+}
+.govuk-header__menu-button {
+  composes: govuk-header__menu-button;
+}
+.govuk-header__navigation {
+  composes: govuk-header__navigation;
+}
+.govuk-header__navigation-item {
+  composes: govuk-header__navigation-item;
+}
+.govuk-header__link {
+  composes: govuk-header__link;
+}
