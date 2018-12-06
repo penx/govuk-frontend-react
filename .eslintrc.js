@@ -19,7 +19,7 @@ module.exports = {
   },
   "overrides": [
     {
-      "files": [ "test.js", "**.test.js" ],
+      "files": [ "stories.js", "test.js", "fixtures.js", "**.test.js", "src/stories/**" ],
       "rules": {
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
       }
