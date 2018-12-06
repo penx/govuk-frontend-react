@@ -65,7 +65,7 @@ const Header = ({
                   <ul id="navigation" className={styles['govuk-header__navigation']} ariaLabel="Top Level Navigation">
                     <li className={styles['govuk-header__navigation-item']}>
                       <a className={styles['govuk-header__link']} href="#">
-                        TODO: for each
+                        Navigation item
                       </a>
                     </li>
                   </ul>

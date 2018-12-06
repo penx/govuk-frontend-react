@@ -1,11 +1,12 @@
 @import "~govuk-frontend/components/header/header";
+@import "~govuk-frontend/objects/width-container";
 
 .govuk-header {
   composes: govuk-header;
 }
 .govuk-header__container {
   composes: govuk-header__container;
-  // composes: govuk-width-container;
+  composes: govuk-width-container;
 }
 .govuk-header__logo {
   composes: govuk-header__logo;
