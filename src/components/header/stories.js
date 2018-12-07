@@ -1,6 +1,6 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Header from '.';
+import fixture, { withNavigation } from './fixtures';
 
 storiesOf('Header', module)
-  .add('default', () => <Header productName="Product" serviceName="Service" navigation="Navigation" serviceUrl="ServiceUrl" />);
+  .add('default', () => fixture)
+  .add('with navigation', () => withNavigation);

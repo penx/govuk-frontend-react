@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './_header.module.scss';
 
@@ -62,13 +62,7 @@ const Header = ({
               <React.Fragment>
                 <button type="button" className={styles['govuk-header__menu-button']} ariaControls="navigation" ariaLabel="Show or hide Top Level Navigation">Menu</button>
                 <nav>
-                  <ul id="navigation" className={styles['govuk-header__navigation']} ariaLabel="Top Level Navigation">
-                    <li className={styles['govuk-header__navigation-item']}>
-                      <a className={styles['govuk-header__link']} href="http://google.com">
-                        Navigation item
-                      </a>
-                    </li>
-                  </ul>
+                  {navigation}
                 </nav>
               </React.Fragment>
               )
@@ -80,5 +74,30 @@ const Header = ({
   </header>
 );
 
+Header.propTypes = {
+  className: PropTypes.string,
+  productName: PropTypes.string,
+  serviceName: PropTypes.string,
+  navigation: PropTypes.node,
+  serviceUrl: PropTypes.string,
+};
+
+Header.defaultProps = {
+  className: undefined,
+  productName: undefined,
+  serviceName: undefined,
+  navigation: undefined,
+  serviceUrl: undefined,
+};
+
+Header.Navigation = props => (
+  <ul id="navigation" className={styles['govuk-header__navigation']} ariaLabel="Top Level Navigation" {...props} />
+);
+
+Header.NavigationItem = ({ as: T = 'a', ...props }) => (
+  <li className={styles['govuk-header__navigation-item']}>
+    <T className={styles['govuk-header__link']} {...props} />
+  </li>
+);
 
 export default Header;
