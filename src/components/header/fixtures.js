@@ -1,6 +1,8 @@
 import React from 'react';
 // import { action } from '@storybook/addon-actions';
-import { MemoryRouter, Link, Switch, Route } from 'react-router-dom';
+import {
+  MemoryRouter, Link, Switch, Route,
+} from 'react-router-dom';
 import Header from '.';
 
 export default <Header productName="Product" serviceName="Service" navigation="Navigation" serviceUrl="ServiceUrl" />;

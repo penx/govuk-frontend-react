@@ -78,6 +78,11 @@ const Header = ({
 
 Header.propTypes = {
   className: PropTypes.string,
+  homepage: PropTypes.shapeOf({
+    as: PropTypes.oneOfType(
+      [PropTypes.string, PropTypes.func],
+    ),
+  }),
   productName: PropTypes.string,
   serviceName: PropTypes.string,
   navigation: PropTypes.node,
@@ -86,6 +91,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: undefined,
+  homepage: { as: 'a' },
   productName: undefined,
   serviceName: undefined,
   navigation: undefined,
