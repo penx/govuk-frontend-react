@@ -9,7 +9,7 @@ import styles from './_header.module.scss';
 // composes for modifiers
 
 const Header = ({
-  className, productName, serviceName, navigation, serviceUrl, homepage, ...props
+  className, productName, serviceName, navigation, serviceUrl, homepage, homepageUrl, ...props
 }) => {
   const { as: HomepageLink = 'a', ...homepageProps } = homepage;
   return (
@@ -21,7 +21,7 @@ const Header = ({
     >
       <div className={styles['govuk-header__container']}>
         <div className={styles['govuk-header__logo']}>
-          <HomepageLink className={styles['govuk-header__link--homepage']} {...homepageProps}>
+          <HomepageLink href={homepageUrl} className={styles['govuk-header__link--homepage']} {...homepageProps}>
             <span className={styles['govuk-header__logotype']}>
               <svg
                 role="presentation"
@@ -78,6 +78,7 @@ const Header = ({
 
 Header.propTypes = {
   className: PropTypes.string,
+  homepageUrl: PropTypes.string,
   homepage: PropTypes.shapeOf({
     as: PropTypes.oneOfType(
       [PropTypes.string, PropTypes.func],
@@ -91,6 +92,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: undefined,
+  homepageUrl: '/',
   homepage: { as: 'a' },
   productName: undefined,
   serviceName: undefined,

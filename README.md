@@ -15,9 +15,13 @@ https://github.com/alphagov/govuk-frontend/issues/1052
 
 ## Conventions
 
-Common nunjucks:react props:
+Common conventions on where our React prop names differ from the nunjucks macro option names.
 
-element:as
+| nunjucks | react |
+| --- | --- |
+| element | as  |
+| attributes | rest props (where appropriate) |
+| text | children (where appropriate) |
 
 ## Create React App support
 
