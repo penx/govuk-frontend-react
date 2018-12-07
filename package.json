@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
+  "sideEffects": false,
   "scripts": {
     "start": "npm run storybook",
     "build": "npm run build:lib && npm run build:es",
