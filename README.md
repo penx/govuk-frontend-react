@@ -19,6 +19,17 @@ Common nunjucks:react props:
 
 element:as
 
+## Lazy loading support in CRA
+
+We want to prove this will work but there are issues:
+
+- https://github.com/facebook/create-react-app/issues/5989
+
+We can work around this by importing components directly:
+
+```js
+import Header from "govuk-frontend-react/es/components/header";
+```
 
 ## TODO:
 
