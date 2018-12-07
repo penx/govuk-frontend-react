@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './_header.module.scss';
 
@@ -60,11 +60,11 @@ const Header = ({
             { navigation
               && (
               <React.Fragment>
-                <button type="button" role="button" className={styles['govuk-header__menu-button']} ariaControls="navigation" ariaLabel="Show or hide Top Level Navigation">Menu</button>
+                <button type="button" className={styles['govuk-header__menu-button']} ariaControls="navigation" ariaLabel="Show or hide Top Level Navigation">Menu</button>
                 <nav>
                   <ul id="navigation" className={styles['govuk-header__navigation']} ariaLabel="Top Level Navigation">
                     <li className={styles['govuk-header__navigation-item']}>
-                      <a className={styles['govuk-header__link']} href="#">
+                      <a className={styles['govuk-header__link']} href="http://google.com">
                         Navigation item
                       </a>
                     </li>
