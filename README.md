@@ -13,7 +13,7 @@ At the moment we are using CSS classes directly but plan to move to CSS modules 
 https://github.com/alphagov/govuk-frontend/issues/1052
 
 
-## Conventions
+## Conventions
 
 Common conventions on where our React prop names differ from the nunjucks macro option names.
 
