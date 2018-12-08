@@ -34,10 +34,17 @@ See https://github.com/penx/govuk-frontend-react-example
 
 ## TODO:
 
-- [ ] Button
-- [ ] Header
-- [ ] Date Input
-- [ ] Code coverage
-- [ ] Unit test to contrast with nunjucks html output
+I aim to complete the following as part of the PoC:
+
+- [x] Button
+- [x] Header compatible with React Router
+- [ ] Date Input [compatible with Final Form](https://medium.com/@penx/form-elements-in-presentational-component-packages-a618e9aa7416)
+- [ ] Code coverage checks in CI
+- [ ] 100% code coverage
+- [ ] Meaningful unit tests
+- [ ] Unit test to validate against govuk-frontend nunjucks html output
 - [ ] Prettier
-- [ ] TypeScript or Flow
+- [ ] TypeScript or Flow?
+- [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example)
+- [ ] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)
+- [ ] Server side only example with form submit
