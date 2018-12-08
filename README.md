@@ -8,11 +8,6 @@ See:
 
 https://github.com/govuk-react/govuk-react/issues/76
 
-At the moment we are using CSS classes directly but plan to move to CSS modules once the following has been resolved:
-
-https://github.com/alphagov/govuk-frontend/issues/1052
-
-
 ## Conventions
 
 Common conventions on where our React prop names differ from the nunjucks macro option names.
