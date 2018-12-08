@@ -27,7 +27,7 @@ Common conventions on where our React prop names differ from the nunjucks macro 
 
 Works! Including:
 
-- Lazy loading-
+- Lazy loading/path splitting
 - Tree shaking of CSS
 
 See https://github.com/penx/govuk-frontend-react-example
@@ -45,6 +45,6 @@ I aim to complete the following as part of the PoC:
 - [ ] Unit test to validate against govuk-frontend nunjucks html output
 - [ ] Prettier
 - [ ] TypeScript or Flow?
-- [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example)
+- [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example) with lazy loading/path splitting and tree shaking
 - [ ] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)
 - [ ] Server side only example with form submit
