@@ -43,4 +43,4 @@ I aim to complete the following as part of the PoC:
 - [ ] TypeScript or Flow?
 - [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example) with lazy loading/path splitting and tree shaking
 - [ ] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)
-- [ ] Server side only example with form submit
+- [ ] Server side only example with form submit and display of form errors
