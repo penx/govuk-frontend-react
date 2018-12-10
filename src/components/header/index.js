@@ -16,7 +16,7 @@ const Header = ({
     <header
       className={cx(styles['govuk-header'], className)}
       role="banner"
-      dataModule="header"
+      data-module="header"
       {...props}
     >
       <div className={styles['govuk-header__container']}>
@@ -62,7 +62,7 @@ const Header = ({
             { navigation
               && (
               <React.Fragment>
-                <button type="button" className={styles['govuk-header__menu-button']} ariaControls="navigation" ariaLabel="Show or hide Top Level Navigation">Menu</button>
+                <button type="button" className={styles['govuk-header__menu-button']} aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
                 <nav>
                   {navigation}
                 </nav>
@@ -101,7 +101,7 @@ Header.defaultProps = {
 };
 
 Header.Navigation = props => (
-  <ul id="navigation" className={styles['govuk-header__navigation']} ariaLabel="Top Level Navigation" {...props} />
+  <ul id="navigation" className={styles['govuk-header__navigation']} aria-label="Top Level Navigation" {...props} />
 );
 
 Header.NavigationItem = ({ as: T = 'a', ...props }) => (
