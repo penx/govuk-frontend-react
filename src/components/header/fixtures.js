@@ -10,10 +10,10 @@ export const withNavigation = (
   <Header
     homepage={{ href: '/' }}
     navigation={(
-      <Header.Navigation>
+      <React.Fragment>
         <Header.NavigationItem href="/">Home</Header.NavigationItem>
         <Header.NavigationItem href="/about">About</Header.NavigationItem>
-      </Header.Navigation>
+      </React.Fragment>
     )}
   />
 );
@@ -23,10 +23,10 @@ export const withReactRouter = (
       <Header
         homepage={{ to: '/', as: Link }}
         navigation={(
-          <Header.Navigation>
+          <React.Fragment>
             <Header.NavigationItem as={Link} to="/">Home</Header.NavigationItem>
             <Header.NavigationItem as={Link} to="/about">About</Header.NavigationItem>
-          </Header.Navigation>
+          </React.Fragment>
         )}
       />
       <Switch>
