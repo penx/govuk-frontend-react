@@ -1,9 +1,6 @@
 @import "~govuk-frontend/components/header/header";
 @import "~govuk-frontend/objects/width-container";
 
-.govuk-header__container {
-  composes: govuk-width-container;
-}
 .govuk-header__link--homepage {
   composes: govuk-header__link;
 }
