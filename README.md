@@ -35,6 +35,7 @@ I aim to complete the following as part of the PoC:
 - [x] Button
 - [x] Header compatible with React Router
 - [x] Support for js-enabled class, used by Header, plus any associated JS required by Header
+- [ ] Input [compatible with Final Form](https://medium.com/@penx/form-elements-in-presentational-component-packages-a618e9aa7416)
 - [ ] Date Input [compatible with Final Form](https://medium.com/@penx/form-elements-in-presentational-component-packages-a618e9aa7416)
 - [ ] Code coverage checks in CI
 - [ ] 100% code coverage

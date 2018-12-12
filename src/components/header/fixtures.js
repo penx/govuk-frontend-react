@@ -37,3 +37,5 @@ export const withReactRouter = (
     </React.Fragment>
   </MemoryRouter>
 );
+
+// TODO: with js disabled prop/override

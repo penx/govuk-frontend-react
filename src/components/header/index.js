@@ -5,7 +5,6 @@ import styles from './_header.module.scss';
 
 // TODO:
 // - svg fallback image
-// composes for modifiers
 
 class Header extends React.Component {
   // TODO: allow state to be controlled
