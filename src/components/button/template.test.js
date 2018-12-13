@@ -1,3 +1,5 @@
+// TODO: all template tests should be imported from govuk-frontend,
+// providing our custom render function to test against.
 const axe = require('../../../tests/axe-helper');
 const render = require('../../../tests/render');
 const getExamples = require('../../../tests/get-examples');
