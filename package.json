@@ -33,7 +33,7 @@
   "homepage": "https://github.com/penx/govuk-frontend-react#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "govuk-frontend": "^2.3.0"
+    "govuk-frontend": "^2.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -53,6 +53,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
+    "cheerio": "^1.0.0-rc.2",
     "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
@@ -62,7 +63,10 @@
     "eslint-plugin-react": "^7.11.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
+    "jest-axe": "^3.1.0",
+    "js-yaml": "^3.12.0",
     "node-sass": "^4.10.0",
+    "nunjucks": "^3.1.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.3",
