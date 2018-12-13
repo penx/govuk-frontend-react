@@ -11,8 +11,9 @@ const components = {
 };
 
 function optionsToProps(name, options) {
+  // extract options that are not directly transferred to props
   const {
-    text: t,
+    text,
     attributes,
     classes,
     element,
@@ -20,17 +21,13 @@ function optionsToProps(name, options) {
     ...props
   } = options;
 
-  let text = t;
-
-  if (name === 'button') {
-    if (element === 'input') {
-      props.value = text;
-      text = undefined;
-    }
-  }
+  // calculate any props that aren't just renames
+  const children = (element === 'input') ? undefined : text;
+  const value = (element === 'input') ? text : undefined;
 
   return {
-    children: text,
+    children,
+    value,
     dangerouslySetInnerHTML: html && { __html: html },
     className: classes,
     as: element,

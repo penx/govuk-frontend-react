@@ -46,6 +46,7 @@ Button.propTypes = {
   type: PropTypes.string,
   role: PropTypes.string,
   disabled: PropTypes.bool,
+  href: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -53,6 +54,7 @@ Button.defaultProps = {
   type: undefined,
   role: undefined,
   disabled: false,
+  href: undefined,
 };
 
 export default Button;
