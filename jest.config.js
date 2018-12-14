@@ -2,7 +2,7 @@ module.exports = {
   coverageDirectory: '../coverage/',
   collectCoverage: true,
   collectCoverageFrom: [
-    '<rootDir>/**/**.js',
+    '<rootDir>/**/*.js',
     '!<rootDir>/**/{stories,example,fixtures}.js',
     '!<rootDir>/stories/**',
   ],
