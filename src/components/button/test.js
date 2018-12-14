@@ -1,4 +1,9 @@
 import ReactDOM from 'react-dom';
+import {
+  render,
+} from 'react-testing-library';
+import 'jest-dom/extend-expect';
+
 import defaultFixture, { hrefAndRole, buttonWithType } from './fixtures';
 
 it('renders without crashing', () => {
@@ -8,15 +13,16 @@ it('renders without crashing', () => {
 });
 
 it('hrefAndRole', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(hrefAndRole, div);
-  // TODO: assert is anchor, has href=#test, has role=presentation
-  ReactDOM.unmountComponentAtNode(div);
+  const { getByText } = render(hrefAndRole);
+  const button = getByText('HREF and role');
+  expect(button).toHaveAttribute('href', '#test');
+  expect(button).toHaveAttribute('role', 'presentation');
+  expect(button.tagName).toBe('A');
 });
 
 it('buttonWithType', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(buttonWithType, div);
-  // TODO: assert is button, has type=button
-  ReactDOM.unmountComponentAtNode(div);
+  const { getByText } = render(buttonWithType);
+  const button = getByText('Button with type');
+  expect(button).toHaveAttribute('type', 'button');
+  expect(button.tagName).toBe('BUTTON');
 });
