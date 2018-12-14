@@ -1,5 +1,6 @@
 module.exports = {
-  coverageDirectory: 'coverage',
+  coverageDirectory: '../coverage/',
+  collectCoverage: true,
   rootDir: 'src',
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
