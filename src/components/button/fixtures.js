@@ -36,3 +36,6 @@ export const withReactRouter = (
     </React.Fragment>
   </MemoryRouter>
 );
+
+export const hrefAndRole = <Button href="#test" role="presentation">HREF and role</Button>;
+export const buttonWithType = <Button type="button">Button with type</Button>;

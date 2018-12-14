@@ -16,16 +16,15 @@ const Button = ({
   if (Type === '') {
     if (href) {
       Type = 'a';
-      if (!role) {
-        computedRole = 'button';
-      }
     } else {
       Type = 'button';
       if (!type) {
         computedType = 'submit';
       }
     }
-  } else if (Type === 'a') {
+  }
+
+  if (Type === 'a') {
     computedHref = computedHref || '#';
     if (!role) {
       computedRole = 'button';
