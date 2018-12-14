@@ -1,20 +1,25 @@
 import React from 'react';
 // import { action } from '@storybook/addon-actions';
-import {
-  MemoryRouter, Link, Switch, Route,
-} from 'react-router-dom';
+import { MemoryRouter, Link, Switch, Route } from 'react-router-dom';
 import Header from '.';
 
-export default <Header productName="Product" serviceName="Service" navigation="Navigation" serviceUrl="ServiceUrl" />;
+export default (
+  <Header
+    productName="Product"
+    serviceName="Service"
+    navigation="Navigation"
+    serviceUrl="ServiceUrl"
+  />
+);
 export const withNavigation = (
   <Header
     homepage={{ href: '/' }}
-    navigation={(
+    navigation={
       <React.Fragment>
         <Header.NavigationItem href="/">Home</Header.NavigationItem>
         <Header.NavigationItem href="/about">About</Header.NavigationItem>
       </React.Fragment>
-    )}
+    }
   />
 );
 export const withReactRouter = (
@@ -22,12 +27,16 @@ export const withReactRouter = (
     <React.Fragment>
       <Header
         homepage={{ to: '/', as: Link }}
-        navigation={(
+        navigation={
           <React.Fragment>
-            <Header.NavigationItem as={Link} to="/">Home</Header.NavigationItem>
-            <Header.NavigationItem as={Link} to="/about">About</Header.NavigationItem>
+            <Header.NavigationItem as={Link} to="/">
+              Home
+            </Header.NavigationItem>
+            <Header.NavigationItem as={Link} to="/about">
+              About
+            </Header.NavigationItem>
           </React.Fragment>
-        )}
+        }
       />
       <Switch>
         <Route exact path="/" render={() => 'Home'} />

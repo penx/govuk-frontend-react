@@ -25,8 +25,8 @@ describe('header', () => {
     const $ = render('header', {
       attributes: {
         'data-test-attribute': 'value',
-        'data-test-attribute-2': 'value-2',
-      },
+        'data-test-attribute-2': 'value-2'
+      }
     });
 
     const $component = $('.govuk-header');
@@ -36,7 +36,7 @@ describe('header', () => {
 
   it('renders classes', () => {
     const $ = render('header', {
-      classes: 'app-header--custom-modifier',
+      classes: 'app-header--custom-modifier'
     });
 
     const $component = $('.govuk-header');
@@ -45,7 +45,7 @@ describe('header', () => {
 
   it('renders custom container classes', () => {
     const $ = render('header', {
-      containerClasses: 'app-width-container',
+      containerClasses: 'app-width-container'
     });
 
     const $component = $('.govuk-header');
@@ -56,7 +56,7 @@ describe('header', () => {
 
   it('renders home page URL', () => {
     const $ = render('header', {
-      homepageUrl: '/',
+      homepageUrl: '/'
     });
 
     const $component = $('.govuk-header');
@@ -112,10 +112,10 @@ describe('header', () => {
             href: '/link',
             attributes: {
               'data-attribute': 'my-attribute',
-              'data-attribute-2': 'my-attribute-2',
-            },
-          },
-        ],
+              'data-attribute-2': 'my-attribute-2'
+            }
+          }
+        ]
       });
 
       const $navigationLink = $('.govuk-header__navigation-item a');
