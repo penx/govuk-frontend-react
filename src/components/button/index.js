@@ -6,9 +6,7 @@ import styles from './_button.module.scss';
 /**
  *  Tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
  */
-const Button = ({
-  className, as, type, role, disabled, href, ...props
-}) => {
+const Button = ({ className, as, type, role, disabled, href, ...props }) => {
   let Type = as;
   let computedType = type;
   let computedRole = role;
@@ -34,18 +32,30 @@ const Button = ({
       computedType = 'submit';
     }
   }
-  return <Type type={computedType} href={computedHref} role={computedRole} aria-disabled={disabled && 'true'} disabled={disabled && 'disabled'} className={cx(styles['govuk-button'], disabled && styles['govuk-button--disabled'], className)} {...props} />;
+  return (
+    <Type
+      type={computedType}
+      href={computedHref}
+      role={computedRole}
+      aria-disabled={disabled && 'true'}
+      disabled={disabled && 'disabled'}
+      className={cx(
+        styles['govuk-button'],
+        disabled && styles['govuk-button--disabled'],
+        className
+      )}
+      {...props}
+    />
+  );
 };
 
 Button.propTypes = {
   // we use as instead of element
-  as: PropTypes.oneOfType(
-    [PropTypes.string, PropTypes.func],
-  ), // could be a, button or a custom type
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]), // could be a, button or a custom type
   type: PropTypes.string,
   role: PropTypes.string,
   disabled: PropTypes.bool,
-  href: PropTypes.string,
+  href: PropTypes.string
 };
 
 Button.defaultProps = {
@@ -53,7 +63,7 @@ Button.defaultProps = {
   type: undefined,
   role: undefined,
   disabled: false,
-  href: undefined,
+  href: undefined
 };
 
 export default Button;

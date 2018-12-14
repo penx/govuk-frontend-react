@@ -1,11 +1,15 @@
 module.exports = {
   "parser": "babel-eslint",
-  "extends": ["airbnb"],
+  "extends": ["airbnb", "prettier", "react-app", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "env": {
     "es6": true
   },
   "rules": {
-    "react/jsx-filename-extension": 0,
+    "prettier/prettier": ["error"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-wrap-multilines": 0,
+    "react/jsx-one-expression-per-line": 0,
     "jsx-a11y/label-has-for": 0,
     "filenames/match-exported": 0,
     "jsx-a11y/anchor-is-valid": [ "error", {

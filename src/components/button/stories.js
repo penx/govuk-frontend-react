@@ -1,7 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import {
-  withText, asALink, withSomeEmoji, withReactRouter,
-  hrefAndRole, buttonWithType,
+  withText,
+  asALink,
+  withSomeEmoji,
+  withReactRouter,
+  hrefAndRole,
+  buttonWithType
 } from './fixtures';
 
 storiesOf('Button', module)

@@ -28,8 +28,8 @@ describe('Button', () => {
         element: 'button',
         attributes: {
           'aria-controls': 'example-id',
-          'data-tracking-dimension': '123',
-        },
+          'data-tracking-dimension': '123'
+        }
       });
 
       const $component = $('.govuk-button');
@@ -40,7 +40,7 @@ describe('Button', () => {
     it('renders with classes', () => {
       const $ = render('button', {
         element: 'button',
-        classes: 'app-button--custom-modifier',
+        classes: 'app-button--custom-modifier'
       });
 
       const $component = $('.govuk-button');
@@ -59,7 +59,7 @@ describe('Button', () => {
     it('renders with name', () => {
       const $ = render('button', {
         element: 'button',
-        name: 'start-now',
+        name: 'start-now'
       });
 
       const $component = $('.govuk-button');
@@ -69,7 +69,7 @@ describe('Button', () => {
     it('renders with type', () => {
       const $ = render('button', {
         element: 'button',
-        type: 'button',
+        type: 'button'
       });
 
       const $component = $('.govuk-button');
@@ -82,7 +82,7 @@ describe('Button', () => {
       const $ = render('button', {
         element: 'a',
         href: '/',
-        text: 'Continue',
+        text: 'Continue'
       });
 
       const $component = $('.govuk-button');
@@ -94,7 +94,7 @@ describe('Button', () => {
 
     it('renders with hash href if no href passed', () => {
       const $ = render('button', {
-        element: 'a',
+        element: 'a'
       });
 
       const $component = $('.govuk-button');
@@ -104,7 +104,7 @@ describe('Button', () => {
     it('renders with value', () => {
       const $ = render('button', {
         element: 'button',
-        value: 'start',
+        value: 'start'
       });
 
       const $component = $('.govuk-button');
@@ -114,7 +114,7 @@ describe('Button', () => {
     it('renders with html', () => {
       const $ = render('button', {
         element: 'button',
-        html: 'Start <em>now</em>',
+        html: 'Start <em>now</em>'
       });
 
       const $component = $('.govuk-button');
@@ -126,8 +126,8 @@ describe('Button', () => {
         element: 'a',
         attributes: {
           'aria-controls': 'example-id',
-          'data-tracking-dimension': '123',
-        },
+          'data-tracking-dimension': '123'
+        }
       });
 
       const $component = $('.govuk-button');
@@ -138,7 +138,7 @@ describe('Button', () => {
     it('renders with classes', () => {
       const $ = render('button', {
         element: 'a',
-        classes: 'app-button--custom-modifier',
+        classes: 'app-button--custom-modifier'
       });
 
       const $component = $('.govuk-button');
@@ -167,8 +167,8 @@ describe('Button', () => {
         element: 'input',
         attributes: {
           'aria-controls': 'example-id',
-          'data-tracking-dimension': '123',
-        },
+          'data-tracking-dimension': '123'
+        }
       });
 
       const $component = $('.govuk-button');
@@ -179,7 +179,7 @@ describe('Button', () => {
     it('renders with classes', () => {
       const $ = render('button', {
         element: 'input',
-        classes: 'app-button--custom-modifier',
+        classes: 'app-button--custom-modifier'
       });
 
       const $component = $('.govuk-button');
@@ -189,7 +189,7 @@ describe('Button', () => {
     it('renders with disabled', () => {
       const $ = render('button', {
         element: 'input',
-        disabled: true,
+        disabled: true
       });
 
       const $component = $('.govuk-button');
@@ -201,7 +201,7 @@ describe('Button', () => {
     it('renders with name', () => {
       const $ = render('button', {
         element: 'input',
-        name: 'start-now',
+        name: 'start-now'
       });
 
       const $component = $('.govuk-button');
@@ -212,7 +212,7 @@ describe('Button', () => {
       const $ = render('button', {
         element: 'input',
         type: 'button',
-        text: 'Start now',
+        text: 'Start now'
       });
 
       const $component = $('.govuk-button');
@@ -223,7 +223,7 @@ describe('Button', () => {
   describe('implicitly as no "element" param is set', () => {
     it('renders a link if you pass an href', () => {
       const $ = render('button', {
-        href: '/',
+        href: '/'
       });
 
       const $component = $('.govuk-button');
@@ -232,14 +232,14 @@ describe('Button', () => {
 
     it('renders a button if you pass html', () => {
       const $ = render('button', {
-        html: 'Start <em>now</em>',
+        html: 'Start <em>now</em>'
       });
 
       const $component = $('.govuk-button');
       expect($component.get(0).tagName).toEqual('button');
     });
 
-    it('renders a button if you don\'t pass anything', () => {
+    it("renders a button if you don't pass anything", () => {
       const $ = render('button', {});
 
       const $component = $('.govuk-button');

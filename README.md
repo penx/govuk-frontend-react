@@ -41,7 +41,7 @@ I aim to complete the following as part of the PoC:
 - [x] 100% code coverage
 - [x] Meaningful unit tests
 - [x] Use/match govuk-frontend template tests
-- [ ] Prettier
+- [x] Prettier
 - [ ] TypeScript or Flow?
 - [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example) with lazy loading/path splitting and tree shaking
 - [x] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)

@@ -1,7 +1,5 @@
 import ReactDOM from 'react-dom';
-import {
-  render,
-} from 'react-testing-library';
+import { render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
 import defaultFixture, { hrefAndRole, buttonWithType } from './fixtures';
