@@ -40,7 +40,7 @@ I aim to complete the following as part of the PoC:
 - [ ] Code coverage checks in CI
 - [ ] 100% code coverage
 - [ ] Meaningful unit tests
-- [ ] Unit test to validate against govuk-frontend nunjucks html output
+- [x] Use/match govuk-frontend template tests
 - [ ] Prettier
 - [ ] TypeScript or Flow?
 - [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example) with lazy loading/path splitting and tree shaking
