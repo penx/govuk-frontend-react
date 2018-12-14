@@ -132,8 +132,8 @@ const Navigation = ({ open, ...props }) => (
   <ul id="navigation" className={cx(styles['govuk-header__navigation'], open && styles['govuk-header__navigation--open'])} aria-label="Top Level Navigation" {...props} />
 );
 
-Header.NavigationItem = ({ as: T = 'a', ...props }) => (
-  <li className={styles['govuk-header__navigation-item']}>
+Header.NavigationItem = ({ as: T = 'a', active, ...props }) => (
+  <li className={cx(styles['govuk-header__navigation-item'], active && styles['govuk-header__navigation-item--active'])}>
     <T className={styles['govuk-header__link']} {...props} />
   </li>
 );
