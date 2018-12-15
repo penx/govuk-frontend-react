@@ -2,6 +2,7 @@ const esModules = (process.env["BABEL_ENV"] === "es");
 
 const presets = [
   "@babel/preset-env",
+  "@babel/preset-flow",
   "@babel/preset-react"
 ];
 
