@@ -19,7 +19,7 @@ type Props = {
  *  Tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
  */
 const Button = ({ className, as, type, role, disabled, href, ...props }: Props) => {
-  let Type: ComponentType<{}> | string = as || '';
+  let Type = as || '';
   let computedType = type;
   let computedRole = role;
   let computedHref = href;
