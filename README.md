@@ -42,7 +42,7 @@ I aim to complete the following as part of the PoC:
 - [x] Meaningful unit tests
 - [x] Use/match govuk-frontend template tests
 - [x] Prettier
-- [ ] TypeScript or Flow?
+- [x] Flow
 - [x] [Create React App example](https://github.com/penx/govuk-frontend-react-example) with lazy loading/path splitting and tree shaking
 - [x] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)
   - [ ] Support for path splitting blocked by [zeit/next-plugins#190](https://github.com/zeit/next-plugins/pull/190) ([related](https://spectrum.chat/next-js/general/dynamic-css-splitting~03351ba8-e4aa-4788-a8ce-2d765b1b1f61?m=MTUzNzE1NDM5ODQ5OQ==))
