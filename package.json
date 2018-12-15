@@ -7,16 +7,17 @@
   "jsnext:main": "es/index.js",
   "sideEffects": false,
   "scripts": {
-    "start": "npm run storybook",
     "build": "npm run build:lib && npm run build:es",
     "build:lib": "rimraf lib && copyup \"./src/**/*.scss\" ./lib && babel src -d lib --source-maps",
     "build:es": "rimraf es && copyup \"./src/**/*.scss\" ./es && cross-env BABEL_ENV=es babel src -d es --source-maps",
-    "test": "jest && eslint ./src",
+    "build-storybook": "build-storybook",
     "eslint": "eslint ./src",
     "eslint:fix": "eslint --fix ./src",
+    "flow": "flow",
     "jest": "jest",
+    "start": "npm run storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test": "jest && eslint ./src"
   },
   "repository": {
     "type": "git",
@@ -57,6 +58,7 @@
     "cheerio": "^1.0.0-rc.2",
     "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
+    "empty": "^0.10.1",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
@@ -66,6 +68,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.89.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "jest-axe": "^2.1.4",
