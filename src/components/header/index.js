@@ -1,12 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import type { ComponentType } from 'react';
 import cx from 'classnames';
 import styles from './_header.module.scss';
 
 // TODO:
 // - svg fallback image
 
-class Header extends React.Component {
+type Props = {
+  className?: string,
+  homepageUrl?: string,
+  homepage?: {
+    as?: ComponentType<{}> | string
+  },
+  containerClasses?: string,
+  productName?: string,
+  serviceName?: string,
+  navigation?: node,
+  serviceUrl?: string
+};
+
+class Header extends React.Component<Props> {
   // TODO: allow state to be controlled
   state = {
     // TODO: Allow jsEnabled to be preset via context api
@@ -110,19 +123,6 @@ class Header extends React.Component {
     );
   }
 }
-
-Header.propTypes = {
-  className: PropTypes.string,
-  homepageUrl: PropTypes.string,
-  homepage: PropTypes.shapeOf({
-    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
-  }),
-  containerClasses: PropTypes.string,
-  productName: PropTypes.string,
-  serviceName: PropTypes.string,
-  navigation: PropTypes.node,
-  serviceUrl: PropTypes.string
-};
 
 Header.defaultProps = {
   className: undefined,

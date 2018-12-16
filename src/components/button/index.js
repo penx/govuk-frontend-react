@@ -1,13 +1,25 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
+import type { ComponentType } from 'react';
+
 import cx from 'classnames';
 import styles from './_button.module.scss';
+
+type Props = {
+  className?: string,
+  as?: ComponentType<{}> | string,
+  type?: string,
+  role?: string,
+  disabled?: boolean,
+  href?: string
+};
 
 /**
  *  Tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
  */
-const Button = ({ className, as, type, role, disabled, href, ...props }) => {
-  let Type = as;
+const Button = ({ className, as, type, role, disabled, href, ...props }: Props) => {
+  let Type = as || '';
   let computedType = type;
   let computedRole = role;
   let computedHref = href;
@@ -49,17 +61,9 @@ const Button = ({ className, as, type, role, disabled, href, ...props }) => {
   );
 };
 
-Button.propTypes = {
-  // we use as instead of element
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]), // could be a, button or a custom type
-  type: PropTypes.string,
-  role: PropTypes.string,
-  disabled: PropTypes.bool,
-  href: PropTypes.string
-};
-
 Button.defaultProps = {
   as: '',
+  className: undefined,
   type: undefined,
   role: undefined,
   disabled: false,
