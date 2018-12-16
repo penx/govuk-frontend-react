@@ -2,9 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import styles from '../_header.module.scss';
 
-// TODO:
-// - svg fallback image
-
+// TODO: svg fallback image
 export default ({ className, homepage = {}, homepageUrl, productName }) => {
   const { as: HomepageLink = 'a', ...homepageProps } = homepage;
   return (

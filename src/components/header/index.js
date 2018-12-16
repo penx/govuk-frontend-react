@@ -25,10 +25,11 @@ type Props = {
   serviceUrl?: string
 };
 
+// TODO: allow state to be controlled
+// TODO: Allow jsEnabled to be preset via context api
+
 class Header extends React.Component<Props> {
-  // TODO: allow state to be controlled
   state = {
-    // TODO: Allow jsEnabled to be preset via context api
     jsEnabled: false,
     open: false
   };
@@ -38,8 +39,7 @@ class Header extends React.Component<Props> {
   }
 
   handleMenuClick = () => {
-    // TODO: allow component to be controlled
-    // i.e. if this.props.onChange
+    // if this.props.onChange
     this.setState(prevState => ({ open: !prevState.open }));
   };
 

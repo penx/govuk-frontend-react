@@ -4,6 +4,8 @@ import 'jest-dom/extend-expect';
 
 import defaultFixture, { withNavigation } from './fixtures';
 
+// TODO: selecting a nav item should close the nav
+
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(defaultFixture, div);
@@ -19,5 +21,3 @@ it('opens on click', () => {
   expect(menu).toHaveClass('govuk-header__menu-button--open');
   expect(tln).toHaveClass('govuk-header__navigation--open');
 });
-
-// TODO: selecting a nav item should close the nav

@@ -1,7 +1,8 @@
 import React from 'react';
-// import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Link, Switch, Route } from 'react-router-dom';
 import Header from '.';
+
+// TODO: with js disabled prop/override
 
 export default (
   <Header
@@ -81,5 +82,3 @@ class CustomHeader extends React.Component {
 }
 
 export const fromElements = <CustomHeader />;
-
-// TODO: with js disabled prop/override
