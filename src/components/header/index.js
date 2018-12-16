@@ -100,6 +100,12 @@ Header.defaultProps = {
   serviceUrl: undefined
 };
 
+Header.Container = Container;
+Header.Content = Content;
+Header.Logo = Logo;
+Header.MenuButton = MenuButton;
+Header.Navigation = Navigation;
 Header.NavigationItem = NavigationItem;
+Header.ServiceName = ServiceName;
 
 export default Header;

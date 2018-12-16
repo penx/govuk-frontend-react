@@ -5,7 +5,7 @@ import styles from '../_header.module.scss';
 // TODO:
 // - svg fallback image
 
-export default ({ className, homepage, homepageUrl, productName }) => {
+export default ({ className, homepage = {}, homepageUrl, productName }) => {
   const { as: HomepageLink = 'a', ...homepageProps } = homepage;
   return (
     <div className={cx(styles['govuk-header__logo'], className)}>

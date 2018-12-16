@@ -47,4 +47,39 @@ export const withReactRouter = (
   </MemoryRouter>
 );
 
+class CustomHeader extends React.Component {
+  state = {
+    open: false
+  };
+
+  handleMenuClick = () => {
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
+  };
+
+  render() {
+    const { open } = this.state;
+    return (
+      <Header>
+        <Header.Container>
+          <Header.Logo homepageUrl="/" productName="Product" />
+          <Header.Content>
+            <Header.ServiceName serviceUrl="/">Service</Header.ServiceName>
+            <Header.MenuButton open={open} onClick={this.handleMenuClick}>
+              Menu
+            </Header.MenuButton>
+            <Header.Navigation open={open}>
+              <Header.NavigationItem href="/">Home</Header.NavigationItem>
+              <Header.NavigationItem href="/about">About</Header.NavigationItem>
+            </Header.Navigation>
+          </Header.Content>
+        </Header.Container>
+      </Header>
+    );
+  }
+}
+
+export const fromElements = <CustomHeader />;
+
 // TODO: with js disabled prop/override
