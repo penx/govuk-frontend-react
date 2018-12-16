@@ -1,7 +1,8 @@
 import React from 'react';
-// import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Link, Switch, Route } from 'react-router-dom';
 import Header from '.';
+
+// TODO: with js disabled prop/override
 
 export default (
   <Header
@@ -47,4 +48,37 @@ export const withReactRouter = (
   </MemoryRouter>
 );
 
-// TODO: with js disabled prop/override
+class CustomHeader extends React.Component {
+  state = {
+    open: false
+  };
+
+  handleMenuClick = () => {
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
+  };
+
+  render() {
+    const { open } = this.state;
+    return (
+      <Header>
+        <Header.Container>
+          <Header.Logo homepageUrl="/" productName="Product" />
+          <Header.Content>
+            <Header.ServiceName serviceUrl="/">Service</Header.ServiceName>
+            <Header.MenuButton open={open} onClick={this.handleMenuClick}>
+              Menu
+            </Header.MenuButton>
+            <Header.Navigation open={open}>
+              <Header.NavigationItem href="/">Home</Header.NavigationItem>
+              <Header.NavigationItem href="/about">About</Header.NavigationItem>
+            </Header.Navigation>
+          </Header.Content>
+        </Header.Container>
+      </Header>
+    );
+  }
+}
+
+export const fromElements = <CustomHeader />;
