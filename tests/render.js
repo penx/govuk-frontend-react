@@ -6,10 +6,12 @@ import cheerio from 'cheerio';
 
 import Button from '../src/components/button';
 import Header from '../src/components/header';
+import Input from '../src/components/input';
 
 const components = {
   button: Button,
   header: Header,
+  input: Input
 };
 
 function optionsToProps(name, options) {
@@ -19,15 +21,40 @@ function optionsToProps(name, options) {
     attributes,
     classes,
     element,
+    value,
     html,
     navigationClasses,
     navigation: _navigation,
+    formGroup,
     ...props
   } = options;
 
   // calculate any props that aren't just renames
-  const children = (element === 'input') ? undefined : text;
-  const value = (element === 'input') ? text : undefined;
+  let children;
+
+  let valueProp = 'defaultValue';
+
+  let computedValue = value;
+  let computedFormGroup;
+
+  const componentSpecific = {};
+
+  if (name === 'button') {
+    // TODO: handle a Button of type 'a' or 'input' that has both 'value' and 'text' set
+    valueProp = 'value';
+    if (name === 'button' && element !== 'input') {
+      children = text;
+    }
+    if (name === 'button' && element === 'input') {
+      computedValue = text;
+    }
+  }
+  if (name === 'input') {
+    if (formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', formGroup);
+    }
+  }
+
   const navigation = _navigation
     ? _navigation.map(
       ({ text: itemText, attributes: itemAttributes, ...itemProps }, i) => (
@@ -38,19 +65,20 @@ function optionsToProps(name, options) {
         >
           {itemText}
         </Header.NavigationItem>
-      ),
-    )
+      ))
     : undefined;
 
   return {
+    ...props,
+    ...attributes,
+    ...componentSpecific,
     children,
-    value,
+    [valueProp]: computedValue,
+    // defaultValue: value,
     navigation,
     dangerouslySetInnerHTML: html && { __html: html },
     className: classes,
-    as: element,
-    ...attributes,
-    ...props,
+    as: element
   };
 }
 
