@@ -11,7 +11,7 @@ import Label from '../label';
 // TODO: if id not set, wrap label?
 
 const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...props }) => {
-  let describedBy = '';
+  let describedBy;
   if (hint) {
     describedBy = `${id}-hint`;
   }
@@ -26,10 +26,11 @@ const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...pr
         formGroup.className
       )}
     >
-      <Label for={id} {...label} />
+      <Label htmlFor={id} {...label} />
       {hint && <Hint id={`${id}-hint`} {...hint} />}
       {errorMessage && <ErrorMessage id={`${id}-error`} {...errorMessage} />}
       <input
+        id={id}
         className={cx(
           styles['govuk-input'],
           errorMessage && styles['govuk-input--error'],
