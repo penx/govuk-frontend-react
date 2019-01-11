@@ -19,6 +19,7 @@ function optionsToProps(name, options) {
   const {
     text,
     attributes,
+    label,
     classes,
     element,
     value,
@@ -35,10 +36,12 @@ function optionsToProps(name, options) {
   let valueProp = 'defaultValue';
 
   let computedValue = value;
-  let computedFormGroup;
 
   const componentSpecific = {};
 
+  if (name === 'label') {
+    children = text;
+  }
   if (name === 'button') {
     // TODO: handle a Button of type 'a' or 'input' that has both 'value' and 'text' set
     valueProp = 'value';
@@ -52,6 +55,9 @@ function optionsToProps(name, options) {
   if (name === 'input') {
     if (formGroup) {
       componentSpecific.formGroup = optionsToProps('formGroup', formGroup);
+    }
+    if (label) {
+      componentSpecific.label = optionsToProps('label', label);
     }
   }
 
