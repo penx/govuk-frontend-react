@@ -10,4 +10,6 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
   },
+  snapshotSerializers: ['jest-serializer-html'],
+  setupTestFrameworkScriptFile: "../tests/setup-tests.js",
 };
