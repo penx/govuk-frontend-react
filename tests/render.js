@@ -25,14 +25,12 @@ function optionsToProps(name, options) {
   const {
     text,
     attributes,
-    label,
     classes,
     element,
     value,
     html,
     navigationClasses,
     navigation: _navigation,
-    formGroup,
     ...props
   } = options;
 
@@ -65,11 +63,17 @@ function optionsToProps(name, options) {
     }
   }
   if (name === 'input') {
-    if (formGroup) {
-      componentSpecific.formGroup = optionsToProps('formGroup', formGroup);
+    if (props.formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
     }
-    if (label) {
-      componentSpecific.label = optionsToProps('label', label);
+    if (props.label) {
+      componentSpecific.label = optionsToProps('label', props.label);
+    }
+    if (props.errorMessage) {
+      componentSpecific.errorMessage = optionsToProps('error-message', props.errorMessage);
+    }
+    if (props.hint) {
+      componentSpecific.hint = optionsToProps('hint', props.hint);
     }
   }
 
@@ -94,6 +98,7 @@ function optionsToProps(name, options) {
     [valueProp]: computedValue,
     // defaultValue: value,
     navigation,
+    // TODO: May be better to make a Fragment using dangerouslySetInnerHTML and pass it down as children
     dangerouslySetInnerHTML: html && { __html: html },
     className: classes,
     as: element
