@@ -105,11 +105,16 @@ function optionsToProps(name, options) {
   };
 }
 
-function render(name, options) {
+function render(name, options, { renderMode = 'cheerio' }) {
   const Component = components[name];
   const props = optionsToProps(name, options);
 
-  return cheerio.load(ReactDOMServer.renderToStaticMarkup(<Component {...props} />));
+  if (renderMode === 'react') {
+    return <Component {...props} />;
+  }
+    // default renderMode is cheerio
+    return cheerio.load(ReactDOMServer.renderToStaticMarkup(<Component {...props} />));
+
 }
 
 export default render;
