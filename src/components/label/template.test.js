@@ -4,4 +4,4 @@ const render = require('../../../tests/render');
 
 setRender(render);
 expect.extend(toHaveNoViolations);
-require('govuk-frontend-template-spec/components/input/template.test');
+require('govuk-frontend-template-spec/components/label/template.test');

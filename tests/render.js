@@ -5,13 +5,19 @@ import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
 
 import Button from '../src/components/button';
+import ErrorMessage from '../src/components/error-message';
 import Header from '../src/components/header';
+import Hint from '../src/components/hint';
 import Input from '../src/components/input';
+import Label from '../src/components/label';
 
 const components = {
   button: Button,
+  'error-message': ErrorMessage,
   header: Header,
-  input: Input
+  hint: Hint,
+  input: Input,
+  label: Label
 };
 
 function optionsToProps(name, options) {
@@ -40,6 +46,12 @@ function optionsToProps(name, options) {
   const componentSpecific = {};
 
   if (name === 'label') {
+    children = text;
+  }
+  if (name === 'error-message') {
+    children = text;
+  }
+  if (name === 'hint') {
     children = text;
   }
   if (name === 'button') {
