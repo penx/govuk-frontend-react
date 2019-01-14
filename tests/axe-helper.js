@@ -1,6 +1,4 @@
-const { configureAxe, toHaveNoViolations } = require('jest-axe');
-
-expect.extend(toHaveNoViolations);
+const { configureAxe } = require('jest-axe');
 
 const axe = configureAxe({
   rules: {
