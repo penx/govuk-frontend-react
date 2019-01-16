@@ -10,9 +10,6 @@ import Label from '../label';
 
 // TODO: if id not set, wrap label?
 
-// TODO: extract utility module
-const isString = str => typeof str === 'string' || str instanceof String;
-
 const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...props }) => {
   let describedBy;
   if (hint) {
@@ -29,12 +26,24 @@ const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...pr
         formGroup.className
       )}
     >
-      <Label htmlFor={id} {...(isString(label) ? { children: label } : label)} />
-      {hint && <Hint id={`${id}-hint`} {...(isString(hint) ? { children: hint } : hint)} />}
+      <Label
+        htmlFor={id}
+        {...(typeof label !== 'object' || React.isValidElement(label)
+          ? { children: label }
+          : label)}
+      />
+      {hint && (
+        <Hint
+          id={`${id}-hint`}
+          {...(typeof hint !== 'object' || React.isValidElement(hint) ? { children: hint } : hint)}
+        />
+      )}
       {errorMessage && (
         <ErrorMessage
           id={`${id}-error`}
-          {...(isString(errorMessage) ? { children: errorMessage } : errorMessage)}
+          {...(typeof errorMessage !== 'object' || React.isValidElement(errorMessage)
+            ? { children: errorMessage }
+            : errorMessage)}
         />
       )}
       <input

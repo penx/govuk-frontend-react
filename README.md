@@ -55,3 +55,4 @@ I aim to complete the following as part of the PoC:
 Things that I'm not 100% on how to deal with:
 
 - custom CSS classes such as "width-2" class on Input being passed in as props but are actually CSS modules
+- should we allow shortcuts so that `label={{children: 'Label'}}` can just be specified as `label="Label"`? Or should we separate in to two props, `label` and `labelProps`?
