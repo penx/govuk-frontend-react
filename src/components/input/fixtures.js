@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { Formik } from 'formik';
+import { action } from '@storybook/addon-actions';
 
 import Input from '.';
 import Button from '../button';
@@ -39,6 +40,7 @@ export const withFinalForm = (
   />
 );
 
+// Example from https://codesandbox.io/s/q8yRqQMp
 export const withFormik = (
   <Formik
     initialValues={{ email: '', password: '' }}
@@ -52,22 +54,13 @@ export const withFormik = (
       return errors;
     }}
     onSubmit={(values, { setSubmitting }) => {
+      action('on-submit')(values);
       setTimeout(() => {
-        // alert(JSON.stringify(values, null, 2));
         setSubmitting(false);
       }, 400);
     }}
   >
-    {({
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      isSubmitting
-      /* and other goodies */
-    }) => (
+    {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
       <form onSubmit={handleSubmit}>
         <Input
           type="email"
