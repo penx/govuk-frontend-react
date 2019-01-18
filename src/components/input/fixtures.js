@@ -17,9 +17,13 @@ export default (
 
 const required = value => (value ? undefined : 'Required');
 
+// TODO: form behaviour for error messages should adhere to https://design-system.service.gov.uk/components/error-message/
+// Specifically "Do not show error messages... when they move away from a field"
+// Further discussion here https://github.com/alphagov/govuk-design-system-backlog/issues/47#issuecomment-454849703
 export const withFinalForm = (
   <Form
-    onSubmit={() => null}
+    initialValues={{ firstName: '', lastName: '' }}
+    onSubmit={action('submit')}
     render={({ handleSubmit, values }) => (
       <form onSubmit={handleSubmit}>
         <Field name="firstName" validate={required}>
@@ -33,6 +37,17 @@ export const withFinalForm = (
             />
           )}
         </Field>
+        <Field name="lastName" validate={required}>
+          {({ input, meta }) => (
+            <Input
+              type="text"
+              placeholder="Last Name"
+              label="Last Name"
+              errorMessage={meta.touched && meta.error}
+              {...input}
+            />
+          )}
+        </Field>
         <Button type="submit">Submit</Button>
         <pre>Values: {JSON.stringify(values, 0, 2)}</pre>
       </form>
@@ -40,53 +55,44 @@ export const withFinalForm = (
   />
 );
 
-// Example from https://codesandbox.io/s/q8yRqQMp
 export const withFormik = (
   <Formik
-    initialValues={{ email: '', password: '' }}
+    initialValues={{ firstName: '', lastName: '' }}
     validate={values => {
       const errors = {};
-      if (!values.email) {
-        errors.email = 'Required';
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-        errors.email = 'Invalid email address';
+      if (!values.firstName) {
+        errors.firstName = 'Required';
+      }
+      if (!values.lastName) {
+        errors.lastName = 'Required';
       }
       return errors;
     }}
-    onSubmit={(values, { setSubmitting }) => {
-      action('on-submit')(values);
-      setTimeout(() => {
-        setSubmitting(false);
-      }, 400);
-    }}
+    onSubmit={action('submit')}
   >
-    {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+    {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
       <form onSubmit={handleSubmit}>
         <Input
-          label="Email"
-          placeholder="Email"
-          type="email"
-          name="email"
-          id="email"
-          errorMessage={errors.email && touched.email && errors.email}
+          label="First Name"
+          placeholder="First Name"
+          name="firstName"
+          id="firstName"
+          errorMessage={errors.firstName && touched.firstName && errors.firstName}
           onChange={handleChange}
           onBlur={handleBlur}
-          value={values.email}
+          value={values.firstName}
         />
         <Input
-          label="Password"
-          placeholder="Password"
-          type="password"
-          name="password"
-          id="password"
+          label="Last Name"
+          placeholder="Last Name"
+          id="lastName"
           onChange={handleChange}
           onBlur={handleBlur}
-          value={values.password}
-          errorMessage={errors.password && touched.password && errors.password}
+          value={values.lastName}
+          errorMessage={errors.lastName && touched.lastName && errors.lastName}
         />
-        <Button type="submit" disabled={isSubmitting}>
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
+        <pre>Values: {JSON.stringify(values, 0, 2)}</pre>
       </form>
     )}
   </Formik>
