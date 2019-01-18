@@ -24,7 +24,16 @@ type Props = React.ElementProps<'input'> & {
   }
 };
 
-const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...props }: Props) => {
+const Input = ({
+  className,
+  errorMessage,
+  label,
+  id,
+  hint,
+  formGroup = {},
+  type = 'text',
+  ...props
+}: Props) => {
   let describedBy;
   if (hint) {
     describedBy = `${id}-hint`;
@@ -68,14 +77,11 @@ const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...pr
           className
         )}
         aria-describedby={describedBy}
+        type={type}
         {...props}
       />
     </div>
   );
-};
-
-Input.defaultProps = {
-  type: 'text'
 };
 
 export default Input;
