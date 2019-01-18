@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 // import type { ComponentType } from 'react';
 import cx from 'classnames';
@@ -11,7 +13,19 @@ import Label from '../label';
 // TODO: if id not set, wrap label?
 // TODO: flow types
 
-const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...props }) => {
+type Props = React.ElementProps<'input'> & {
+  className: string,
+  type?: string,
+  errorMessage?: string | React.Element<any> | React.ElementProps<typeof Label>,
+  label: string | React.Element<any> | React.ElementProps<typeof Label>,
+  // id,
+  hint?: string | React.Element<any> | React.ElementProps<typeof Label>,
+  formGroup?: {
+    className?: string
+  }
+};
+
+const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...props }: Props) => {
   let describedBy;
   if (hint) {
     describedBy = `${id}-hint`;

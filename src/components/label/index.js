@@ -14,7 +14,7 @@ const LabelInner = ({ className, for: _for, ...props }: React.ElementProps<'labe
 export default ({
   isPageHeading,
   ...props
-}: { isPageHeading: boolean } & React.ElementProps<'label'>) =>
+}: { isPageHeading?: boolean } & React.ElementProps<'label'>) =>
   isPageHeading ? (
     <h1 className="govuk-label-wrapper">
       <LabelInner {...props} />
