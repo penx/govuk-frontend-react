@@ -11,7 +11,6 @@ import Hint from '../hint';
 import Label from '../label';
 
 // TODO: if id not set, wrap label?
-// TODO: flow types
 
 type Props = React.ElementProps<'input'> & {
   className: string,
