@@ -3,13 +3,22 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
+import parse from 'html-react-parser';
 
 import Button from '../src/components/button';
+import ErrorMessage from '../src/components/error-message';
 import Header from '../src/components/header';
+import Hint from '../src/components/hint';
+import Input from '../src/components/input';
+import Label from '../src/components/label';
 
 const components = {
   button: Button,
+  'error-message': ErrorMessage,
   header: Header,
+  hint: Hint,
+  input: Input,
+  label: Label
 };
 
 function optionsToProps(name, options) {
@@ -19,6 +28,7 @@ function optionsToProps(name, options) {
     attributes,
     classes,
     element,
+    value,
     html,
     navigationClasses,
     navigation: _navigation,
@@ -26,8 +36,64 @@ function optionsToProps(name, options) {
   } = options;
 
   // calculate any props that aren't just renames
-  const children = (element === 'input') ? undefined : text;
-  const value = (element === 'input') ? text : undefined;
+  let children;
+
+  let valueProp = 'defaultValue';
+
+  let computedValue = value;
+
+  const componentSpecific = {};
+
+  if (name === 'label') {
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
+  }
+  if (name === 'error-message') {
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
+  }
+  if (name === 'hint') {
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
+  }
+  if (name === 'button') {
+    // TODO: handle a Button of type 'a' or 'input' that has both 'value' and 'text' set
+    valueProp = 'value';
+    if (name === 'button' && element !== 'input') {
+      if (html) {
+        children = parse(html);
+      } else {
+        children = text;
+      }
+    }
+    if (name === 'button' && element === 'input') {
+      computedValue = text;
+    }
+  }
+  if (name === 'input') {
+    if (props.formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
+    }
+    if (props.label) {
+      componentSpecific.label = optionsToProps('label', props.label);
+    }
+    if (props.errorMessage) {
+      componentSpecific.errorMessage = optionsToProps('error-message', props.errorMessage);
+    }
+    if (props.hint) {
+      componentSpecific.hint = optionsToProps('hint', props.hint);
+    }
+  }
+
   const navigation = _navigation
     ? _navigation.map(
       ({ text: itemText, attributes: itemAttributes, ...itemProps }, i) => (
@@ -38,26 +104,30 @@ function optionsToProps(name, options) {
         >
           {itemText}
         </Header.NavigationItem>
-      ),
-    )
+      ))
     : undefined;
 
   return {
-    children,
-    value,
-    navigation,
-    dangerouslySetInnerHTML: html && { __html: html },
-    className: classes,
-    as: element,
-    ...attributes,
     ...props,
+    ...attributes,
+    ...componentSpecific,
+    children,
+    [valueProp]: computedValue,
+    // defaultValue: value,
+    navigation,
+    className: classes,
+    as: element
   };
 }
 
-function render(name, options) {
+function render(name, options, { renderMode = 'cheerio' }) {
   const Component = components[name];
   const props = optionsToProps(name, options);
 
+  if (renderMode === 'react') {
+    return <Component {...props} />;
+  }
+  // default renderMode is cheerio
   return cheerio.load(ReactDOMServer.renderToStaticMarkup(<Component {...props} />));
 }
 

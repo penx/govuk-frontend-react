@@ -1,13 +1,15 @@
 module.exports = {
-  coverageDirectory: '../coverage/',
+  coverageDirectory: './coverage/',
   collectCoverage: true,
   collectCoverageFrom: [
-    '<rootDir>/**/*.js',
-    '!<rootDir>/**/{stories,example,fixtures}.js',
-    '!<rootDir>/stories/**',
+    '<rootDir>/src/**/*.js',
+    '!<rootDir>/src/**/{stories,example,fixtures}.js',
+    '!<rootDir>/src/stories/**',
   ],
-  rootDir: 'src',
+  roots: ["<rootDir>/src/"],
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
   },
+  snapshotSerializers: ['jest-serializer-html'],
+  setupTestFrameworkScriptFile: "./tests/setup-tests.js",
 };

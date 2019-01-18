@@ -35,8 +35,11 @@ I aim to complete the following as part of the PoC:
 - [x] Button
 - [x] Header compatible with React Router
 - [x] Support for js-enabled class, used by Header, plus any associated JS required by Header
-- [ ] Input [compatible with Final Form](https://medium.com/@penx/form-elements-in-presentational-component-packages-a618e9aa7416)
-- [ ] Date Input [compatible with Final Form](https://medium.com/@penx/form-elements-in-presentational-component-packages-a618e9aa7416)
+- [x] Input with Final Form and Formik examples.
+- [ ] Date Input with Final Form and Formik examples.
+- [ ] Radios
+- [ ] Tables
+- [ ] Error summary with Formik and Final Form examples, following govuk design system guidelines.
 - [x] Code coverage checks in CI
 - [x] 100% code coverage
 - [x] Meaningful unit tests
@@ -47,3 +50,17 @@ I aim to complete the following as part of the PoC:
 - [x] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)
   - [ ] Support for path splitting blocked by [zeit/next-plugins#190](https://github.com/zeit/next-plugins/pull/190) ([related](https://spectrum.chat/next-js/general/dynamic-css-splitting~03351ba8-e4aa-4788-a8ce-2d765b1b1f61?m=MTUzNzE1NDM5ODQ5OQ==))
 - [ ] Server side only example with form submit and display of form errors
+
+Other TODO:
+
+- [ ] Script to convert govuk-frontend attributes to prop types (or Flow types)
+- [ ] Export standalone templates, CSS includes and CSS modules separately, e.g. `import { Button } from 'govuk-frontend-react'` `import { Button } from 'govuk-frontend-react-templates'`, `import { Button } from 'govuk-frontend-react-modules'`
+- [ ] Use Jest snapshots from govuk-frontend rather than manually copying
+
+
+## Grey areas
+
+Things that I'm not 100% on how to deal with:
+
+- custom CSS classes such as "width-2" class on Input being passed in as props but are actually CSS modules - could look up via a classNames object first?
+- should we allow shortcuts so that `label={{children: 'Label'}}` can just be specified as `label="Label"`? Or should we separate in to two props, `label` and `labelProps`?
