@@ -16,7 +16,12 @@ type Props = React.ElementProps<'fieldset'> & {
 const Fieldset = ({ className, legend, children, ...props }: Props) => (
   <fieldset {...props} className={cx(styles['govuk-fieldset'], className)}>
     {legend && (
-      <legend className={cx(styles['govuk-fieldset__legend'], legend.className)}>
+      <legend
+        className={cx(
+          styles['govuk-fieldset__legend'],
+          legend.className && legend.className.split(' ').map(cn => styles[cn] || cn)
+        )}
+      >
         {legend.isPageHeading ? (
           <h1 className={styles['govuk-fieldset__heading']}>{legend.children}</h1>
         ) : (

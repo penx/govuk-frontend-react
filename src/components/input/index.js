@@ -74,7 +74,7 @@ const Input = ({
         className={cx(
           styles['govuk-input'],
           errorMessage && styles['govuk-input--error'],
-          className
+          className && className.split(' ').map(cn => styles[cn] || cn)
         )}
         aria-describedby={describedBy}
         type={type}
