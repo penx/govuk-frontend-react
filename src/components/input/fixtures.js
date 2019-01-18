@@ -63,23 +63,27 @@ export const withFormik = (
     {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
       <form onSubmit={handleSubmit}>
         <Input
+          label="Email"
+          placeholder="Email"
           type="email"
           name="email"
           id="email"
+          errorMessage={errors.email && touched.email && errors.email}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.email}
         />
-        {errors.email && touched.email && errors.email}
         <Input
+          label="Password"
+          placeholder="Password"
           type="password"
           name="password"
           id="password"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
+          errorMessage={errors.password && touched.password && errors.password}
         />
-        {errors.password && touched.password && errors.password}
         <Button type="submit" disabled={isSubmitting}>
           Submit
         </Button>
