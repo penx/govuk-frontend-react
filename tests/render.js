@@ -67,6 +67,15 @@ function optionsToProps(name, options) {
     if (props.items) {
       componentSpecific.items = props.items.map(item => optionsToProps('input', item));
     }
+    if (props.fieldset) {
+      componentSpecific.fieldset = optionsToProps('fieldset', props.fieldset);
+    }
+    if (props.errorMessage) {
+      componentSpecific.errorMessage = optionsToProps('error-message', props.errorMessage);
+    }
+    if (props.hint) {
+      componentSpecific.hint = optionsToProps('hint', props.hint);
+    }
   }
   if (name === 'error-message') {
     if (html) {
