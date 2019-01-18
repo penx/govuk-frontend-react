@@ -48,6 +48,18 @@ function optionsToProps(name, options) {
       children = text;
     }
   }
+
+  if (name === 'fieldset') {
+    if (props.legend) {
+      const { text: legendText, html: legendHtml, classes: legendClasses, ...rest } = props.legend;
+      componentSpecific.legend = {
+        children: legendHtml ? parse(legendHtml) : legendText,
+        className: legendClasses,
+        ...rest
+      };
+    }
+  }
+
   if (name === 'date-input') {
     if (props.formGroup) {
       componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
