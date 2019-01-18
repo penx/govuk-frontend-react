@@ -16,7 +16,7 @@ export default ({
   ...props
 }: { isPageHeading?: boolean } & React.ElementProps<'label'>) =>
   isPageHeading ? (
-    <h1 className="govuk-label-wrapper">
+    <h1 className={styles['govuk-label-wrapper']}>
       <LabelInner {...props} />
     </h1>
   ) : (
