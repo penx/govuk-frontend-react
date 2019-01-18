@@ -10,6 +10,8 @@ module.exports = {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-wrap-multilines": 0,
     "react/jsx-one-expression-per-line": 0,
+    // https://github.com/yannickcr/eslint-plugin-react/issues/1593
+    "react/default-props-match-prop-types": 0,
     "jsx-a11y/label-has-for": 0,
     "filenames/match-exported": 0,
     "jsx-a11y/anchor-is-valid": [ "error", {

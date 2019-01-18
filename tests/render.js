@@ -5,16 +5,13 @@ import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
 import parse from 'html-react-parser';
 
-import Button from '../src/components/button';
-import ErrorMessage from '../src/components/error-message';
-import Header from '../src/components/header';
-import Hint from '../src/components/hint';
-import Input from '../src/components/input';
-import Label from '../src/components/label';
+import { Button, DateInput, ErrorMessage, Fieldset, Header, Hint, Input, Label } from '../src';
 
 const components = {
   button: Button,
+  'date-input': DateInput,
   'error-message': ErrorMessage,
+  fieldset: Fieldset,
   header: Header,
   hint: Hint,
   input: Input,
@@ -49,6 +46,14 @@ function optionsToProps(name, options) {
       children = parse(html);
     } else {
       children = text;
+    }
+  }
+  if (name === 'date-input') {
+    if (props.formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
+    }
+    if (props.items) {
+      componentSpecific.items = props.items.map(item => optionsToProps('input', item));
     }
   }
   if (name === 'error-message') {

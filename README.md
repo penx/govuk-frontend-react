@@ -18,6 +18,8 @@ Common conventions on where our React prop names differ from the nunjucks macro 
 | element | as  |
 | attributes | rest props (where appropriate) |
 | text | children (where appropriate) |
+| html | children (where appropriate) |
+| describedBy | aria-describedby |
 
 ## Create React App support
 
