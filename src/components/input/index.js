@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 // import type { ComponentType } from 'react';
 import cx from 'classnames';
 
@@ -9,6 +9,7 @@ import Hint from '../hint';
 import Label from '../label';
 
 // TODO: if id not set, wrap label?
+// TODO: flow types
 
 const Input = ({ className, errorMessage, label, id, hint, formGroup = {}, ...props }) => {
   let describedBy;

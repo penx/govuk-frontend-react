@@ -1,14 +1,20 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import cx from 'classnames';
 
 import styles from './_label.module.scss';
 
-const LabelInner = ({ className, for: _for, ...props }) =>
+// TODO: review use of for prop rather than htmlFor
+const LabelInner = ({ className, for: _for, ...props }: React.ElementProps<'label'>) =>
   // TODO: review, this seems counter intuititive but is required for aligning unit tests
   // eslint-disable-next-line
-  (props.children || props.dangerouslySetInnerHTML) ? <label className={cx(styles['govuk-label'], className)} htmlFor={_for} {...props} /> : null
+  props.children ? <label className={cx(styles['govuk-label'], className)} htmlFor={_for} {...props} /> : null
 
-export default ({ isPageHeading, ...props }) =>
+export default ({
+  isPageHeading,
+  ...props
+}: { isPageHeading: boolean } & React.ElementProps<'label'>) =>
   isPageHeading ? (
     <h1 className="govuk-label-wrapper">
       <LabelInner {...props} />

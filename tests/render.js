@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
+import parse from 'html-react-parser';
 
 import Button from '../src/components/button';
 import ErrorMessage from '../src/components/error-message';
@@ -44,19 +45,35 @@ function optionsToProps(name, options) {
   const componentSpecific = {};
 
   if (name === 'label') {
-    children = text;
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
   }
   if (name === 'error-message') {
-    children = text;
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
   }
   if (name === 'hint') {
-    children = text;
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
   }
   if (name === 'button') {
     // TODO: handle a Button of type 'a' or 'input' that has both 'value' and 'text' set
     valueProp = 'value';
     if (name === 'button' && element !== 'input') {
-      children = text;
+      if (html) {
+        children = parse(html);
+      } else {
+        children = text;
+      }
     }
     if (name === 'button' && element === 'input') {
       computedValue = text;
@@ -98,8 +115,6 @@ function optionsToProps(name, options) {
     [valueProp]: computedValue,
     // defaultValue: value,
     navigation,
-    // TODO: May be better to make a Fragment using dangerouslySetInnerHTML and pass it down as children
-    dangerouslySetInnerHTML: html && { __html: html },
     className: classes,
     as: element
   };
@@ -112,9 +127,8 @@ function render(name, options, { renderMode = 'cheerio' }) {
   if (renderMode === 'react') {
     return <Component {...props} />;
   }
-    // default renderMode is cheerio
-    return cheerio.load(ReactDOMServer.renderToStaticMarkup(<Component {...props} />));
-
+  // default renderMode is cheerio
+  return cheerio.load(ReactDOMServer.renderToStaticMarkup(<Component {...props} />));
 }
 
 export default render;
