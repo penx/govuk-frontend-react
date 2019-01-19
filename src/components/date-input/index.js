@@ -17,6 +17,23 @@ function capitalizeFirstLetter(string) {
   return string;
 }
 
+const Item = ({ name, label, className, ...props }) => (
+  <div className={styles['govuk-date-input__item']}>
+    <Input
+      label={{
+        children: label,
+        className: styles['govuk-date-input__label']
+      }}
+      className={cx(styles['govuk-date-input__input'], className)}
+      type="number"
+      pattern="[0-9]*"
+      name={name}
+      {...props}
+    />
+  </div>
+);
+
+// TODO: should we support a label prop if fieldset is not specified?
 const DateInput = ({
   className,
   id,
@@ -26,6 +43,7 @@ const DateInput = ({
   fieldset,
   namePrefix,
   formGroup = {},
+  children,
   ...props
 }: React.ElementProps<'span'>) => {
   let describedBy;
@@ -52,22 +70,16 @@ const DateInput = ({
         />
       )}
       <div {...props} className={cx(styles['govuk-date-input'], className)} id={id}>
-        {items.map(({ className: itemClassName, id: itemId, name, label, ...itemProps }, index) => (
-          <div key={name || index} className={styles['govuk-date-input__item']}>
-            <Input
-              label={{
-                children: label || capitalizeFirstLetter(name),
-                className: styles['govuk-date-input__label']
-              }}
+        {children ||
+          items.map(({ id: itemId, name, label, ...itemProps }, index) => (
+            <Item
+              label={label || capitalizeFirstLetter(name)}
+              key={name || index}
               id={itemId || `${id}-${name}`}
-              className={cx(styles['govuk-date-input__input'], itemClassName)}
               name={namePrefix ? `${namePrefix}-${name}` : name}
-              type="number"
-              pattern="[0-9]*"
               {...itemProps}
             />
-          </div>
-        ))}
+          ))}
       </div>
     </>
   );
@@ -107,5 +119,7 @@ DateInput.defaultProps = {
     }
   ]
 };
+
+DateInput.Item = Item;
 
 export default DateInput;
