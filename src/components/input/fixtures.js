@@ -17,6 +17,8 @@ export default (
 
 const required = value => (value ? undefined : 'Required');
 
+// TODO: ids need to be set on form fields - should there be an error (missing required prop) if not included? Should final form and formik examples be in unit tests?
+
 // TODO: form behaviour for error messages should adhere to https://design-system.service.gov.uk/components/error-message/
 // Specifically "Do not show error messages... when they move away from a field"
 // Further discussion here https://github.com/alphagov/govuk-design-system-backlog/issues/47#issuecomment-454849703
