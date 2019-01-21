@@ -58,6 +58,7 @@ Other TODO:
 - [ ] Script to convert govuk-frontend attributes to prop types (or Flow types)
 - [ ] Export standalone templates, CSS includes and CSS modules separately, e.g. `import { Button } from 'govuk-frontend-react'` `import { Button } from 'govuk-frontend-react-templates'`, `import { Button } from 'govuk-frontend-react-modules'`
 - [ ] Use Jest snapshots from govuk-frontend rather than manually copying
+- [ ] refactor render.js so that it is easier to scale
 
 
 ## Grey areas
@@ -66,3 +67,10 @@ Things that I'm not 100% on how to deal with:
 
 - custom CSS classes such as "width-2" class on Input being passed in as props but are actually CSS modules - could look up via a classNames object first?
 - should we allow shortcuts so that `label={{children: 'Label'}}` can just be specified as `label="Label"`? Or should we separate in to two props, `label` and `labelProps`?
+
+### govuk-frontend related issues
+
+- https://github.com/alphagov/govuk-frontend/issues/1095
+- https://github.com/alphagov/govuk-frontend/issues/1150
+- https://github.com/alphagov/govuk-frontend/issues/1151
+- https://github.com/alphagov/govuk-frontend/issues/460
