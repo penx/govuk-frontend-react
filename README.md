@@ -3,7 +3,14 @@
 [govuk-frontend](https://github.com/alphagov/govuk-frontend) as React components.
 
 
-This is proof of concept, showing how <a href="https://github.com/alphagov/govuk-frontend">govuk-frontend</a> can be used as <a href="https://github.com/css-modules/css-modules">CSS modules</a> via a <a href="https://github.com/penx/govuk-frontend-react">set of React components</a> that is <a href="https://www.npmjs.com/package/govuk-frontend-react">published to npm</a>, in a way that is compatible with <a href="https://github.com/facebook/create-react-app">create-react-app</a> and <a href="https://nextjs.org">Next.js</a>, with support for <a href="https://webpack.js.org/guides/tree-shaking/">tree shaking</a> and <a href="https://reactjs.org/docs/code-splitting.html">code splitting/lazy loading</a>.
+This is proof of concept, showing how <a href="https://github.com/alphagov/govuk-frontend">govuk-frontend</a> can be used as <a href="https://github.com/css-modules/css-modules">CSS modules</a> via a <a href="https://github.com/penx/govuk-frontend-react">set of React components</a> that is <a href="https://www.npmjs.com/package/govuk-frontend-react">published to npm</a>, in a way that is compatible with
+<a href="https://github.com/facebook/create-react-app">create-react-app</a>,
+<a href="https://nextjs.org">Next.js</a>,
+<a href="https://github.com/final-form/react-final-form">Final Form</a>,
+<a href="https://github.com/jaredpalmer/formik">Formik</a>,
+<a href="https://github.com/ReactTraining/react-router">React Router</a>
+and <a href="https://github.com/reach/router">Reach Router</a>,
+with support for <a href="https://webpack.js.org/guides/tree-shaking/">tree shaking</a> and <a href="https://reactjs.org/docs/code-splitting.html">code splitting/lazy loading</a>.
 
 See:
 
@@ -42,6 +49,7 @@ I aim to complete the following as part of the PoC:
 - [ ] Radios
 - [ ] Tables
 - [ ] Error summary with Formik and Final Form examples, following govuk design system guidelines.
+- [ ] Reach router fixtures
 - [x] Code coverage checks in CI
 - [x] 100% code coverage
 - [x] Meaningful unit tests
