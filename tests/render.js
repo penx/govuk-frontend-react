@@ -65,7 +65,16 @@ function optionsToProps(name, options) {
       componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
     }
     if (props.items) {
-      componentSpecific.items = props.items.map(item => optionsToProps('input', item));
+      componentSpecific.value = props.items.reduce(
+        (acc, { value: val, name: key }) => ({
+          ...acc,
+          [key]: val
+        }),
+        {}
+      );
+      componentSpecific.items = props.items.map(({ value: val, ...item }) =>
+        optionsToProps('input', item)
+      );
     }
     if (props.fieldset) {
       componentSpecific.fieldset = optionsToProps('fieldset', props.fieldset);
