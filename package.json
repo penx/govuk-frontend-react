@@ -35,7 +35,9 @@
   "homepage": "https://github.com/penx/govuk-frontend-react#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "govuk-frontend": "^2.4.0"
+    "govuk-frontend": "^2.4.0",
+    "merge-focus": "0.0.1",
+    "react-merge-values": "0.0.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

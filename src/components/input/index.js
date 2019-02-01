@@ -24,64 +24,64 @@ type Props = React.ElementProps<'input'> & {
   }
 };
 
-const Input = ({
-  className,
-  errorMessage,
-  label,
-  id,
-  hint,
-  formGroup = {},
-  type = 'text',
-  ...props
-}: Props) => {
-  let describedBy;
-  if (hint) {
-    describedBy = `${id}-hint`;
-  }
-  if (errorMessage) {
-    describedBy = describedBy ? `${describedBy} ${id}-error` : `${id}-error`;
-  }
-  return (
-    <div
-      className={cx(
-        styles['govuk-form-group'],
-        errorMessage && styles['govuk-form-group--error'],
-        formGroup.className
-      )}
-    >
-      <Label
-        htmlFor={id}
-        {...(typeof label !== 'object' || React.isValidElement(label)
-          ? { children: label }
-          : label)}
-      />
-      {hint && (
-        <Hint
-          id={`${id}-hint`}
-          {...(typeof hint !== 'object' || React.isValidElement(hint) ? { children: hint } : hint)}
-        />
-      )}
-      {errorMessage && (
-        <ErrorMessage
-          id={`${id}-error`}
-          {...(typeof errorMessage !== 'object' || React.isValidElement(errorMessage)
-            ? { children: errorMessage }
-            : errorMessage)}
-        />
-      )}
-      <input
-        id={id}
+const Input = React.forwardRef<Props, HTMLInputElement>(
+  (
+    { className, errorMessage, label, id, hint, formGroup = {}, type = 'text', ...props }: Props,
+    ref
+  ) => {
+    let describedBy;
+    if (hint) {
+      describedBy = `${id}-hint`;
+    }
+    if (errorMessage) {
+      describedBy = describedBy ? `${describedBy} ${id}-error` : `${id}-error`;
+    }
+    return (
+      <div
         className={cx(
-          styles['govuk-input'],
-          errorMessage && styles['govuk-input--error'],
-          className
+          styles['govuk-form-group'],
+          errorMessage && styles['govuk-form-group--error'],
+          formGroup.className
         )}
-        aria-describedby={describedBy}
-        type={type}
-        {...props}
-      />
-    </div>
-  );
-};
+      >
+        <Label
+          htmlFor={id}
+          {...(typeof label !== 'object' || React.isValidElement(label)
+            ? { children: label }
+            : label)}
+        />
+        {hint && (
+          <Hint
+            id={`${id}-hint`}
+            {...(typeof hint !== 'object' || React.isValidElement(hint)
+              ? { children: hint }
+              : hint)}
+          />
+        )}
+        {errorMessage && (
+          <ErrorMessage
+            id={`${id}-error`}
+            {...(typeof errorMessage !== 'object' || React.isValidElement(errorMessage)
+              ? { children: errorMessage }
+              : errorMessage)}
+          />
+        )}
+        <input
+          id={id}
+          className={cx(
+            styles['govuk-input'],
+            errorMessage && styles['govuk-input--error'],
+            // TODO: can we have the class name passed in appropriately using css modules import?
+            className && className.split(' ').map(cn => styles[cn] || cn)
+          )}
+          aria-describedby={describedBy}
+          type={type}
+          ref={ref}
+          {...props}
+        />
+      </div>
+    );
+  }
+);
 
 export default Input;

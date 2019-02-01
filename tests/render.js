@@ -1,20 +1,19 @@
 // This is a static renderer that is intended to match the nunjucks renderer
 // provided by govuk-frontend
+//
+// It also serves to show how the usage of our React components differs from the Nunjucks templates.
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
 import parse from 'html-react-parser';
 
-import Button from '../src/components/button';
-import ErrorMessage from '../src/components/error-message';
-import Header from '../src/components/header';
-import Hint from '../src/components/hint';
-import Input from '../src/components/input';
-import Label from '../src/components/label';
+import { Button, DateInput, ErrorMessage, Fieldset, Header, Hint, Input, Label } from '../src';
 
 const components = {
   button: Button,
+  'date-input': DateInput,
   'error-message': ErrorMessage,
+  fieldset: Fieldset,
   header: Header,
   hint: Hint,
   input: Input,
@@ -49,6 +48,44 @@ function optionsToProps(name, options) {
       children = parse(html);
     } else {
       children = text;
+    }
+  }
+
+  if (name === 'fieldset') {
+    if (props.legend) {
+      const { text: legendText, html: legendHtml, classes: legendClasses, ...rest } = props.legend;
+      componentSpecific.legend = {
+        children: legendHtml ? parse(legendHtml) : legendText,
+        className: legendClasses,
+        ...rest
+      };
+    }
+  }
+
+  if (name === 'date-input') {
+    if (props.formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
+    }
+    if (props.items) {
+      componentSpecific.value = props.items.reduce(
+        (acc, { value: val, name: key }) => ({
+          ...acc,
+          [key]: val
+        }),
+        {}
+      );
+      componentSpecific.items = props.items.map(({ value: val, ...item }) =>
+        optionsToProps('input', item)
+      );
+    }
+    if (props.fieldset) {
+      componentSpecific.fieldset = optionsToProps('fieldset', props.fieldset);
+    }
+    if (props.errorMessage) {
+      componentSpecific.errorMessage = optionsToProps('error-message', props.errorMessage);
+    }
+    if (props.hint) {
+      componentSpecific.hint = optionsToProps('hint', props.hint);
     }
   }
   if (name === 'error-message') {
