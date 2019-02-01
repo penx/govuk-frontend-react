@@ -114,7 +114,7 @@ const DateInput = ({
                           <Item
                             label={label || capitalizeFirstLetter(name)}
                             key={key}
-                            id={key}
+                            id={itemId || (id && `${id}-${name}`)}
                             name={namePrefix ? `${namePrefix}-${name}` : name}
                             className={cx(
                               itemClassName,
