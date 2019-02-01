@@ -19,10 +19,11 @@ const Fieldset = ({ className, legend, children, ...props }: Props) => (
       <legend
         className={cx(
           styles['govuk-fieldset__legend'],
-          legend.className
-            && legend.className.split(' ')
-            // TODO: we can't unit test the `|| cn` branch due to the way we are mocking CSS modules
-            .map(cn => styles[cn] || cn)
+          legend.className &&
+            legend.className
+              .split(' ')
+              // TODO: we can't unit test the `|| cn` branch due to the way we are mocking CSS modules
+              .map(cn => styles[cn] || cn)
         )}
       >
         {legend.isPageHeading ? (
