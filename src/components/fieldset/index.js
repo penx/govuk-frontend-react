@@ -14,7 +14,7 @@ type Props = React.ElementProps<'fieldset'> & {
 };
 
 const Fieldset = ({ className, legend, children, ...props }: Props) => (
-  <fieldset {...props} className={cx(styles['govuk-fieldset'], className)}>
+  <fieldset className={cx(styles['govuk-fieldset'], className)} {...props}>
     {legend && (
       <legend
         className={cx(
