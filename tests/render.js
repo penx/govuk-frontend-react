@@ -1,5 +1,7 @@
 // This is a static renderer that is intended to match the nunjucks renderer
 // provided by govuk-frontend
+//
+// It also serves to show how the usage of our React components differs from the Nunjucks templates.
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';

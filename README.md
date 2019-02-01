@@ -45,13 +45,13 @@ I aim to complete the following as part of the PoC:
 - [x] Header compatible with React Router
 - [x] Support for js-enabled class, used by Header, plus any associated JS required by Header
 - [x] Input with Final Form and Formik examples.
-- [ ] Date Input with Final Form and Formik examples.
+- [x] Date Input with Final Form and Formik examples.
 - [ ] Radios
 - [ ] Tables
 - [ ] Error summary with Formik and Final Form examples, following govuk design system guidelines.
 - [ ] Reach router fixtures
 - [x] Code coverage checks in CI
-- [x] 100% code coverage
+- [ ] 100% code coverage
 - [x] Meaningful unit tests
 - [x] Use/match govuk-frontend template tests
 - [x] Prettier
@@ -60,6 +60,7 @@ I aim to complete the following as part of the PoC:
 - [x] [Next.js example](https://github.com/penx/govuk-frontend-react-example-next)
   - [ ] Support for path splitting blocked by [zeit/next-plugins#190](https://github.com/zeit/next-plugins/pull/190) ([related](https://spectrum.chat/next-js/general/dynamic-css-splitting~03351ba8-e4aa-4788-a8ce-2d765b1b1f61?m=MTUzNzE1NDM5ODQ5OQ==))
 - [ ] Server side only example with form submit and display of form errors
+- [ ] Separate styling and templates, e.g. so the same templates could be used by plain CSS classes, CSS modules or CSSinJS classes passed in as props
 
 Other TODO:
 
