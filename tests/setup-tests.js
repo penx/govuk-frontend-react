@@ -1,4 +1,5 @@
 import { cleanup } from 'react-testing-library';
+import 'jest-dom/extend-expect';
 
 const { toHaveNoViolations } = require('jest-axe');
 // TODO: setRender should be exported from govuk-frontend-template-spec root

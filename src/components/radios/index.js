@@ -89,7 +89,7 @@ const Radios = ({
 }: React.ElementProps<'label'>) => {
   let describedBy;
   if (hint) {
-    describedBy = describedBy ? `${describedBy} ${idPrefix}-hint` : `${idPrefix}-hint`;
+    describedBy = `${idPrefix}-hint`;
   }
   if (errorMessage) {
     describedBy = describedBy ? `${describedBy} ${idPrefix}-error` : `${idPrefix}-error`;
@@ -109,7 +109,7 @@ const Radios = ({
           items.map((item, i) => {
             const index = i + 1;
             const key = item.id || (id ? `${id}-${index}` : index);
-            const itemId = item.id || `${idPrefix}-${index}`;
+            const itemId = item.id || (idPrefix ? `${idPrefix}-${index}` : `${id}-${index}`);
             return <Radio name={name} key={key} {...item} id={itemId} />;
           })}
       </div>
