@@ -33,6 +33,7 @@ const RadioConditional = ({ className, hidden, ...props }) => (
   />
 );
 
+// TODO: if id or name aren't supplied then use context api to get name, id and idPrefix of parent?
 const Radio = ({
   divider,
   id,
@@ -48,8 +49,8 @@ const Radio = ({
   ...props
 }) => (
   <>
-    {divider && <div className={cx('govuk-radios__divider')}>{divider}</div>}
-    <div className="govuk-radios__item">
+    {divider && <div className={cx(styles['govuk-radios__divider'])}>{divider}</div>}
+    <div className={styles['govuk-radios__item']}>
       <input
         className={cx(styles['govuk-radios__input'], className)}
         id={id}
@@ -101,7 +102,11 @@ const Radios = ({
       {hint && <Hint id={`${idPrefix}-hint`} {...hint} />}
       {errorMessage && <ErrorMessage id={`${idPrefix}-error`} {...errorMessage} />}
       <div
-        className={cx('govuk-radios', className, isConditional && 'govuk-radios--conditional')}
+        className={cx(
+          styles['govuk-radios'],
+          className,
+          isConditional && styles['govuk-radios--conditional']
+        )}
         {...props}
         data-module={isConditional && 'radios'}
       >
@@ -135,7 +140,6 @@ const Radios = ({
   );
 };
 
-// TODO: use context api?
 Radios.Radio = Radio;
 
 export default Radios;
