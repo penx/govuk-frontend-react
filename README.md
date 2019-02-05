@@ -61,6 +61,9 @@ I aim to complete the following as part of the PoC:
   - [ ] Support for path splitting blocked by [zeit/next-plugins#190](https://github.com/zeit/next-plugins/pull/190) ([related](https://spectrum.chat/next-js/general/dynamic-css-splitting~03351ba8-e4aa-4788-a8ce-2d765b1b1f61?m=MTUzNzE1NDM5ODQ5OQ==))
 - [ ] Server side only example with form submit and display of form errors
 - [ ] Separate styling and templates, e.g. so the same templates could be used by plain CSS classes, CSS modules or CSSinJS classes passed in as props
+- [ ] Non CSS modules version
+- [ ] CSSinJS PoC
+- [ ] Compile all .module.scss to .module.css and include in npm package to prevent conflicts if using multiple versions
 
 Other TODO:
 
@@ -68,6 +71,7 @@ Other TODO:
 - [ ] Export standalone templates, CSS includes and CSS modules separately, e.g. `import { Button } from 'govuk-frontend-react'` `import { Button } from 'govuk-frontend-react-templates'`, `import { Button } from 'govuk-frontend-react-modules'`
 - [ ] Use Jest snapshots from govuk-frontend rather than manually copying
 - [ ] refactor render.js so that it is easier to scale
+- [ ] Greenkeeper and CI releases on template spec, feeding in to Greenkeeper on templates => automated flagging of new releases of govuk-frontend
 
 
 ## Grey areas
