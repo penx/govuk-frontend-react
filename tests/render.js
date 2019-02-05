@@ -142,7 +142,7 @@ function optionsToProps(name, options) {
       children = text;
     }
   }
-  
+
   if (name === 'radio') {
     if (props.formGroup) {
       componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
