@@ -41,7 +41,6 @@ function optionsToProps(name, options) {
     value,
     html,
     navigationClasses,
-    checked,
     navigation: _navigation,
     ...props
   } = options;
@@ -141,14 +140,16 @@ function optionsToProps(name, options) {
     if (props.hint) {
       componentSpecific.hint = optionsToProps('hint', props.hint);
     }
-    if (checked) {
-      componentSpecific.defaultChecked = checked;
-    }
     if (name === 'radio') {
       if (html) {
         children = parse(html);
       } else {
         children = text;
+      }
+      // Pretend to be controlled to disable React warnings
+      componentSpecific.onChange = () => null;
+      if (props.conditional) {
+        componentSpecific.conditional = optionsToProps('radio', props.conditional);
       }
     }
   }

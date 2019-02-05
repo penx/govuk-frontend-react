@@ -28,7 +28,24 @@ exports[`Radios nested dependant components passes through html fieldset params 
 
 `;
 
-exports[`Radios nested dependant components passes through label params without breaking 1`] = `""`;
+exports[`Radios nested dependant components passes through label params without breaking 1`] = `
+
+<label class="govuk-label govuk-radios__label"
+       data-attribute="value"
+       data-second-attribute="second-value"
+       for="example-name-1"
+>
+  <b>
+    Yes
+  </b>
+</label>
+<label class="govuk-label govuk-radios__label"
+       for="example-name-2"
+>
+  &lt;b&gt;No&lt;/b&gt;
+</label>
+
+`;
 
 exports[`Radios when they include a hint renders the hint 1`] = `
 

@@ -22,7 +22,7 @@ const RadioHint = ({ className, children, ...props }) => (
   </Hint>
 );
 
-const RadioConditional = ({ className, children, hidden, ...props }) => (
+const RadioConditional = ({ className, hidden, ...props }) => (
   <div
     className={cx(
       styles['govuk-radios__conditional'],
@@ -78,7 +78,7 @@ const Radios = ({
   name,
   idPrefix = name,
   className,
-  items,
+  items = [],
   hint,
   errorMessage,
   children,
