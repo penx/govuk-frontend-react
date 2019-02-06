@@ -25,8 +25,9 @@ it('accepts error message prop as a string', () => {
 });
 
 it('accepts error message prop as a React element', () => {
-  const { getByText } = render(<DateInput hint={<span>Example Error</span>} />);
-
+  const { getByText } = render(<DateInput errorMessage={<span>Example Error</span>} />);
+  // TODO: confirm this message is an error message, e.g. it's not rendering the text in the wrong place such as hint
+  // This may be possible by ensuring the element id ends with -error
   expect(getByText('Example Error')).toBeVisible();
 });
 
