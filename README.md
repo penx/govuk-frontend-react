@@ -64,6 +64,7 @@ I aim to complete the following as part of the PoC:
 - [ ] Non CSS modules version
 - [ ] CSSinJS PoC
 - [ ] Compile all .module.scss to .module.css and include in npm package to prevent conflicts if using multiple versions
+- [ ] Review remaining TODO: and put in to GitHub issues
 
 Other TODO:
 
