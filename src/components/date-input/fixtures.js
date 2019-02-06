@@ -16,14 +16,16 @@ export const defaultWithEventHandlers = (
 );
 
 export const withChildren = (
-  // TODO: fieldset prop usage is ugly
+  // TODO: fieldset prop usage is ugly, but I would rather this was solved at govuk-frontend nunjucks templates first before addressing here
+  // See GitHub issue: alphagov/govuk-frontend#1155
   <DateInput fieldset={{ legend: { children: 'Birthday' } }} hint="For example, 31 3">
     <DateInput.Item label="Day" name="day" className="govuk-input--width-2" />
     <DateInput.Item label="Month" name="month" className="govuk-input--width-2" />
   </DateInput>
 );
 
-// TODO: this doesn't currently mark any fields with a red border
+// TODO: this doesn't currently mark any fields with a red border, all should be marked
+// fieldErrors={meta.touched && meta.error && ['day', 'month', 'year']}
 export const withFinalForm = (
   <Form
     initialValues={{ dateOfBirth: '' }}
@@ -108,3 +110,5 @@ export const withFormik = (
     )}
   </Formik>
 );
+
+// TODO: story for multiple instances of component with final form field level validation
