@@ -40,9 +40,10 @@ stories.add('with final form, individual fields', () => (
   <Form
     initialValues={{ colour: '' }}
     onSubmit={action('submit')}
-    render={({ handleSubmit, values }) => (
+    validate={({ colour }) => ({ colour: !colour && 'You must select a colour' })}
+    render={({ handleSubmit, values, errors, touched }) => (
       <form onSubmit={handleSubmit}>
-        <Radios name="colour">
+        <Radios name="colour" errorMessage={touched.colour && errors.colour}>
           <Field type="radio" name="colour" value="blue" component={FFRadio}>
             Blue
           </Field>

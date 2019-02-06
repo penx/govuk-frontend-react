@@ -32,3 +32,15 @@ it('accepts items without id and radios has id', () => {
   userEvent.click(noRadio);
   expect(form).toHaveFormValues({ bar: 'n' });
 });
+
+it('accepts error message prop as a string', () => {
+  const { getByText } = render(<Radios errorMessage="Example Error" />);
+
+  expect(getByText('Example Error')).toBeVisible();
+});
+
+it('accepts error message prop as a React element', () => {
+  const { getByText } = render(<Radios errorMessage={<span>Example Error</span>} />);
+
+  expect(getByText('Example Error')).toBeVisible();
+});
