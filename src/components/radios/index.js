@@ -100,7 +100,14 @@ const Radios = ({
   const inner = (
     <>
       {hint && <Hint id={`${idPrefix}-hint`} {...hint} />}
-      {errorMessage && <ErrorMessage id={`${idPrefix}-error`} {...errorMessage} />}
+      {errorMessage && (
+        <ErrorMessage
+          id={`${idPrefix}-error`}
+          {...(typeof errorMessage !== 'object' || React.isValidElement(errorMessage)
+            ? { children: errorMessage }
+            : errorMessage)}
+        />
+      )}
       <div
         className={cx(
           styles['govuk-radios'],
