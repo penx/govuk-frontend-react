@@ -46,7 +46,7 @@ I aim to complete the following as part of the PoC:
 - [x] Support for js-enabled class, used by Header, plus any associated JS required by Header
 - [x] Input with Final Form and Formik examples.
 - [x] Date Input with Final Form and Formik examples.
-- [ ] Radios
+- [x] Radios
 - [ ] Tables
 - [ ] Error summary with Formik and Final Form examples, following govuk design system guidelines.
 - [ ] Reach router fixtures
@@ -65,6 +65,7 @@ I aim to complete the following as part of the PoC:
 - [ ] CSSinJS PoC
 - [ ] Compile all .module.scss to .module.css and include in npm package to prevent conflicts if using multiple versions
 - [ ] Review remaining TODO: and put in to GitHub issues
+- [ ] More stories/use cases for radio buttons
 
 Other TODO:
 
