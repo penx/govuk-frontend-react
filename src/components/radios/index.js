@@ -117,6 +117,9 @@ const Radios = ({
         {...props}
         data-module={isConditional && 'radios'}
       >
+        {
+          // TODO: Merge focus and merge values
+        }
         {children ||
           items.map((item, i) => {
             const index = i + 1;

@@ -124,6 +124,7 @@ const DateInput = ({
                             )}
                             {...mergeFocus[name]}
                             {...mergeValues[name]}
+                            // TODO: support for onFocus, value, onBlur, onChange in itemProps witho9ut breaking mergeFocus and mergeValues
                             {...itemProps}
                           />
                         );
