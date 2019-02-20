@@ -63,6 +63,7 @@ const DateInput = ({
   fieldErrors,
   ...props
 }: React.ElementProps<'span'>) => {
+  // TODO: expand on prop types - id should be required prop
   let describedBy;
   if (hint) {
     describedBy = `${id}-hint`;
@@ -101,6 +102,7 @@ const DateInput = ({
         children || (
           <MergeFocus onBlur={onBlur} onFocus={onFocus} keys={items.map(({ name }) => name)}>
             {mergeFocus => (
+              /* TODO: add defaultValue support to MergeValues */
               <MergeValues value={value} onChange={onChange} keys={items.map(({ name }) => name)}>
                 {mergeValues => (
                   <>
@@ -124,7 +126,7 @@ const DateInput = ({
                             )}
                             {...mergeFocus[name]}
                             {...mergeValues[name]}
-                            // TODO: support for onFocus, value, onBlur, onChange in itemProps witho9ut breaking mergeFocus and mergeValues
+                            // TODO: support for onFocus, value, onBlur, onChange in itemProps without breaking mergeFocus and mergeValues
                             {...itemProps}
                           />
                         );
