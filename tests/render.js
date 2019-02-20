@@ -7,7 +7,17 @@ import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
 import parse from 'html-react-parser';
 
-import { Button, DateInput, ErrorMessage, Fieldset, Header, Hint, Input, Label } from '../src';
+import {
+  Button,
+  DateInput,
+  ErrorMessage,
+  Fieldset,
+  Header,
+  Hint,
+  Input,
+  Label,
+  Radios
+} from '../src';
 
 const components = {
   button: Button,
@@ -17,7 +27,8 @@ const components = {
   header: Header,
   hint: Hint,
   input: Input,
-  label: Label
+  label: Label,
+  radios: Radios
 };
 
 function optionsToProps(name, options) {
@@ -43,22 +54,18 @@ function optionsToProps(name, options) {
 
   const componentSpecific = {};
 
-  if (name === 'label') {
-    if (html) {
-      children = parse(html);
-    } else {
-      children = text;
+  if (name === 'button') {
+    // TODO: handle a Button of type 'a' or 'input' that has both 'value' and 'text' set
+    valueProp = 'value';
+    if (name === 'button' && element !== 'input') {
+      if (html) {
+        children = parse(html);
+      } else {
+        children = text;
+      }
     }
-  }
-
-  if (name === 'fieldset') {
-    if (props.legend) {
-      const { text: legendText, html: legendHtml, classes: legendClasses, ...rest } = props.legend;
-      componentSpecific.legend = {
-        children: legendHtml ? parse(legendHtml) : legendText,
-        className: legendClasses,
-        ...rest
-      };
+    if (name === 'button' && element === 'input') {
+      computedValue = text;
     }
   }
 
@@ -95,25 +102,22 @@ function optionsToProps(name, options) {
       children = text;
     }
   }
+
+  if (name === 'fieldset') {
+    if (props.legend) {
+      const { text: legendText, html: legendHtml, classes: legendClasses, ...rest } = props.legend;
+      componentSpecific.legend = {
+        children: legendHtml ? parse(legendHtml) : legendText,
+        className: legendClasses,
+        ...rest
+      };
+    }
+  }
   if (name === 'hint') {
     if (html) {
       children = parse(html);
     } else {
       children = text;
-    }
-  }
-  if (name === 'button') {
-    // TODO: handle a Button of type 'a' or 'input' that has both 'value' and 'text' set
-    valueProp = 'value';
-    if (name === 'button' && element !== 'input') {
-      if (html) {
-        children = parse(html);
-      } else {
-        children = text;
-      }
-    }
-    if (name === 'button' && element === 'input') {
-      computedValue = text;
     }
   }
   if (name === 'input') {
@@ -131,10 +135,61 @@ function optionsToProps(name, options) {
     }
   }
 
+  if (name === 'label') {
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
+  }
+
+  if (name === 'radio') {
+    if (props.formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
+    }
+    if (props.label) {
+      componentSpecific.label = optionsToProps('label', props.label);
+    }
+    if (props.errorMessage) {
+      componentSpecific.errorMessage = optionsToProps('error-message', props.errorMessage);
+    }
+    if (props.hint) {
+      componentSpecific.hint = optionsToProps('hint', props.hint);
+    }
+
+    if (html) {
+      children = parse(html);
+    } else {
+      children = text;
+    }
+    // Pretend to be controlled to disable React warnings
+    componentSpecific.onChange = () => null;
+    if (props.conditional) {
+      componentSpecific.conditional = optionsToProps('radio', props.conditional);
+    }
+  }
+
+  if (name === 'radios') {
+    if (props.items) {
+      componentSpecific.items = props.items.map(({ ...item }) => optionsToProps('radio', item));
+    }
+    if (props.formGroup) {
+      componentSpecific.formGroup = optionsToProps('formGroup', props.formGroup);
+    }
+    if (props.hint) {
+      componentSpecific.hint = optionsToProps('hint', props.hint);
+    }
+    if (props.errorMessage) {
+      componentSpecific.errorMessage = optionsToProps('error-message', props.errorMessage);
+    }
+    if (props.fieldset) {
+      componentSpecific.fieldset = optionsToProps('fieldset', props.fieldset);
+    }
+  }
+
   const navigation = _navigation
-    ? _navigation.map(
-      ({ text: itemText, attributes: itemAttributes, ...itemProps }, i) => (
-        <Header.NavigationItem
+    ? _navigation.map(({ text: itemText, attributes: itemAttributes, ...itemProps }, i) => (
+      <Header.NavigationItem
           key={i}//eslint-disable-line
           {...itemAttributes}
           {...itemProps}

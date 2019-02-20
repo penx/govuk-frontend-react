@@ -6,3 +6,4 @@ export Header from './components/header';
 export Hint from './components/hint';
 export Input from './components/input';
 export Label from './components/label';
+export Radios from './components/radios';
