@@ -135,3 +135,39 @@ it('shows a field error when supplied with a fieldErrors prop', () => {
   const monthField = getByPlaceholderText('mm');
   expect(monthField).toHaveClass('govuk-input--error');
 });
+
+it('merges focus and blur events', () => {
+  const blur = jest.fn();
+  const focus = jest.fn();
+
+  const { getByLabelText, getByTitle, getByText } = render(
+    <form title="Form">
+      <DateInput id="test-date" onBlur={blur} onFocus={focus} />
+      <button type="button">click me</button>
+    </form>
+  );
+
+  const day = getByLabelText('Day');
+  const month = getByLabelText('Month');
+  const year = getByLabelText('Year');
+  const form = getByTitle('Form');
+  const button = getByText('click me');
+
+  expect(focus).toHaveBeenCalledTimes(0);
+
+  userEvent.click(day);
+  userEvent.type(day, '10');
+  userEvent.click(month);
+  userEvent.type(month, '11');
+  userEvent.click(year);
+  userEvent.type(year, '12');
+
+  expect(form).toHaveFormValues({ day: 10, month: 11, year: 12 });
+
+  expect(focus).toHaveBeenCalledTimes(1);
+  expect(blur).toHaveBeenCalledTimes(0);
+
+  userEvent.click(button);
+
+  expect(blur).toHaveBeenCalledTimes(1);
+});
