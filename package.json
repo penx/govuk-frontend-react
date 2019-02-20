@@ -36,7 +36,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "govuk-frontend": "^2.4.0",
-    "merge-focus": "0.0.1",
+    "merge-focus": "0.0.4",
     "react-merge-values": "0.0.4"
   },
   "devDependencies": {

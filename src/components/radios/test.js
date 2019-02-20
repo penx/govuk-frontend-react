@@ -44,3 +44,54 @@ it('accepts error message prop as a React element', () => {
 
   expect(getByText('Example Error')).toBeVisible();
 });
+
+it('merges focus and blur events', () => {
+  const blur = jest.fn();
+  const focus = jest.fn();
+
+  const { getByLabelText, getByTitle, getByText } = render(
+    <form title="Form">
+      <Radios
+        id="test-radios"
+        onBlur={blur}
+        onFocus={focus}
+        name="radios"
+        items={[
+          {
+            value: 'y',
+            children: 'yarp'
+          },
+          {
+            value: 'n',
+            children: 'nope'
+          },
+          {
+            value: 'm',
+            children: 'mabes'
+          }
+        ]}
+      />
+      <button type="button">click me</button>
+    </form>
+  );
+
+  const yarp = getByLabelText('yarp');
+  const nope = getByLabelText('nope');
+  const mabes = getByLabelText('mabes');
+  const form = getByTitle('Form');
+  const button = getByText('click me');
+
+  expect(focus).toHaveBeenCalledTimes(0);
+  userEvent.click(yarp);
+  expect(focus).toHaveBeenCalledTimes(1);
+  userEvent.click(mabes);
+  expect(focus).toHaveBeenCalledTimes(1);
+  userEvent.click(nope);
+  expect(form).toHaveFormValues({ radios: 'n' });
+  expect(focus).toHaveBeenCalledTimes(1);
+  expect(blur).toHaveBeenCalledTimes(0);
+
+  userEvent.click(button);
+
+  expect(blur).toHaveBeenCalledTimes(1);
+});

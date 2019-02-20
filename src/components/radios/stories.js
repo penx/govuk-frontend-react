@@ -9,28 +9,31 @@ import Button from '../button';
 import render from '../../../tests/render';
 
 const stories = storiesOf('Radios', module);
-stories.add('testing', () =>
-  render(
-    'radios',
-    {
-      items: [
+stories.add('testing', () => (
+  <form title="Form">
+    <Radios
+      id="test-radios"
+      onBlur={action('blur')}
+      onFocus={action('focus')}
+      name="radios"
+      items={[
         {
-          value: 'value',
-          text: 'This is text',
-          id: 'item-id',
-          hint: {
-            text: 'This is a hint'
-          }
+          value: 'y',
+          children: 'yarp'
+        },
+        {
+          value: 'n',
+          children: 'nope'
+        },
+        {
+          value: 'm',
+          children: 'mabes'
         }
-      ]
-    },
-    { renderMode: 'react' }
-  )
-);
-
-template.examples.forEach(example => {
-  stories.add(example.name, () => render('radios', example.data, { renderMode: 'react' }));
-});
+      ]}
+    />
+    <button type="button">click me</button>
+  </form>
+));
 
 const FFRadio = ({ input, meta, children }) => <Radios.Radio {...input}>{children}</Radios.Radio>;
 
@@ -59,3 +62,7 @@ stories.add('with final form, individual fields', () => (
 ));
 
 // TODO: final form with Radios as single field
+
+template.examples.forEach(example => {
+  stories.add(example.name, () => render('radios', example.data, { renderMode: 'react' }));
+});
