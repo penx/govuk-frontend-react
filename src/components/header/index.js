@@ -95,7 +95,7 @@ Header.defaultProps = {
   homepageUrl: '/',
   homepage: { as: 'a' },
   // TODO: make WidthContainer component? e.g. use render props to pass class down... but how to then deal with manually specified containerClasses?
-  containerClasses: styles['govuk-width-container'],
+  containerClasses: undefined,
   productName: undefined,
   serviceName: undefined,
   navigation: undefined,
