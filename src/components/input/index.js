@@ -36,6 +36,7 @@ const Input = React.forwardRef<Props, HTMLInputElement>(
     if (errorMessage) {
       describedBy = describedBy ? `${describedBy} ${id}-error` : `${id}-error`;
     }
+    // TODO: make FormGroup object/component
     return (
       <div
         className={cx(

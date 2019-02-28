@@ -101,6 +101,7 @@ Header.defaultProps = {
   serviceUrl: undefined
 };
 
+// TODO: revist, allow elements prop?
 Header.Container = Container;
 Header.Content = Content;
 Header.Logo = Logo;
