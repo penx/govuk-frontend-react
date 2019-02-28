@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import styles from './_form-group.module.scss';
 
-const Hint = ({ className, error, ...props }: React.ElementProps<'div'>) => (
+const FormGroup = ({ className, error, ...props }: React.ElementProps<'div'>) => (
   <div
     className={cx(
       styles['govuk-form-group'],
@@ -16,4 +16,4 @@ const Hint = ({ className, error, ...props }: React.ElementProps<'div'>) => (
   />
 );
 
-export default Hint;
+export default FormGroup;
