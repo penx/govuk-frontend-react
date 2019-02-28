@@ -15,6 +15,7 @@
     "eslint:fix": "eslint --fix ./src",
     "flow": "flow",
     "jest": "jest",
+    "jest:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "start": "npm run storybook",
     "storybook": "start-storybook -p 6006",
     "test": "jest && eslint ./src && flow"
