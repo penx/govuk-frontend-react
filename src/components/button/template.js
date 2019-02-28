@@ -4,7 +4,6 @@ import * as React from 'react';
 import type { ComponentType } from 'react';
 
 import cx from 'classnames';
-import styles from './_button.module.scss';
 
 type Props = {
   className?: string,
@@ -18,7 +17,16 @@ type Props = {
 /**
  *  Tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
  */
-const Button = ({ className, as, type, role, disabled, href, ...props }: Props) => {
+const Button = ({
+  className,
+  as,
+  type,
+  role,
+  disabled,
+  href,
+  classNames: styles,
+  ...props
+}: Props) => {
   let Type = as || '';
   let computedType = type;
   let computedRole = role;
@@ -67,7 +75,13 @@ Button.defaultProps = {
   type: undefined,
   role: undefined,
   disabled: false,
-  href: undefined
+  href: undefined,
+  classNames: new Proxy(
+    {},
+    {
+      get: (target, key) => key
+    }
+  )
 };
 
 export default Button;

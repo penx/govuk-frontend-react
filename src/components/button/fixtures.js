@@ -2,7 +2,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Link, Switch, Route } from 'react-router-dom';
 
-import Button from '.';
+import { css as Button } from '.';
 
 export default <Button />;
 
