@@ -12,6 +12,7 @@ import Input from '../input';
 import Hint from '../hint';
 import ErrorMessage from '../error-message';
 import Fieldset from '../fieldset';
+import FormGroup from '../../objects/form-group';
 
 function capitalizeFirstLetter(string) {
   if (string && string.length) {
@@ -143,13 +144,7 @@ const DateInput = ({
   );
 
   return (
-    <div
-      className={cx(
-        styles['govuk-form-group'],
-        errorMessage && styles['govuk-form-group--error'],
-        formGroup.className
-      )}
-    >
+    <FormGroup error={!!errorMessage} className={formGroup.className}>
       {fieldset ? (
         <Fieldset aria-describedby={describedBy} role="group" {...fieldset}>
           {inner}
@@ -157,7 +152,7 @@ const DateInput = ({
       ) : (
         inner
       )}
-    </div>
+    </FormGroup>
   );
 };
 
