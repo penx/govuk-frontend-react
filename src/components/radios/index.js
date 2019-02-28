@@ -11,6 +11,7 @@ import ErrorMessage from '../error-message';
 import Fieldset from '../fieldset';
 import Hint from '../hint';
 import Label from '../label';
+import FormGroup from '../../objects/form-group';
 
 const RadioLabel = ({ className, children, ...props }) => (
   <Label className={cx(styles['govuk-radios__label'], className)} {...props}>
@@ -164,13 +165,7 @@ const Radios = ({
   );
 
   return (
-    <div
-      className={cx(
-        styles['govuk-form-group'],
-        errorMessage && styles['govuk-form-group--error'],
-        formGroup && formGroup.className
-      )}
-    >
+    <FormGroup error={!!errorMessage} className={formGroup && formGroup.className}>
       {fieldset ? (
         <Fieldset aria-describedby={describedBy} {...fieldset}>
           {inner}
@@ -178,7 +173,7 @@ const Radios = ({
       ) : (
         inner
       )}
-    </div>
+    </FormGroup>
   );
 };
 

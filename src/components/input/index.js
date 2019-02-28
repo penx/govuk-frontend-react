@@ -9,6 +9,7 @@ import styles from './_input.module.scss';
 import ErrorMessage from '../error-message';
 import Hint from '../hint';
 import Label from '../label';
+import FormGroup from '../../objects/form-group';
 
 // TODO: if id not set, wrap label?
 
@@ -36,15 +37,8 @@ const Input = React.forwardRef<Props, HTMLInputElement>(
     if (errorMessage) {
       describedBy = describedBy ? `${describedBy} ${id}-error` : `${id}-error`;
     }
-    // TODO: make FormGroup object/component
     return (
-      <div
-        className={cx(
-          styles['govuk-form-group'],
-          errorMessage && styles['govuk-form-group--error'],
-          formGroup.className
-        )}
-      >
+      <FormGroup error={!!errorMessage} className={formGroup.className}>
         <Label
           htmlFor={id}
           {...(typeof label !== 'object' || React.isValidElement(label)
@@ -80,7 +74,7 @@ const Input = React.forwardRef<Props, HTMLInputElement>(
           ref={ref}
           {...props}
         />
-      </div>
+      </FormGroup>
     );
   }
 );
