@@ -1,4 +1,7 @@
 import { storiesOf } from '@storybook/react';
+import template from 'govuk-frontend-template-spec/components/button/button.json';
+import render from '../../../tests/render';
+
 import {
   withText,
   asALink,
@@ -15,3 +18,11 @@ storiesOf('Button', module)
   .add('with react-router', () => withReactRouter)
   .add('with href and role', () => hrefAndRole)
   .add('as button with type', () => buttonWithType);
+
+const stories = storiesOf('Button/Button:spec', module);
+
+template.examples.forEach(example => {
+  stories.add(`Button spec: ${example.name}`, () =>
+    render('button', example.data, { renderMode: 'react' })
+  );
+});
