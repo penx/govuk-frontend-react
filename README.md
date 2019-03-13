@@ -16,9 +16,43 @@ See:
 
 https://github.com/govuk-react/govuk-react/issues/76
 
+
 ## Conventions
 
-Common conventions on where our React prop names differ from the nunjucks macro option names.
+Common conventions used when deciding how to rewrite the nunjucks templates:
+
+### BEM
+
+When looking at govuk-frontend BEM class names:
+
+- Blocks become exported components
+- Elements become subcomponents either inside the same file as the main component or in an elements subfolder, and exported as a property of the main component.
+- Modifiers become prop names of the component or subcomponent.
+
+
+e.g. a class name of `govuk-my-block__my-element--my-modifier` implies:
+
+- There is a component `<MyBlock />` available by calling `import { MyBlock } from 'govuk-frontend-react'` that sits at `/src/{type}/my-block/index.js`
+- There is a subcomponent `<MyBlock.MyElement />` that is defined either in `/src/{type}/my-block/index.js` or in `/src/{type}/my-block/elements/my-element.js`
+- `<MyBlock.MyElement />` accepts a prop `myModifier`
+- `{type}` can be `objects` or `components` following govuk-frontend/ITCSS classification.
+
+
+e.g. a class name of `govuk-radios__conditional--hidden` implies:
+
+- There is a component `<Radios />` available by calling `import { Radios } from 'govuk-frontend-react'` that sits at `/src/components/radios/index.js`
+- There is a subcomponent `<Radios.Conditional />` that is defined either in `/src/components/radios/index.js` or in `/src/components/radios/elements/conditional.js`
+- `<Radios.Conditional />` accepts a prop `hidden`
+
+
+TODO: props (modifiers) sent to component should be made available to overrding sub components (elements) - how to do this?
+
+=> if you want to intercept the modifiers as props then provide custom elements/components (CSSinJS with styled function)
+=> if you just want to provide className lookup then use classNames (CSS Modules)/CSSinJS with css function
+
+### Props
+
+Where our React prop names differ from the nunjucks macro option names.
 
 | nunjucks | react |
 | --- | --- |
@@ -27,6 +61,8 @@ Common conventions on where our React prop names differ from the nunjucks macro 
 | text | children (where appropriate) |
 | html | children (where appropriate) |
 | describedBy | aria-describedby |
+
+This conversion can be seen in more detail in `tests/render.js` (though this file needs cleaning up at time of writing).
 
 ## Create React App support
 
