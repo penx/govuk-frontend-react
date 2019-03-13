@@ -5,8 +5,20 @@ import type { ComponentType } from 'react';
 
 import cx from 'classnames';
 
+// TODO: find a more DRY way of doing this with flow, else look in to TS
+export type ClassNames = {|
+  'govuk-button': string,
+  'govuk-button--disabled': string
+|};
+
+const defaultClassNames: ClassNames = {
+  'govuk-button': 'govuk-button',
+  'govuk-button--disabled': 'govuk-button--disabled'
+};
+
 type Props = {
   className?: string,
+  classNames?: $Shape<ClassNames>,
   as?: ComponentType<{}> | string,
   type?: string,
   role?: string,
@@ -17,16 +29,11 @@ type Props = {
 /**
  *  Tracks https://github.com/alphagov/govuk-frontend/blob/master/src/components/button/template.njk
  */
-const Button = ({
-  className,
-  as,
-  type,
-  role,
-  disabled,
-  href,
-  classNames: styles,
-  ...props
-}: Props) => {
+const Button = ({ className, as, type, role, disabled, href, classNames, ...props }: Props) => {
+  const styles: ClassNames = {
+    ...defaultClassNames,
+    ...classNames
+  };
   let Type = as || '';
   let computedType = type;
   let computedRole = role;
@@ -76,12 +83,7 @@ Button.defaultProps = {
   role: undefined,
   disabled: false,
   href: undefined,
-  classNames: new Proxy(
-    {},
-    {
-      get: (target, key) => key
-    }
-  )
+  classNames: {}
 };
 
 export default Button;
