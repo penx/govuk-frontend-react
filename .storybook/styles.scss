@@ -1,4 +1,14 @@
+// .govuk-template
+html {
+  background-color: #dee0e2;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%
+}
+
+// .govuk-template__body
 body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
+    margin: 0;
+    background-color: #fff
 }
