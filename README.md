@@ -50,6 +50,9 @@ TODO: props (modifiers) sent to component should be made available to overrding 
 => if you want to intercept the modifiers as props then provide custom elements/components (CSSinJS with styled function)
 => if you just want to provide className lookup then use classNames (CSS Modules)/CSSinJS with css function
 
+BEM convention classname exceptions:
+- govuk-label-wrapper
+
 ### Props
 
 Where our React prop names differ from the nunjucks macro option names.
