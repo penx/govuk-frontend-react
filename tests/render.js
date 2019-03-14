@@ -7,17 +7,7 @@ import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
 import parse from 'html-react-parser';
 
-import {
-  Button,
-  DateInput,
-  ErrorMessage,
-  Fieldset,
-  Header,
-  Hint,
-  Input,
-  Label,
-  Radios
-} from '../src';
+import { Button, DateInput, ErrorMessage, Fieldset, Header, Hint, Input, Label, Radios } from '../src';
 
 const components = {
   button: Button,
@@ -189,7 +179,7 @@ function optionsToProps(name, options) {
 
   const navigation = _navigation
     ? _navigation.map(({ text: itemText, attributes: itemAttributes, ...itemProps }, i) => (
-      <Header.NavigationItem
+        <Header.NavigationItem
           key={i}//eslint-disable-line
           {...itemAttributes}
           {...itemProps}

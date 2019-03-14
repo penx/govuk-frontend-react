@@ -1,3 +1,4 @@
+// TODO: don't use fixtures files, write explicit implementations in unit tests and stories
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { MemoryRouter, Link, Switch, Route } from 'react-router-dom';
