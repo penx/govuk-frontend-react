@@ -3,7 +3,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import styles from './_label.module.scss';
+import styles from './styles.module.scss';
 
 // TODO: review use of for prop rather than htmlFor
 const LabelInner = ({ className, for: _for, htmlFor, ...props }: React.ElementProps<'label'>) =>

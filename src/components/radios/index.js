@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import MergeFocus from 'merge-focus';
 
-import styles from './_radios.module.scss';
+import styles from './styles.module.scss';
 
 import ErrorMessage from '../error-message';
 import Fieldset from '../fieldset';

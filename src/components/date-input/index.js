@@ -6,7 +6,7 @@ import cx from 'classnames';
 import MergeFocus from 'merge-focus';
 import MergeValues from 'react-merge-values';
 
-import styles from './_date-input.module.scss';
+import styles from './styles.module.scss';
 
 import Input from '../input';
 import Hint from '../hint';

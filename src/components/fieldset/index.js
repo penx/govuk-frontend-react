@@ -3,7 +3,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import styles from './_fieldset.module.scss';
+import styles from './styles.module.scss';
 
 type Props = React.ElementProps<'fieldset'> & {
   legend: {

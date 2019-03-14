@@ -2,7 +2,7 @@
 import * as React from 'react';
 import type { ComponentType } from 'react';
 import cx from 'classnames';
-import styles from './_header.module.scss';
+import styles from './styles.module.scss';
 import {
   Container,
   Content,
