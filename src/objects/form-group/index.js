@@ -3,7 +3,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import styles from './_form-group.module.scss';
+import styles from './styles.module.scss';
 
 const FormGroup = ({ className, error, ...props }: React.ElementProps<'div'>) => (
   <div
