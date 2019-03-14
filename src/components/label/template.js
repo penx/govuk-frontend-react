@@ -40,10 +40,10 @@ export default ({
     ...classNames
   };
   return isPageHeading ? (
-    <h1 className={styles['govuk-label-wrapper']} classNames={classNames}>
-      <LabelInner {...props} />
+    <h1 className={styles['govuk-label-wrapper']}>
+      <LabelInner classNames={classNames} {...props} />
     </h1>
   ) : (
-    <LabelInner {...props} />
+    <LabelInner classNames={classNames} {...props} />
   );
 };
