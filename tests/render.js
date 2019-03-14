@@ -7,9 +7,7 @@ import ReactDOMServer from 'react-dom/server';
 import cheerio from 'cheerio';
 import parse from 'html-react-parser';
 
-import { DateInput, ErrorMessage, Fieldset, Header, Hint, Input, Label, Radios } from '../src';
-
-import { Button } from '../src/templates';
+import { Button, DateInput, ErrorMessage, Fieldset, Header, Hint, Input, Label, Radios } from '../src';
 
 const components = {
   button: Button,
