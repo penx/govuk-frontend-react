@@ -13,6 +13,8 @@ const defaultClassNames: ClassNames = {
   'govuk-label-wrapper': 'govuk-label-wrapper'
 };
 
+// TODO: govuk-label--s can be passed in as className prop
+
 // TODO: review use of for prop rather than htmlFor
 const LabelInner = ({
   className,
