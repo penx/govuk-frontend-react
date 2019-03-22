@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import styles from '../_header.module.scss';
+import styles from '../styles.module.scss';
 
 // TODO: svg fallback image
 export default ({ className, homepage = {}, homepageUrl, productName }) => {

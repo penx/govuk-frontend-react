@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import styles from '../_header.module.scss';
+import styles from '../styles.module.scss';
 import WidthContainer from '../../../objects/width-container';
 
 const Container = ({ className, ...props }) =>

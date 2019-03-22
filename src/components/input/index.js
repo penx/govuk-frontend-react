@@ -4,7 +4,7 @@ import * as React from 'react';
 // import type { ComponentType } from 'react';
 import cx from 'classnames';
 
-import styles from './_input.module.scss';
+import styles from './styles.module.scss';
 
 import ErrorMessage from '../error-message';
 import Hint from '../hint';
