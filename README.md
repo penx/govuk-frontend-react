@@ -24,12 +24,11 @@ https://github.com/alphagov/govuk-design-system-architecture/pull/12
 
 One aim of this project is to create a library that has all the features of govuk-react, but is powered by govuk-frontend. One of these features is path splitting or critical extraction of styles when used in a 'standard' React build system such as those used by create-react-app or next.js.
 
-Path splitting for CSS is coming to next.js soon. For some history see:
+Path splitting for CSS is coming to next.js soon:
 
-- https://github.com/zeit/next-plugins/pull/190
-- https://github.com/zeit/next.js/issues/8626
+- RFC CSS Support https://github.com/zeit/next.js/issues/8626
 
-As raised in the RFC for this feature, critically extracting CSS is potentially error prone due to the potential to extract global styles. However, when using CSS modules, next.js is able to analyse what styles are not global and extract these. As such, next.js will only provide path splitting and critical extraction for CSS Modules. This is a reasonable approach and means in order to achieve this we need to use govuk-frontend as a set of CSS Modules and then identify what is broken and perhaps manually fix it, or raise as an issue on govuk-frontend (see list of issues below).
+As raised in the RFC for this feature, critically extracting CSS is potentially error prone due to the potential to extract global styles. However, when using CSS Modules, next.js is able to analyse what styles are not global and extract these. As such, next.js will only provide path splitting and critical extraction for CSS Modules. This is a reasonable approach and means in order to achieve this we need to use govuk-frontend as a set of CSS Modules and then identify what is broken and perhaps manually fix it, or raise as an issue on govuk-frontend (see list of issues below).
 
 
 ## Conventions
