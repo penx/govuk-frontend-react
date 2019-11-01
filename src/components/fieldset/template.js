@@ -23,13 +23,13 @@ const defaultClassNames: ClassNames = {
   'govuk-fieldset__heading': 'govuk-fieldset__heading'
 };
 
-const Fieldset = ({ className, classNames, legend, children, ...props }: Props) => {
+const Fieldset = ({ className, classNames, legend, children, describedBy, ...props }: Props) => {
   const styles: ClassNames = {
     ...defaultClassNames,
     ...classNames
   };
   return (
-    <fieldset className={cx(styles['govuk-fieldset'], className)} {...props}>
+    <fieldset aria-describedby={describedBy} className={cx(styles['govuk-fieldset'], className)} {...props}>
       {legend && (
         <legend
           className={cx(

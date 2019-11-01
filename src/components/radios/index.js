@@ -72,7 +72,7 @@ const Radio = React.forwardRef<RadioProps, HTMLInputElement>(
           value={value}
           checked={checked}
           disabled={disabled}
-          data-aria-controls={conditional && `conditional-${id}`}
+          data-aria-controls={conditional && conditional.children && `conditional-${id}`}
           aria-describedby={hint && `${id}-item-hint`}
           ref={ref}
           {...props}
@@ -83,7 +83,7 @@ const Radio = React.forwardRef<RadioProps, HTMLInputElement>(
         </RadioLabel>
         {hint && <RadioHint id={`${id}-item-hint`} {...hint} />}
       </div>
-      {conditional && (
+      {conditional && conditional.children && (
         <RadioConditional hidden={!checked} id={`conditional-${id}`} {...conditional} />
       )}
     </>
@@ -151,9 +151,11 @@ const Radios = ({
             {mergeFocus => (
               <>
                 {items.map((item, i) => {
+                  if (!item.children && !item.divider) return;
                   const index = i + 1; // using 1-index to match govuk-frontend
                   const key = item.id || (id ? `${id}-${index}` : index);
-                  const itemId = item.id || (idPrefix ? `${idPrefix}-${index}` : `${id}-${index}`);
+
+                  const itemId = item.id || (idPrefix ? (i === 0 ? idPrefix : `${idPrefix}-${index}`) : `${id}-${index}`);
                   return <Radio name={name} key={key} {...item} id={itemId} {...mergeFocus[key]} />;
                 })}
               </>
@@ -164,10 +166,11 @@ const Radios = ({
     </>
   );
 
+  const { describedBy: fsDescribedBy, ...fieldsetProps } = fieldset || {};
   return (
     <FormGroup error={!!errorMessage} className={formGroup && formGroup.className}>
       {fieldset ? (
-        <Fieldset aria-describedby={describedBy} {...fieldset}>
+        <Fieldset describedBy={cx([fsDescribedBy, describedBy])} {...fieldsetProps}>
           {inner}
         </Fieldset>
       ) : (
