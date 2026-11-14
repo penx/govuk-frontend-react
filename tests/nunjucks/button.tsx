@@ -3,7 +3,7 @@ import { attributes, className, content, optional, type Options } from './helper
 
 export default function button(options: Options) {
   return (
-    <Button
+    <Button.Root
       {...optional('href', options.href || undefined)}
       {...optional('type', options.type)}
       {...optional('name', options.name)}
@@ -16,6 +16,6 @@ export default function button(options: Options) {
       {...attributes(options.attributes)}
     >
       {content(options)}
-    </Button>
+    </Button.Root>
   );
 }

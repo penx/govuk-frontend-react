@@ -4,7 +4,7 @@ import { attributes, className, content, html, optional, type Options } from './
 export default function fieldset(options: Options) {
   const legend = options.legend as Options | undefined;
   return (
-    <Fieldset
+    <Fieldset.Root
       className={className(options)}
       {...optional('role', options.role)}
       {...optional('aria-describedby', options.describedBy || undefined)}
@@ -18,6 +18,6 @@ export default function fieldset(options: Options) {
       }
     >
       {options.html ? html(options.html) : undefined}
-    </Fieldset>
+    </Fieldset.Root>
   );
 }

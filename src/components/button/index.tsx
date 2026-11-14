@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType, ReactNode } from 'react';
 import { classNameLookup, cx, type ClassNames } from '../../utils/class-names';
 
-export type ButtonClassName =
+export type ClassName =
   | 'govuk-button'
   | 'govuk-button--secondary'
   | 'govuk-button--warning'
@@ -9,30 +9,30 @@ export type ButtonClassName =
   | 'govuk-button--start'
   | 'govuk-button__start-icon';
 
-export type ButtonVariant = 'secondary' | 'warning' | 'inverse';
+export type Variant = 'secondary' | 'warning' | 'inverse';
 
-type ButtonOwnProps<As extends ElementType> = {
+type OwnProps<As extends ElementType> = {
   as?: As;
   children?: ReactNode;
   className?: string;
-  classNames?: ClassNames<ButtonClassName>;
+  classNames?: ClassNames<ClassName>;
   href?: string;
-  variant?: ButtonVariant;
+  variant?: Variant;
   start?: boolean;
   preventDoubleClick?: boolean;
 };
 
-export type ButtonProps<As extends ElementType = 'button'> = ButtonOwnProps<As> &
-  Omit<ComponentProps<As>, keyof ButtonOwnProps<As>>;
+export type RootProps<As extends ElementType = 'button'> = OwnProps<As> &
+  Omit<ComponentProps<As>, keyof OwnProps<As>>;
 
-export type ButtonLinkProps = Omit<ButtonOwnProps<'a'>, 'as' | 'href'> &
-  Omit<ComponentProps<'a'>, keyof ButtonOwnProps<'a'>> & { as?: undefined; href: string };
+export type LinkProps = Omit<OwnProps<'a'>, 'as' | 'href'> &
+  Omit<ComponentProps<'a'>, keyof OwnProps<'a'>> & { as?: undefined; href: string };
 
-export type ButtonStartIconProps = ComponentProps<'svg'> & {
-  classNames?: ClassNames<ButtonClassName>;
+export type StartIconProps = ComponentProps<'svg'> & {
+  classNames?: ClassNames<ClassName>;
 };
 
-function StartIcon({ className, classNames, ...props }: ButtonStartIconProps) {
+export function StartIcon({ className, classNames, ...props }: StartIconProps) {
   const cn = classNameLookup(classNames);
   return (
     <svg
@@ -50,9 +50,9 @@ function StartIcon({ className, classNames, ...props }: ButtonStartIconProps) {
   );
 }
 
-function ButtonBase(props: ButtonLinkProps): ReactNode;
-function ButtonBase<As extends ElementType = 'button'>(props: ButtonProps<As>): ReactNode;
-function ButtonBase({
+export function Root(props: LinkProps): ReactNode;
+export function Root<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
+export function Root({
   as,
   children,
   className,
@@ -66,7 +66,7 @@ function ButtonBase({
   value,
   disabled,
   ...rest
-}: ButtonProps<ElementType>) {
+}: RootProps<ElementType>) {
   const cn = classNameLookup(classNames);
   const Element: ElementType = as ?? (href ? 'a' : 'button');
   const isButton = Element === 'button';
@@ -110,5 +110,3 @@ function ButtonBase({
     </Element>
   );
 }
-
-export const Button = Object.assign(ButtonBase, { StartIcon });
