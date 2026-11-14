@@ -6,6 +6,7 @@ import fieldset from './fieldset';
 import hint from './hint';
 import input from './input';
 import label from './label';
+import select from './select';
 import textarea from './textarea';
 
 export const mappings: Record<string, (options: Options) => ReactElement> = {
@@ -15,5 +16,6 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   hint,
   input,
   label,
+  select,
   textarea,
 };
