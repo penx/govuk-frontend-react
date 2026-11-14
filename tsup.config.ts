@@ -9,6 +9,7 @@ export default defineConfig({
     hint: 'src/components/hint/index.tsx',
     input: 'src/components/input/index.tsx',
     label: 'src/components/label/index.tsx',
+    textarea: 'src/components/textarea/index.tsx',
     'form-group': 'src/objects/form-group/index.tsx',
   },
   format: ['esm'],
