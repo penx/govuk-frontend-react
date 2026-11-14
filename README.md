@@ -92,6 +92,15 @@ Where React prop names differ from the Nunjucks macro option names:
 
 The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), which the parity tests use to render govuk-frontend's fixtures. It doubles as a guide for moving from Nunjucks to React.
 
+### Faithful defaults
+
+Components behave as govuk-frontend does, even where React would usually do it differently. For example, a form control's `id` falls back to its `name`, so two copies of the same form on a page get duplicate ids.
+
+Anything a component derives can be overridden with an explicit prop, so a library built on top, such as govuk-react, can change the behaviour without forking:
+
+- `id` on form controls. The hint and error message ids are derived from it, so `id={useId()}` makes all three unique.
+- `id` on the `hint` and `errorMessage` props objects, which is also used in `aria-describedby`.
+
 ## HTML parity
 
 `npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, attribute name case, class order and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. Labels and form controls count as blocks, since govuk-frontend lays them out that way. A fixture can only be skipped by listing it in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason.

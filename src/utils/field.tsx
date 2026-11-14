@@ -24,15 +24,17 @@ type FieldMessagesProps = {
 };
 
 export function fieldMessages({ id, hint, errorMessage }: FieldMessagesProps) {
-  const hintId = isSet(hint) ? `${id}-hint` : undefined;
-  const errorId = isSet(errorMessage) ? `${id}-error` : undefined;
+  const hintProps = toProps<HintProps>(hint);
+  const errorProps = toProps<ErrorMessageProps>(errorMessage);
+  const hintId = isSet(hint) ? (hintProps.id ?? `${id}-hint`) : undefined;
+  const errorId = isSet(errorMessage) ? (errorProps.id ?? `${id}-error`) : undefined;
   return {
     hintId,
     errorId,
     messages: (
       <>
-        {hintId && <Hint id={hintId} {...toProps(hint)} />}
-        {errorId && <ErrorMessage id={errorId} {...toProps(errorMessage)} />}
+        {hintId && <Hint {...hintProps} id={hintId} />}
+        {errorId && <ErrorMessage {...errorProps} id={errorId} />}
       </>
     ),
   };
