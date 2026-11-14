@@ -3,4 +3,3 @@ export * from './components/error-message';
 export * as Fieldset from './components/fieldset';
 export * from './components/hint';
 export * from './components/label';
-export type { ClassNames } from './utils/class-names';

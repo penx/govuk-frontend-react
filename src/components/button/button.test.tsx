@@ -72,18 +72,6 @@ describe('Button', () => {
     expect(link).toHaveClass('govuk-button');
   });
 
-  test('classNames replaces govuk-frontend class names', () => {
-    render(
-      <Button.Root
-        variant="secondary"
-        classNames={{ 'govuk-button': 'x1', 'govuk-button--secondary': 'x2' }}
-      >
-        Go
-      </Button.Root>,
-    );
-    expect(screen.getByRole('button')).toHaveAttribute('class', 'x1 x2');
-  });
-
   test('forwards ref to the element', () => {
     const ref = createRef<HTMLButtonElement>();
     render(<Button.Root ref={ref}>Save</Button.Root>);
