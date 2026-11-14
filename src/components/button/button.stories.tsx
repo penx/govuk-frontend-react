@@ -4,13 +4,13 @@ import { fn } from 'storybook/test';
 import fixtures from 'govuk-frontend/dist/govuk/components/button/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/button';
-import { Button } from '.';
+import * as Button from '.';
 
 const meta = {
   title: 'Button',
-  component: Button,
+  component: Button.Root,
   args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button.Root>;
 
 export default meta;
 
@@ -41,15 +41,15 @@ export const Start: Story = { args: { start: true, href: '#', children: 'Start n
 export const WithReactRouter: Story = {
   render: () => (
     <MemoryRouter>
-      <Button as={Link} to="/">
+      <Button.Root as={Link} to="/">
         Home
-      </Button>{' '}
-      <Button as={Link} to="/about">
+      </Button.Root>{' '}
+      <Button.Root as={Link} to="/about">
         About
-      </Button>{' '}
-      <Button as={Link} to="/missing">
+      </Button.Root>{' '}
+      <Button.Root as={Link} to="/missing">
         Bad link
-      </Button>
+      </Button.Root>
       <p className="govuk-body">
         <Routes>
           <Route path="/" element="Home" />

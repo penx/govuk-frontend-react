@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { classNameLookup, cx, type ClassNames } from '../../utils/class-names';
 import { hasContent, isPropsObject } from '../../utils/is-props-object';
 
-export type FieldsetClassName =
+export type ClassName =
   | 'govuk-fieldset'
   | 'govuk-fieldset__legend'
   | 'govuk-fieldset__legend--s'
@@ -11,11 +11,11 @@ export type FieldsetClassName =
   | 'govuk-fieldset__legend--xl'
   | 'govuk-fieldset__heading';
 
-export type FieldsetHeadingProps = ComponentProps<'h1'> & {
-  classNames?: ClassNames<FieldsetClassName>;
+export type HeadingProps = ComponentProps<'h1'> & {
+  classNames?: ClassNames<ClassName>;
 };
 
-function Heading({ className, classNames, children, ...props }: FieldsetHeadingProps) {
+export function Heading({ className, classNames, children, ...props }: HeadingProps) {
   const cn = classNameLookup(classNames);
   return (
     <h1 className={cx(cn('govuk-fieldset__heading'), className)} {...props}>
@@ -24,20 +24,20 @@ function Heading({ className, classNames, children, ...props }: FieldsetHeadingP
   );
 }
 
-export type FieldsetLegendProps = ComponentProps<'legend'> & {
-  classNames?: ClassNames<FieldsetClassName>;
+export type LegendProps = ComponentProps<'legend'> & {
+  classNames?: ClassNames<ClassName>;
   isPageHeading?: boolean;
   size?: 's' | 'm' | 'l' | 'xl';
 };
 
-function Legend({
+export function Legend({
   className,
   classNames,
   isPageHeading,
   size,
   children,
   ...props
-}: FieldsetLegendProps) {
+}: LegendProps) {
   if (!hasContent(children)) return null;
   const cn = classNameLookup(classNames);
   return (
@@ -53,14 +53,14 @@ function Legend({
   );
 }
 
-export type FieldsetProps = ComponentProps<'fieldset'> & {
-  classNames?: ClassNames<FieldsetClassName>;
-  legend?: ReactNode | FieldsetLegendProps;
+export type RootProps = ComponentProps<'fieldset'> & {
+  classNames?: ClassNames<ClassName>;
+  legend?: ReactNode | LegendProps;
 };
 
-function FieldsetBase({ className, classNames, legend, children, ...props }: FieldsetProps) {
+export function Root({ className, classNames, legend, children, ...props }: RootProps) {
   const cn = classNameLookup(classNames);
-  const legendProps: FieldsetLegendProps = isPropsObject<FieldsetLegendProps>(legend)
+  const legendProps: LegendProps = isPropsObject<LegendProps>(legend)
     ? legend
     : { children: legend };
   return (
@@ -70,5 +70,3 @@ function FieldsetBase({ className, classNames, legend, children, ...props }: Fie
     </fieldset>
   );
 }
-
-export const Fieldset = Object.assign(FieldsetBase, { Legend, Heading });
