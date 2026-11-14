@@ -25,20 +25,4 @@ describe('Fieldset', () => {
     );
     expect(screen.getByRole('heading', { level: 1, name: 'Title' })).toBeInTheDocument();
   });
-
-  test('legend classNames merge with the fieldset classNames', () => {
-    render(
-      <Fieldset.Root
-        classNames={{ 'govuk-fieldset__legend': 'legend' }}
-        legend={{
-          children: 'Title',
-          isPageHeading: true,
-          classNames: { 'govuk-fieldset__heading': 'heading' },
-        }}
-      />,
-    );
-    const heading = screen.getByRole('heading', { name: 'Title' });
-    expect(heading).toHaveClass('heading');
-    expect(heading.parentElement).toHaveClass('legend');
-  });
 });

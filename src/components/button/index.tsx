@@ -1,13 +1,5 @@
 import type { ComponentProps, ElementType, ReactNode } from 'react';
-import { classNameLookup, cx, type ClassNames } from '../../utils/class-names';
-
-export type ClassName =
-  | 'govuk-button'
-  | 'govuk-button--secondary'
-  | 'govuk-button--warning'
-  | 'govuk-button--inverse'
-  | 'govuk-button--start'
-  | 'govuk-button__start-icon';
+import { clsx } from 'clsx';
 
 export type Variant = 'secondary' | 'warning' | 'inverse';
 
@@ -15,7 +7,6 @@ type OwnProps<As extends ElementType> = {
   as?: As;
   children?: ReactNode;
   className?: string;
-  classNames?: ClassNames<ClassName>;
   href?: string;
   variant?: Variant;
   start?: boolean;
@@ -28,15 +19,12 @@ export type RootProps<As extends ElementType = 'button'> = OwnProps<As> &
 export type LinkProps = Omit<OwnProps<'a'>, 'as' | 'href'> &
   Omit<ComponentProps<'a'>, keyof OwnProps<'a'>> & { as?: undefined; href: string };
 
-export type StartIconProps = ComponentProps<'svg'> & {
-  classNames?: ClassNames<ClassName>;
-};
+export type StartIconProps = ComponentProps<'svg'>;
 
-export function StartIcon({ className, classNames, ...props }: StartIconProps) {
-  const cn = classNameLookup(classNames);
+export function StartIcon({ className, ...props }: StartIconProps) {
   return (
     <svg
-      className={cx(cn('govuk-button__start-icon'), className)}
+      className={clsx('govuk-button__start-icon', className)}
       xmlns="http://www.w3.org/2000/svg"
       width="17.5"
       height="19"
@@ -56,7 +44,6 @@ export function Root({
   as,
   children,
   className,
-  classNames,
   variant,
   start,
   preventDoubleClick,
@@ -67,7 +54,6 @@ export function Root({
   disabled,
   ...rest
 }: RootProps<ElementType>) {
-  const cn = classNameLookup(classNames);
   const Element: ElementType = as ?? (href ? 'a' : 'button');
   const isButton = Element === 'button';
 
@@ -97,8 +83,10 @@ export function Root({
     <Element
       {...(href ? { href } : {})}
       {...elementProps}
-      className={cx(
-        cn('govuk-button', variant && `govuk-button--${variant}`, start && 'govuk-button--start'),
+      className={clsx(
+        'govuk-button',
+        variant && `govuk-button--${variant}`,
+        start && 'govuk-button--start',
         className,
       )}
       data-module="govuk-button"
@@ -106,7 +94,7 @@ export function Root({
     >
       {content}
       {start && ' '}
-      {start && <StartIcon classNames={classNames} />}
+      {start && <StartIcon />}
     </Element>
   );
 }

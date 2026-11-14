@@ -47,3 +47,31 @@ export function className(options: Options | undefined): string | undefined {
 export function optional<T>(key: string, value: T | undefined): Record<string, T> {
   return value === undefined || value === null ? {} : { [key]: value };
 }
+
+export function subcomponent(
+  options: unknown,
+  extra: (options: Options) => Record<string, unknown> = () => ({}),
+): Record<string, unknown> | undefined {
+  if (!options || typeof options !== 'object') return undefined;
+  const o = options as Options;
+  return {
+    children: content(o),
+    className: className(o),
+    ...attributes(o.attributes),
+    ...extra(o),
+  };
+}
+
+export function formGroup(options: unknown) {
+  return subcomponent(options, (o) => ({
+    children: undefined,
+    beforeInput: content(o.beforeInput as Options | undefined),
+    afterInput: content(o.afterInput as Options | undefined),
+  }));
+}
+
+export const label = (options: unknown) =>
+  subcomponent(options, (o) => ({ isPageHeading: Boolean(o.isPageHeading) }));
+
+export const errorMessage = (options: unknown) =>
+  subcomponent(options, (o) => optional('visuallyHiddenText', o.visuallyHiddenText));
