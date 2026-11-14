@@ -16,6 +16,20 @@ describe('Input', () => {
     expect(screen.getByRole('textbox')).not.toHaveClass('govuk-input--error');
   });
 
+  test('an explicit hint or error id is used in aria-describedby', () => {
+    render(
+      <Input.Root
+        name="name"
+        label="Name"
+        hint={{ id: 'custom-hint', children: 'Your full name' }}
+        errorMessage={{ id: 'custom-error', children: 'Enter your name' }}
+      />,
+    );
+    expect(screen.getByRole('textbox')).toHaveAccessibleDescription(
+      'Your full name Error: Enter your name',
+    );
+  });
+
   test('forwards ref to the input', () => {
     const ref = createRef<HTMLInputElement>();
     render(<Input.Root id="name" label="Name" ref={ref} />);
