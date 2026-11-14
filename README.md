@@ -94,7 +94,7 @@ The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), wh
 
 ## HTML parity
 
-`npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, class order and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. A fixture can only be skipped by listing it in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason.
+`npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, attribute name case, class order and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. Labels and form controls count as blocks, since govuk-frontend lays them out that way. A fixture can only be skipped by listing it in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason.
 
 ## Status
 
@@ -104,9 +104,10 @@ The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), wh
 | Error message | 9/9              |
 | Fieldset      | 18/18            |
 | Hint          | 6/6              |
+| Input         | 45/45            |
 | Label         | 17/17            |
 
-The other 34 govuk-frontend components are planned.
+The other 33 govuk-frontend components are planned.
 
 ## Development
 

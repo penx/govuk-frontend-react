@@ -2,7 +2,7 @@ import { parseDocument } from 'htmlparser2';
 import type { ChildNode, Element } from 'domhandler';
 
 export function normaliseHtml(html: string): string {
-  const doc = parseDocument(html, { lowerCaseAttributeNames: false, decodeEntities: true });
+  const doc = parseDocument(html, { lowerCaseAttributeNames: true, decodeEntities: true });
   return serialiseChildren(doc.children, 0).join('\n');
 }
 
@@ -84,6 +84,10 @@ const blockElements = new Set([
   'script',
   'style',
   'template',
+  'label',
+  'input',
+  'select',
+  'textarea',
 ]);
 
 function isInline(node: ChildNode | string | undefined): boolean {
