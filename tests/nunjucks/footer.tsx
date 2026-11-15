@@ -1,24 +1,5 @@
 import { Footer } from '../../src';
-import logo from 'govuk-frontend/dist/govuk/macros/logo.njk?raw';
 import { attributes, className, content, optional, type Options } from './helpers';
-
-const tudorCrown = /{%- set _tudorCrown %}([\s\S]*?){%- endset %}/.exec(logo)?.[1] ?? '';
-
-function Crown() {
-  return (
-    <svg
-      focusable="false"
-      role="presentation"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 64 60"
-      height="30"
-      width="32"
-      fill="currentcolor"
-      className="govuk-footer__crown"
-      dangerouslySetInnerHTML={{ __html: tudorCrown }}
-    />
-  );
-}
 
 type Item = { href?: string; text?: string; attributes?: unknown };
 type Nav = {
@@ -39,7 +20,6 @@ export default function footer(options: Options) {
       {...optional('containerClassName', options.containerClasses as string | undefined)}
       {...attributes(options.attributes)}
     >
-      <Crown />
       {navigation.length ? (
         <>
           <Footer.Navigation>

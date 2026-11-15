@@ -10,7 +10,10 @@ export type RootProps = RootParts.RootProps & { containerClassName?: string };
 export function Root({ containerClassName, children, ...props }: RootProps) {
   return (
     <RootParts.Root {...props}>
-      <RootParts.WidthContainer className={containerClassName}>{children}</RootParts.WidthContainer>
+      <RootParts.WidthContainer className={containerClassName}>
+        <RootParts.Crown />
+        {children}
+      </RootParts.WidthContainer>
     </RootParts.Root>
   );
 }
