@@ -148,10 +148,11 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Inset text    | 6/6              |
 | Label         | 17/17            |
 | Select        | 19/19            |
+| Tag           | 12/12            |
 | Textarea      | 18/18            |
 | Warning text  | 8/8              |
 
-The other 28 govuk-frontend components are planned.
+The other 27 govuk-frontend components are planned.
 
 ## Development
 
