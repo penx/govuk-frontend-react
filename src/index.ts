@@ -4,6 +4,7 @@ export * from './core/heading';
 export * from './core/link';
 export * from './core/list';
 export * from './core/section-break';
+export * as Accordion from './components/accordion';
 export * from './components/back-link';
 export * as Breadcrumbs from './components/breadcrumbs';
 export * as Button from './components/button';

@@ -143,6 +143,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 
 | Component      | Fixtures passing |
 | -------------- | ---------------- |
+| Accordion      | 13/13            |
 | Back link      | 7/7              |
 | Breadcrumbs    | 12/12            |
 | Button         | 38/38            |
@@ -170,7 +171,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea       | 18/18            |
 | Warning text   | 8/8              |
 
-The other 16 govuk-frontend components are planned.
+The other 15 govuk-frontend components are planned.
 
 ## Development
 

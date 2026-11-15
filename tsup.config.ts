@@ -9,6 +9,7 @@ export default defineConfig({
     link: 'src/core/link/index.tsx',
     list: 'src/core/list/index.tsx',
     'section-break': 'src/core/section-break/index.tsx',
+    accordion: 'src/components/accordion/index.tsx',
     'back-link': 'src/components/back-link/index.tsx',
     breadcrumbs: 'src/components/breadcrumbs/index.tsx',
     button: 'src/components/button/index.tsx',
