@@ -88,6 +88,14 @@ const blockElements = new Set([
   'input',
   'select',
   'textarea',
+  'g',
+  'circle',
+  'ellipse',
+  'line',
+  'path',
+  'polygon',
+  'rect',
+  'title',
 ]);
 
 function isInline(node: ChildNode | string | undefined): boolean {
