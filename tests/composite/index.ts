@@ -10,6 +10,8 @@ import errorMessage from './error-message';
 import exitThisPage from './exit-this-page';
 import fieldset from './fieldset';
 import fileUpload from './file-upload';
+import genericHeader from './generic-header';
+import header from './header';
 import input from './input';
 import label from './label';
 import languageNavigation from './language-navigation';
@@ -20,6 +22,7 @@ import passwordInput from './password-input';
 import phaseBanner from './phase-banner';
 import radios from './radios';
 import select from './select';
+import serviceNavigation from './service-navigation';
 import summaryList from './summary-list';
 import table from './table';
 import taskList from './task-list';
@@ -38,6 +41,8 @@ export const compositeMappings: Record<string, CompositeMapping> = {
   'exit-this-page': exitThisPage,
   fieldset,
   'file-upload': fileUpload,
+  'generic-header': genericHeader,
+  header,
   input,
   label,
   'language-navigation': languageNavigation,
@@ -48,6 +53,7 @@ export const compositeMappings: Record<string, CompositeMapping> = {
   'phase-banner': phaseBanner,
   radios,
   select,
+  'service-navigation': serviceNavigation,
   'summary-list': summaryList,
   table,
   'task-list': taskList,

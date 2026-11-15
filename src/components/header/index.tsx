@@ -1,6 +1,7 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { Logo as BaseLogo, type LogoProps as BaseLogoProps } from '@govuk-react/icon-crown';
+import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'div'>;
 
@@ -60,4 +61,37 @@ export type ProductNameProps = ComponentProps<'span'>;
 
 export function ProductName({ className, ...props }: ProductNameProps) {
   return <span className={clsx('govuk-header__product-name', className)} {...props} />;
+}
+
+export type CompositeProps = RootProps &
+  Pick<ContainerProps, 'fullWidth'> & {
+    homepageHref?: string;
+    productName?: ReactNode;
+    containerClassName?: string;
+  };
+
+export function Composite({
+  homepageHref,
+  productName,
+  fullWidth,
+  containerClassName,
+  ...props
+}: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Container fullWidth={fullWidth} className={containerClassName}>
+        <Logo>
+          <HomepageLink {...(homepageHref && { href: homepageHref })}>
+            <Logotype />
+            {hasContent(productName) && (
+              <>
+                {' '}
+                <ProductName>{productName}</ProductName>
+              </>
+            )}
+          </HomepageLink>
+        </Logo>
+      </Container>
+    </Root>
+  );
 }
