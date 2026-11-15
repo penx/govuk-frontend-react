@@ -24,7 +24,7 @@
 | Back link           |      | ✓      |                               |                                                                         |            |                                        |
 | Breadcrumbs         | ✓    |        | `Composite`                   | `ItemComposite`                                                         | `items`    |                                        |
 | Button              | ✓    |        | `Composite`                   |                                                                         |            |                                        |
-| Character count     | ✓    |        | `Field`                       |                                                                         |            |                                        |
+| Character count     | ✓    |        | `Field`                       |                                                                         |            | `Textarea`, `Hint`                     |
 | Checkboxes          | ✓    |        | `Field`                       | `ItemComposite`                                                         | `items`    | `Label`, `Hint`                        |
 | Cookie banner       | ✓    |        | `Composite`                   | `MessageComposite`                                                      |            | `GridRow`, `GridColumn`, `ButtonGroup` |
 | Date input          | ✓    |        | `Field`                       |                                                                         |            | `Label`, `Input`                       |
@@ -41,7 +41,7 @@
 | Hint                |      | ✓      |                               |                                                                         |            |                                        |
 | Input               |      |        | `Field`                       |                                                                         |            |                                        |
 | Inset text          |      | ✓      |                               |                                                                         |            |                                        |
-| Label               |      | ✓      |                               | `LabelComposite`                                                        |            |                                        |
+| Label               |      |        |                               | `LabelComposite`                                                        |            |                                        |
 | Language navigation | ✓    |        | `Composite`                   | `ItemComposite`                                                         | `items`    |                                        |
 | Notification banner | ✓    |        | `Composite`                   |                                                                         |            |                                        |
 | Pagination          | ✓    |        | `Composite`                   | `ItemComposite`, `PreviousLinkTitleComposite`, `NextLinkTitleComposite` | `items`    |                                        |
@@ -50,7 +50,7 @@
 | Phase banner        | ✓    |        | `Composite`                   |                                                                         |            | `Tag`                                  |
 | Radios              | ✓    |        | `Field`                       | `ItemComposite`                                                         | `items`    | `Label`, `Hint`                        |
 | Select              |      |        | `Field`                       |                                                                         |            |                                        |
-| Service navigation  | ✓    |        | `Composite`                   | `ItemComposite`                                                         | `items`    |                                        |
+| Service navigation  | ✓    |        | `Composite`                   | `ItemComposite`                                                         | `items`    | `WidthContainer`                       |
 | Skip link           |      | ✓      |                               |                                                                         |            |                                        |
 | Summary list        | ✓    |        | `Composite`, `Card.Composite` | `RowComposite`, `ActionComposite`                                       | `rows`     |                                        |
 | Table               | ✓    |        | `Composite`                   |                                                                         |            |                                        |
