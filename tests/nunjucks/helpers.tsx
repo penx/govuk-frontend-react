@@ -44,6 +44,18 @@ export function className(options: Options | undefined): string | undefined {
   return options?.classes ? String(options.classes) : undefined;
 }
 
+/** Moves a width class the `width` prop sets from `classes` to `width`. */
+export function widthAndClassName(options: Options | undefined, block?: string) {
+  const pattern = new RegExp(`^(?:govuk-!-width-|${block ? `${block}--width-` : '-'})(.+)$`);
+  let width: string | number | undefined;
+  const rest = (className(options) ?? '').split(' ').filter((name) => {
+    const match = width === undefined && pattern.exec(name);
+    if (match) width = /^\d+$/.test(match[1]!) ? Number(match[1]) : match[1];
+    return !match;
+  });
+  return { ...optional('width', width as never), className: rest.join(' ') || undefined };
+}
+
 export function optional<T>(key: string, value: T | undefined): Record<string, T> {
   return value === undefined || value === null ? {} : { [key]: value };
 }

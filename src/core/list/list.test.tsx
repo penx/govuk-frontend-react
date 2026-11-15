@@ -9,3 +9,12 @@ test('renders a numbered list as an ol', () => {
   );
   expect(screen.getByRole('list').tagName).toBe('OL');
 });
+
+test('sets the bottom margin, including 0', () => {
+  render(
+    <List marginBottom={0}>
+      <li>One</li>
+    </List>,
+  );
+  expect(screen.getByRole('list')).toHaveClass('govuk-list govuk-!-margin-bottom-0');
+});

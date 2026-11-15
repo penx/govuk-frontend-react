@@ -1,9 +1,14 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
+import { marginBottomClass, type Spacing } from '../../utils/overrides';
 
-export type ListProps = ComponentProps<'ol'> & { variant?: 'bullet' | 'number'; spaced?: boolean };
+export type ListProps = ComponentProps<'ol'> & {
+  variant?: 'bullet' | 'number';
+  spaced?: boolean;
+  marginBottom?: Spacing;
+};
 
-export function List({ variant, spaced, className, ...props }: ListProps) {
+export function List({ variant, spaced, marginBottom, className, ...props }: ListProps) {
   const Element = variant === 'number' ? 'ol' : 'ul';
   return (
     <Element
@@ -11,6 +16,7 @@ export function List({ variant, spaced, className, ...props }: ListProps) {
         'govuk-list',
         variant && `govuk-list--${variant}`,
         spaced && 'govuk-list--spaced',
+        marginBottomClass(marginBottom),
         className,
       )}
       {...props}
