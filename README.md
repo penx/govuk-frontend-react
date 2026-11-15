@@ -167,6 +167,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Skip link      | 9/9              |
 | Summary list   | 30/30            |
 | Table          | 21/21            |
+| Tabs           | 14/14            |
 | Tag            | 12/12            |
 | Task list      | 11/11            |
 | Textarea       | 18/18            |

@@ -28,6 +28,7 @@ export * as Select from './components/select';
 export * from './components/skip-link';
 export * as SummaryList from './components/summary-list';
 export * as Table from './components/table';
+export * as Tabs from './components/tabs';
 export * from './components/tag';
 export * as TaskList from './components/task-list';
 export * as Textarea from './components/textarea';
