@@ -1,7 +1,6 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
-import { WidthContainer } from '../../objects/width-container';
 import * as RootParts from './root-parts';
 
 export { RootParts };
@@ -11,7 +10,7 @@ export type RootProps = RootParts.RootProps & { containerClassName?: string };
 export function Root({ containerClassName, children, ...props }: RootProps) {
   return (
     <RootParts.Root {...props}>
-      <WidthContainer className={containerClassName}>{children}</WidthContainer>
+      <RootParts.WidthContainer className={containerClassName}>{children}</RootParts.WidthContainer>
     </RootParts.Root>
   );
 }

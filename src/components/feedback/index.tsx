@@ -1,6 +1,5 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
-import { GridColumn, GridRow } from '../../objects/grid';
 import * as RootParts from './root-parts';
 
 export { RootParts };
@@ -10,9 +9,9 @@ export type RootProps = RootParts.RootProps;
 export function Root({ children, ...props }: RootProps) {
   return (
     <RootParts.Root {...props}>
-      <GridRow>
-        <GridColumn width="two-thirds">{children}</GridColumn>
-      </GridRow>
+      <RootParts.GridRow>
+        <RootParts.GridColumn>{children}</RootParts.GridColumn>
+      </RootParts.GridRow>
     </RootParts.Root>
   );
 }

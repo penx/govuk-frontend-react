@@ -4,7 +4,6 @@ import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/feedback';
 import { Body } from '../../core/body';
 import { Link } from '../../core/link';
-import { GridColumn, GridRow } from '../../objects/grid';
 import * as Feedback from '.';
 
 export default { title: 'Feedback', component: Feedback.Root } satisfies Meta<typeof Feedback.Root>;
@@ -26,11 +25,11 @@ export const Default = {
 export const WithRootParts = {
   render: () => (
     <Feedback.RootParts.Root>
-      <GridRow>
-        <GridColumn width="two-thirds" data-testid="feedback-column">
+      <Feedback.RootParts.GridRow>
+        <Feedback.RootParts.GridColumn data-testid="feedback-column">
           <Feedback.Title>Help us improve this service</Feedback.Title>
-        </GridColumn>
-      </GridRow>
+        </Feedback.RootParts.GridColumn>
+      </Feedback.RootParts.GridRow>
     </Feedback.RootParts.Root>
   ),
 };
