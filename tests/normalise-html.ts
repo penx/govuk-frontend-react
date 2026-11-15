@@ -103,6 +103,12 @@ function serialiseAttributes(attribs: Record<string, string>): string {
       let value = attribs[name] ?? '';
       if (name === 'class') {
         value = [...new Set(value.split(/\s+/).filter(Boolean))].sort().join(' ');
+      } else if (name === 'style') {
+        value = value
+          .split(';')
+          .map((declaration) => declaration.trim().replace(/\s*:\s*/, ':'))
+          .filter(Boolean)
+          .join(';');
       }
       return ` ${name}=${JSON.stringify(value)}`;
     })

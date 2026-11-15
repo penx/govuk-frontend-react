@@ -133,7 +133,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 
 ## HTML parity
 
-`npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, attribute name case, class order and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. Labels and form controls count as blocks, since govuk-frontend lays them out that way. A fixture can only be skipped by listing it in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason.
+`npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, attribute name case, class order, inline style formatting and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. Labels and form controls count as blocks, since govuk-frontend lays them out that way. A fixture can only be skipped by listing it in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason.
 
 ## Status
 
@@ -152,12 +152,13 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Panel         | 18/19            |
 | Phase banner  | 7/7              |
 | Select        | 19/19            |
+| Summary list  | 30/30            |
 | Table         | 21/21            |
 | Tag           | 12/12            |
 | Textarea      | 18/18            |
 | Warning text  | 8/8              |
 
-The other 22 govuk-frontend components are planned.
+The other 21 govuk-frontend components are planned.
 
 ## Development
 

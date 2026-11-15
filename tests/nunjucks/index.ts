@@ -13,6 +13,7 @@ import label from './label';
 import panel from './panel';
 import phaseBanner from './phase-banner';
 import select from './select';
+import summaryList from './summary-list';
 import table from './table';
 import tag from './tag';
 import textarea from './textarea';
@@ -32,6 +33,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   panel,
   'phase-banner': phaseBanner,
   select,
+  'summary-list': summaryList,
   table,
   tag,
   textarea,

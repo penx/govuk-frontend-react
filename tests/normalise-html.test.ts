@@ -25,6 +25,15 @@ describe('normaliseHtml', () => {
     );
   });
 
+  test('ignores formatting in inline styles', () => {
+    expect(normaliseHtml('<p style="white-space: nowrap;"></p>')).toBe(
+      normaliseHtml('<p style="white-space:nowrap"></p>'),
+    );
+    expect(normaliseHtml('<p style="color: red"></p>')).not.toBe(
+      normaliseHtml('<p style="color: blue"></p>'),
+    );
+  });
+
   test('detects attribute, element and text differences', () => {
     const base = normaliseHtml('<a href="/" role="button">Go</a>');
     expect(normaliseHtml('<a href="/">Go</a>')).not.toBe(base);
