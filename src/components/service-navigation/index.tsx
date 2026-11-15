@@ -167,16 +167,23 @@ export function ItemComposite({ href, active, current, children, ...props }: Ite
   );
 }
 
-export type CompositeProps = RootProps & {
+export type CompositeProps = Omit<RootProps, 'children'> & {
   serviceName?: ReactNode;
   serviceHref?: string;
   navigationLabel?: string;
   menuButtonText?: string;
   /** Defaults to true when there's more than one item. */
   collapseNavigationOnMobile?: boolean;
-};
+} & (
+    | { children?: ReactNode; items?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        items: ItemCompositeProps[];
+      }
+  );
 
-/** Children are the navigation items. */
+/** Children are `ItemComposite`s. */
 export function Composite({
   serviceName,
   serviceHref,
@@ -184,11 +191,14 @@ export function Composite({
   menuButtonText,
   collapseNavigationOnMobile,
   as,
+  items,
   children,
   ...props
 }: CompositeProps) {
-  const items = Children.toArray(children);
-  const collapse = collapseNavigationOnMobile ?? items.length > 1;
+  const list = items
+    ? items.map((item, index) => <ItemComposite key={index} {...item} />)
+    : Children.toArray(children);
+  const collapse = collapseNavigationOnMobile ?? list.length > 1;
   return (
     <Root as={as ?? (hasContent(serviceName) ? 'section' : 'div')} {...props}>
       <WidthContainer>
@@ -202,10 +212,10 @@ export function Composite({
               )}
             </ServiceName>
           )}
-          {items.length > 0 && (
+          {list.length > 0 && (
             <Wrapper aria-label={navigationLabel || menuButtonText || 'Menu'}>
               {collapse && <Toggle>{menuButtonText}</Toggle>}
-              <List>{children}</List>
+              <List>{list}</List>
             </Wrapper>
           )}
         </Container>

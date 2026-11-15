@@ -21,7 +21,7 @@ export default function button(options: Options) {
           {typeof children === 'string' || children === undefined ? (
             children
           ) : (
-            <span>{children}</span>
+            <Button.StartContent>{children}</Button.StartContent>
           )}{' '}
           <Button.StartIcon />
         </>

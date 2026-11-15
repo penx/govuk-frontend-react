@@ -27,9 +27,9 @@ export default function errorSummary(options: Options) {
                 return (
                   <ErrorSummary.ListItem key={index}>
                     {item.href ? (
-                      <a href={item.href} {...attributes(item.attributes)}>
+                      <ErrorSummary.ListItemLink href={item.href} {...attributes(item.attributes)}>
                         {text}
-                      </a>
+                      </ErrorSummary.ListItemLink>
                     ) : (
                       text
                     )}

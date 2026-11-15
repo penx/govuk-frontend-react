@@ -87,6 +87,9 @@ export function Root({
   );
 }
 
+/** Wraps a start button's content when it isn't plain text. */
+export const StartContent = 'span';
+
 export function Composite(props: LinkProps): ReactNode;
 export function Composite<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
 export function Composite({ start, children, ...props }: RootProps<ElementType>) {
@@ -95,7 +98,8 @@ export function Composite({ start, children, ...props }: RootProps<ElementType>)
   const text = typeof children === 'string' || typeof children === 'number';
   return (
     <Base start {...props}>
-      {text || children === undefined ? children : <span>{children}</span>} <StartIcon />
+      {text || children === undefined ? children : <StartContent>{children}</StartContent>}{' '}
+      <StartIcon />
     </Base>
   );
 }

@@ -41,22 +41,18 @@ export default {
     ) as Options[];
     const card = options.card as Options | undefined;
     const cardTitle = card?.title as Options | undefined;
-    const anyRowHasActions = rows.some((row) => (row.actions as Actions)?.items?.length);
     const list = (
-      <SummaryList.Root className={className(options)} {...attributes(options.attributes)}>
-        {rows.map((row, index) => {
-          const items = (row.actions as Actions | undefined)?.items;
-          return (
-            <SummaryList.RowComposite
-              key={index}
-              noActions={anyRowHasActions && !items}
-              term={content(row.key as Options)}
-              value={content(row.value as Options)}
-              actions={items?.map((item, i) => action(item, cardTitle, i))}
-            />
-          );
-        })}
-      </SummaryList.Root>
+      <SummaryList.Composite
+        className={className(options)}
+        {...attributes(options.attributes)}
+        rows={rows.map((row) => ({
+          term: content(row.key as Options),
+          value: content(row.value as Options),
+          actions: (row.actions as Actions | undefined)?.items?.map((item, i) =>
+            action(item, cardTitle, i),
+          ),
+        }))}
+      />
     );
     if (!card) return list;
     return (
