@@ -98,6 +98,7 @@ Where React prop names differ from the Nunjucks macro option names:
 | `html`               | `children`                                               |
 | `caller`             | `children`                                               |
 | `classes`            | `className`                                              |
+| `containerClasses`   | `containerClassName`                                     |
 | `describedBy`        | `aria-describedby`                                       |
 | `for`                | `htmlFor`                                                |
 | `isStartButton`      | `start`                                                  |
