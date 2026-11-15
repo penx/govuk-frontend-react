@@ -15,7 +15,9 @@ export const Default: StoryObj<typeof meta> = {
   render: (args) => (
     <WarningText.Root {...args}>
       <WarningText.Icon />{' '}
-      <WarningText.Text>You can be fined up to £5,000 if you do not register.</WarningText.Text>
+      <WarningText.TextComposite>
+        You can be fined up to £5,000 if you do not register.
+      </WarningText.TextComposite>
     </WarningText.Root>
   ),
 };

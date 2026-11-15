@@ -15,7 +15,7 @@ export default function footer(options: Options) {
   const meta = options.meta as Meta | undefined;
   const contentLicence = options.contentLicence as Options | null | undefined;
   return (
-    <Footer.Root
+    <Footer.RootComposite
       className={className(options)}
       {...optional('containerClassName', options.containerClasses as string | undefined)}
       {...attributes(options.attributes)}
@@ -79,6 +79,6 @@ export default function footer(options: Options) {
           </Footer.CopyrightLogo>
         </Footer.MetaItem>
       </Footer.Meta>
-    </Footer.Root>
+    </Footer.RootComposite>
   );
 }

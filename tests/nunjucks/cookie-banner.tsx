@@ -20,7 +20,7 @@ export default function cookieBanner(options: Options) {
       {...attributes(options.attributes)}
     >
       {messages.map((message, index) => (
-        <CookieBanner.Message
+        <CookieBanner.MessageComposite
           key={index}
           className={className(message)}
           {...optional('role', message.role)}
@@ -60,7 +60,7 @@ export default function cookieBanner(options: Options) {
           ) : message.text ? (
             <Body>{String(message.text)}</Body>
           ) : null}
-        </CookieBanner.Message>
+        </CookieBanner.MessageComposite>
       ))}
     </CookieBanner.Root>
   );

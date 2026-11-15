@@ -1,4 +1,4 @@
-import { DateInput, ErrorMessage, Fieldset, FormGroup, Hint } from '../../src';
+import { DateInput, ErrorMessageComposite, Fieldset, FormGroup, Hint } from '../../src';
 import {
   attributes,
   className,
@@ -104,7 +104,7 @@ export default function dateInput(options: Options) {
   const inner = (
     <>
       {hint && <Hint id={hintId} {...hint} />}
-      {error && <ErrorMessage id={errorId} {...error} />}
+      {error && <ErrorMessageComposite id={errorId} {...error} />}
       <DateInput.Root
         className={className(options)}
         {...attributes(options.attributes)}
@@ -133,12 +133,12 @@ export default function dateInput(options: Options) {
           {...attributes(fieldset.attributes)}
         >
           {legend && (
-            <Fieldset.Legend
+            <Fieldset.LegendComposite
               className={className(legend)}
               isPageHeading={Boolean(legend.isPageHeading)}
             >
               {content(legend)}
-            </Fieldset.Legend>
+            </Fieldset.LegendComposite>
           )}
           {inner}
         </Fieldset.Root>

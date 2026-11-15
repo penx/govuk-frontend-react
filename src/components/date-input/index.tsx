@@ -2,11 +2,11 @@ import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
-import { ErrorMessage } from '../error-message';
+import { ErrorMessageComposite } from '../error-message';
 import * as Fieldset from '../fieldset';
 import { Hint } from '../hint';
 import { Control, type ControlProps } from '../input';
-import { Label as BaseLabel, type LabelProps as BaseLabelProps } from '../label';
+import { LabelComposite as BaseLabel, type LabelCompositeProps as BaseLabelProps } from '../label';
 
 export type RootProps = ComponentProps<'div'>;
 
@@ -69,9 +69,9 @@ export function Field({
   return (
     <FormGroup error={Boolean(errorId)}>
       <Fieldset.Root role="group" aria-describedby={joinIds(describedBy, hintId, errorId)}>
-        <Fieldset.Legend>{legend}</Fieldset.Legend>
+        <Fieldset.LegendComposite>{legend}</Fieldset.LegendComposite>
         {hintId && <Hint id={hintId}>{hint}</Hint>}
-        {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
+        {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
         <Root id={id} {...props}>
           {children ??
             parts.map((part) => (

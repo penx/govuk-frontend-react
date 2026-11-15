@@ -10,7 +10,7 @@ export default { title: 'Error summary', component: ErrorSummary.Root } satisfie
 
 export const Default = {
   render: () => (
-    <ErrorSummary.Root>
+    <ErrorSummary.RootComposite>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <ErrorSummary.Body>
         <ErrorSummary.List>
@@ -22,7 +22,7 @@ export const Default = {
           </ErrorSummary.ListItem>
         </ErrorSummary.List>
       </ErrorSummary.Body>
-    </ErrorSummary.Root>
+    </ErrorSummary.RootComposite>
   ),
 };
 

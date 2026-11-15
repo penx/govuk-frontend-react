@@ -3,7 +3,7 @@ import * as Fieldset from '.';
 
 describe('Fieldset.Legend', () => {
   test('size adds the legend size modifier', () => {
-    render(<Fieldset.Legend size="l">Address</Fieldset.Legend>);
+    render(<Fieldset.LegendComposite size="l">Address</Fieldset.LegendComposite>);
     expect(screen.getByText('Address')).toHaveClass('govuk-fieldset__legend--l');
   });
 });

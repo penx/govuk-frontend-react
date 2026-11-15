@@ -1,20 +1,32 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
-import * as RootParts from './root-parts';
+import { Crown as BaseCrown, type CrownProps } from '@govuk-react/icon-crown';
+import { WidthContainer } from '../../objects/width-container';
 
-export { RootParts };
+export { WidthContainer, type WidthContainerProps } from '../../objects/width-container';
+export type { CrownProps };
 
-export type RootProps = RootParts.RootProps & { containerClassName?: string };
+export type RootProps = ComponentProps<'div'>;
 
-export function Root({ containerClassName, children, ...props }: RootProps) {
+export function Root({ className, ...props }: RootProps) {
+  return <div className={clsx('govuk-footer', className)} {...props} />;
+}
+
+export function Crown({ className, ...props }: CrownProps) {
+  return <BaseCrown className={clsx('govuk-footer__crown', className)} {...props} />;
+}
+
+export type RootCompositeProps = RootProps & { containerClassName?: string };
+
+export function RootComposite({ containerClassName, children, ...props }: RootCompositeProps) {
   return (
-    <RootParts.Root {...props}>
-      <RootParts.WidthContainer className={containerClassName}>
-        <RootParts.Crown />
+    <Root {...props}>
+      <WidthContainer className={containerClassName}>
+        <Crown />
         {children}
-      </RootParts.WidthContainer>
-    </RootParts.Root>
+      </WidthContainer>
+    </Root>
   );
 }
 

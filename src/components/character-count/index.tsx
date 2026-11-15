@@ -3,9 +3,9 @@ import { clsx } from 'clsx';
 import { isSet, joinIds } from '../../utils/field';
 import { i18nAttributes, type Translation } from '../../utils/i18n';
 import { FormGroup, type FormGroupProps } from '../../objects/form-group';
-import { ErrorMessage } from '../error-message';
+import { ErrorMessageComposite } from '../error-message';
 import { Hint, type HintProps } from '../hint';
-import { Label } from '../label';
+import { LabelComposite } from '../label';
 import { Control, type ControlProps } from '../textarea';
 
 export type RootProps = FormGroupProps & {
@@ -122,9 +122,9 @@ export function Field({
       wordsAtLimitText={wordsAtLimitText}
       wordsOverLimitText={wordsOverLimitText}
     >
-      <Label htmlFor={id}>{label}</Label>
+      <LabelComposite htmlFor={id}>{label}</LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
-      {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
+      {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       <Textarea
         id={id}
         name={name}

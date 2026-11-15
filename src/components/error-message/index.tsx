@@ -1,27 +1,31 @@
 import type { ComponentProps } from 'react';
-import * as ErrorMessageParts from './parts';
+import { clsx } from 'clsx';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 
-export { ErrorMessageParts };
+export type ErrorMessageProps = ComponentProps<'p'>;
 
-export type ErrorMessageProps = ComponentProps<'p'> & {
+export function ErrorMessage({ className, ...props }: ErrorMessageProps) {
+  return <p className={clsx('govuk-error-message', className)} {...props} />;
+}
+
+export type ErrorMessageCompositeProps = ErrorMessageProps & {
   visuallyHiddenText?: string | false;
 };
 
-export function ErrorMessage({
+export function ErrorMessageComposite({
   visuallyHiddenText = 'Error',
   children,
   ...props
-}: ErrorMessageProps) {
+}: ErrorMessageCompositeProps) {
   return (
-    <ErrorMessageParts.Root {...props}>
+    <ErrorMessage {...props}>
       {visuallyHiddenText ? (
         <>
-          <ErrorMessageParts.VisuallyHidden>{visuallyHiddenText}:</ErrorMessageParts.VisuallyHidden>{' '}
-          {children}
+          <VisuallyHidden>{visuallyHiddenText}:</VisuallyHidden> {children}
         </>
       ) : (
         children
       )}
-    </ErrorMessageParts.Root>
+    </ErrorMessage>
   );
 }

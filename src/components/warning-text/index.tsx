@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
-import * as TextParts from './text-parts';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 
 export type IconProps = ComponentProps<'span'>;
 
@@ -13,19 +13,23 @@ export function Icon({ className, ...props }: IconProps) {
   );
 }
 
-export { TextParts };
+export type TextProps = ComponentProps<'strong'>;
 
-export type TextProps = TextParts.RootProps & {
+export function Text({ className, ...props }: TextProps) {
+  return <strong className={clsx('govuk-warning-text__text', className)} {...props} />;
+}
+
+export type TextCompositeProps = TextProps & {
   iconFallbackText?: string;
 };
 
-export function Text({ iconFallbackText, children, ...props }: TextProps) {
+export function TextComposite({ iconFallbackText, children, ...props }: TextCompositeProps) {
   return (
-    <TextParts.Root {...props}>
-      <TextParts.VisuallyHidden>{iconFallbackText || 'Warning'}</TextParts.VisuallyHidden>
+    <Text {...props}>
+      <VisuallyHidden>{iconFallbackText || 'Warning'}</VisuallyHidden>
       {hasContent(children) && ' '}
       {children}
-    </TextParts.Root>
+    </Text>
   );
 }
 

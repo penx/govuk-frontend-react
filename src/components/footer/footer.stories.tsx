@@ -8,7 +8,7 @@ export default { title: 'Footer', component: Footer.Root } satisfies Meta<typeof
 
 export const Default = {
   render: () => (
-    <Footer.Root>
+    <Footer.RootComposite>
       <Footer.Meta>
         <Footer.MetaItem grow>
           <Footer.MetaHeading />
@@ -26,7 +26,7 @@ export const Default = {
           <Footer.CopyrightLogo />
         </Footer.MetaItem>
       </Footer.Meta>
-    </Footer.Root>
+    </Footer.RootComposite>
   ),
 };
 

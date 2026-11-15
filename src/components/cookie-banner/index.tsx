@@ -1,8 +1,15 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import * as MessageParts from './message-parts';
+import {
+  GridColumn as BaseGridColumn,
+  type GridColumnProps as BaseGridColumnProps,
+} from '../../objects/grid';
 
-export { MessageParts };
+import { ButtonGroup } from '../../objects/button-group';
+import { GridRow } from '../../objects/grid';
+
+export { GridRow, type GridRowProps } from '../../objects/grid';
+export { ButtonGroup, type ButtonGroupProps } from '../../objects/button-group';
 
 export type RootProps = ComponentProps<'div'>;
 
@@ -22,21 +29,54 @@ export function Root({
   );
 }
 
-export type MessageProps = MessageParts.RootProps & {
+export type MessageProps = ComponentProps<'div'>;
+
+export function Message({ className, ...props }: MessageProps) {
+  return (
+    <div
+      className={clsx('govuk-cookie-banner__message', 'govuk-width-container', className)}
+      {...props}
+    />
+  );
+}
+
+export type HeadingProps = ComponentProps<'h2'>;
+
+export function Heading({ className, children, ...props }: HeadingProps) {
+  return (
+    <h2 className={clsx('govuk-cookie-banner__heading', 'govuk-heading-m', className)} {...props}>
+      {children}
+    </h2>
+  );
+}
+
+export type ContentProps = ComponentProps<'div'>;
+
+export function Content({ className, ...props }: ContentProps) {
+  return <div className={clsx('govuk-cookie-banner__content', className)} {...props} />;
+}
+
+export type GridColumnProps = Partial<BaseGridColumnProps>;
+
+export function GridColumn({ width = 'two-thirds', ...props }: GridColumnProps) {
+  return <BaseGridColumn width={width} {...props} />;
+}
+
+export type MessageCompositeProps = MessageProps & {
   heading?: ReactNode;
   actions?: ReactNode;
 };
 
-export function Message({ heading, actions, children, ...props }: MessageProps) {
+export function MessageComposite({ heading, actions, children, ...props }: MessageCompositeProps) {
   return (
-    <MessageParts.Root {...props}>
-      <MessageParts.GridRow>
-        <MessageParts.GridColumn>
-          {heading ? <MessageParts.Heading>{heading}</MessageParts.Heading> : null}
-          <MessageParts.Content>{children}</MessageParts.Content>
-        </MessageParts.GridColumn>
-      </MessageParts.GridRow>
-      {actions ? <MessageParts.ButtonGroup>{actions}</MessageParts.ButtonGroup> : null}
-    </MessageParts.Root>
+    <Message {...props}>
+      <GridRow>
+        <GridColumn>
+          {heading ? <Heading>{heading}</Heading> : null}
+          <Content>{children}</Content>
+        </GridColumn>
+      </GridRow>
+      {actions ? <ButtonGroup>{actions}</ButtonGroup> : null}
+    </Message>
   );
 }
