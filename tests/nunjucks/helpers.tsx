@@ -63,11 +63,17 @@ export function subcomponent(
 }
 
 export function formGroup(options: unknown) {
-  return subcomponent(options, (o) => ({
-    children: undefined,
-    beforeInput: content(o.beforeInput as Options | undefined),
-    afterInput: content(o.afterInput as Options | undefined),
-  }));
+  return (
+    subcomponent(options, (o) => ({
+      children: undefined,
+      beforeInput: content(o.beforeInput as Options | undefined),
+      afterInput: content(o.afterInput as Options | undefined),
+    })) ?? {}
+  );
+}
+
+export function describedBy(...ids: unknown[]): string | undefined {
+  return ids.filter(Boolean).join(' ') || undefined;
 }
 
 export const label = (options: unknown) =>

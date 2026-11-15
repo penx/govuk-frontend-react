@@ -77,29 +77,51 @@ BEM convention class name exceptions:
 
 Where React prop names differ from the Nunjucks macro option names:
 
-| Nunjucks             | React                                                              |
-| -------------------- | ------------------------------------------------------------------ |
-| `element`            | `as`                                                               |
-| `attributes`         | rest props                                                         |
-| `text`               | `children`                                                         |
-| `html`               | `children`                                                         |
-| `caller`             | `children`                                                         |
-| `classes`            | `className`                                                        |
-| `describedBy`        | `aria-describedby`                                                 |
-| `for`                | `htmlFor`                                                          |
-| `isStartButton`      | `start`                                                            |
-| `legend`, and others | the content, or a props object for the subcomponent (see Fieldset) |
+| Nunjucks             | React                                                    |
+| -------------------- | -------------------------------------------------------- |
+| `element`            | `as`                                                     |
+| `attributes`         | rest props                                               |
+| `text`               | `children`                                               |
+| `html`               | `children`                                               |
+| `caller`             | `children`                                               |
+| `classes`            | `className`                                              |
+| `describedBy`        | `aria-describedby`                                       |
+| `for`                | `htmlFor`                                                |
+| `isStartButton`      | `start`                                                  |
+| `legend`, and others | a part, such as `Fieldset.Legend` (see Parts and fields) |
 
 The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), which the parity tests use to render govuk-frontend's fixtures. It doubles as a guide for moving from Nunjucks to React.
+
+### Parts and fields
+
+Props never take an object that is spread onto another part. Where a Nunjucks macro takes options for a nested element, such as `label`, `hint`, `errorMessage`, `formGroup` or `prefix`, the React version is a part you compose:
+
+```tsx
+<FormGroup error>
+  <Label htmlFor="cost">Cost</Label>
+  <Hint id="cost-hint">In pounds</Hint>
+  <ErrorMessage id="cost-error">Enter a cost</ErrorMessage>
+  <Input.Wrapper>
+    <Input.Prefix>£</Input.Prefix>
+    <Input.Root id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
+  </Input.Wrapper>
+</FormGroup>
+```
+
+Form controls also export a `Field` shorthand that does what the Nunjucks macro does: it renders the form group, label, hint and error message, and wires up the ids. Its `label`, `hint`, `errorMessage`, `prefix` and `suffix` props take content only; anything else uses the parts.
+
+```tsx
+<Input.Field name="cost" label="Cost" hint="In pounds" errorMessage="Enter a cost" prefix="£" />
+```
 
 ### Faithful defaults
 
 Components behave as govuk-frontend does, even where React would usually do it differently. For example, a form control's `id` falls back to its `name`, so two copies of the same form on a page get duplicate ids.
 
-Anything a component derives can be overridden with an explicit prop, so a library built on top, such as govuk-react, can change the behaviour without forking:
+Anything a component derives can be overridden, so a library built on top, such as govuk-react, can change the behaviour without forking:
 
-- `id` on form controls. The hint and error message ids are derived from it, so `id={useId()}` makes all three unique.
-- `id` on the `hint` and `errorMessage` props objects, which is also used in `aria-describedby`.
+- `id` on a `Field`. The hint and error message ids are derived from it, so `id={useId()}` makes all three unique.
+- The parts, which derive nothing, for full control over ids and `aria-describedby`.
 
 ## HTML parity
 
