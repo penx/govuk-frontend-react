@@ -14,6 +14,7 @@ export default defineConfig({
     breadcrumbs: 'src/components/breadcrumbs/index.tsx',
     button: 'src/components/button/index.tsx',
     checkboxes: 'src/components/checkboxes/index.tsx',
+    'cookie-banner': 'src/components/cookie-banner/index.tsx',
     details: 'src/components/details/index.tsx',
     'error-message': 'src/components/error-message/index.tsx',
     'error-summary': 'src/components/error-summary/index.tsx',
