@@ -4,9 +4,7 @@
 
 This is a direct port: each component renders the same HTML as govuk-frontend's own Nunjucks macro, and this is checked against every fixture that govuk-frontend publishes. Styles come from govuk-frontend itself. Components are markup only, with no client-side behaviour.
 
-It currently ports **govuk-frontend 6.6.0**. More opinionated components, and components govuk-frontend doesn't provide, belong in [govuk-react](https://github.com/govuk-react/govuk-react), which builds on this package.
-
-> Work in progress. See [Status](#status) for what's ported so far.
+It ports all 39 components of **govuk-frontend 6.6.0**. More opinionated components, and components govuk-frontend doesn't provide, belong in [govuk-react](https://github.com/govuk-react/govuk-react), which builds on this package.
 
 ## Install
 
@@ -180,7 +178,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
-The other 10 govuk-frontend components are planned.
+The Panel fixture that differs is listed, with its reason, in `tests/known-differences.ts`.
 
 ## Development
 
