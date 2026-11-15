@@ -6,6 +6,7 @@ export default defineConfig({
     'back-link': 'src/components/back-link/index.tsx',
     breadcrumbs: 'src/components/breadcrumbs/index.tsx',
     button: 'src/components/button/index.tsx',
+    details: 'src/components/details/index.tsx',
     'error-message': 'src/components/error-message/index.tsx',
     fieldset: 'src/components/fieldset/index.tsx',
     hint: 'src/components/hint/index.tsx',
