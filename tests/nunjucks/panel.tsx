@@ -9,7 +9,7 @@ type Action = {
   attributes?: unknown;
 };
 
-function action(item: Action, index: number) {
+export function action(item: Action, index: number) {
   if (!item.href || item.type === 'button') {
     return (
       <Button.Root

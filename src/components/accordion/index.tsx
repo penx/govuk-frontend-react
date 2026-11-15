@@ -1,5 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
 import { i18nAttributes } from '../../utils/i18n';
 
 export type RootProps = ComponentProps<'div'> & {
@@ -89,4 +90,37 @@ export type SectionContentProps = ComponentProps<'div'>;
 
 export function SectionContent({ className, ...props }: SectionContentProps) {
   return <div className={clsx('govuk-accordion__section-content', className)} {...props} />;
+}
+
+export type SectionCompositeProps = SectionProps &
+  Pick<SectionHeadingProps, 'headingLevel'> & {
+    accordionId: string;
+    /** The section's position, from 1, used in its ids as the macro does. */
+    index: number;
+    heading: ReactNode;
+    summary?: ReactNode;
+  };
+
+export function SectionComposite({
+  accordionId,
+  index,
+  heading,
+  summary,
+  headingLevel,
+  children,
+  ...props
+}: SectionCompositeProps) {
+  return (
+    <Section {...props}>
+      <SectionHeader>
+        <SectionHeading headingLevel={headingLevel}>
+          <SectionButton id={`${accordionId}-heading-${index}`}>{heading}</SectionButton>
+        </SectionHeading>
+        {hasContent(summary) && (
+          <SectionSummary id={`${accordionId}-summary-${index}`}>{summary}</SectionSummary>
+        )}
+      </SectionHeader>
+      <SectionContent id={`${accordionId}-content-${index}`}>{children}</SectionContent>
+    </Section>
+  );
 }

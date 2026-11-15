@@ -1,5 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'table'> & {
   smallTextUntilTablet?: boolean;
@@ -80,5 +81,27 @@ export function Cell({ className, numeric, ...props }: CellProps) {
       className={clsx('govuk-table__cell', numeric && 'govuk-table__cell--numeric', className)}
       {...props}
     />
+  );
+}
+
+export type CompositeProps = RootProps & {
+  caption?: ReactNode;
+  captionSize?: CaptionProps['size'];
+  /** The column headers. */
+  head?: ReactNode;
+};
+
+/** Children are the body rows. */
+export function Composite({ caption, captionSize, head, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      {hasContent(caption) && <Caption size={captionSize}>{caption}</Caption>}
+      {hasContent(head) && (
+        <Head>
+          <Row>{head}</Row>
+        </Head>
+      )}
+      <Body>{children}</Body>
+    </Root>
   );
 }

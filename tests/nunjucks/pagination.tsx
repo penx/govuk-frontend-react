@@ -41,9 +41,13 @@ export default function pagination(options: Options) {
         <Pagination.Previous>
           <Pagination.PreviousLink href={previous.href} {...attributes(previous.attributes)}>
             <Pagination.PreviousIcon />{' '}
-            <Pagination.PreviousLinkTitle decorated={block && !previous.labelText}>
-              {title(previous)}
-            </Pagination.PreviousLinkTitle>
+            <Pagination.LinkTitle decorated={block && !previous.labelText}>
+              {title(previous) ?? (
+                <>
+                  Previous<VisuallyHidden> page</VisuallyHidden>
+                </>
+              )}
+            </Pagination.LinkTitle>
             {label(previous, block)}
           </Pagination.PreviousLink>
         </Pagination.Previous>
@@ -76,9 +80,13 @@ export default function pagination(options: Options) {
                 <Pagination.NextIcon />{' '}
               </>
             ) : null}
-            <Pagination.NextLinkTitle decorated={block && !next.labelText}>
-              {title(next)}
-            </Pagination.NextLinkTitle>
+            <Pagination.LinkTitle decorated={block && !next.labelText}>
+              {title(next) ?? (
+                <>
+                  Next<VisuallyHidden> page</VisuallyHidden>
+                </>
+              )}
+            </Pagination.LinkTitle>
             {label(next, block)}
             {block ? null : (
               <>

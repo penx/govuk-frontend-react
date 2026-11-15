@@ -90,3 +90,32 @@ export function ActionComposite({ visuallyHiddenText, children, ...props }: Acti
     </Action>
   );
 }
+
+export type RowCompositeProps = RowProps & {
+  term: ReactNode;
+  value: ReactNode;
+  actions?: ReactNode[];
+};
+
+/** Pass `noActions` on a row without actions when other rows have them. */
+export function RowComposite({ term, value, actions = [], ...props }: RowCompositeProps) {
+  return (
+    <Row {...props}>
+      <Key>{term}</Key>
+      <Value>{value}</Value>
+      {actions.length > 0 && (
+        <Actions>
+          {actions.length === 1 ? (
+            actions[0]
+          ) : (
+            <ActionsList>
+              {actions.map((action, index) => (
+                <ActionsListItem key={index}>{action}</ActionsListItem>
+              ))}
+            </ActionsList>
+          )}
+        </Actions>
+      )}
+    </Row>
+  );
+}

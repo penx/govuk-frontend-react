@@ -2,6 +2,7 @@ import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 import { i18nAttributes } from '../../utils/i18n';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 import { Root as BaseButton, type LinkProps } from '../button';
 
 export type RootProps = ComponentProps<'div'> & {
@@ -34,7 +35,7 @@ export function Root({
 
 export type ButtonProps = Omit<LinkProps, 'href' | 'variant'> & { href?: string };
 
-export function Button({ href, className, children, ...props }: ButtonProps) {
+export function Button({ href, className, ...props }: ButtonProps) {
   return (
     <BaseButton
       href={href || 'https://www.bbc.co.uk/weather'}
@@ -42,14 +43,24 @@ export function Button({ href, className, children, ...props }: ButtonProps) {
       className={clsx('govuk-exit-this-page__button', 'govuk-js-exit-this-page-button', className)}
       rel="nofollow noreferrer"
       {...props}
-    >
-      {hasContent(children) ? (
-        children
-      ) : (
-        <>
-          <span className="govuk-visually-hidden">Emergency</span> Exit this page
-        </>
-      )}
-    </BaseButton>
+    />
+  );
+}
+
+export type CompositeProps = RootProps & Pick<ButtonProps, 'href'>;
+
+export function Composite({ href, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Button href={href}>
+        {hasContent(children) ? (
+          children
+        ) : (
+          <>
+            <VisuallyHidden>Emergency</VisuallyHidden> Exit this page
+          </>
+        )}
+      </Button>
+    </Root>
   );
 }

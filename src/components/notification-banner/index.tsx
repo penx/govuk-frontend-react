@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 
@@ -70,5 +70,36 @@ export function Link({ className, children, ...props }: LinkProps) {
     <a className={clsx('govuk-notification-banner__link', className)} {...props}>
       {children}
     </a>
+  );
+}
+
+export type CompositeProps = Omit<RootProps, 'title'> & {
+  title?: ReactNode;
+  titleId?: string;
+  titleHeadingLevel?: TitleProps['headingLevel'];
+  heading?: ReactNode;
+};
+
+export function Composite({
+  title,
+  titleId,
+  titleHeadingLevel,
+  heading,
+  success,
+  children,
+  ...props
+}: CompositeProps) {
+  return (
+    <Root success={success} {...(titleId && { 'aria-labelledby': titleId })} {...props}>
+      <Header>
+        <Title headingLevel={titleHeadingLevel} {...(titleId && { id: titleId })}>
+          {hasContent(title) ? title : success ? 'Success' : undefined}
+        </Title>
+      </Header>
+      <Content>
+        {hasContent(heading) && <Heading>{heading}</Heading>}
+        {children}
+      </Content>
+    </Root>
   );
 }

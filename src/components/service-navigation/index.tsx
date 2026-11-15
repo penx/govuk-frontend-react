@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import { Children, type ComponentProps, type ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 import { WidthContainer as BaseWidthContainer } from '../../objects/width-container';
@@ -40,16 +40,6 @@ export function WidthContainer({ inlineEndSlot, className, ...props }: WidthCont
       className={clsx(inlineEndSlot && 'govuk-service-navigation__inlining-container', className)}
       {...props}
     />
-  );
-}
-
-export type RootCompositeProps = RootProps & { inlineEndSlot?: boolean };
-
-export function RootComposite({ inlineEndSlot, children, ...props }: RootCompositeProps) {
-  return (
-    <Root {...props}>
-      <WidthContainer inlineEndSlot={inlineEndSlot}>{children}</WidthContainer>
-    </Root>
   );
 }
 
@@ -146,5 +136,80 @@ export type ActiveFallbackProps = ComponentProps<'strong'>;
 export function ActiveFallback({ className, ...props }: ActiveFallbackProps) {
   return (
     <strong className={clsx('govuk-service-navigation__active-fallback', className)} {...props} />
+  );
+}
+
+export type ItemCompositeProps = Omit<ItemProps, 'children'> & {
+  href?: string;
+  /** The current section. */
+  active?: boolean;
+  /** The current page. Implies `active`. */
+  current?: boolean;
+  children?: ReactNode;
+};
+
+export function ItemComposite({ href, active, current, children, ...props }: ItemCompositeProps) {
+  const isActive = Boolean(active || current);
+  const ariaCurrent = isActive
+    ? { 'aria-current': current ? ('page' as const) : ('true' as const) }
+    : {};
+  const text = isActive ? <ActiveFallback>{children}</ActiveFallback> : children;
+  return (
+    <Item active={isActive} {...props}>
+      {href ? (
+        <Link href={href} {...ariaCurrent}>
+          {text}
+        </Link>
+      ) : (
+        hasContent(children) && <Text {...ariaCurrent}>{text}</Text>
+      )}
+    </Item>
+  );
+}
+
+export type CompositeProps = RootProps & {
+  serviceName?: ReactNode;
+  serviceHref?: string;
+  navigationLabel?: string;
+  menuButtonText?: string;
+  /** Defaults to true when there's more than one item. */
+  collapseNavigationOnMobile?: boolean;
+};
+
+/** Children are the navigation items. */
+export function Composite({
+  serviceName,
+  serviceHref,
+  navigationLabel,
+  menuButtonText,
+  collapseNavigationOnMobile,
+  as,
+  children,
+  ...props
+}: CompositeProps) {
+  const items = Children.toArray(children);
+  const collapse = collapseNavigationOnMobile ?? items.length > 1;
+  return (
+    <Root as={as ?? (hasContent(serviceName) ? 'section' : 'div')} {...props}>
+      <WidthContainer>
+        <Container>
+          {hasContent(serviceName) && (
+            <ServiceName>
+              {serviceHref ? (
+                <Link href={serviceHref}>{serviceName}</Link>
+              ) : (
+                <Text>{serviceName}</Text>
+              )}
+            </ServiceName>
+          )}
+          {items.length > 0 && (
+            <Wrapper aria-label={navigationLabel || menuButtonText || 'Menu'}>
+              {collapse && <Toggle>{menuButtonText}</Toggle>}
+              <List>{children}</List>
+            </Wrapper>
+          )}
+        </Container>
+      </WidthContainer>
+    </Root>
   );
 }

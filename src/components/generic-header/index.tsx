@@ -37,3 +37,28 @@ export function HomepageLink({ href = '/', className, children, ...props }: Home
     </a>
   );
 }
+
+export type CompositeProps = RootProps &
+  Pick<ContainerProps, 'fullWidth'> & {
+    homepageHref?: string;
+    containerClassName?: string;
+  };
+
+/** Children are the logo. */
+export function Composite({
+  homepageHref,
+  fullWidth,
+  containerClassName,
+  children,
+  ...props
+}: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Container fullWidth={fullWidth} className={containerClassName}>
+        <Logo>
+          <HomepageLink {...(homepageHref && { href: homepageHref })}>{children}</HomepageLink>
+        </Logo>
+      </Container>
+    </Root>
+  );
+}

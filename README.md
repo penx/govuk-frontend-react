@@ -36,7 +36,7 @@ import { Button, Fieldset, Label, Hint, ErrorMessageComposite } from 'govuk-fron
 </Fieldset.Root>
 
 <Button.Root variant="secondary">Save as draft</Button.Root>
-<Button.Root href="/start" start>Start now</Button.Root>
+<Button.Composite href="/start" start>Start now</Button.Composite>
 ```
 
 Each component is also its own module:
@@ -51,8 +51,8 @@ The package is ES modules only.
 ## Design principles
 
 1. **A direct markup port.** Each component renders the same HTML as govuk-frontend's macro, even where React developers may expect a different pattern. Anything it derives can be overridden with a prop or by composing the parts.
-2. **Works wherever React renders.** No context, state or effects; where the macro derives a value from a parent, a composite presets it instead (`Table.RowHeader`). Every part renders on its own, so components work on the server, in Server Components, as templates and in separate islands. Opinions and enhancements belong in [govuk-react](https://github.com/govuk-react/govuk-react).
-3. **Compose parts, don't configure them.** Props take content, never objects to spread onto another part. Spaces between inline parts are yours to write, as in HTML. Parts come first, and a composite is layered on top, built from them. Where a part has a version that renders several elements, such as markup the macro always renders, that version is named `Composite`, `Field`, `XComposite` or `XField` (`Feedback.Composite`, `ErrorMessageComposite`), and every element it renders is also a part. Re-exported parts keep the composite's defaults (`Feedback.GridColumn` is two-thirds). Every multi-part component has a `Composite` (`Field` for form controls) that covers basic usage.
+2. **Works wherever React renders.** No context, state or effects; where the macro derives a value from a parent, a part presets it instead (`Table.RowHeader`). Every part renders on its own, so components work on the server, in Server Components, as templates and in separate islands. Opinions and enhancements belong in [govuk-react](https://github.com/govuk-react/govuk-react).
+3. **Compose parts, don't configure them.** Props take content, never objects to spread onto another part. Spaces between inline parts are yours to write, as in HTML. Parts come first, and a composite is layered on top, built from them. Where a part has a version that renders several elements, such as markup the macro always renders, that version is named `Composite`, `Field`, `XComposite` or `XField` (`Feedback.Composite`, `ErrorMessageComposite`), and every element it renders is also a part. Re-exported parts keep the composite's defaults (`Feedback.GridColumn` is two-thirds). Every multi-part component has a `Composite` (`Field` for form controls) that covers basic usage. Where `Root` is already a single element around a list, the item's composite covers it (`TaskList.ItemComposite`). An SVG counts as one element. Tabs is the exception: its tab list and panels share ids, so it's parts only.
 4. **No govuk classes in your code.** Every class you need comes from a part or a prop. Where a component expects something from another package, such as the logo, it re-exports it as a part with the class applied.
 5. **ES modules.** ESM only. A component with several parts is a module of named exports (`Input.Control`), never properties on a component.
 6. **`Root` is the outermost part,** and only exists when other parts sit inside it. Single-part components are named after themselves, and form controls have `Control` and the `Field` shorthand.
@@ -102,10 +102,10 @@ Where React prop names differ from the Nunjucks macro option names:
 | `containerClasses`   | `containerClassName`                                     |
 | `describedBy`        | `aria-describedby`                                       |
 | `for`                | `htmlFor`                                                |
-| `isStartButton`      | `start`                                                  |
+| `isStartButton`      | `start` on `Button.Composite`, which adds the icon       |
 | `legend`, and others | a part, such as `Fieldset.Legend` (see Parts and fields) |
 
-The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), which the parity tests use to render govuk-frontend's fixtures. It doubles as a guide for moving from Nunjucks to React.
+The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), which the parity tests use to render govuk-frontend's fixtures through the parts. [`tests/composite`](tests/composite) renders them through each `Composite` and `Field`, skipping fixtures that use options left to the parts. Both double as a guide for moving from Nunjucks to React.
 
 ### Parts and fields
 
@@ -139,7 +139,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 
 ## HTML parity
 
-`npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, attribute name case, class order, inline style formatting and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. Labels and form controls count as blocks, since govuk-frontend lays them out that way. A fixture can only be skipped by listing it in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason.
+`npm run parity` renders every govuk-frontend fixture for each ported component and compares it with govuk-frontend's Nunjucks output. The comparison is on the parsed HTML: attribute order, attribute name case, class order, inline style formatting and formatting whitespace are ignored, but elements, attributes, text and the whitespace between inline content must match. Labels and form controls count as blocks, since govuk-frontend lays them out that way. The parts must match every fixture, unless it's listed in [`tests/known-differences.ts`](tests/known-differences.ts) with a reason. Each `Composite` and `Field` must also match every fixture whose options it supports.
 
 ## Status
 

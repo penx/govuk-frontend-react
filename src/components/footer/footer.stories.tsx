@@ -4,29 +4,48 @@ import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/footer';
 import * as Footer from '.';
 
-export default { title: 'Footer', component: Footer.Root } satisfies Meta<typeof Footer.Root>;
+export default { title: 'Footer', component: Footer.Composite } satisfies Meta<
+  typeof Footer.Composite
+>;
 
 export const Default = {
   render: () => (
-    <Footer.RootComposite>
-      <Footer.Meta>
-        <Footer.MetaItem grow>
-          <Footer.MetaHeading />
-          <Footer.InlineList>
-            <Footer.InlineListItem>
-              <Footer.Link href="/help">Help</Footer.Link>
-            </Footer.InlineListItem>
-            <Footer.InlineListItem>
-              <Footer.Link href="/cookies">Cookies</Footer.Link>
-            </Footer.InlineListItem>
-          </Footer.InlineList>
-          <Footer.LicenceLogo /> <Footer.LicenceDescription />
-        </Footer.MetaItem>
-        <Footer.MetaItem>
-          <Footer.CopyrightLogo />
-        </Footer.MetaItem>
-      </Footer.Meta>
-    </Footer.RootComposite>
+    <Footer.Composite
+      metaLinks={
+        <>
+          <Footer.InlineListItem>
+            <Footer.Link href="/help">Help</Footer.Link>
+          </Footer.InlineListItem>
+          <Footer.InlineListItem>
+            <Footer.Link href="/cookies">Cookies</Footer.Link>
+          </Footer.InlineListItem>
+        </>
+      }
+    />
+  ),
+};
+
+export const WithParts = {
+  render: () => (
+    <Footer.Root>
+      <Footer.WidthContainer>
+        <Footer.Crown />
+        <Footer.Meta>
+          <Footer.MetaItem grow>
+            <Footer.MetaHeading />
+            <Footer.InlineList>
+              <Footer.InlineListItem>
+                <Footer.Link href="/help">Help</Footer.Link>
+              </Footer.InlineListItem>
+            </Footer.InlineList>
+            <Footer.LicenceLogo /> <Footer.LicenceDescriptionComposite />
+          </Footer.MetaItem>
+          <Footer.MetaItem>
+            <Footer.CopyrightLogo />
+          </Footer.MetaItem>
+        </Footer.Meta>
+      </Footer.WidthContainer>
+    </Footer.Root>
   ),
 };
 

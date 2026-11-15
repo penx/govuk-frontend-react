@@ -57,16 +57,6 @@ export function Root({
   const Element: ElementType = as ?? (href ? 'a' : 'button');
   const isButton = Element === 'button';
 
-  const content =
-    start &&
-    children !== undefined &&
-    typeof children !== 'string' &&
-    typeof children !== 'number' ? (
-      <span>{children}</span>
-    ) : (
-      children
-    );
-
   const elementProps = isButton
     ? {
         type: type || 'submit',
@@ -92,9 +82,20 @@ export function Root({
       data-module="govuk-button"
       {...rest}
     >
-      {content}
-      {start && ' '}
-      {start && <StartIcon />}
+      {children}
     </Element>
+  );
+}
+
+export function Composite(props: LinkProps): ReactNode;
+export function Composite<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
+export function Composite({ start, children, ...props }: RootProps<ElementType>) {
+  const Base = Root as (props: RootProps<ElementType>) => ReactNode;
+  if (!start) return <Base {...props}>{children}</Base>;
+  const text = typeof children === 'string' || typeof children === 'number';
+  return (
+    <Base start {...props}>
+      {text || children === undefined ? children : <span>{children}</span>} <StartIcon />
+    </Base>
   );
 }

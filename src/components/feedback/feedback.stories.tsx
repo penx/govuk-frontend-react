@@ -10,14 +10,11 @@ export default { title: 'Feedback', component: Feedback.Root } satisfies Meta<ty
 
 export const Default = {
   render: () => (
-    <Feedback.Composite>
-      <Feedback.Title>Help us improve this service</Feedback.Title>
-      <Feedback.Body>
-        <Body>
-          Tell us about your experience using this service.{' '}
-          <Link href="/feedback">Give us your feedback</Link>
-        </Body>
-      </Feedback.Body>
+    <Feedback.Composite title="Help us improve this service">
+      <Body>
+        Tell us about your experience using this service.{' '}
+        <Link href="/feedback">Give us your feedback</Link>
+      </Body>
     </Feedback.Composite>
   ),
 };

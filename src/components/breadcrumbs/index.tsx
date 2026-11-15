@@ -48,3 +48,29 @@ export function Link({ className, children, ...props }: LinkProps) {
     </a>
   );
 }
+
+export type ItemCompositeProps = ItemProps & { href?: string };
+
+/** A link, or the current page when there's no `href`. */
+export function ItemComposite({ href, children, ...props }: ItemCompositeProps) {
+  return href ? (
+    <Item {...props}>
+      <Link href={href}>{children}</Link>
+    </Item>
+  ) : (
+    <Item aria-current="page" {...props}>
+      {children}
+    </Item>
+  );
+}
+
+export type CompositeProps = RootProps;
+
+/** Children are `ItemComposite`s. */
+export function Composite({ children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <List>{children}</List>
+    </Root>
+  );
+}

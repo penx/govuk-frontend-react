@@ -1,5 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'div'> & {
   variant?: 'confirmation' | 'interruption';
@@ -28,4 +29,20 @@ export type ActionsProps = ComponentProps<'div'>;
 
 export function Actions({ className, ...props }: ActionsProps) {
   return <div className={clsx('govuk-panel__actions', className)} {...props} />;
+}
+
+export type CompositeProps = Omit<RootProps, 'title'> &
+  Pick<TitleProps, 'headingLevel'> & {
+    title: ReactNode;
+    actions?: ReactNode;
+  };
+
+export function Composite({ title, headingLevel, actions, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Title headingLevel={headingLevel}>{title}</Title>
+      {hasContent(children) && <Body>{children}</Body>}
+      {hasContent(actions) && <Actions>{actions}</Actions>}
+    </Root>
+  );
 }

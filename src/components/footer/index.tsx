@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 import { Crown as BaseCrown, type CrownProps } from '@govuk-react/icon-crown';
@@ -15,19 +15,6 @@ export function Root({ className, ...props }: RootProps) {
 
 export function Crown({ className, ...props }: CrownProps) {
   return <BaseCrown className={clsx('govuk-footer__crown', className)} {...props} />;
-}
-
-export type RootCompositeProps = RootProps & { containerClassName?: string };
-
-export function RootComposite({ containerClassName, children, ...props }: RootCompositeProps) {
-  return (
-    <Root {...props}>
-      <WidthContainer className={containerClassName}>
-        <Crown />
-        {children}
-      </WidthContainer>
-    </Root>
-  );
 }
 
 export type NavigationProps = ComponentProps<'div'>;
@@ -176,9 +163,13 @@ export function LicenceLogo({ className, ...props }: LicenceLogoProps) {
 
 export type LicenceDescriptionProps = ComponentProps<'span'>;
 
-export function LicenceDescription({ className, children, ...props }: LicenceDescriptionProps) {
+export function LicenceDescription({ className, ...props }: LicenceDescriptionProps) {
+  return <span className={clsx('govuk-footer__licence-description', className)} {...props} />;
+}
+
+export function LicenceDescriptionComposite({ children, ...props }: LicenceDescriptionProps) {
   return (
-    <span className={clsx('govuk-footer__licence-description', className)} {...props}>
+    <LicenceDescription {...props}>
       {hasContent(children) ? (
         children
       ) : (
@@ -193,7 +184,7 @@ export function LicenceDescription({ className, children, ...props }: LicenceDes
           , except where otherwise stated
         </>
       )}
-    </span>
+    </LicenceDescription>
   );
 }
 
@@ -208,5 +199,59 @@ export function CopyrightLogo({ className, children, ...props }: CopyrightLogoPr
     >
       {hasContent(children) ? children : '© Crown copyright'}
     </Link>
+  );
+}
+
+export type CompositeProps = RootProps & {
+  containerClassName?: string;
+  /** `Section`s, shown above the meta links. */
+  navigation?: ReactNode;
+  metaHeading?: ReactNode;
+  /** `InlineListItem`s. */
+  metaLinks?: ReactNode;
+  metaContent?: ReactNode;
+  /** Defaults to the Open Government Licence. Pass `false` to leave it out. */
+  licence?: ReactNode;
+  copyright?: ReactNode;
+};
+
+export function Composite({
+  containerClassName,
+  navigation,
+  metaHeading,
+  metaLinks,
+  metaContent,
+  licence,
+  copyright,
+  ...props
+}: CompositeProps) {
+  const meta = hasContent(metaHeading) || hasContent(metaLinks) || hasContent(metaContent);
+  return (
+    <Root {...props}>
+      <WidthContainer className={containerClassName}>
+        <Crown />
+        {hasContent(navigation) && (
+          <>
+            <Navigation>{navigation}</Navigation>
+            <SectionBreak />
+          </>
+        )}
+        <Meta>
+          <MetaItem grow>
+            {meta && <MetaHeading>{metaHeading}</MetaHeading>}
+            {hasContent(metaLinks) && <InlineList>{metaLinks}</InlineList>}
+            {hasContent(metaContent) && <MetaCustom>{metaContent}</MetaCustom>}
+            {licence !== false && (
+              <>
+                <LicenceLogo /> <LicenceDescriptionComposite>{licence}</LicenceDescriptionComposite>
+              </>
+            )}
+          </MetaItem>
+          <MetaItem>
+            <CopyrightLogo>{copyright}</CopyrightLogo>
+          </MetaItem>
+        </Meta>
+      </WidthContainer>
+    </Root>
   );
 }
