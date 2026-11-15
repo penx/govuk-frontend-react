@@ -123,7 +123,7 @@ Props never take an object that is spread onto another part. Where a Nunjucks ma
 </FormGroup>
 ```
 
-Form controls also export a `Field` shorthand that does what the Nunjucks macro does: it renders the form group, label, hint and error message, and wires up the ids. Its `label`, `hint`, `errorMessage`, `prefix` and `suffix` props take content only; anything else uses the parts.
+Form controls also export a `Field` shorthand that does what the Nunjucks macro does: it renders the form group, label, hint and error message, and wires up the ids. Its `label`, `hint`, `errorMessage`, `prefix` and `suffix` props take content only. `labelSize` and `labelIsPageHeading` size the label and make it the page heading, and fieldset-based Fields have `legendSize` and `legendIsPageHeading`. Anything else uses the parts.
 
 ```tsx
 <Input.Field name="cost" label="Cost" hint="In pounds" errorMessage="Enter a cost" prefix="£" />

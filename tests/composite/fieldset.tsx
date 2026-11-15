@@ -1,12 +1,13 @@
 import { Fieldset } from '../../src';
 import { attributes, className, content, html, optional, type Options } from '../nunjucks/helpers';
-import type { CompositeMapping } from './helpers';
+import { sizeFromClasses, type CompositeMapping } from './helpers';
 
 export default {
   supports: [
     'legend.text',
     'legend.html',
     'legend.isPageHeading',
+    'legend.classes',
     'html',
     'role',
     'describedBy',
@@ -15,10 +16,13 @@ export default {
   ],
   render: (options) => {
     const legend = options.legend as Options | undefined;
+    const legendSize = sizeFromClasses(legend?.classes, 'govuk-fieldset__legend');
+    if (legendSize === false) return null;
     return (
       <Fieldset.Composite
         legend={content(legend)}
-        isPageHeading={Boolean(legend?.isPageHeading)}
+        {...optional('legendSize', legendSize)}
+        legendIsPageHeading={Boolean(legend?.isPageHeading)}
         {...optional('role', options.role as string)}
         {...optional('aria-describedby', (options.describedBy as string) || undefined)}
         className={className(options)}

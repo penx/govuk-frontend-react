@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { isSet, joinIds } from '../../utils/field';
+import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { i18nAttributes, type Translation } from '../../utils/i18n';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
@@ -55,7 +55,8 @@ export function Wrapper({
   );
 }
 
-export type FieldProps = Omit<ControlProps, 'error'> &
+export type FieldProps = LabelFieldProps &
+  Omit<ControlProps, 'error'> &
   Omit<WrapperProps, keyof ComponentProps<'div'>> & {
     label?: ReactNode;
     hint?: ReactNode;
@@ -67,6 +68,8 @@ export function Field({
   id: idProp,
   name,
   label,
+  labelSize,
+  labelIsPageHeading,
   hint,
   errorMessage,
   javascript,
@@ -94,7 +97,9 @@ export function Field({
 
   return (
     <FormGroup error={Boolean(errorId)}>
-      <LabelComposite htmlFor={id}>{label}</LabelComposite>
+      <LabelComposite htmlFor={id} size={labelSize} isPageHeading={labelIsPageHeading}>
+        {label}
+      </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       {javascript ? (

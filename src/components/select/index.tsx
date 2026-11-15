@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { isSet, joinIds } from '../../utils/field';
+import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
@@ -10,11 +10,12 @@ export type ControlProps = ComponentProps<'select'> & {
   error?: boolean;
 };
 
-export type FieldProps = Omit<ControlProps, 'error'> & {
-  label?: ReactNode;
-  hint?: ReactNode;
-  errorMessage?: ReactNode;
-};
+export type FieldProps = LabelFieldProps &
+  Omit<ControlProps, 'error'> & {
+    label?: ReactNode;
+    hint?: ReactNode;
+    errorMessage?: ReactNode;
+  };
 
 export function Control({ className, error, ...props }: ControlProps) {
   return (
@@ -29,6 +30,8 @@ export function Field({
   id: idProp,
   name,
   label,
+  labelSize,
+  labelIsPageHeading,
   hint,
   errorMessage,
   'aria-describedby': describedBy,
@@ -40,7 +43,9 @@ export function Field({
 
   return (
     <FormGroup error={Boolean(errorId)}>
-      <LabelComposite htmlFor={id}>{label}</LabelComposite>
+      <LabelComposite htmlFor={id} size={labelSize} isPageHeading={labelIsPageHeading}>
+        {label}
+      </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       <Control

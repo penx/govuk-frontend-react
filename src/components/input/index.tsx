@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
-import { isSet, joinIds } from '../../utils/field';
+import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
@@ -15,13 +15,14 @@ export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
 
 export type AffixProps = ComponentProps<'div'>;
 
-export type FieldProps = Omit<ControlProps, 'error' | 'prefix'> & {
-  label?: ReactNode;
-  hint?: ReactNode;
-  errorMessage?: ReactNode;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
-};
+export type FieldProps = LabelFieldProps &
+  Omit<ControlProps, 'error' | 'prefix'> & {
+    label?: ReactNode;
+    hint?: ReactNode;
+    errorMessage?: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+  };
 
 export function Control({
   className,
@@ -62,6 +63,8 @@ export function Field({
   id: idProp,
   name,
   label,
+  labelSize,
+  labelIsPageHeading,
   hint,
   errorMessage,
   prefix,
@@ -85,7 +88,9 @@ export function Field({
 
   return (
     <FormGroup error={Boolean(errorId)}>
-      <LabelComposite htmlFor={id}>{label}</LabelComposite>
+      <LabelComposite htmlFor={id} size={labelSize} isPageHeading={labelIsPageHeading}>
+        {label}
+      </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       {hasContent(prefix) || hasContent(suffix) ? (

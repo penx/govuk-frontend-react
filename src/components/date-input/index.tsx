@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { isSet, joinIds } from '../../utils/field';
+import { isSet, joinIds, type LegendFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
 import * as Fieldset from '../fieldset';
@@ -38,14 +38,15 @@ export function Input({ className, inputMode = 'numeric', ...props }: InputProps
   );
 }
 
-export type FieldProps = Omit<RootProps, 'defaultValue'> & {
-  id: string;
-  values?: { day?: string; month?: string; year?: string };
-  namePrefix?: string;
-  legend: ReactNode;
-  hint?: ReactNode;
-  errorMessage?: ReactNode;
-};
+export type FieldProps = LegendFieldProps &
+  Omit<RootProps, 'defaultValue'> & {
+    id: string;
+    values?: { day?: string; month?: string; year?: string };
+    namePrefix?: string;
+    legend: ReactNode;
+    hint?: ReactNode;
+    errorMessage?: ReactNode;
+  };
 
 const parts = [
   { name: 'day', label: 'Day', width: 2 },
@@ -58,6 +59,8 @@ export function Field({
   namePrefix,
   values,
   legend,
+  legendSize,
+  legendIsPageHeading,
   hint,
   errorMessage,
   'aria-describedby': describedBy,
@@ -69,7 +72,9 @@ export function Field({
   return (
     <FormGroup error={Boolean(errorId)}>
       <Fieldset.Root role="group" aria-describedby={joinIds(describedBy, hintId, errorId)}>
-        <Fieldset.LegendComposite>{legend}</Fieldset.LegendComposite>
+        <Fieldset.LegendComposite size={legendSize} isPageHeading={legendIsPageHeading}>
+          {legend}
+        </Fieldset.LegendComposite>
         {hintId && <Hint id={hintId}>{hint}</Hint>}
         {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
         <Root id={id} {...props}>

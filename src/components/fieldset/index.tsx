@@ -46,15 +46,24 @@ export function Root({ className, ...props }: RootProps) {
   return <fieldset className={clsx('govuk-fieldset', className)} {...props} />;
 }
 
-export type CompositeProps = RootProps &
-  Pick<LegendCompositeProps, 'isPageHeading'> & {
-    legend?: ReactNode;
-  };
+export type CompositeProps = RootProps & {
+  legend?: ReactNode;
+  legendSize?: LegendProps['size'];
+  legendIsPageHeading?: boolean;
+};
 
-export function Composite({ legend, isPageHeading, children, ...props }: CompositeProps) {
+export function Composite({
+  legend,
+  legendSize,
+  legendIsPageHeading,
+  children,
+  ...props
+}: CompositeProps) {
   return (
     <Root {...props}>
-      <LegendComposite isPageHeading={isPageHeading}>{legend}</LegendComposite>
+      <LegendComposite size={legendSize} isPageHeading={legendIsPageHeading}>
+        {legend}
+      </LegendComposite>
       {children}
     </Root>
   );

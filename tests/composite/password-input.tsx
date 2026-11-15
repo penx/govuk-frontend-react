@@ -1,7 +1,7 @@
 import { PasswordInput } from '../../src';
 import { optional } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
-import { fieldProps } from './field';
+import { fieldProps, labelExpressible } from './field';
 
 const texts = [
   'showPasswordText',
@@ -14,12 +14,13 @@ const texts = [
 
 export default {
   supports: [...fieldSupports, 'value', 'autocomplete', ...texts],
-  render: (options) => (
-    <PasswordInput.Field
-      {...fieldProps(options)}
-      {...optional('defaultValue', options.value as string)}
-      {...optional('autoComplete', options.autocomplete as string)}
-      {...Object.assign({}, ...texts.map((key) => optional(key, options[key] as string)))}
-    />
-  ),
+  render: (options) =>
+    !labelExpressible(options) ? null : (
+      <PasswordInput.Field
+        {...fieldProps(options)}
+        {...optional('defaultValue', options.value as string)}
+        {...optional('autoComplete', options.autocomplete as string)}
+        {...Object.assign({}, ...texts.map((key) => optional(key, options[key] as string)))}
+      />
+    ),
 } satisfies CompositeMapping;

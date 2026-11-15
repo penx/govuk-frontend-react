@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { isSet, joinIds } from '../../utils/field';
+import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { i18nAttributes, type Translation } from '../../utils/i18n';
 import { FormGroup, type FormGroupProps } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
@@ -73,7 +73,8 @@ export function Message({ className, ...props }: MessageProps) {
   return <Hint className={clsx('govuk-character-count__message', className)} {...props} />;
 }
 
-export type FieldProps = Omit<TextareaProps, 'error' | 'maxLength'> &
+export type FieldProps = LabelFieldProps &
+  Omit<TextareaProps, 'error' | 'maxLength'> &
   Omit<RootProps, keyof FormGroupProps> & {
     label?: ReactNode;
     hint?: ReactNode;
@@ -84,6 +85,8 @@ export function Field({
   id: idProp,
   name,
   label,
+  labelSize,
+  labelIsPageHeading,
   hint,
   errorMessage,
   maxLength,
@@ -122,7 +125,9 @@ export function Field({
       wordsAtLimitText={wordsAtLimitText}
       wordsOverLimitText={wordsOverLimitText}
     >
-      <LabelComposite htmlFor={id}>{label}</LabelComposite>
+      <LabelComposite htmlFor={id} size={labelSize} isPageHeading={labelIsPageHeading}>
+        {label}
+      </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       <Textarea

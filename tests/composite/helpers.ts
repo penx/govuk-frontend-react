@@ -36,6 +36,8 @@ export const contentOf = (...names: string[]) =>
 
 /** The options every form control Field takes. */
 export const fieldSupports = [
+  'label.classes',
+  'label.isPageHeading',
   'id',
   'name',
   'disabled',
@@ -44,3 +46,12 @@ export const fieldSupports = [
   'attributes',
   ...contentOf('label', 'hint', 'errorMessage'),
 ];
+
+type Size = 's' | 'm' | 'l' | 'xl';
+
+/** The size a `govuk-{block}--{size}` class sets, or false for any other class. */
+export function sizeFromClasses(classes: unknown, block: string): Size | undefined | false {
+  if (!classes) return undefined;
+  const match = new RegExp(`^${block}--(s|m|l|xl)$`).exec(String(classes));
+  return match ? (match[1] as Size) : false;
+}
