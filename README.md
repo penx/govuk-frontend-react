@@ -67,7 +67,7 @@ How the [design principles](#design-principles) apply when rewriting the Nunjuck
 
 When looking at govuk-frontend BEM class names:
 
-- Blocks become ES modules at `src/{type}/my-block/`, where `{type}` is `objects` or `components`, following govuk-frontend's ITCSS layers.
+- Blocks become ES modules at `src/{type}/my-block/`, where `{type}` is `core`, `objects`, `components` or `utilities`, following govuk-frontend's ITCSS layers.
 - A block with elements exports each part as a named export, and the package root exports the module as a namespace.
 - The part the others sit inside is `Root`. Form controls have none, because their outer element is a `FormGroup`.
 - A block without elements exports a single component named after the block.
@@ -84,6 +84,7 @@ So `govuk-fieldset__legend--l` is `<Fieldset.Legend size="l" />`, `govuk-button-
 BEM convention class name exceptions:
 
 - `govuk-label-wrapper`
+- Typography sizes, such as `govuk-body-l` and `govuk-heading-m`, are a `size` prop: `<Body size="l" />`, `<Heading size="m" />`.
 
 ### Props
 

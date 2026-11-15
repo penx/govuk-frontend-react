@@ -3,6 +3,12 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
+    body: 'src/core/body/index.tsx',
+    caption: 'src/core/caption/index.tsx',
+    heading: 'src/core/heading/index.tsx',
+    link: 'src/core/link/index.tsx',
+    list: 'src/core/list/index.tsx',
+    'section-break': 'src/core/section-break/index.tsx',
     'back-link': 'src/components/back-link/index.tsx',
     breadcrumbs: 'src/components/breadcrumbs/index.tsx',
     button: 'src/components/button/index.tsx',
@@ -30,6 +36,7 @@ export default defineConfig({
     'button-group': 'src/objects/button-group/index.tsx',
     'form-group': 'src/objects/form-group/index.tsx',
     'width-container': 'src/objects/width-container/index.tsx',
+    'visually-hidden': 'src/utilities/visually-hidden/index.tsx',
   },
   format: ['esm'],
   dts: true,
