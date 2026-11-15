@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
+    'back-link': 'src/components/back-link/index.tsx',
     button: 'src/components/button/index.tsx',
     'error-message': 'src/components/error-message/index.tsx',
     fieldset: 'src/components/fieldset/index.tsx',
