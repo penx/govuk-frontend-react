@@ -1,5 +1,7 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
+
 export type RootProps = ComponentProps<'div'> & { disableAutoFocus?: boolean };
 
 export function Root({ disableAutoFocus, className, ...props }: RootProps) {
@@ -55,12 +57,29 @@ export function ListItem(props: ListItemProps) {
   return <li {...props} />;
 }
 
-export type RootCompositeProps = RootProps;
+export type ListItemCompositeProps = ListItemProps & { href?: string };
 
-export function RootComposite({ children, ...props }: RootCompositeProps) {
+/** Links to the field with the error when there's an `href`. */
+export function ListItemComposite({ href, children, ...props }: ListItemCompositeProps) {
+  return <ListItem {...props}>{href ? <a href={href}>{children}</a> : children}</ListItem>;
+}
+
+export type CompositeProps = Omit<RootProps, 'title'> & {
+  title: ReactNode;
+  description?: ReactNode;
+};
+
+/** Children are `ListItemComposite`s. */
+export function Composite({ title, description, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>
-      <Alert>{children}</Alert>
+      <Alert>
+        <Title>{title}</Title>
+        <Body>
+          {hasContent(description) && <Description>{description}</Description>}
+          {hasContent(children) && <List>{children}</List>}
+        </Body>
+      </Alert>
     </Root>
   );
 }

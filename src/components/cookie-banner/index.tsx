@@ -80,3 +80,16 @@ export function MessageComposite({ heading, actions, children, ...props }: Messa
     </Message>
   );
 }
+
+export type CompositeProps = RootProps & Pick<MessageCompositeProps, 'heading' | 'actions'>;
+
+/** A banner with one message. Use `Root` and `MessageComposite` for more. */
+export function Composite({ heading, actions, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <MessageComposite heading={heading} actions={actions}>
+        {children}
+      </MessageComposite>
+    </Root>
+  );
+}

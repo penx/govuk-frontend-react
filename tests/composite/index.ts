@@ -4,12 +4,16 @@ import breadcrumbs from './breadcrumbs';
 import button from './button';
 import characterCount from './character-count';
 import checkboxes from './checkboxes';
+import cookieBanner from './cookie-banner';
 import dateInput from './date-input';
 import details from './details';
 import errorMessage from './error-message';
+import errorSummary from './error-summary';
 import exitThisPage from './exit-this-page';
+import feedback from './feedback';
 import fieldset from './fieldset';
 import fileUpload from './file-upload';
+import footer from './footer';
 import genericHeader from './generic-header';
 import header from './header';
 import input from './input';
@@ -35,12 +39,16 @@ export const compositeMappings: Record<string, CompositeMapping> = {
   button,
   'character-count': characterCount,
   checkboxes,
+  'cookie-banner': cookieBanner,
   'date-input': dateInput,
   details,
   'error-message': errorMessage,
+  'error-summary': errorSummary,
   'exit-this-page': exitThisPage,
+  feedback,
   fieldset,
   'file-upload': fileUpload,
+  footer,
   'generic-header': genericHeader,
   header,
   input,

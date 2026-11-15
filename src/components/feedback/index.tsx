@@ -1,5 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
 import {
   GridColumn as BaseGridColumn,
   type GridColumnProps as BaseGridColumnProps,
@@ -36,13 +37,20 @@ export function Body({ className, ...props }: BodyProps) {
   return <div className={clsx('govuk-feedback__body', className)} {...props} />;
 }
 
-export type CompositeProps = RootProps;
+export type CompositeProps = Omit<RootProps, 'title'> &
+  Pick<TitleProps, 'headingLevel'> & {
+    title: ReactNode;
+  };
 
-export function Composite({ children, ...props }: CompositeProps) {
+/** Children are the body. */
+export function Composite({ title, headingLevel, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>
       <GridRow>
-        <GridColumn>{children}</GridColumn>
+        <GridColumn>
+          <Title headingLevel={headingLevel}>{title}</Title>
+          {hasContent(children) && <Body>{children}</Body>}
+        </GridColumn>
       </GridRow>
     </Root>
   );
