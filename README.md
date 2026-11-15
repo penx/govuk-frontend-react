@@ -50,12 +50,13 @@ The package is ES modules only.
 
 ## Design principles
 
-1. **A faithful port.** Every component renders the same HTML as govuk-frontend's Nunjucks macro and keeps its behaviour, even where React developers may expect a different pattern. For example, a form control's `id` falls back to its `name`. Anything a component derives can be overridden with an explicit prop or by composing the parts, so [govuk-react](https://github.com/govuk-react/govuk-react) can change the behaviour without forking.
-2. **Compose parts, don't configure them.** A prop never takes an object that is spread onto another part; the part is exported and you compose it instead. Props that take content, such as `label` on a `Field`, are fine.
-3. **ES modules all the way down.** The package is ESM only. A component with several parts is a module of named exports (`Input.Control`, `Fieldset.Legend`), and components are never attached to other components as properties.
-4. **`Root` means the outermost part.** It exists only when the other parts sit inside it. A single-part component is named after itself (`Label`), a form control's element is `Control`, and `Field` is the shorthand that renders the whole field.
-5. **One component, one folder.** Each component lives in `src/{type}/{name}/` with its stories and tests. Styles come from govuk-frontend's own CSS, with no CSS Modules for now.
-6. **Tests that catch real problems.** Fixture parity proves the HTML. Unit tests cover only React behaviour parity can't see, such as id wiring, refs and modifier props, and never implementation details.
+1. **A direct markup port.** Each component renders the same HTML as govuk-frontend's macro, even where React developers may expect a different pattern. Anything it derives can be overridden with a prop or by composing the parts.
+2. **Works wherever React renders.** No context, state or effects; where the macro derives a value from a parent, a composite presets it instead (`Table.RowHeader`). Every part renders on its own, so components work on the server, in Server Components, as templates and in separate islands. Opinions and enhancements belong in [govuk-react](https://github.com/govuk-react/govuk-react).
+3. **Compose parts, don't configure them.** Props take content, never objects to spread onto another part. Parts render only their own element, so spaces between inline parts are yours to write, as in HTML.
+4. **ES modules.** ESM only. A component with several parts is a module of named exports (`Input.Control`), never properties on a component.
+5. **`Root` is the outermost part,** and only exists when other parts sit inside it. Single-part components are named after themselves, and form controls have `Control` and the `Field` shorthand.
+6. **One component, one folder,** with its stories and tests. Styles come from govuk-frontend's CSS.
+7. **Tests that catch real problems.** Fixture parity proves the HTML. Unit tests cover only what parity can't see.
 
 ## Conventions
 
