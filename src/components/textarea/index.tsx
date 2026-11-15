@@ -1,33 +1,22 @@
-import type { ComponentProps, ReactNode } from 'react';
-import { clsx } from 'clsx';
-import * as FieldParts from './field-parts';
+import type { ReactNode } from 'react';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
 
-export { FieldParts };
+import * as FieldParts from './field-parts';
+import { Control, type ControlProps } from './field-parts';
 
-export type ControlProps = ComponentProps<'textarea'> & {
-  error?: boolean;
-};
+export { FieldParts };
+export { Control };
+export type { ControlProps };
 
 export type FieldProps = Omit<ControlProps, 'error'> & {
   label?: ReactNode;
   hint?: ReactNode;
   errorMessage?: ReactNode;
 };
-
-export function Control({ className, error, rows, ...props }: ControlProps) {
-  return (
-    <textarea
-      className={clsx('govuk-textarea', error && 'govuk-textarea--error', className)}
-      rows={rows || 5}
-      {...props}
-    />
-  );
-}
 
 export function Field({
   id: idProp,

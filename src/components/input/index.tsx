@@ -1,6 +1,4 @@
-import type { ComponentProps, ReactNode } from 'react';
-import { clsx } from 'clsx';
-import * as FieldParts from './field-parts';
+import type { ReactNode } from 'react';
 import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
@@ -8,15 +6,19 @@ import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
 
+import * as FieldParts from './field-parts';
+import {
+  Control,
+  Prefix,
+  Suffix,
+  Wrapper,
+  type ControlProps,
+  type AffixProps,
+} from './field-parts';
+
 export { FieldParts };
-
-export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
-  error?: boolean;
-  width?: 2 | 3 | 4 | 5 | 10 | 20 | 30;
-  extraLetterSpacing?: boolean;
-};
-
-export type AffixProps = ComponentProps<'div'>;
+export { Control, Prefix, Suffix, Wrapper };
+export type { ControlProps, AffixProps };
 
 export type FieldProps = Omit<ControlProps, 'error' | 'prefix'> & {
   label?: ReactNode;
@@ -25,41 +27,6 @@ export type FieldProps = Omit<ControlProps, 'error' | 'prefix'> & {
   prefix?: ReactNode;
   suffix?: ReactNode;
 };
-
-export function Control({
-  className,
-  error,
-  width,
-  extraLetterSpacing,
-  type,
-  ...props
-}: ControlProps) {
-  return (
-    <input
-      className={clsx(
-        'govuk-input',
-        width && `govuk-input--width-${width}`,
-        extraLetterSpacing && 'govuk-input--extra-letter-spacing',
-        error && 'govuk-input--error',
-        className,
-      )}
-      type={type || 'text'}
-      {...props}
-    />
-  );
-}
-
-export function Prefix({ className, ...props }: AffixProps) {
-  return <div className={clsx('govuk-input__prefix', className)} aria-hidden="true" {...props} />;
-}
-
-export function Suffix({ className, ...props }: AffixProps) {
-  return <div className={clsx('govuk-input__suffix', className)} aria-hidden="true" {...props} />;
-}
-
-export function Wrapper({ className, ...props }: AffixProps) {
-  return <div className={clsx('govuk-input__wrapper', className)} {...props} />;
-}
 
 export function Field({
   id: idProp,
