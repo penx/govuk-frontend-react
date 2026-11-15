@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
-import { hasContent } from '../../utils/is-props-object';
+import { hasContent } from '../../utils/has-content';
 
 export type HeadingProps = ComponentProps<'h1'>;
 
