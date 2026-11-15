@@ -31,6 +31,7 @@ export default defineConfig({
     panel: 'src/components/panel/index.tsx',
     'password-input': 'src/components/password-input/index.tsx',
     'phase-banner': 'src/components/phase-banner/index.tsx',
+    radios: 'src/components/radios/index.tsx',
     select: 'src/components/select/index.tsx',
     'skip-link': 'src/components/skip-link/index.tsx',
     'summary-list': 'src/components/summary-list/index.tsx',

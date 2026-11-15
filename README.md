@@ -72,6 +72,7 @@ When looking at govuk-frontend BEM class names:
 - The part the others sit inside is `Root`. Form controls have none, because their outer element is a `FormGroup`.
 - A block without elements exports a single component named after the block.
 - Modifiers become props of the part.
+- A `--hidden` modifier becomes a prop that names the visible state instead, such as `checked` on `Radios.Conditional`, because `hidden` is already an HTML attribute.
 
 For example, a class name of `govuk-my-block__my-element--my-modifier` implies:
 
@@ -133,6 +134,7 @@ Form controls also export a `Field` shorthand that does what the Nunjucks macro 
 Following the first principle, the `Field` shorthand copies the macro's id handling, and each piece can be overridden:
 
 - Pass `id` to a `Field`. The hint and error message ids are derived from it, so `id={useId()}` makes all three unique.
+- Grouped controls, such as `Radios.Field` and `Checkboxes.Field`, take `idPrefix` instead, as the macro does.
 - Compose the parts, which derive nothing, for full control over ids and `aria-describedby`.
 
 ## HTML parity
@@ -165,6 +167,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Panel               | 18/19            |
 | Password input      | 12/12            |
 | Phase banner        | 7/7              |
+| Radios              | 43/43            |
 | Select              | 19/19            |
 | Skip link           | 9/9              |
 | Summary list        | 30/30            |
@@ -175,7 +178,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
-The other 13 govuk-frontend components are planned.
+The other 12 govuk-frontend components are planned.
 
 ## Development
 
