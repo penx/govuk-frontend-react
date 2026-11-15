@@ -1,16 +1,19 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 import { GridColumn, GridRow } from '../../objects/grid';
+import * as RootParts from './root-parts';
 
-export type RootProps = ComponentProps<'div'>;
+export { RootParts };
 
-export function Root({ className, children, ...props }: RootProps) {
+export type RootProps = RootParts.RootProps;
+
+export function Root({ children, ...props }: RootProps) {
   return (
-    <div className={clsx('govuk-feedback', 'govuk-width-container', className)} {...props}>
+    <RootParts.Root {...props}>
       <GridRow>
         <GridColumn width="two-thirds">{children}</GridColumn>
       </GridRow>
-    </div>
+    </RootParts.Root>
   );
 }
 
