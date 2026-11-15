@@ -82,7 +82,9 @@ export function ItemComposite({
   return (
     <ListItem>
       {current || !href ? (
-        <Text {...(props as TextProps)}>{children}</Text>
+        <Text lang={props.lang} dir={props.dir} className={props.className}>
+          {children}
+        </Text>
       ) : (
         <Link href={href} hrefLang={hrefLang} {...props}>
           {children}
@@ -95,7 +97,10 @@ export function ItemComposite({
   );
 }
 
-export function Composite({ children, ...props }: RootProps) {
+export type CompositeProps = RootProps;
+
+/** Children are `ItemComposite`s. */
+export function Composite({ children, ...props }: CompositeProps) {
   return (
     <Root {...props}>
       <List>{children}</List>

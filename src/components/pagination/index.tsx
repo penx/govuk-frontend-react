@@ -184,7 +184,7 @@ export function ItemComposite({ number, current, ...props }: ItemCompositeProps)
   );
 }
 
-export type CompositeProps = RootProps & {
+export type CompositeProps = Omit<RootProps, 'block'> & {
   previousHref?: string;
   previousText?: ReactNode;
   previousLabel?: ReactNode;

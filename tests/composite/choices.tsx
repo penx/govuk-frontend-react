@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import type * as Checkboxes from '../../src/components/checkboxes';
-import { content, optional, type Options } from '../nunjucks/helpers';
+import { attributes, content, optional, type Options } from '../nunjucks/helpers';
 import { contentOf } from './helpers';
 import { sub } from './field';
 
@@ -51,6 +51,7 @@ export function renderChoices(parts: Parts, options: Options, isChecked: (item: 
       errorMessage={sub(options.errorMessage)}
       {...optional('aria-describedby', (fieldset.describedBy as string) || undefined)}
       className={options.classes as string | undefined}
+      {...attributes(options.attributes)}
     >
       {items.map((item, index) => {
         if (item.divider) return <parts.Divider key={index}>{item.divider}</parts.Divider>;

@@ -29,7 +29,8 @@ const summary: Array<{ component: string; passing: number; total: number }> = []
 const compositeSummary: Array<{
   component: string;
   passing: number;
-  skipped: number;
+  unsupported: number;
+  inexpressible: number;
   total: number;
 }> = [];
 
@@ -68,16 +69,24 @@ for (const component of allComponents) {
 
   const composite = compositeMappings[component];
   if (!composite) continue;
-  const compositeEntry = { component, passing: 0, skipped: 0, total: fixtures.length };
+  const compositeEntry = {
+    component,
+    passing: 0,
+    unsupported: 0,
+    inexpressible: 0,
+    total: fixtures.length,
+  };
   compositeSummary.push(compositeEntry);
 
   describe(`${component} (composite)`, () => {
     for (const fixture of fixtures) {
-      const rendered =
-        unsupported(fixture.options, composite.supports).length === 0 &&
-        composite.render(fixture.options);
+      if (unsupported(fixture.options, composite.supports).length > 0) {
+        compositeEntry.unsupported += 1;
+        continue;
+      }
+      const rendered = composite.render(fixture.options);
       if (!rendered) {
-        compositeEntry.skipped += 1;
+        compositeEntry.inexpressible += 1;
         continue;
       }
       const key = `${component} (composite)/${fixture.name}`;
@@ -110,7 +119,9 @@ afterAll(() => {
   );
   const compositeRows = compositeSummary.map(
     (s) =>
-      `  ${s.component.padEnd(22)} ${s.passing}/${s.total - s.skipped} (${s.skipped} use options the composite leaves to parts)`,
+      `  ${s.component.padEnd(22)} ${s.passing}/${s.total - s.unsupported - s.inexpressible}` +
+      (s.unsupported ? `, ${s.unsupported} use options left to the parts` : '') +
+      (s.inexpressible ? `, ${s.inexpressible} need markup the composite doesn't render` : ''),
   );
   console.log(`\nComposite parity:\n${compositeRows.join('\n')}\n`);
 });

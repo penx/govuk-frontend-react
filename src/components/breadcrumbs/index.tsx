@@ -64,7 +64,10 @@ export function ItemComposite({ href, children, ...props }: ItemCompositeProps) 
   );
 }
 
-export function Composite({ children, ...props }: RootProps) {
+export type CompositeProps = RootProps;
+
+/** Children are `ItemComposite`s. */
+export function Composite({ children, ...props }: CompositeProps) {
   return (
     <Root {...props}>
       <List>{children}</List>

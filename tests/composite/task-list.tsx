@@ -32,7 +32,7 @@ export default {
           return (
             <TaskList.ItemComposite
               key={index}
-              id={`${idPrefix}-${index + 1}`}
+              idPrefix={`${idPrefix}-${index + 1}`}
               href={item.href as string | undefined}
               title={content(item.title as Options)}
               hint={content(item.hint as Options | undefined)}

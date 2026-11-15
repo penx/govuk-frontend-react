@@ -61,7 +61,7 @@ export function Status({ cannotStartYet, className, ...props }: StatusProps) {
 }
 
 export type ItemCompositeProps = Omit<ItemProps, 'title' | 'withLink'> & {
-  id: string;
+  idPrefix: string;
   title: ReactNode;
   href?: string;
   hint?: ReactNode;
@@ -69,9 +69,9 @@ export type ItemCompositeProps = Omit<ItemProps, 'title' | 'withLink'> & {
   cannotStartYet?: boolean;
 };
 
-/** `id` prefixes the hint and status ids. */
+/** `idPrefix` prefixes the hint and status ids. */
 export function ItemComposite({
-  id,
+  idPrefix,
   title,
   href,
   hint,
@@ -79,8 +79,8 @@ export function ItemComposite({
   cannotStartYet,
   ...props
 }: ItemCompositeProps) {
-  const hintId = hasContent(hint) ? `${id}-hint` : undefined;
-  const statusId = `${id}-status`;
+  const hintId = hasContent(hint) ? `${idPrefix}-hint` : undefined;
+  const statusId = `${idPrefix}-status`;
   return (
     <Item withLink={Boolean(href)} {...props}>
       <NameAndHint>
