@@ -13,6 +13,7 @@ import hint from './hint';
 import input from './input';
 import insetText from './inset-text';
 import label from './label';
+import pagination from './pagination';
 import panel from './panel';
 import phaseBanner from './phase-banner';
 import select from './select';
@@ -38,6 +39,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   input,
   'inset-text': insetText,
   label,
+  pagination,
   panel,
   'phase-banner': phaseBanner,
   select,

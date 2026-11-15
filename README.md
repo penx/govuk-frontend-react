@@ -153,6 +153,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Input          | 45/45            |
 | Inset text     | 6/6              |
 | Label          | 17/17            |
+| Pagination     | 15/15            |
 | Panel          | 18/19            |
 | Phase banner   | 7/7              |
 | Select         | 19/19            |
