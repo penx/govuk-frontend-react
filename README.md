@@ -147,6 +147,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Back link           | 7/7              |
 | Breadcrumbs         | 12/12            |
 | Button              | 38/38            |
+| Character count     | 34/34            |
 | Checkboxes          | 42/42            |
 | Details             | 10/10            |
 | Error message       | 9/9              |

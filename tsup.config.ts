@@ -13,6 +13,7 @@ export default defineConfig({
     'back-link': 'src/components/back-link/index.tsx',
     breadcrumbs: 'src/components/breadcrumbs/index.tsx',
     button: 'src/components/button/index.tsx',
+    'character-count': 'src/components/character-count/index.tsx',
     checkboxes: 'src/components/checkboxes/index.tsx',
     details: 'src/components/details/index.tsx',
     'error-message': 'src/components/error-message/index.tsx',
