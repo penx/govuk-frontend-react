@@ -1,19 +1,24 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
-import * as RootParts from './root-parts';
+import {
+  GridColumn as BaseGridColumn,
+  type GridColumnProps as BaseGridColumnProps,
+} from '../../objects/grid';
 
-export { RootParts };
+import { GridRow } from '../../objects/grid';
 
-export type RootProps = RootParts.RootProps;
+export { GridRow, type GridRowProps } from '../../objects/grid';
 
-export function Root({ children, ...props }: RootProps) {
-  return (
-    <RootParts.Root {...props}>
-      <RootParts.GridRow>
-        <RootParts.GridColumn>{children}</RootParts.GridColumn>
-      </RootParts.GridRow>
-    </RootParts.Root>
-  );
+export type RootProps = ComponentProps<'div'>;
+
+export function Root({ className, ...props }: RootProps) {
+  return <div className={clsx('govuk-feedback', 'govuk-width-container', className)} {...props} />;
+}
+
+export type GridColumnProps = Partial<BaseGridColumnProps>;
+
+export function GridColumn({ width = 'two-thirds', ...props }: GridColumnProps) {
+  return <BaseGridColumn width={width} {...props} />;
 }
 
 export type TitleProps = ComponentProps<'h2'> & {
@@ -29,4 +34,16 @@ export type BodyProps = ComponentProps<'div'>;
 
 export function Body({ className, ...props }: BodyProps) {
   return <div className={clsx('govuk-feedback__body', className)} {...props} />;
+}
+
+export type CompositeProps = RootProps;
+
+export function Composite({ children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <GridRow>
+        <GridColumn>{children}</GridColumn>
+      </GridRow>
+    </Root>
+  );
 }

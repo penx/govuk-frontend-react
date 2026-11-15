@@ -2,9 +2,9 @@ import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
-import { ErrorMessage } from '../error-message';
+import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
-import { Label } from '../label';
+import { LabelComposite } from '../label';
 
 export type ControlProps = ComponentProps<'textarea'> & {
   error?: boolean;
@@ -41,9 +41,9 @@ export function Field({
 
   return (
     <FormGroup error={Boolean(errorId)}>
-      <Label htmlFor={id}>{label}</Label>
+      <LabelComposite htmlFor={id}>{label}</LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
-      {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
+      {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       <Control
         id={id}
         name={name}

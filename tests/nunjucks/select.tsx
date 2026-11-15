@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ErrorMessage, FormGroup, Hint, Label, Select } from '../../src';
+import { ErrorMessageComposite, FormGroup, Hint, LabelComposite, Select } from '../../src';
 import {
   attributes,
   className,
@@ -45,9 +45,9 @@ export default function select(options: Options) {
 
   return (
     <FormGroup error={Boolean(error)} {...group}>
-      <Label htmlFor={id} {...label(options.label)} />
+      <LabelComposite htmlFor={id} {...label(options.label)} />
       {hint && <Hint id={hintId} {...hint} />}
-      {error && <ErrorMessage id={errorId} {...error} />}
+      {error && <ErrorMessageComposite id={errorId} {...error} />}
       {beforeInput}
       <Select.Control
         {...optional('id', id)}

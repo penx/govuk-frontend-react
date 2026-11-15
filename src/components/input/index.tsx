@@ -3,9 +3,9 @@ import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
-import { ErrorMessage } from '../error-message';
+import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
-import { Label } from '../label';
+import { LabelComposite } from '../label';
 
 export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
   error?: boolean;
@@ -85,9 +85,9 @@ export function Field({
 
   return (
     <FormGroup error={Boolean(errorId)}>
-      <Label htmlFor={id}>{label}</Label>
+      <LabelComposite htmlFor={id}>{label}</LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
-      {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
+      {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       {hasContent(prefix) || hasContent(suffix) ? (
         <Wrapper>
           {hasContent(prefix) && <Prefix>{prefix}</Prefix>}

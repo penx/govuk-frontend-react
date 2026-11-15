@@ -10,7 +10,7 @@ export default { title: 'Feedback', component: Feedback.Root } satisfies Meta<ty
 
 export const Default = {
   render: () => (
-    <Feedback.Root>
+    <Feedback.Composite>
       <Feedback.Title>Help us improve this service</Feedback.Title>
       <Feedback.Body>
         <Body>
@@ -18,19 +18,19 @@ export const Default = {
           <Link href="/feedback">Give us your feedback</Link>
         </Body>
       </Feedback.Body>
-    </Feedback.Root>
+    </Feedback.Composite>
   ),
 };
 
-export const WithRootParts = {
+export const WithParts = {
   render: () => (
-    <Feedback.RootParts.Root>
-      <Feedback.RootParts.GridRow>
-        <Feedback.RootParts.GridColumn data-testid="feedback-column">
+    <Feedback.Root>
+      <Feedback.GridRow>
+        <Feedback.GridColumn data-testid="feedback-column">
           <Feedback.Title>Help us improve this service</Feedback.Title>
-        </Feedback.RootParts.GridColumn>
-      </Feedback.RootParts.GridRow>
-    </Feedback.RootParts.Root>
+        </Feedback.GridColumn>
+      </Feedback.GridRow>
+    </Feedback.Root>
   ),
 };
 

@@ -13,12 +13,10 @@ export function Heading({ className, children, ...props }: HeadingProps) {
 }
 
 export type LegendProps = ComponentProps<'legend'> & {
-  isPageHeading?: boolean;
   size?: 's' | 'm' | 'l' | 'xl';
 };
 
-export function Legend({ className, isPageHeading, size, children, ...props }: LegendProps) {
-  if (!hasContent(children)) return null;
+export function Legend({ className, size, children, ...props }: LegendProps) {
   return (
     <legend
       className={clsx(
@@ -28,9 +26,18 @@ export function Legend({ className, isPageHeading, size, children, ...props }: L
       )}
       {...props}
     >
-      {isPageHeading ? <Heading>{children}</Heading> : children}
+      {children}
     </legend>
   );
+}
+
+export type LegendCompositeProps = LegendProps & {
+  isPageHeading?: boolean;
+};
+
+export function LegendComposite({ isPageHeading, children, ...props }: LegendCompositeProps) {
+  if (!hasContent(children)) return null;
+  return <Legend {...props}>{isPageHeading ? <Heading>{children}</Heading> : children}</Legend>;
 }
 
 export type RootProps = ComponentProps<'fieldset'>;

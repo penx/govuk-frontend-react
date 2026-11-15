@@ -5,10 +5,10 @@ import { isSet, joinIds } from '../../utils/field';
 import { i18nAttributes } from '../../utils/i18n';
 import { FormGroup, type FormGroupProps } from '../../objects/form-group';
 import { Root as Button } from '../button';
-import { ErrorMessage } from '../error-message';
+import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
 import { Control, type ControlProps, Wrapper as InputWrapper } from '../input';
-import { Label } from '../label';
+import { LabelComposite } from '../label';
 
 export type RootProps = FormGroupProps & {
   showPasswordText?: string;
@@ -123,9 +123,9 @@ export function Field({
       passwordShownAnnouncementText={passwordShownAnnouncementText}
       passwordHiddenAnnouncementText={passwordHiddenAnnouncementText}
     >
-      <Label htmlFor={id}>{label}</Label>
+      <LabelComposite htmlFor={id}>{label}</LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
-      {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
+      {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       <Wrapper>
         <Input
           id={id}

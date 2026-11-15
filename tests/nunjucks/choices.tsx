@@ -1,5 +1,5 @@
 import type { ComponentProps, ReactNode } from 'react';
-import { ErrorMessage, Fieldset, FormGroup, Hint } from '../../src';
+import { ErrorMessageComposite, Fieldset, FormGroup, Hint } from '../../src';
 import type { HintProps } from '../../src/components/hint';
 import type { LabelProps } from '../../src/components/label';
 import {
@@ -110,7 +110,7 @@ export function choices(
   const inner = (
     <>
       {hint && <Hint id={hintId} {...hint} />}
-      {error && <ErrorMessage id={errorId} {...error} />}
+      {error && <ErrorMessageComposite id={errorId} {...error} />}
       <parts.Root className={className(options)} {...attributes(options.attributes)}>
         {beforeInputs}
         {items.map((item, index) => (item ? renderItem(item, index + 1) : null))}
@@ -133,12 +133,12 @@ export function choices(
           {...attributes(fieldset.attributes)}
         >
           {legend && (
-            <Fieldset.Legend
+            <Fieldset.LegendComposite
               className={className(legend)}
               isPageHeading={Boolean(legend.isPageHeading)}
             >
               {content(legend)}
-            </Fieldset.Legend>
+            </Fieldset.LegendComposite>
           )}
           {inner}
         </Fieldset.Root>

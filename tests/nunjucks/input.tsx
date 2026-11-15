@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ErrorMessage, FormGroup, Hint, Input, Label } from '../../src';
+import { ErrorMessageComposite, FormGroup, Hint, Input, LabelComposite } from '../../src';
 import {
   attributes,
   className,
@@ -51,9 +51,9 @@ export default function input(options: Options) {
 
   return (
     <FormGroup error={Boolean(error)} {...group}>
-      <Label htmlFor={id} {...label(options.label)} />
+      <LabelComposite htmlFor={id} {...label(options.label)} />
       {hint && <Hint id={hintId} {...hint} />}
-      {error && <ErrorMessage id={errorId} {...error} />}
+      {error && <ErrorMessageComposite id={errorId} {...error} />}
       {hasPrefix || hasSuffix || beforeInput || afterInput ? (
         <Input.Wrapper {...subcomponent(options.inputWrapper)}>
           {beforeInput}

@@ -1,4 +1,4 @@
-import { ErrorMessage, Hint, Label, PasswordInput } from '../../src';
+import { ErrorMessageComposite, Hint, LabelComposite, PasswordInput } from '../../src';
 import {
   attributes,
   className,
@@ -36,9 +36,9 @@ export default function passwordInput(options: Options) {
       className={className(group)}
       {...attributes(group.attributes)}
     >
-      <Label htmlFor={id} {...label(options.label)} />
+      <LabelComposite htmlFor={id} {...label(options.label)} />
       {hint && <Hint id={hintId} {...hint} />}
-      {error && <ErrorMessage id={errorId} {...error} />}
+      {error && <ErrorMessageComposite id={errorId} {...error} />}
       <PasswordInput.Wrapper>
         {content(group.beforeInput as Options | undefined)}
         <PasswordInput.Input

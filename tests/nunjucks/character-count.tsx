@@ -1,4 +1,4 @@
-import { CharacterCount, ErrorMessage, Hint, Label } from '../../src';
+import { CharacterCount, ErrorMessageComposite, Hint, LabelComposite } from '../../src';
 import type { Translation } from '../../src/utils/i18n';
 import {
   attributes,
@@ -46,9 +46,9 @@ export default function characterCount(options: Options) {
       className={className(group)}
       {...attributes(group.attributes)}
     >
-      <Label htmlFor={id} {...label(options.label)} />
+      <LabelComposite htmlFor={id} {...label(options.label)} />
       {hint && <Hint id={hintId} {...hint} />}
-      {error && <ErrorMessage id={errorId} {...error} />}
+      {error && <ErrorMessageComposite id={errorId} {...error} />}
       {content(group.beforeInput as Options | undefined)}
       <CharacterCount.Textarea
         id={id}

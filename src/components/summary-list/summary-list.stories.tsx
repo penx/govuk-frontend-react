@@ -15,9 +15,9 @@ export const Default = {
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Sarah Philips</SummaryList.Value>
         <SummaryList.Actions>
-          <SummaryList.Action href="/name" visuallyHiddenText="name">
+          <SummaryList.ActionComposite href="/name" visuallyHiddenText="name">
             Change
-          </SummaryList.Action>
+          </SummaryList.ActionComposite>
         </SummaryList.Actions>
       </SummaryList.Row>
     </SummaryList.Root>
@@ -30,9 +30,12 @@ export const Card = {
       <SummaryList.Card.TitleWrapper>
         <SummaryList.Card.Title>University of Gloucestershire</SummaryList.Card.Title>
         <SummaryList.Card.Actions>
-          <SummaryList.Action href="/delete" visuallyHiddenText="(University of Gloucestershire)">
+          <SummaryList.ActionComposite
+            href="/delete"
+            visuallyHiddenText="(University of Gloucestershire)"
+          >
             Delete choice
-          </SummaryList.Action>
+          </SummaryList.ActionComposite>
         </SummaryList.Card.Actions>
       </SummaryList.Card.TitleWrapper>
       <SummaryList.Card.Content>

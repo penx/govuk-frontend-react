@@ -5,9 +5,9 @@ export default function warningText(options: Options) {
   return (
     <WarningText.Root className={className(options)} {...attributes(options.attributes)}>
       <WarningText.Icon />{' '}
-      <WarningText.Text {...optional('iconFallbackText', options.iconFallbackText)}>
+      <WarningText.TextComposite {...optional('iconFallbackText', options.iconFallbackText)}>
         {content(options)}
-      </WarningText.Text>
+      </WarningText.TextComposite>
     </WarningText.Root>
   );
 }

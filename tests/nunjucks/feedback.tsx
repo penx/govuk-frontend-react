@@ -3,7 +3,7 @@ import { attributes, className, html, optional, type Options } from './helpers';
 
 export default function feedback(options: Options) {
   return (
-    <Feedback.Root className={className(options)} {...attributes(options.attributes)}>
+    <Feedback.Composite className={className(options)} {...attributes(options.attributes)}>
       <Feedback.Title {...optional('headingLevel', (options.headingLevel as 2) || undefined)}>
         {options.titleHtml ? html(options.titleHtml) : (options.titleText as string)}
       </Feedback.Title>
@@ -12,6 +12,6 @@ export default function feedback(options: Options) {
           {options.html ? html(options.html) : <Body>{String(options.text)}</Body>}
         </Feedback.Body>
       ) : null}
-    </Feedback.Root>
+    </Feedback.Composite>
   );
 }

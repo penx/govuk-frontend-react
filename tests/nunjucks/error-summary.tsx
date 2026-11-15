@@ -9,7 +9,7 @@ export default function errorSummary(options: Options) {
     ? html(options.descriptionHtml)
     : (options.descriptionText as string | undefined);
   return (
-    <ErrorSummary.Root
+    <ErrorSummary.RootComposite
       {...optional('disableAutoFocus', options.disableAutoFocus as boolean | undefined)}
       className={className(options)}
       {...attributes(options.attributes)}
@@ -38,6 +38,6 @@ export default function errorSummary(options: Options) {
           </ErrorSummary.List>
         ) : null}
       </ErrorSummary.Body>
-    </ErrorSummary.Root>
+    </ErrorSummary.RootComposite>
   );
 }

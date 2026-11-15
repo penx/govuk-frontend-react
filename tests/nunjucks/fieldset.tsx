@@ -11,12 +11,12 @@ export default function fieldset(options: Options) {
       {...attributes(options.attributes)}
     >
       {legend && (
-        <Fieldset.Legend
+        <Fieldset.LegendComposite
           className={className(legend)}
           isPageHeading={Boolean(legend.isPageHeading)}
         >
           {content(legend)}
-        </Fieldset.Legend>
+        </Fieldset.LegendComposite>
       )}
       {options.html ? html(options.html) : undefined}
     </Fieldset.Root>

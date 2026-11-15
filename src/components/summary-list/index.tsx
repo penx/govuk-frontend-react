@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 
-import * as ActionParts from './action-parts';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 
 export * as Card from './card';
 
@@ -68,19 +68,25 @@ export function ActionsListItem({ className, ...props }: ActionsListItemProps) {
   return <li className={clsx('govuk-summary-list__actions-list-item', className)} {...props} />;
 }
 
-export { ActionParts };
+export type ActionProps = ComponentProps<'a'>;
 
-export type ActionProps = ActionParts.RootProps & {
+export function Action({ className, children, ...props }: ActionProps) {
+  return (
+    <a className={clsx('govuk-link', className)} {...props}>
+      {children}
+    </a>
+  );
+}
+
+export type ActionCompositeProps = ActionProps & {
   visuallyHiddenText?: ReactNode;
 };
 
-export function Action({ visuallyHiddenText, children, ...props }: ActionProps) {
+export function ActionComposite({ visuallyHiddenText, children, ...props }: ActionCompositeProps) {
   return (
-    <ActionParts.Root {...props}>
+    <Action {...props}>
       {children}
-      {hasContent(visuallyHiddenText) && (
-        <ActionParts.VisuallyHidden> {visuallyHiddenText}</ActionParts.VisuallyHidden>
-      )}
-    </ActionParts.Root>
+      {hasContent(visuallyHiddenText) && <VisuallyHidden> {visuallyHiddenText}</VisuallyHidden>}
+    </Action>
   );
 }

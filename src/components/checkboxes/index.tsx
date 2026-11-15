@@ -2,10 +2,10 @@ import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
-import { ErrorMessage } from '../error-message';
+import { ErrorMessageComposite } from '../error-message';
 import * as Fieldset from '../fieldset';
 import { Hint as BaseHint, type HintProps as BaseHintProps } from '../hint';
-import { Label as BaseLabel, type LabelProps as BaseLabelProps } from '../label';
+import { LabelComposite as BaseLabel, type LabelCompositeProps as BaseLabelProps } from '../label';
 
 export type RootProps = ComponentProps<'div'> & { small?: boolean };
 
@@ -86,9 +86,9 @@ export function Field({
   return (
     <FormGroup error={Boolean(errorId)}>
       <Fieldset.Root aria-describedby={joinIds(describedBy, hintId, errorId)}>
-        <Fieldset.Legend>{legend}</Fieldset.Legend>
+        <Fieldset.LegendComposite>{legend}</Fieldset.LegendComposite>
         {hintId && <BaseHint id={hintId}>{hint}</BaseHint>}
-        {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
+        {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
         <Root {...props} />
       </Fieldset.Root>
     </FormGroup>

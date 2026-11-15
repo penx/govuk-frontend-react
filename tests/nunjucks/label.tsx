@@ -1,15 +1,15 @@
-import { Label } from '../../src';
+import { LabelComposite } from '../../src';
 import { attributes, className, content, optional, type Options } from './helpers';
 
 export default function label(options: Options) {
   return (
-    <Label
+    <LabelComposite
       className={className(options)}
       {...attributes(options.attributes)}
       {...optional('htmlFor', options.for)}
       isPageHeading={Boolean(options.isPageHeading)}
     >
       {content(options)}
-    </Label>
+    </LabelComposite>
   );
 }

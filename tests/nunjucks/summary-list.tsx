@@ -13,14 +13,14 @@ function action(item: Options, cardTitle: Options | undefined) {
     hidden.push('(', content(cardTitle), ')');
   }
   return (
-    <SummaryList.Action
+    <SummaryList.ActionComposite
       href={String(item.href ?? '')}
       className={className(item)}
       visuallyHiddenText={hidden.length ? <>{hidden}</> : undefined}
       {...attributes(item.attributes)}
     >
       {content(item)}
-    </SummaryList.Action>
+    </SummaryList.ActionComposite>
   );
 }
 

@@ -14,7 +14,7 @@ export default { title: 'Cookie banner', component: CookieBanner.Root } satisfie
 export const Default = {
   render: () => (
     <CookieBanner.Root>
-      <CookieBanner.Message
+      <CookieBanner.MessageComposite
         heading="Cookies on this government service"
         actions={
           <>
@@ -29,7 +29,7 @@ export const Default = {
         }
       >
         <Body>We use analytics cookies to help understand how users use our service.</Body>
-      </CookieBanner.Message>
+      </CookieBanner.MessageComposite>
     </CookieBanner.Root>
   ),
 };
