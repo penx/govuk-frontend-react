@@ -124,3 +124,32 @@ export function SectionComposite({
     </Section>
   );
 }
+
+export type CompositeProps = Omit<RootProps, 'id' | 'children'> &
+  Pick<SectionHeadingProps, 'headingLevel'> & { id: string } & (
+    | { children?: ReactNode; sections?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        sections: Omit<SectionCompositeProps, 'accordionId' | 'index' | 'headingLevel'>[];
+      }
+  );
+
+/** Children are `SectionComposite`s. With `sections`, it fills in their ids and heading level. */
+export function Composite({ id, headingLevel, sections, children, ...props }: CompositeProps) {
+  return (
+    <Root id={id} {...props}>
+      {sections
+        ? sections.map((section, index) => (
+            <SectionComposite
+              key={index}
+              accordionId={id}
+              index={index + 1}
+              headingLevel={headingLevel}
+              {...section}
+            />
+          ))
+        : children}
+    </Root>
+  );
+}

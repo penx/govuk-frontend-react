@@ -57,27 +57,44 @@ export function ListItem(props: ListItemProps) {
   return <li {...props} />;
 }
 
+/** The link to the field with the error. */
+export const ListItemLink = 'a';
+
 export type ListItemCompositeProps = ListItemProps & { href?: string };
 
 /** Links to the field with the error when there's an `href`. */
 export function ListItemComposite({ href, children, ...props }: ListItemCompositeProps) {
-  return <ListItem {...props}>{href ? <a href={href}>{children}</a> : children}</ListItem>;
+  return (
+    <ListItem {...props}>
+      {href ? <ListItemLink href={href}>{children}</ListItemLink> : children}
+    </ListItem>
+  );
 }
 
-export type CompositeProps = Omit<RootProps, 'title'> & {
+export type CompositeProps = Omit<RootProps, 'title' | 'children'> & {
   title: ReactNode;
   description?: ReactNode;
-};
+} & (
+    | { children?: ReactNode; errors?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        errors: ListItemCompositeProps[];
+      }
+  );
 
 /** Children are `ListItemComposite`s. */
-export function Composite({ title, description, children, ...props }: CompositeProps) {
+export function Composite({ title, description, errors, children, ...props }: CompositeProps) {
+  const list = errors
+    ? errors.map((item, index) => <ListItemComposite key={index} {...item} />)
+    : children;
   return (
     <Root {...props}>
       <Alert>
         <Title>{title}</Title>
         <Body>
           {hasContent(description) && <Description>{description}</Description>}
-          {hasContent(children) && <List>{children}</List>}
+          {hasContent(list) && <List>{list}</List>}
         </Body>
       </Alert>
     </Root>

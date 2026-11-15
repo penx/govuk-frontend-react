@@ -119,3 +119,27 @@ export function RowComposite({ term, value, actions = [], ...props }: RowComposi
     </Row>
   );
 }
+
+export type CompositeProps = Omit<RootProps, 'children'> &
+  (
+    | { children?: ReactNode; rows?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        rows: RowCompositeProps[];
+      }
+  );
+
+/** Children are `RowComposite`s. With `rows`, rows without actions get `noActions` when others have them. */
+export function Composite({ rows, children, ...props }: CompositeProps) {
+  const anyActions = rows?.some((row) => row.actions?.length);
+  return (
+    <Root {...props}>
+      {rows
+        ? rows.map((row, index) => (
+            <RowComposite key={index} noActions={anyActions && !row.actions?.length} {...row} />
+          ))
+        : children}
+    </Root>
+  );
+}

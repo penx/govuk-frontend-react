@@ -107,12 +107,21 @@ export function ItemComposite({
   );
 }
 
-export type FieldProps = RootProps & {
+export type FieldProps = Omit<RootProps, 'children'> & {
   idPrefix: string;
   legend: ReactNode;
   hint?: ReactNode;
   errorMessage?: ReactNode;
-};
+} & (
+    | { children?: ReactNode; items?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        items: (ItemCompositeProps | { divider: ReactNode })[];
+      }
+  );
+
+/** Children are `ItemComposite`s and `Divider`s. */
 
 export function Field({
   idPrefix,
@@ -120,6 +129,8 @@ export function Field({
   hint,
   errorMessage,
   'aria-describedby': describedBy,
+  items,
+  children,
   ...props
 }: FieldProps) {
   const hintId = isSet(hint) ? `${idPrefix}-hint` : undefined;
@@ -130,7 +141,17 @@ export function Field({
         <Fieldset.LegendComposite>{legend}</Fieldset.LegendComposite>
         {hintId && <BaseHint id={hintId}>{hint}</BaseHint>}
         {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
-        <Root {...props} />
+        <Root {...props}>
+          {items
+            ? items.map((item, index) =>
+                'divider' in item ? (
+                  <Divider key={index}>{item.divider}</Divider>
+                ) : (
+                  <ItemComposite key={index} {...item} />
+                ),
+              )
+            : children}
+        </Root>
       </Fieldset.Root>
     </FormGroup>
   );
