@@ -8,6 +8,7 @@ import hint from './hint';
 import input from './input';
 import insetText from './inset-text';
 import label from './label';
+import panel from './panel';
 import select from './select';
 import tag from './tag';
 import textarea from './textarea';
@@ -22,6 +23,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   input,
   'inset-text': insetText,
   label,
+  panel,
   select,
   tag,
   textarea,

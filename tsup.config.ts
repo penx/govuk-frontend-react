@@ -11,6 +11,8 @@ export default defineConfig({
     input: 'src/components/input/index.tsx',
     'inset-text': 'src/components/inset-text/index.tsx',
     label: 'src/components/label/index.tsx',
+    panel: 'src/components/panel/index.tsx',
+    'button-group': 'src/objects/button-group/index.tsx',
     select: 'src/components/select/index.tsx',
     tag: 'src/components/tag/index.tsx',
     textarea: 'src/components/textarea/index.tsx',
