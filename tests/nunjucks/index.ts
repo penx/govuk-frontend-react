@@ -15,6 +15,7 @@ import label from './label';
 import panel from './panel';
 import phaseBanner from './phase-banner';
 import select from './select';
+import skipLink from './skip-link';
 import summaryList from './summary-list';
 import table from './table';
 import tag from './tag';
@@ -37,6 +38,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   panel,
   'phase-banner': phaseBanner,
   select,
+  'skip-link': skipLink,
   'summary-list': summaryList,
   table,
   tag,
