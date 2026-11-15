@@ -24,6 +24,7 @@ import pagination from './pagination';
 import panel from './panel';
 import passwordInput from './password-input';
 import phaseBanner from './phase-banner';
+import radios from './radios';
 import select from './select';
 import skipLink from './skip-link';
 import summaryList from './summary-list';
@@ -59,6 +60,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   panel,
   'password-input': passwordInput,
   'phase-banner': phaseBanner,
+  radios,
   select,
   'skip-link': skipLink,
   'summary-list': summaryList,
