@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/pagination/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/pagination';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 import * as Pagination from '.';
 
 export default { title: 'Pagination', component: Pagination.Root } satisfies Meta<
@@ -45,14 +46,14 @@ export const WithLabels = {
       <Pagination.Previous>
         <Pagination.PreviousLink href="/previous">
           <Pagination.PreviousIcon /> <Pagination.LinkTitle>Previous page</Pagination.LinkTitle>{' '}
-          <span className="govuk-visually-hidden">:</span>{' '}
+          <VisuallyHidden>:</VisuallyHidden>{' '}
           <Pagination.LinkLabel>Paying VAT and duty</Pagination.LinkLabel>
         </Pagination.PreviousLink>
       </Pagination.Previous>
       <Pagination.Next>
         <Pagination.NextLink href="/next">
           <Pagination.NextIcon /> <Pagination.LinkTitle>Next page</Pagination.LinkTitle>{' '}
-          <span className="govuk-visually-hidden">:</span>{' '}
+          <VisuallyHidden>:</VisuallyHidden>{' '}
           <Pagination.LinkLabel>Registering an imported vehicle</Pagination.LinkLabel>
         </Pagination.NextLink>
       </Pagination.Next>
