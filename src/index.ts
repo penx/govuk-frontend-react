@@ -3,6 +3,7 @@ export * as Breadcrumbs from './components/breadcrumbs';
 export * as Button from './components/button';
 export * as Details from './components/details';
 export * from './components/error-message';
+export * as ErrorSummary from './components/error-summary';
 export * as Fieldset from './components/fieldset';
 export * as Footer from './components/footer';
 export * as GenericHeader from './components/generic-header';
