@@ -156,6 +156,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Details             | 10/10            |
 | Error message       | 9/9              |
 | Error summary       | 19/19            |
+| Exit this page      | 4/4              |
 | Feedback            | 7/7              |
 | Fieldset            | 18/18            |
 | File upload         | 22/22            |
@@ -183,7 +184,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
-The other 11 govuk-frontend components are planned.
+The other 10 govuk-frontend components are planned.
 
 ## Development
 

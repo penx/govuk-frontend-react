@@ -15,6 +15,7 @@ export * as DateInput from './components/date-input';
 export * as Details from './components/details';
 export * from './components/error-message';
 export * as ErrorSummary from './components/error-summary';
+export * as ExitThisPage from './components/exit-this-page';
 export * as Feedback from './components/feedback';
 export * as Fieldset from './components/fieldset';
 export * as FileUpload from './components/file-upload';

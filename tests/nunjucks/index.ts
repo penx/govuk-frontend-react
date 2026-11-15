@@ -11,6 +11,7 @@ import dateInput from './date-input';
 import details from './details';
 import errorMessage from './error-message';
 import errorSummary from './error-summary';
+import exitThisPage from './exit-this-page';
 import feedback from './feedback';
 import fieldset from './fieldset';
 import fileUpload from './file-upload';
@@ -50,6 +51,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   details,
   'error-message': errorMessage,
   'error-summary': errorSummary,
+  'exit-this-page': exitThisPage,
   feedback,
   fieldset,
   'file-upload': fileUpload,
