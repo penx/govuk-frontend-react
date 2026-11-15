@@ -1,5 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'ul'>;
 
@@ -56,5 +57,45 @@ export function Status({ cannotStartYet, className, ...props }: StatusProps) {
       )}
       {...props}
     />
+  );
+}
+
+export type ItemCompositeProps = Omit<ItemProps, 'title' | 'withLink'> & {
+  id: string;
+  title: ReactNode;
+  href?: string;
+  hint?: ReactNode;
+  status: ReactNode;
+  cannotStartYet?: boolean;
+};
+
+/** `id` prefixes the hint and status ids. */
+export function ItemComposite({
+  id,
+  title,
+  href,
+  hint,
+  status,
+  cannotStartYet,
+  ...props
+}: ItemCompositeProps) {
+  const hintId = hasContent(hint) ? `${id}-hint` : undefined;
+  const statusId = `${id}-status`;
+  return (
+    <Item withLink={Boolean(href)} {...props}>
+      <NameAndHint>
+        {href ? (
+          <Link href={href} aria-describedby={hintId ? `${hintId} ${statusId}` : statusId}>
+            {title}
+          </Link>
+        ) : (
+          <div>{title}</div>
+        )}
+        {hintId && <Hint id={hintId}>{hint}</Hint>}
+      </NameAndHint>
+      <Status id={statusId} cannotStartYet={cannotStartYet}>
+        {status}
+      </Status>
+    </Item>
   );
 }

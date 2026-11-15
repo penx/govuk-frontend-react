@@ -1,5 +1,7 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { hasContent } from '../../utils/has-content';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 
 export type RootProps = ComponentProps<'nav'> & { inverse?: boolean };
 
@@ -59,5 +61,44 @@ export function Link({ lang, hrefLang, className, children, ...props }: LinkProp
     >
       {children}
     </a>
+  );
+}
+
+export type ItemCompositeProps = Omit<LinkProps, 'href'> & {
+  href?: string;
+  current?: boolean;
+  languageDescription?: ReactNode;
+};
+
+/** A link to the page in another language, or the current language when `current` or there's no `href`. */
+export function ItemComposite({
+  href,
+  current,
+  languageDescription,
+  hrefLang,
+  children,
+  ...props
+}: ItemCompositeProps) {
+  return (
+    <ListItem>
+      {current || !href ? (
+        <Text {...(props as TextProps)}>{children}</Text>
+      ) : (
+        <Link href={href} hrefLang={hrefLang} {...props}>
+          {children}
+          {hasContent(languageDescription) && (
+            <VisuallyHidden> {languageDescription}</VisuallyHidden>
+          )}
+        </Link>
+      )}
+    </ListItem>
+  );
+}
+
+export function Composite({ children, ...props }: RootProps) {
+  return (
+    <Root {...props}>
+      <List>{children}</List>
+    </Root>
   );
 }
