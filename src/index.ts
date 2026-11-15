@@ -4,6 +4,7 @@ export * from './components/error-message';
 export * as Fieldset from './components/fieldset';
 export * from './components/hint';
 export * as Input from './components/input';
+export * from './components/inset-text';
 export * from './components/label';
 export * as Select from './components/select';
 export * as Textarea from './components/textarea';
