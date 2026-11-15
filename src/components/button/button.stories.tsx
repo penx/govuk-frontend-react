@@ -37,7 +37,13 @@ export const WithHrefAndRole: Story = {
 
 export const WithType: Story = { args: { type: 'button', children: 'Button with type' } };
 
-export const Start: Story = { args: { start: true, href: '#', children: 'Start now' } };
+export const Start: Story = {
+  render: () => (
+    <Button.Composite href="#" start>
+      Start now
+    </Button.Composite>
+  ),
+};
 
 export const WithReactRouter: Story = {
   render: () => (

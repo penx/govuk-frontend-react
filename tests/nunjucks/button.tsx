@@ -2,6 +2,7 @@ import { Button } from '../../src';
 import { attributes, className, content, optional, type Options } from './helpers';
 
 export default function button(options: Options) {
+  const children = content(options);
   return (
     <Button.Root
       {...optional('href', options.href || undefined)}
@@ -15,7 +16,18 @@ export default function button(options: Options) {
       className={className(options)}
       {...attributes(options.attributes)}
     >
-      {content(options)}
+      {options.isStartButton ? (
+        <>
+          {typeof children === 'string' || children === undefined ? (
+            children
+          ) : (
+            <span>{children}</span>
+          )}{' '}
+          <Button.StartIcon />
+        </>
+      ) : (
+        children
+      )}
     </Button.Root>
   );
 }

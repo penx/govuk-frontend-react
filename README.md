@@ -36,7 +36,7 @@ import { Button, Fieldset, Label, Hint, ErrorMessageComposite } from 'govuk-fron
 </Fieldset.Root>
 
 <Button.Root variant="secondary">Save as draft</Button.Root>
-<Button.Root href="/start" start>Start now</Button.Root>
+<Button.Composite href="/start" start>Start now</Button.Composite>
 ```
 
 Each component is also its own module:

@@ -1,4 +1,5 @@
 import type { CompositeMapping } from './helpers';
+import button from './button';
 import characterCount from './character-count';
 import checkboxes from './checkboxes';
 import dateInput from './date-input';
@@ -10,6 +11,7 @@ import fileUpload from './file-upload';
 import input from './input';
 import label from './label';
 import notificationBanner from './notification-banner';
+import pagination from './pagination';
 import panel from './panel';
 import passwordInput from './password-input';
 import phaseBanner from './phase-banner';
@@ -19,6 +21,7 @@ import textarea from './textarea';
 import warningText from './warning-text';
 
 export const compositeMappings: Record<string, CompositeMapping> = {
+  button,
   'character-count': characterCount,
   checkboxes,
   'date-input': dateInput,
@@ -30,6 +33,7 @@ export const compositeMappings: Record<string, CompositeMapping> = {
   input,
   label,
   'notification-banner': notificationBanner,
+  pagination,
   panel,
   'password-input': passwordInput,
   'phase-banner': phaseBanner,

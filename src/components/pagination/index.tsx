@@ -1,6 +1,7 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
+import { VisuallyHidden } from '../../utilities/visually-hidden';
 
 export type RootProps = ComponentProps<'nav'> & { block?: boolean };
 
@@ -97,28 +98,28 @@ export function LinkTitle({ decorated, className, ...props }: LinkTitleProps) {
   );
 }
 
-export function PreviousLinkTitle({ children, ...props }: LinkTitleProps) {
+export function PreviousLinkTitleComposite({ children, ...props }: LinkTitleProps) {
   return (
     <LinkTitle {...props}>
       {hasContent(children) ? (
         children
       ) : (
         <>
-          Previous<span className="govuk-visually-hidden"> page</span>
+          Previous<VisuallyHidden> page</VisuallyHidden>
         </>
       )}
     </LinkTitle>
   );
 }
 
-export function NextLinkTitle({ children, ...props }: LinkTitleProps) {
+export function NextLinkTitleComposite({ children, ...props }: LinkTitleProps) {
   return (
     <LinkTitle {...props}>
       {hasContent(children) ? (
         children
       ) : (
         <>
-          Next<span className="govuk-visually-hidden"> page</span>
+          Next<VisuallyHidden> page</VisuallyHidden>
         </>
       )}
     </LinkTitle>
@@ -165,5 +166,87 @@ export function ItemLink({ children, ...props }: LinkProps) {
     >
       {children}
     </Link>
+  );
+}
+
+export type ItemCompositeProps = Omit<LinkProps, 'children'> & {
+  number: string | number;
+  current?: boolean;
+};
+
+export function ItemComposite({ number, current, ...props }: ItemCompositeProps) {
+  return (
+    <Item current={current}>
+      <ItemLink {...(current && { 'aria-current': 'page' as const })} {...props}>
+        {number}
+      </ItemLink>
+    </Item>
+  );
+}
+
+export type CompositeProps = RootProps & {
+  previousHref?: string;
+  previousText?: ReactNode;
+  previousLabel?: ReactNode;
+  nextHref?: string;
+  nextText?: ReactNode;
+  nextLabel?: ReactNode;
+};
+
+export function Composite({
+  previousHref,
+  previousText,
+  previousLabel,
+  nextHref,
+  nextText,
+  nextLabel,
+  children,
+  ...props
+}: CompositeProps) {
+  const list = hasContent(children);
+  const block = !list && Boolean(previousHref || nextHref);
+  const label = (text: ReactNode) =>
+    block && hasContent(text) ? (
+      <>
+        {' '}
+        <VisuallyHidden>:</VisuallyHidden> <LinkLabel>{text}</LinkLabel>
+      </>
+    ) : null;
+  return (
+    <Root block={block} {...props}>
+      {previousHref && (
+        <Previous>
+          <PreviousLink href={previousHref}>
+            <PreviousIcon />{' '}
+            <PreviousLinkTitleComposite decorated={block && !hasContent(previousLabel)}>
+              {previousText}
+            </PreviousLinkTitleComposite>
+            {label(previousLabel)}
+          </PreviousLink>
+        </Previous>
+      )}
+      {list && <List>{children}</List>}
+      {nextHref && (
+        <Next>
+          <NextLink href={nextHref}>
+            {block && (
+              <>
+                <NextIcon />{' '}
+              </>
+            )}
+            <NextLinkTitleComposite decorated={block && !hasContent(nextLabel)}>
+              {nextText}
+            </NextLinkTitleComposite>
+            {label(nextLabel)}
+            {!block && (
+              <>
+                {' '}
+                <NextIcon />
+              </>
+            )}
+          </NextLink>
+        </Next>
+      )}
+    </Root>
   );
 }

@@ -14,7 +14,7 @@ export const Default = {
     <Pagination.Root>
       <Pagination.Previous>
         <Pagination.PreviousLink href="/previous">
-          <Pagination.PreviousIcon /> <Pagination.PreviousLinkTitle />
+          <Pagination.PreviousIcon /> <Pagination.PreviousLinkTitleComposite />
         </Pagination.PreviousLink>
       </Pagination.Previous>
       <Pagination.List>
@@ -33,7 +33,7 @@ export const Default = {
       </Pagination.List>
       <Pagination.Next>
         <Pagination.NextLink href="/next">
-          <Pagination.NextLinkTitle /> <Pagination.NextIcon />
+          <Pagination.NextLinkTitleComposite /> <Pagination.NextIcon />
         </Pagination.NextLink>
       </Pagination.Next>
     </Pagination.Root>
