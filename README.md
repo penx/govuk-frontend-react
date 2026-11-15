@@ -50,7 +50,7 @@ The package is ES modules only.
 
 ## Design principles
 
-1. **A faithful port.** Every component renders the same HTML as govuk-frontend's Nunjucks macro and keeps its behaviour, even where React would usually do it differently. For example, a form control's `id` falls back to its `name`. Anything a component derives can be overridden with an explicit prop or by composing the parts, so [govuk-react](https://github.com/govuk-react/govuk-react) can change the behaviour without forking.
+1. **A faithful port.** Every component renders the same HTML as govuk-frontend's Nunjucks macro and keeps its behaviour, even where React developers may expect a different pattern. For example, a form control's `id` falls back to its `name`. Anything a component derives can be overridden with an explicit prop or by composing the parts, so [govuk-react](https://github.com/govuk-react/govuk-react) can change the behaviour without forking.
 2. **Compose parts, don't configure them.** A prop never takes an object that is spread onto another part; the part is exported and you compose it instead. Props that take content, such as `label` on a `Field`, are fine.
 3. **ES modules all the way down.** The package is ESM only. A component with several parts is a module of named exports (`Input.Control`, `Fieldset.Legend`), and components are never attached to other components as properties.
 4. **`Root` means the outermost part.** It exists only when the other parts sit inside it. A single-part component is named after itself (`Label`), a form control's element is `Control`, and `Field` is the shorthand that renders the whole field.
