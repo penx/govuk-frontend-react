@@ -10,6 +10,7 @@ import errorMessage from './error-message';
 import errorSummary from './error-summary';
 import feedback from './feedback';
 import fieldset from './fieldset';
+import fileUpload from './file-upload';
 import footer from './footer';
 import genericHeader from './generic-header';
 import header from './header';
@@ -43,6 +44,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'error-summary': errorSummary,
   feedback,
   fieldset,
+  'file-upload': fileUpload,
   footer,
   'generic-header': genericHeader,
   header,
