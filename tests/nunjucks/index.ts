@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import type { Options } from './helpers';
+import accordion from './accordion';
 import backLink from './back-link';
 import breadcrumbs from './breadcrumbs';
 import button from './button';
@@ -28,6 +29,7 @@ import textarea from './textarea';
 import warningText from './warning-text';
 
 export const mappings: Record<string, (options: Options) => ReactElement> = {
+  accordion,
   'back-link': backLink,
   breadcrumbs,
   button,
