@@ -6,6 +6,7 @@ import button from './button';
 import details from './details';
 import errorMessage from './error-message';
 import fieldset from './fieldset';
+import footer from './footer';
 import hint from './hint';
 import input from './input';
 import insetText from './inset-text';
@@ -26,6 +27,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   details,
   'error-message': errorMessage,
   fieldset,
+  footer,
   hint,
   input,
   'inset-text': insetText,

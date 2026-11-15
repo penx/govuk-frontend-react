@@ -25,6 +25,15 @@ describe('normaliseHtml', () => {
     );
   });
 
+  test('ignores whitespace between SVG shapes', () => {
+    expect(normaliseHtml('<svg><g>\n  <circle/>\n  <path/>\n</g></svg>')).toBe(
+      normaliseHtml('<svg><g><circle></circle><path></path></g></svg>'),
+    );
+    expect(normaliseHtml('<span><svg></svg> <span>Licence</span></span>')).not.toBe(
+      normaliseHtml('<span><svg></svg><span>Licence</span></span>'),
+    );
+  });
+
   test('ignores formatting in inline styles', () => {
     expect(normaliseHtml('<p style="white-space: nowrap;"></p>')).toBe(
       normaliseHtml('<p style="white-space:nowrap"></p>'),
