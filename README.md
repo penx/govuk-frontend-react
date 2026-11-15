@@ -141,40 +141,41 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 
 ## Status
 
-| Component      | Fixtures passing |
-| -------------- | ---------------- |
-| Accordion      | 13/13            |
-| Back link      | 7/7              |
-| Breadcrumbs    | 12/12            |
-| Button         | 38/38            |
-| Checkboxes     | 42/42            |
-| Details        | 10/10            |
-| Error message  | 9/9              |
-| Error summary  | 19/19            |
-| Feedback       | 7/7              |
-| Fieldset       | 18/18            |
-| Footer         | 25/25            |
-| Generic header | 7/7              |
-| Header         | 6/6              |
-| Hint           | 6/6              |
-| Input          | 45/45            |
-| Inset text     | 6/6              |
-| Label          | 17/17            |
-| Pagination     | 15/15            |
-| Panel          | 18/19            |
-| Password input | 12/12            |
-| Phase banner   | 7/7              |
-| Select         | 19/19            |
-| Skip link      | 9/9              |
-| Summary list   | 30/30            |
-| Table          | 21/21            |
-| Tabs           | 14/14            |
-| Tag            | 12/12            |
-| Task list      | 11/11            |
-| Textarea       | 18/18            |
-| Warning text   | 8/8              |
+| Component           | Fixtures passing |
+| ------------------- | ---------------- |
+| Accordion           | 13/13            |
+| Back link           | 7/7              |
+| Breadcrumbs         | 12/12            |
+| Button              | 38/38            |
+| Checkboxes          | 42/42            |
+| Details             | 10/10            |
+| Error message       | 9/9              |
+| Error summary       | 19/19            |
+| Feedback            | 7/7              |
+| Fieldset            | 18/18            |
+| Footer              | 25/25            |
+| Generic header      | 7/7              |
+| Header              | 6/6              |
+| Hint                | 6/6              |
+| Input               | 45/45            |
+| Inset text          | 6/6              |
+| Label               | 17/17            |
+| Notification banner | 21/21            |
+| Pagination          | 15/15            |
+| Panel               | 18/19            |
+| Password input      | 12/12            |
+| Phase banner        | 7/7              |
+| Select              | 19/19            |
+| Skip link           | 9/9              |
+| Summary list        | 30/30            |
+| Table               | 21/21            |
+| Tabs                | 14/14            |
+| Tag                 | 12/12            |
+| Task list           | 11/11            |
+| Textarea            | 18/18            |
+| Warning text        | 8/8              |
 
-The other 14 govuk-frontend components are planned.
+The other 13 govuk-frontend components are planned.
 
 ## Development
 
