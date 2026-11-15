@@ -8,6 +8,7 @@ export * as Accordion from './components/accordion';
 export * from './components/back-link';
 export * as Breadcrumbs from './components/breadcrumbs';
 export * as Button from './components/button';
+export * as Checkboxes from './components/checkboxes';
 export * as Details from './components/details';
 export * from './components/error-message';
 export * as ErrorSummary from './components/error-summary';
