@@ -22,6 +22,7 @@ import select from './select';
 import skipLink from './skip-link';
 import summaryList from './summary-list';
 import table from './table';
+import tabs from './tabs';
 import tag from './tag';
 import taskList from './task-list';
 import textarea from './textarea';
@@ -50,6 +51,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'skip-link': skipLink,
   'summary-list': summaryList,
   table,
+  tabs,
   tag,
   'task-list': taskList,
   textarea,

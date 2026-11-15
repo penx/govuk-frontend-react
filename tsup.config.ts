@@ -31,6 +31,7 @@ export default defineConfig({
     'skip-link': 'src/components/skip-link/index.tsx',
     'summary-list': 'src/components/summary-list/index.tsx',
     table: 'src/components/table/index.tsx',
+    tabs: 'src/components/tabs/index.tsx',
     tag: 'src/components/tag/index.tsx',
     'task-list': 'src/components/task-list/index.tsx',
     textarea: 'src/components/textarea/index.tsx',
