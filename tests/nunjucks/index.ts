@@ -6,6 +6,7 @@ import breadcrumbs from './breadcrumbs';
 import button from './button';
 import characterCount from './character-count';
 import checkboxes from './checkboxes';
+import cookieBanner from './cookie-banner';
 import details from './details';
 import errorMessage from './error-message';
 import errorSummary from './error-summary';
@@ -42,6 +43,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   button,
   'character-count': characterCount,
   checkboxes,
+  'cookie-banner': cookieBanner,
   details,
   'error-message': errorMessage,
   'error-summary': errorSummary,

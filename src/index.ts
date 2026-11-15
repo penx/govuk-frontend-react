@@ -10,6 +10,7 @@ export * as Breadcrumbs from './components/breadcrumbs';
 export * as Button from './components/button';
 export * as CharacterCount from './components/character-count';
 export * as Checkboxes from './components/checkboxes';
+export * as CookieBanner from './components/cookie-banner';
 export * as Details from './components/details';
 export * from './components/error-message';
 export * as ErrorSummary from './components/error-summary';
