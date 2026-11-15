@@ -49,7 +49,7 @@ export default function select(options: Options) {
       {hint && <Hint id={hintId} {...hint} />}
       {error && <ErrorMessage id={errorId} {...error} />}
       {beforeInput}
-      <Select.Root
+      <Select.Control
         {...optional('id', id)}
         {...optional('name', options.name)}
         {...optional('defaultValue', selectedValue(items, options.value))}
@@ -69,7 +69,7 @@ export default function select(options: Options) {
             {item.text}
           </option>
         ))}
-      </Select.Root>
+      </Select.Control>
       {afterInput}
     </FormGroup>
   );
