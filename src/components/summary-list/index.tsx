@@ -2,6 +2,8 @@ import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 
+import * as ActionParts from './action-parts';
+
 export * as Card from './card';
 
 export type RootProps = ComponentProps<'dl'> & {
@@ -66,17 +68,19 @@ export function ActionsListItem({ className, ...props }: ActionsListItemProps) {
   return <li className={clsx('govuk-summary-list__actions-list-item', className)} {...props} />;
 }
 
-export type ActionProps = ComponentProps<'a'> & {
+export { ActionParts };
+
+export type ActionProps = ActionParts.RootProps & {
   visuallyHiddenText?: ReactNode;
 };
 
-export function Action({ className, visuallyHiddenText, children, ...props }: ActionProps) {
+export function Action({ visuallyHiddenText, children, ...props }: ActionProps) {
   return (
-    <a className={clsx('govuk-link', className)} {...props}>
+    <ActionParts.Root {...props}>
       {children}
       {hasContent(visuallyHiddenText) && (
-        <span className="govuk-visually-hidden"> {visuallyHiddenText}</span>
+        <ActionParts.VisuallyHidden> {visuallyHiddenText}</ActionParts.VisuallyHidden>
       )}
-    </a>
+    </ActionParts.Root>
   );
 }
