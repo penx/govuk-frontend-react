@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 
 export type RootProps = ComponentProps<'div'> & { disableAutoFocus?: boolean };
 
-export function Root({ disableAutoFocus, className, ...props }: RootProps) {
+export function Root({ disableAutoFocus, className, children, ...props }: RootProps) {
   return (
     <div
       className={clsx('govuk-error-summary', className)}
@@ -12,14 +12,10 @@ export function Root({ disableAutoFocus, className, ...props }: RootProps) {
       })}
       data-module="govuk-error-summary"
       {...props}
-    />
+    >
+      <div role="alert">{children}</div>
+    </div>
   );
-}
-
-export type AlertProps = ComponentProps<'div'>;
-
-export function Alert(props: AlertProps) {
-  return <div role="alert" {...props} />;
 }
 
 export type TitleProps = ComponentProps<'h2'>;
