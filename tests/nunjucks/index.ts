@@ -4,6 +4,7 @@ import accordion from './accordion';
 import backLink from './back-link';
 import breadcrumbs from './breadcrumbs';
 import button from './button';
+import characterCount from './character-count';
 import checkboxes from './checkboxes';
 import details from './details';
 import errorMessage from './error-message';
@@ -37,6 +38,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'back-link': backLink,
   breadcrumbs,
   button,
+  'character-count': characterCount,
   checkboxes,
   details,
   'error-message': errorMessage,
