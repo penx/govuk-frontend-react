@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { hasContent } from '../../utils/is-props-object';
+import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessage } from '../error-message';
