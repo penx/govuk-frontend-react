@@ -26,6 +26,7 @@ export default defineConfig({
     input: 'src/components/input/index.tsx',
     'inset-text': 'src/components/inset-text/index.tsx',
     label: 'src/components/label/index.tsx',
+    'language-navigation': 'src/components/language-navigation/index.tsx',
     'notification-banner': 'src/components/notification-banner/index.tsx',
     pagination: 'src/components/pagination/index.tsx',
     panel: 'src/components/panel/index.tsx',
