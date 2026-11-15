@@ -16,6 +16,7 @@ export * as Select from './components/select';
 export * as SummaryList from './components/summary-list';
 export * as Table from './components/table';
 export * from './components/tag';
+export * as TaskList from './components/task-list';
 export * as Textarea from './components/textarea';
 export * as WarningText from './components/warning-text';
 export * from './objects/button-group';
