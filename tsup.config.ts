@@ -18,6 +18,7 @@ export default defineConfig({
     panel: 'src/components/panel/index.tsx',
     'phase-banner': 'src/components/phase-banner/index.tsx',
     select: 'src/components/select/index.tsx',
+    'skip-link': 'src/components/skip-link/index.tsx',
     'summary-list': 'src/components/summary-list/index.tsx',
     table: 'src/components/table/index.tsx',
     tag: 'src/components/tag/index.tsx',

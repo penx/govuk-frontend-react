@@ -13,6 +13,7 @@ export * from './components/label';
 export * as Panel from './components/panel';
 export * as PhaseBanner from './components/phase-banner';
 export * as Select from './components/select';
+export * from './components/skip-link';
 export * as SummaryList from './components/summary-list';
 export * as Table from './components/table';
 export * from './components/tag';
