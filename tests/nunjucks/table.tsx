@@ -20,16 +20,15 @@ export default function table(options: Options) {
         <Table.Head>
           <Table.Row>
             {head.map((item, index) => (
-              <Table.Header
+              <Table.ColumnHeader
                 key={index}
-                scope="col"
                 numeric={item.format === 'numeric'}
                 className={className(item)}
                 {...spans(item)}
                 {...attributes(item.attributes)}
               >
                 {content(item)}
-              </Table.Header>
+              </Table.ColumnHeader>
             ))}
           </Table.Row>
         </Table.Head>
@@ -40,15 +39,14 @@ export default function table(options: Options) {
             <Table.Row key={rowIndex}>
               {row.map((cell, index) =>
                 index === 0 && options.firstCellIsHeader ? (
-                  <Table.Header
+                  <Table.RowHeader
                     key={index}
-                    scope="row"
                     className={className(cell)}
                     {...spans(cell)}
                     {...attributes(cell.attributes)}
                   >
                     {content(cell)}
-                  </Table.Header>
+                  </Table.RowHeader>
                 ) : (
                   <Table.Cell
                     key={index}

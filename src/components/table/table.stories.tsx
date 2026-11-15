@@ -12,15 +12,13 @@ export const Default = {
       <Table.Caption size="m">Dates and amounts</Table.Caption>
       <Table.Head>
         <Table.Row>
-          <Table.Header scope="col">Date</Table.Header>
-          <Table.Header scope="col" numeric>
-            Amount
-          </Table.Header>
+          <Table.ColumnHeader>Date</Table.ColumnHeader>
+          <Table.ColumnHeader numeric>Amount</Table.ColumnHeader>
         </Table.Row>
       </Table.Head>
       <Table.Body>
         <Table.Row>
-          <Table.Header scope="row">First 6 weeks</Table.Header>
+          <Table.RowHeader>First 6 weeks</Table.RowHeader>
           <Table.Cell numeric>£109.80 per week</Table.Cell>
         </Table.Row>
       </Table.Body>
