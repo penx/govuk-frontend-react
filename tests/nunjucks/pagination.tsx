@@ -1,4 +1,4 @@
-import { Pagination } from '../../src';
+import { Pagination, VisuallyHidden } from '../../src';
 import { attributes, className, html, optional, type Options } from './helpers';
 
 type Link = Options & { href?: string; labelText?: string };
@@ -19,7 +19,7 @@ function label(link: Link, block: boolean) {
   return link.labelText && block ? (
     <>
       {' '}
-      <span className="govuk-visually-hidden">:</span>{' '}
+      <VisuallyHidden>:</VisuallyHidden>{' '}
       <Pagination.LinkLabel>{link.labelText}</Pagination.LinkLabel>
     </>
   ) : null;
