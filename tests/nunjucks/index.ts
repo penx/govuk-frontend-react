@@ -7,6 +7,7 @@ import button from './button';
 import characterCount from './character-count';
 import checkboxes from './checkboxes';
 import cookieBanner from './cookie-banner';
+import dateInput from './date-input';
 import details from './details';
 import errorMessage from './error-message';
 import errorSummary from './error-summary';
@@ -20,6 +21,7 @@ import hint from './hint';
 import input from './input';
 import insetText from './inset-text';
 import label from './label';
+import languageNavigation from './language-navigation';
 import notificationBanner from './notification-banner';
 import pagination from './pagination';
 import panel from './panel';
@@ -44,6 +46,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'character-count': characterCount,
   checkboxes,
   'cookie-banner': cookieBanner,
+  'date-input': dateInput,
   details,
   'error-message': errorMessage,
   'error-summary': errorSummary,
@@ -57,6 +60,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   input,
   'inset-text': insetText,
   label,
+  'language-navigation': languageNavigation,
   'notification-banner': notificationBanner,
   pagination,
   panel,

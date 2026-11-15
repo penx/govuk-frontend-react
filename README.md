@@ -152,6 +152,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Character count     | 34/34            |
 | Checkboxes          | 42/42            |
 | Cookie banner       | 23/23            |
+| Date input          | 50/50            |
 | Details             | 10/10            |
 | Error message       | 9/9              |
 | Error summary       | 19/19            |
@@ -165,6 +166,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Input               | 45/45            |
 | Inset text          | 6/6              |
 | Label               | 17/17            |
+| Language navigation | 13/13            |
 | Notification banner | 21/21            |
 | Pagination          | 15/15            |
 | Panel               | 18/19            |
@@ -181,7 +183,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
-The other 12 govuk-frontend components are planned.
+The other 11 govuk-frontend components are planned.
 
 ## Development
 
