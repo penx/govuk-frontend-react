@@ -69,6 +69,44 @@ export function Conditional({ checked, className, ...props }: ConditionalProps) 
   );
 }
 
+export type ItemCompositeProps = InputProps & {
+  id: string;
+  label: ReactNode;
+  hint?: ReactNode;
+  conditional?: ReactNode;
+};
+
+export function ItemComposite({
+  id,
+  label,
+  hint,
+  conditional,
+  'aria-describedby': describedBy,
+  ...props
+}: ItemCompositeProps) {
+  const hintId = isSet(hint) ? `${id}-item-hint` : undefined;
+  const conditionalId = isSet(conditional) ? `conditional-${id}` : undefined;
+  return (
+    <>
+      <Item>
+        <Input
+          id={id}
+          data-aria-controls={conditionalId}
+          aria-describedby={joinIds(describedBy, hintId)}
+          {...props}
+        />
+        <Label htmlFor={id}>{label}</Label>
+        {hintId && <Hint id={hintId}>{hint}</Hint>}
+      </Item>
+      {conditionalId && (
+        <Conditional id={conditionalId} checked={Boolean(props.checked ?? props.defaultChecked)}>
+          {conditional}
+        </Conditional>
+      )}
+    </>
+  );
+}
+
 export type FieldProps = RootProps & {
   idPrefix: string;
   legend: ReactNode;
