@@ -18,6 +18,7 @@ export default defineConfig({
     label: 'src/components/label/index.tsx',
     pagination: 'src/components/pagination/index.tsx',
     panel: 'src/components/panel/index.tsx',
+    'password-input': 'src/components/password-input/index.tsx',
     'phase-banner': 'src/components/phase-banner/index.tsx',
     select: 'src/components/select/index.tsx',
     'skip-link': 'src/components/skip-link/index.tsx',
