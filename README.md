@@ -152,11 +152,12 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Panel         | 18/19            |
 | Phase banner  | 7/7              |
 | Select        | 19/19            |
+| Table         | 21/21            |
 | Tag           | 12/12            |
 | Textarea      | 18/18            |
 | Warning text  | 8/8              |
 
-The other 24 govuk-frontend components are planned.
+The other 22 govuk-frontend components are planned.
 
 ## Development
 

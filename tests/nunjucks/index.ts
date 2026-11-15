@@ -13,6 +13,7 @@ import label from './label';
 import panel from './panel';
 import phaseBanner from './phase-banner';
 import select from './select';
+import table from './table';
 import tag from './tag';
 import textarea from './textarea';
 import warningText from './warning-text';
@@ -31,6 +32,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   panel,
   'phase-banner': phaseBanner,
   select,
+  table,
   tag,
   textarea,
   'warning-text': warningText,

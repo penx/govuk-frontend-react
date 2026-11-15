@@ -16,6 +16,7 @@ export default defineConfig({
     panel: 'src/components/panel/index.tsx',
     'phase-banner': 'src/components/phase-banner/index.tsx',
     select: 'src/components/select/index.tsx',
+    table: 'src/components/table/index.tsx',
     tag: 'src/components/tag/index.tsx',
     textarea: 'src/components/textarea/index.tsx',
     'warning-text': 'src/components/warning-text/index.tsx',
