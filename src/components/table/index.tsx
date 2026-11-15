@@ -7,10 +7,17 @@ export function Root({ className, ...props }: RootProps) {
   return <table className={clsx('govuk-table', className)} {...props} />;
 }
 
-export type CaptionProps = ComponentProps<'caption'>;
+export type CaptionProps = ComponentProps<'caption'> & {
+  size?: 'm' | 'l' | 'xl';
+};
 
-export function Caption({ className, ...props }: CaptionProps) {
-  return <caption className={clsx('govuk-table__caption', className)} {...props} />;
+export function Caption({ className, size, ...props }: CaptionProps) {
+  return (
+    <caption
+      className={clsx('govuk-table__caption', size && `govuk-table__caption--${size}`, className)}
+      {...props}
+    />
+  );
 }
 
 export type HeadProps = ComponentProps<'thead'>;
@@ -32,26 +39,26 @@ export function Row({ className, ...props }: RowProps) {
 }
 
 export type HeaderProps = ComponentProps<'th'> & {
-  format?: 'numeric';
+  numeric?: boolean;
 };
 
-export function Header({ className, format, ...props }: HeaderProps) {
+export function Header({ className, numeric, ...props }: HeaderProps) {
   return (
     <th
-      className={clsx('govuk-table__header', format && `govuk-table__header--${format}`, className)}
+      className={clsx('govuk-table__header', numeric && 'govuk-table__header--numeric', className)}
       {...props}
     />
   );
 }
 
 export type CellProps = ComponentProps<'td'> & {
-  format?: 'numeric';
+  numeric?: boolean;
 };
 
-export function Cell({ className, format, ...props }: CellProps) {
+export function Cell({ className, numeric, ...props }: CellProps) {
   return (
     <td
-      className={clsx('govuk-table__cell', format && `govuk-table__cell--${format}`, className)}
+      className={clsx('govuk-table__cell', numeric && 'govuk-table__cell--numeric', className)}
       {...props}
     />
   );
