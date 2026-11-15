@@ -31,3 +31,12 @@ describe('Input.Field', () => {
     expect(ref.current).toBe(screen.getByRole('textbox'));
   });
 });
+
+describe('Input.Control', () => {
+  test('width and extraLetterSpacing add their modifiers', () => {
+    render(<Input.Control aria-label="Code" width={4} extraLetterSpacing />);
+    const input = screen.getByRole('textbox', { name: 'Code' });
+    expect(input).toHaveClass('govuk-input--width-4', 'govuk-input--extra-letter-spacing');
+    expect(input).not.toHaveAttribute('width');
+  });
+});

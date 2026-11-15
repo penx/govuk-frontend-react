@@ -3,11 +3,13 @@ import { clsx } from 'clsx';
 
 export type RootProps = ComponentProps<'nav'> & {
   collapseOnMobile?: boolean;
+  inverse?: boolean;
 };
 
 export function Root({
   className,
   collapseOnMobile,
+  inverse,
   'aria-label': ariaLabel = 'Breadcrumb',
   ...props
 }: RootProps) {
@@ -17,6 +19,7 @@ export function Root({
         'govuk-breadcrumbs',
         className,
         collapseOnMobile && 'govuk-breadcrumbs--collapse-on-mobile',
+        inverse && 'govuk-breadcrumbs--inverse',
       )}
       aria-label={ariaLabel}
       {...props}

@@ -7,8 +7,10 @@ import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
 
-export type ControlProps = ComponentProps<'input'> & {
+export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
   error?: boolean;
+  width?: 2 | 3 | 4 | 5 | 10 | 20 | 30;
+  extraLetterSpacing?: boolean;
 };
 
 export type AffixProps = ComponentProps<'div'>;
@@ -21,10 +23,23 @@ export type FieldProps = Omit<ControlProps, 'error' | 'prefix'> & {
   suffix?: ReactNode;
 };
 
-export function Control({ className, error, type, ...props }: ControlProps) {
+export function Control({
+  className,
+  error,
+  width,
+  extraLetterSpacing,
+  type,
+  ...props
+}: ControlProps) {
   return (
     <input
-      className={clsx('govuk-input', error && 'govuk-input--error', className)}
+      className={clsx(
+        'govuk-input',
+        width && `govuk-input--width-${width}`,
+        extraLetterSpacing && 'govuk-input--extra-letter-spacing',
+        error && 'govuk-input--error',
+        className,
+      )}
       type={type || 'text'}
       {...props}
     />
