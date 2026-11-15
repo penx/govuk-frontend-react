@@ -13,6 +13,7 @@ export default defineConfig({
     label: 'src/components/label/index.tsx',
     select: 'src/components/select/index.tsx',
     textarea: 'src/components/textarea/index.tsx',
+    'warning-text': 'src/components/warning-text/index.tsx',
     'form-group': 'src/objects/form-group/index.tsx',
   },
   format: ['esm'],
