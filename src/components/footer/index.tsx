@@ -1,15 +1,17 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
-import { WidthContainer } from '../../objects/width-container';
+import * as RootParts from './root-parts';
 
-export type RootProps = ComponentProps<'div'> & { containerClassName?: string };
+export { RootParts };
 
-export function Root({ className, containerClassName, children, ...props }: RootProps) {
+export type RootProps = RootParts.RootProps & { containerClassName?: string };
+
+export function Root({ containerClassName, children, ...props }: RootProps) {
   return (
-    <div className={clsx('govuk-footer', className)} {...props}>
-      <WidthContainer className={containerClassName}>{children}</WidthContainer>
-    </div>
+    <RootParts.Root {...props}>
+      <RootParts.WidthContainer className={containerClassName}>{children}</RootParts.WidthContainer>
+    </RootParts.Root>
   );
 }
 

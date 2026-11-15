@@ -22,4 +22,16 @@ export const Default = {
   ),
 };
 
+export const WithRootParts = {
+  render: () => (
+    <Feedback.RootParts.Root>
+      <Feedback.RootParts.GridRow>
+        <Feedback.RootParts.GridColumn data-testid="feedback-column">
+          <Feedback.Title>Help us improve this service</Feedback.Title>
+        </Feedback.RootParts.GridColumn>
+      </Feedback.RootParts.GridRow>
+    </Feedback.RootParts.Root>
+  ),
+};
+
 export const GovukFrontendFixtures = fixturesStory(nunjucks, fixtures);
