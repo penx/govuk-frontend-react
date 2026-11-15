@@ -29,7 +29,9 @@ export const WithParts = {
         <ErrorSummary.Body>
           <ErrorSummary.List>
             <ErrorSummary.ListItem>
-              <a href="#passport-issued">The date your passport was issued must be in the past</a>
+              <ErrorSummary.ListItemLink href="#passport-issued">
+                The date your passport was issued must be in the past
+              </ErrorSummary.ListItemLink>
             </ErrorSummary.ListItem>
           </ErrorSummary.List>
         </ErrorSummary.Body>

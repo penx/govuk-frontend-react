@@ -26,12 +26,10 @@ export default {
       {...optional('disableAutoFocus', options.disableAutoFocus as boolean)}
       className={className(options)}
       {...attributes(options.attributes)}
-    >
-      {((options.errorList as Options[] | undefined) ?? []).map((item, index) => (
-        <ErrorSummary.ListItemComposite key={index} {...optional('href', item.href as string)}>
-          {item.html ? html(item.html) : (item.text as string)}
-        </ErrorSummary.ListItemComposite>
-      ))}
-    </ErrorSummary.Composite>
+      errors={((options.errorList as Options[] | undefined) ?? []).map((item) => ({
+        ...optional('href', item.href as string),
+        children: item.html ? html(item.html) : (item.text as string),
+      }))}
+    />
   ),
 } satisfies CompositeMapping;

@@ -170,11 +170,13 @@ export function ItemLink({ children, ...props }: LinkProps) {
 }
 
 export type ItemCompositeProps = Omit<LinkProps, 'children'> & {
-  number: string | number;
+  number?: string | number;
   current?: boolean;
+  ellipsis?: boolean;
 };
 
-export function ItemComposite({ number, current, ...props }: ItemCompositeProps) {
+export function ItemComposite({ number, current, ellipsis, ...props }: ItemCompositeProps) {
+  if (ellipsis) return <Item ellipsis />;
   return (
     <Item current={current}>
       <ItemLink {...(current && { 'aria-current': 'page' as const })} {...props}>
@@ -184,14 +186,21 @@ export function ItemComposite({ number, current, ...props }: ItemCompositeProps)
   );
 }
 
-export type CompositeProps = Omit<RootProps, 'block'> & {
+export type CompositeProps = Omit<RootProps, 'block' | 'children'> & {
   previousHref?: string;
   previousText?: ReactNode;
   previousLabel?: ReactNode;
   nextHref?: string;
   nextText?: ReactNode;
   nextLabel?: ReactNode;
-};
+} & (
+    | { children?: ReactNode; items?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        items: ItemCompositeProps[];
+      }
+  );
 
 export function Composite({
   previousHref,
@@ -200,10 +209,14 @@ export function Composite({
   nextHref,
   nextText,
   nextLabel,
+  items,
   children,
   ...props
 }: CompositeProps) {
-  const list = hasContent(children);
+  const listItems = items
+    ? items.map((item, index) => <ItemComposite key={index} {...item} />)
+    : children;
+  const list = hasContent(listItems);
   const block = !list && Boolean(previousHref || nextHref);
   const label = (text: ReactNode) =>
     block && hasContent(text) ? (
@@ -225,7 +238,7 @@ export function Composite({
           </PreviousLink>
         </Previous>
       )}
-      {list && <List>{children}</List>}
+      {list && <List>{listItems}</List>}
       {nextHref && (
         <Next>
           <NextLink href={nextHref}>

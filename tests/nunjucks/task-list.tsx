@@ -30,7 +30,9 @@ export default function taskList(options: Options) {
                   {content(item.title)}
                 </TaskList.Link>
               ) : (
-                <div className={className(item.title)}>{content(item.title)}</div>
+                <TaskList.Title className={className(item.title)}>
+                  {content(item.title)}
+                </TaskList.Title>
               )}
               {item.hint ? <TaskList.Hint id={hintId}>{content(item.hint)}</TaskList.Hint> : null}
             </TaskList.NameAndHint>

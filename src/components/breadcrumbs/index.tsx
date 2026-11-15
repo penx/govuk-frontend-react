@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 
 export type RootProps = ComponentProps<'nav'> & {
@@ -64,13 +64,23 @@ export function ItemComposite({ href, children, ...props }: ItemCompositeProps) 
   );
 }
 
-export type CompositeProps = RootProps;
+export type CompositeProps = Omit<RootProps, 'children'> &
+  (
+    | { children?: ReactNode; items?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        items: ItemCompositeProps[];
+      }
+  );
 
 /** Children are `ItemComposite`s. */
-export function Composite({ children, ...props }: CompositeProps) {
+export function Composite({ items, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>
-      <List>{children}</List>
+      <List>
+        {items ? items.map((item, index) => <ItemComposite key={index} {...item} />) : children}
+      </List>
     </Root>
   );
 }
