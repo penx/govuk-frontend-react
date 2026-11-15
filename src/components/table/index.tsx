@@ -62,6 +62,14 @@ export function Header({ className, numeric, ...props }: HeaderProps) {
   );
 }
 
+export function ColumnHeader(props: HeaderProps) {
+  return <Header scope="col" {...props} />;
+}
+
+export function RowHeader(props: HeaderProps) {
+  return <Header scope="row" {...props} />;
+}
+
 export type CellProps = ComponentProps<'td'> & {
   numeric?: boolean;
 };
