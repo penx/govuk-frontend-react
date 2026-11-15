@@ -10,6 +10,7 @@ import feedback from './feedback';
 import fieldset from './fieldset';
 import footer from './footer';
 import genericHeader from './generic-header';
+import header from './header';
 import hint from './hint';
 import input from './input';
 import insetText from './inset-text';
@@ -38,6 +39,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   fieldset,
   footer,
   'generic-header': genericHeader,
+  header,
   hint,
   input,
   'inset-text': insetText,
