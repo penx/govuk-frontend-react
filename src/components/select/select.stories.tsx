@@ -2,15 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/select/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/select';
-import { Select } from '.';
+import * as Select from '.';
 
-const meta = { title: 'Select', component: Select } satisfies Meta<typeof Select>;
+const meta = { title: 'Select', component: Select.Field } satisfies Meta<typeof Select.Field>;
 
 export default meta;
 
-export const Default: StoryObj<typeof meta> = {
+export const Field: StoryObj<typeof meta> = {
   args: {
-    id: 'sort',
+    name: 'sort',
     label: 'Sort by',
     defaultValue: 'published',
     children: (
