@@ -30,6 +30,7 @@ import passwordInput from './password-input';
 import phaseBanner from './phase-banner';
 import radios from './radios';
 import select from './select';
+import serviceNavigation from './service-navigation';
 import skipLink from './skip-link';
 import summaryList from './summary-list';
 import table from './table';
@@ -70,6 +71,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'phase-banner': phaseBanner,
   radios,
   select,
+  'service-navigation': serviceNavigation,
   'skip-link': skipLink,
   'summary-list': summaryList,
   table,

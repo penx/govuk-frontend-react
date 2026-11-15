@@ -39,6 +39,7 @@ export default defineConfig({
     'phase-banner': 'src/components/phase-banner/index.tsx',
     radios: 'src/components/radios/index.tsx',
     select: 'src/components/select/index.tsx',
+    'service-navigation': 'src/components/service-navigation/index.tsx',
     'skip-link': 'src/components/skip-link/index.tsx',
     'summary-list': 'src/components/summary-list/index.tsx',
     table: 'src/components/table/index.tsx',
