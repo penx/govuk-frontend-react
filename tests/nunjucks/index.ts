@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import type { Options } from './helpers';
 import backLink from './back-link';
+import breadcrumbs from './breadcrumbs';
 import button from './button';
 import errorMessage from './error-message';
 import fieldset from './fieldset';
@@ -16,6 +17,7 @@ import warningText from './warning-text';
 
 export const mappings: Record<string, (options: Options) => ReactElement> = {
   'back-link': backLink,
+  breadcrumbs,
   button,
   'error-message': errorMessage,
   fieldset,

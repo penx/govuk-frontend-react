@@ -1,4 +1,5 @@
 export * from './components/back-link';
+export * as Breadcrumbs from './components/breadcrumbs';
 export * as Button from './components/button';
 export * from './components/error-message';
 export * as Fieldset from './components/fieldset';
