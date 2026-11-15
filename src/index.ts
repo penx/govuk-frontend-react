@@ -19,6 +19,7 @@ export * from './components/inset-text';
 export * from './components/label';
 export * as Pagination from './components/pagination';
 export * as Panel from './components/panel';
+export * as PasswordInput from './components/password-input';
 export * as PhaseBanner from './components/phase-banner';
 export * as Select from './components/select';
 export * from './components/skip-link';

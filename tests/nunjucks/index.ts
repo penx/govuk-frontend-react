@@ -15,6 +15,7 @@ import insetText from './inset-text';
 import label from './label';
 import pagination from './pagination';
 import panel from './panel';
+import passwordInput from './password-input';
 import phaseBanner from './phase-banner';
 import select from './select';
 import skipLink from './skip-link';
@@ -41,6 +42,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   label,
   pagination,
   panel,
+  'password-input': passwordInput,
   'phase-banner': phaseBanner,
   select,
   'skip-link': skipLink,
