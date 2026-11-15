@@ -16,6 +16,7 @@ export default defineConfig({
     'character-count': 'src/components/character-count/index.tsx',
     checkboxes: 'src/components/checkboxes/index.tsx',
     'cookie-banner': 'src/components/cookie-banner/index.tsx',
+    'date-input': 'src/components/date-input/index.tsx',
     details: 'src/components/details/index.tsx',
     'error-message': 'src/components/error-message/index.tsx',
     'error-summary': 'src/components/error-summary/index.tsx',
