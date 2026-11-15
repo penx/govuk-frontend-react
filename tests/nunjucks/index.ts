@@ -20,6 +20,7 @@ import skipLink from './skip-link';
 import summaryList from './summary-list';
 import table from './table';
 import tag from './tag';
+import taskList from './task-list';
 import textarea from './textarea';
 import warningText from './warning-text';
 
@@ -44,6 +45,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'summary-list': summaryList,
   table,
   tag,
+  'task-list': taskList,
   textarea,
   'warning-text': warningText,
 };

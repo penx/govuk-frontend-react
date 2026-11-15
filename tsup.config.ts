@@ -23,6 +23,7 @@ export default defineConfig({
     'summary-list': 'src/components/summary-list/index.tsx',
     table: 'src/components/table/index.tsx',
     tag: 'src/components/tag/index.tsx',
+    'task-list': 'src/components/task-list/index.tsx',
     textarea: 'src/components/textarea/index.tsx',
     'warning-text': 'src/components/warning-text/index.tsx',
     'button-group': 'src/objects/button-group/index.tsx',

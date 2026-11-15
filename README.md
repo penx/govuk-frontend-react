@@ -160,6 +160,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Summary list   | 30/30            |
 | Table          | 21/21            |
 | Tag            | 12/12            |
+| Task list      | 11/11            |
 | Textarea       | 18/18            |
 | Warning text   | 8/8              |
 
