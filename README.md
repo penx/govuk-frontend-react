@@ -138,29 +138,30 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 
 ## Status
 
-| Component     | Fixtures passing |
-| ------------- | ---------------- |
-| Back link     | 7/7              |
-| Breadcrumbs   | 12/12            |
-| Button        | 38/38            |
-| Details       | 10/10            |
-| Error message | 9/9              |
-| Fieldset      | 18/18            |
-| Footer        | 25/25            |
-| Hint          | 6/6              |
-| Input         | 45/45            |
-| Inset text    | 6/6              |
-| Label         | 17/17            |
-| Panel         | 18/19            |
-| Phase banner  | 7/7              |
-| Select        | 19/19            |
-| Summary list  | 30/30            |
-| Table         | 21/21            |
-| Tag           | 12/12            |
-| Textarea      | 18/18            |
-| Warning text  | 8/8              |
+| Component      | Fixtures passing |
+| -------------- | ---------------- |
+| Back link      | 7/7              |
+| Breadcrumbs    | 12/12            |
+| Button         | 38/38            |
+| Details        | 10/10            |
+| Error message  | 9/9              |
+| Fieldset       | 18/18            |
+| Footer         | 25/25            |
+| Generic header | 7/7              |
+| Hint           | 6/6              |
+| Input          | 45/45            |
+| Inset text     | 6/6              |
+| Label          | 17/17            |
+| Panel          | 18/19            |
+| Phase banner   | 7/7              |
+| Select         | 19/19            |
+| Summary list   | 30/30            |
+| Table          | 21/21            |
+| Tag            | 12/12            |
+| Textarea       | 18/18            |
+| Warning text   | 8/8              |
 
-The other 20 govuk-frontend components are planned.
+The other 19 govuk-frontend components are planned.
 
 ## Development
 

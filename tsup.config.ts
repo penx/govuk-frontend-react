@@ -10,6 +10,7 @@ export default defineConfig({
     'error-message': 'src/components/error-message/index.tsx',
     fieldset: 'src/components/fieldset/index.tsx',
     footer: 'src/components/footer/index.tsx',
+    'generic-header': 'src/components/generic-header/index.tsx',
     hint: 'src/components/hint/index.tsx',
     input: 'src/components/input/index.tsx',
     'inset-text': 'src/components/inset-text/index.tsx',
