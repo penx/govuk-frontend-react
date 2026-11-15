@@ -1,25 +1,17 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
+import * as RootParts from './root-parts';
 
-export type RootProps = ComponentProps<'div'> & { disableAutoFocus?: boolean };
+export { RootParts };
 
-export function Root({ disableAutoFocus, className, ...props }: RootProps) {
+export type RootProps = RootParts.RootProps;
+
+export function Root({ children, ...props }: RootProps) {
   return (
-    <div
-      className={clsx('govuk-error-summary', className)}
-      {...(disableAutoFocus !== undefined && {
-        'data-disable-auto-focus': String(disableAutoFocus),
-      })}
-      data-module="govuk-error-summary"
-      {...props}
-    />
+    <RootParts.Root {...props}>
+      <RootParts.Alert>{children}</RootParts.Alert>
+    </RootParts.Root>
   );
-}
-
-export type AlertProps = ComponentProps<'div'>;
-
-export function Alert(props: AlertProps) {
-  return <div role="alert" {...props} />;
 }
 
 export type TitleProps = ComponentProps<'h2'>;

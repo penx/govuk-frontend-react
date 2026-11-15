@@ -11,19 +11,17 @@ export default { title: 'Error summary', component: ErrorSummary.Root } satisfie
 export const Default = {
   render: () => (
     <ErrorSummary.Root>
-      <ErrorSummary.Alert>
-        <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
-        <ErrorSummary.Body>
-          <ErrorSummary.List>
-            <ErrorSummary.ListItem>
-              <a href="#passport-issued">The date your passport was issued must be in the past</a>
-            </ErrorSummary.ListItem>
-            <ErrorSummary.ListItem>
-              <a href="#postcode">Enter a postcode, like AA1 1AA</a>
-            </ErrorSummary.ListItem>
-          </ErrorSummary.List>
-        </ErrorSummary.Body>
-      </ErrorSummary.Alert>
+      <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+      <ErrorSummary.Body>
+        <ErrorSummary.List>
+          <ErrorSummary.ListItem>
+            <a href="#passport-issued">The date your passport was issued must be in the past</a>
+          </ErrorSummary.ListItem>
+          <ErrorSummary.ListItem>
+            <a href="#postcode">Enter a postcode, like AA1 1AA</a>
+          </ErrorSummary.ListItem>
+        </ErrorSummary.List>
+      </ErrorSummary.Body>
     </ErrorSummary.Root>
   ),
 };
