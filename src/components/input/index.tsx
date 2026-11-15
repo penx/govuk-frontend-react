@@ -7,13 +7,13 @@ import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
 
-export type RootProps = ComponentProps<'input'> & {
+export type ControlProps = ComponentProps<'input'> & {
   error?: boolean;
 };
 
 export type AffixProps = ComponentProps<'div'>;
 
-export type FieldProps = Omit<RootProps, 'error' | 'prefix'> & {
+export type FieldProps = Omit<ControlProps, 'error' | 'prefix'> & {
   label?: ReactNode;
   hint?: ReactNode;
   errorMessage?: ReactNode;
@@ -21,7 +21,7 @@ export type FieldProps = Omit<RootProps, 'error' | 'prefix'> & {
   suffix?: ReactNode;
 };
 
-export function Root({ className, error, type, ...props }: RootProps) {
+export function Control({ className, error, type, ...props }: ControlProps) {
   return (
     <input
       className={clsx('govuk-input', error && 'govuk-input--error', className)}
@@ -59,7 +59,7 @@ export function Field({
   const errorId = isSet(errorMessage) ? `${id}-error` : undefined;
 
   const input = (
-    <Root
+    <Control
       id={id}
       name={name}
       error={Boolean(errorId)}

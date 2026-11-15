@@ -56,7 +56,8 @@ Common conventions used when rewriting the Nunjucks templates.
 When looking at govuk-frontend BEM class names:
 
 - Blocks become ES modules at `src/{type}/my-block/`, where `{type}` is `objects` or `components`, following govuk-frontend's ITCSS layers.
-- A block with elements exports its main part as `Root` and each element as a named export. The package root exports the module as a namespace.
+- A block with elements exports each part as a named export, and the package root exports the module as a namespace.
+- `Root` is the part that the other parts sit inside, normally the outermost element. A module has a `Root` only when it has such a part. Form controls have none, because their outer element is a `FormGroup`; their form control element is `Control`, alongside the `Field` shorthand.
 - A block without elements exports a single component named after the block.
 - Modifiers become props of the part.
 - Components are never attached to other components as properties.
@@ -103,7 +104,7 @@ Props never take an object that is spread onto another part. Where a Nunjucks ma
   <ErrorMessage id="cost-error">Enter a cost</ErrorMessage>
   <Input.Wrapper>
     <Input.Prefix>£</Input.Prefix>
-    <Input.Root id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
+    <Input.Control id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
   </Input.Wrapper>
 </FormGroup>
 ```
