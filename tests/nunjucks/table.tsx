@@ -1,8 +1,6 @@
 import { Table } from '../../src';
 import { attributes, className, content, optional, type Options } from './helpers';
 
-type Format = 'numeric';
-
 const spans = (item: Options) => ({
   ...optional('colSpan', item.colspan as number | undefined),
   ...optional('rowSpan', item.rowspan as number | undefined),
@@ -25,7 +23,7 @@ export default function table(options: Options) {
               <Table.Header
                 key={index}
                 scope="col"
-                {...optional('format', item.format as Format | undefined)}
+                numeric={item.format === 'numeric'}
                 className={className(item)}
                 {...spans(item)}
                 {...attributes(item.attributes)}
@@ -54,7 +52,7 @@ export default function table(options: Options) {
                 ) : (
                   <Table.Cell
                     key={index}
-                    {...optional('format', cell.format as Format | undefined)}
+                    numeric={cell.format === 'numeric'}
                     className={className(cell)}
                     {...spans(cell)}
                     {...attributes(cell.attributes)}
