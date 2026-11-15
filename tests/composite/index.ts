@@ -1,4 +1,5 @@
 import type { CompositeMapping } from './helpers';
+import accordion from './accordion';
 import breadcrumbs from './breadcrumbs';
 import button from './button';
 import characterCount from './character-count';
@@ -19,11 +20,14 @@ import passwordInput from './password-input';
 import phaseBanner from './phase-banner';
 import radios from './radios';
 import select from './select';
+import summaryList from './summary-list';
+import table from './table';
 import taskList from './task-list';
 import textarea from './textarea';
 import warningText from './warning-text';
 
 export const compositeMappings: Record<string, CompositeMapping> = {
+  accordion,
   breadcrumbs,
   button,
   'character-count': characterCount,
@@ -44,6 +48,8 @@ export const compositeMappings: Record<string, CompositeMapping> = {
   'phase-banner': phaseBanner,
   radios,
   select,
+  'summary-list': summaryList,
+  table,
   'task-list': taskList,
   textarea,
   'warning-text': warningText,
