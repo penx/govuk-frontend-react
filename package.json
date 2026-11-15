@@ -43,7 +43,7 @@
     "react"
   ],
   "author": "Alasdair McLeay",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/penx/govuk-frontend-react/issues"
   },
