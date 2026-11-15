@@ -12,6 +12,7 @@ export default defineConfig({
     'inset-text': 'src/components/inset-text/index.tsx',
     label: 'src/components/label/index.tsx',
     select: 'src/components/select/index.tsx',
+    tag: 'src/components/tag/index.tsx',
     textarea: 'src/components/textarea/index.tsx',
     'warning-text': 'src/components/warning-text/index.tsx',
     'form-group': 'src/objects/form-group/index.tsx',

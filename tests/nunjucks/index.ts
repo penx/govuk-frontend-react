@@ -9,6 +9,7 @@ import input from './input';
 import insetText from './inset-text';
 import label from './label';
 import select from './select';
+import tag from './tag';
 import textarea from './textarea';
 import warningText from './warning-text';
 
@@ -22,6 +23,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'inset-text': insetText,
   label,
   select,
+  tag,
   textarea,
   'warning-text': warningText,
 };
