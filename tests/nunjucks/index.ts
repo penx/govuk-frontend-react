@@ -11,6 +11,7 @@ import input from './input';
 import insetText from './inset-text';
 import label from './label';
 import panel from './panel';
+import phaseBanner from './phase-banner';
 import select from './select';
 import tag from './tag';
 import textarea from './textarea';
@@ -28,6 +29,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   'inset-text': insetText,
   label,
   panel,
+  'phase-banner': phaseBanner,
   select,
   tag,
   textarea,

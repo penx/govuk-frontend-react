@@ -9,6 +9,7 @@ export * as Input from './components/input';
 export * from './components/inset-text';
 export * from './components/label';
 export * as Panel from './components/panel';
+export * as PhaseBanner from './components/phase-banner';
 export * as Select from './components/select';
 export * from './components/tag';
 export * as Textarea from './components/textarea';
