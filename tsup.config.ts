@@ -9,6 +9,7 @@ export default defineConfig({
     fieldset: 'src/components/fieldset/index.tsx',
     hint: 'src/components/hint/index.tsx',
     input: 'src/components/input/index.tsx',
+    'inset-text': 'src/components/inset-text/index.tsx',
     label: 'src/components/label/index.tsx',
     select: 'src/components/select/index.tsx',
     textarea: 'src/components/textarea/index.tsx',

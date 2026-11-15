@@ -6,6 +6,7 @@ import errorMessage from './error-message';
 import fieldset from './fieldset';
 import hint from './hint';
 import input from './input';
+import insetText from './inset-text';
 import label from './label';
 import select from './select';
 import textarea from './textarea';
@@ -17,6 +18,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   fieldset,
   hint,
   input,
+  'inset-text': insetText,
   label,
   select,
   textarea,
