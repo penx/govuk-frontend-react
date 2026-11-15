@@ -1,18 +1,14 @@
-import type { ComponentProps } from 'react';
-import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
+import * as LabelParts from './parts';
 
-export type LabelProps = ComponentProps<'label'> & {
+export { LabelParts };
+
+export type LabelProps = LabelParts.RootProps & {
   isPageHeading?: boolean;
-  size?: 's' | 'm' | 'l' | 'xl';
 };
 
-export function Label({ className, isPageHeading, size, children, ...props }: LabelProps) {
+export function Label({ isPageHeading, children, ...props }: LabelProps) {
   if (!hasContent(children)) return null;
-  const label = (
-    <label className={clsx('govuk-label', size && `govuk-label--${size}`, className)} {...props}>
-      {children}
-    </label>
-  );
-  return isPageHeading ? <h1 className="govuk-label-wrapper">{label}</h1> : label;
+  const label = <LabelParts.Root {...props}>{children}</LabelParts.Root>;
+  return isPageHeading ? <LabelParts.Wrapper>{label}</LabelParts.Wrapper> : label;
 }
