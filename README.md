@@ -172,9 +172,3 @@ npm run lint
 npm run typecheck
 npm run build
 ```
-
-## Contributing
-
-- One component per pull request. A pull request that builds on another open one stays in draft until its base merges.
-- Each pull request description says what it changes and includes a short usage example of the component or API.
-- Agree structural changes, such as new conventions or removing files, in an issue or discussion first.
