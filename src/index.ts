@@ -15,6 +15,7 @@ export * as Feedback from './components/feedback';
 export * as Fieldset from './components/fieldset';
 export * as Footer from './components/footer';
 export * as GenericHeader from './components/generic-header';
+export * as Header from './components/header';
 export * from './components/hint';
 export * as Input from './components/input';
 export * from './components/inset-text';
