@@ -1,11 +1,14 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import * as FieldParts from './field-parts';
 import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
+
+export { FieldParts };
 
 export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
   error?: boolean;

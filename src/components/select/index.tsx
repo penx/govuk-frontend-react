@@ -1,10 +1,13 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import * as FieldParts from './field-parts';
 import { isSet, joinIds } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
+
+export { FieldParts };
 
 export type ControlProps = ComponentProps<'select'> & {
   error?: boolean;

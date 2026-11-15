@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import * as FieldParts from './field-parts';
 import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds } from '../../utils/field';
 import { i18nAttributes } from '../../utils/i18n';
@@ -9,6 +10,8 @@ import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Control, type ControlProps, Wrapper as InputWrapper } from '../input';
 import { Label } from '../label';
+
+export { FieldParts };
 
 export type RootProps = FormGroupProps & {
   showPasswordText?: string;
