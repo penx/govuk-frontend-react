@@ -137,9 +137,10 @@ Anything a component derives can be overridden, so a library built on top, such 
 | Hint          | 6/6              |
 | Input         | 45/45            |
 | Label         | 17/17            |
+| Select        | 19/19            |
 | Textarea      | 18/18            |
 
-The other 32 govuk-frontend components are planned.
+The other 31 govuk-frontend components are planned.
 
 ## Development
 
