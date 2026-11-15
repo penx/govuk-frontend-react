@@ -1,10 +1,21 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
 
-export type RootProps = ComponentProps<'table'>;
+export type RootProps = ComponentProps<'table'> & {
+  smallTextUntilTablet?: boolean;
+};
 
-export function Root({ className, ...props }: RootProps) {
-  return <table className={clsx('govuk-table', className)} {...props} />;
+export function Root({ className, smallTextUntilTablet, ...props }: RootProps) {
+  return (
+    <table
+      className={clsx(
+        'govuk-table',
+        smallTextUntilTablet && 'govuk-table--small-text-until-tablet',
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 export type CaptionProps = ComponentProps<'caption'> & {
