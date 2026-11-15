@@ -6,17 +6,17 @@ import { ErrorMessage } from '../error-message';
 import { Hint } from '../hint';
 import { Label } from '../label';
 
-export type RootProps = ComponentProps<'textarea'> & {
+export type ControlProps = ComponentProps<'textarea'> & {
   error?: boolean;
 };
 
-export type FieldProps = Omit<RootProps, 'error'> & {
+export type FieldProps = Omit<ControlProps, 'error'> & {
   label?: ReactNode;
   hint?: ReactNode;
   errorMessage?: ReactNode;
 };
 
-export function Root({ className, error, rows, ...props }: RootProps) {
+export function Control({ className, error, rows, ...props }: ControlProps) {
   return (
     <textarea
       className={clsx('govuk-textarea', error && 'govuk-textarea--error', className)}
@@ -44,7 +44,7 @@ export function Field({
       <Label htmlFor={id}>{label}</Label>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>}
-      <Root
+      <Control
         id={id}
         name={name}
         error={Boolean(errorId)}
