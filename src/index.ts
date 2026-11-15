@@ -8,4 +8,5 @@ export * from './components/inset-text';
 export * from './components/label';
 export * as Select from './components/select';
 export * as Textarea from './components/textarea';
+export * as WarningText from './components/warning-text';
 export * from './objects/form-group';

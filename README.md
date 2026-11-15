@@ -149,8 +149,9 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Label         | 17/17            |
 | Select        | 19/19            |
 | Textarea      | 18/18            |
+| Warning text  | 8/8              |
 
-The other 29 govuk-frontend components are planned.
+The other 28 govuk-frontend components are planned.
 
 ## Development
 

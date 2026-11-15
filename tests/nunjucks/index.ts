@@ -10,6 +10,7 @@ import insetText from './inset-text';
 import label from './label';
 import select from './select';
 import textarea from './textarea';
+import warningText from './warning-text';
 
 export const mappings: Record<string, (options: Options) => ReactElement> = {
   'back-link': backLink,
@@ -22,4 +23,5 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   label,
   select,
   textarea,
+  'warning-text': warningText,
 };
