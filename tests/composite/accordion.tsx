@@ -28,36 +28,29 @@ export default {
     const id = options.id as string;
     const items = (options.items as (Item | null)[] | undefined) ?? [];
     return (
-      <Accordion.Root
+      <Accordion.Composite
         id={id}
         {...Object.assign(
           {},
           ...texts.map((key) => optional(key, (options[key] as string) || undefined)),
         )}
         {...optional('rememberExpanded', options.rememberExpanded as boolean)}
+        {...optional('headingLevel', (options.headingLevel as 2) || undefined)}
         className={className(options)}
         {...attributes(options.attributes)}
-      >
-        {items.map((item, index) =>
-          item ? (
-            <Accordion.SectionComposite
-              key={index}
-              accordionId={id}
-              index={index + 1}
-              expanded={item.expanded}
-              {...optional('headingLevel', (options.headingLevel as 2) || undefined)}
-              heading={content(item.heading)}
-              summary={content(item.summary)}
-            >
-              {item.content?.html ? (
-                content(item.content)
-              ) : item.content?.text ? (
-                <Body>{String(item.content.text)}</Body>
-              ) : null}
-            </Accordion.SectionComposite>
-          ) : null,
-        )}
-      </Accordion.Root>
+        sections={items
+          .filter((item) => item !== null)
+          .map((item) => ({
+            expanded: item.expanded,
+            heading: content(item.heading),
+            summary: content(item.summary),
+            children: item.content?.html ? (
+              content(item.content)
+            ) : item.content?.text ? (
+              <Body>{String(item.content.text)}</Body>
+            ) : null,
+          }))}
+      />
     );
   },
 } satisfies CompositeMapping;

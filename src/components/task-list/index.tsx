@@ -60,6 +60,9 @@ export function Status({ cannotStartYet, className, ...props }: StatusProps) {
   );
 }
 
+/** The task's name when it has no link. */
+export const Title = 'div';
+
 export type ItemCompositeProps = Omit<ItemProps, 'title' | 'withLink'> & {
   idPrefix: string;
   title: ReactNode;
@@ -89,7 +92,7 @@ export function ItemComposite({
             {title}
           </Link>
         ) : (
-          <div>{title}</div>
+          <Title>{title}</Title>
         )}
         {hintId && <Hint id={hintId}>{hint}</Hint>}
       </NameAndHint>
@@ -97,5 +100,27 @@ export function ItemComposite({
         {status}
       </Status>
     </Item>
+  );
+}
+
+export type CompositeProps = Omit<RootProps, 'children'> & { idPrefix?: string } & (
+    | { children?: ReactNode; items?: never }
+    | {
+        children?: never;
+        /** Prefer children, which memoise and re-render better. */
+        items: (Omit<ItemCompositeProps, 'idPrefix'> & { idPrefix?: string })[];
+      }
+  );
+
+/** Children are `ItemComposite`s. With `items`, each `idPrefix` defaults to `idPrefix` and its position. */
+export function Composite({ idPrefix = 'task-list', items, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      {items
+        ? items.map((item, index) => (
+            <ItemComposite key={index} idPrefix={`${idPrefix}-${index + 1}`} {...item} />
+          ))
+        : children}
+    </Root>
   );
 }
