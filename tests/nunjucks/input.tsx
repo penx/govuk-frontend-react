@@ -28,7 +28,7 @@ export default function input(options: Options) {
   const errorId = error && `${id}-error`;
 
   const control = (
-    <Input.Root
+    <Input.Control
       {...optional('id', id)}
       {...optional('name', options.name)}
       {...optional('type', options.type)}

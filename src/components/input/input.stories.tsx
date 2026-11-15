@@ -27,7 +27,7 @@ export const Parts = {
       <ErrorMessage id="cost-error">Enter a cost</ErrorMessage>
       <Input.Wrapper>
         <Input.Prefix>£</Input.Prefix>
-        <Input.Root id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
+        <Input.Control id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
       </Input.Wrapper>
     </FormGroup>
   ),
