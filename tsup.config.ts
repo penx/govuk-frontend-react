@@ -52,6 +52,7 @@ export default defineConfig({
     'form-group': 'src/objects/form-group/index.tsx',
     grid: 'src/objects/grid/index.tsx',
     'width-container': 'src/objects/width-container/index.tsx',
+    overrides: 'src/overrides/index.ts',
     'visually-hidden': 'src/utilities/visually-hidden/index.tsx',
   },
   format: ['esm'],

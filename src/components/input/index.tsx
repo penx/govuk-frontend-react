@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { widthClass, type FluidWidth } from '../../utils/overrides';
+import { overrideClasses, type FluidWidth } from '../../overrides';
 import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
@@ -41,7 +41,7 @@ export function Control({
         typeof width === 'number' && `govuk-input--width-${width}`,
         extraLetterSpacing && 'govuk-input--extra-letter-spacing',
         error && 'govuk-input--error',
-        typeof width === 'string' && widthClass(width),
+        typeof width === 'string' && overrideClasses({ width }),
         className,
       )}
       type={type || 'text'}

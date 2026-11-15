@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { widthClass, type FluidWidth } from '../../utils/overrides';
+import { overrideClasses, type FluidWidth } from '../../overrides';
 import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
@@ -22,7 +22,12 @@ export type FieldProps = LabelFieldProps &
 export function Control({ className, error, width, ...props }: ControlProps) {
   return (
     <select
-      className={clsx('govuk-select', error && 'govuk-select--error', widthClass(width), className)}
+      className={clsx(
+        'govuk-select',
+        error && 'govuk-select--error',
+        overrideClasses({ width }),
+        className,
+      )}
       {...props}
     />
   );

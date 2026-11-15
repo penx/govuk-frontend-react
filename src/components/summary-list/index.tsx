@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
-import { widthClass, type FluidWidth } from '../../utils/overrides';
+import { overrideClasses, type FluidWidth } from '../../overrides';
 import { hasContent } from '../../utils/has-content';
 
 import { VisuallyHidden } from '../../utilities/visually-hidden';
@@ -43,7 +43,10 @@ export type KeyProps = ComponentProps<'dt'> & { width?: FluidWidth };
 
 export function Key({ width, className, ...props }: KeyProps) {
   return (
-    <dt className={clsx('govuk-summary-list__key', widthClass(width), className)} {...props} />
+    <dt
+      className={clsx('govuk-summary-list__key', overrideClasses({ width }), className)}
+      {...props}
+    />
   );
 }
 
@@ -51,7 +54,10 @@ export type ValueProps = ComponentProps<'dd'> & { width?: FluidWidth };
 
 export function Value({ width, className, ...props }: ValueProps) {
   return (
-    <dd className={clsx('govuk-summary-list__value', widthClass(width), className)} {...props} />
+    <dd
+      className={clsx('govuk-summary-list__value', overrideClasses({ width }), className)}
+      {...props}
+    />
   );
 }
 
@@ -59,7 +65,10 @@ export type ActionsProps = ComponentProps<'dd'> & { width?: FluidWidth };
 
 export function Actions({ width, className, ...props }: ActionsProps) {
   return (
-    <dd className={clsx('govuk-summary-list__actions', widthClass(width), className)} {...props} />
+    <dd
+      className={clsx('govuk-summary-list__actions', overrideClasses({ width }), className)}
+      {...props}
+    />
   );
 }
 

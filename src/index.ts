@@ -47,4 +47,5 @@ export * from './objects/button-group';
 export * from './objects/form-group';
 export * from './objects/grid';
 export * from './objects/width-container';
+export * from './overrides';
 export * from './utilities/visually-hidden';

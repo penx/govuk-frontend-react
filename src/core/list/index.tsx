@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
-import { marginBottomClass, type Spacing } from '../../utils/overrides';
+import { overrideClasses, type Spacing } from '../../overrides';
 
 export type ListProps = ComponentProps<'ol'> & {
   variant?: 'bullet' | 'number';
@@ -16,7 +16,7 @@ export function List({ variant, spaced, marginBottom, className, ...props }: Lis
         'govuk-list',
         variant && `govuk-list--${variant}`,
         spaced && 'govuk-list--spaced',
-        marginBottomClass(marginBottom),
+        overrideClasses({ marginBottom }),
         className,
       )}
       {...props}
