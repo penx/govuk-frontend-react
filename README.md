@@ -84,19 +84,21 @@ BEM convention class name exceptions:
 
 Where React prop names differ from the Nunjucks macro option names:
 
-| Nunjucks             | React                                                    |
-| -------------------- | -------------------------------------------------------- |
-| `element`            | `as`                                                     |
-| `attributes`         | rest props                                               |
-| `text`               | `children`                                               |
-| `html`               | `children`                                               |
-| `caller`             | `children`                                               |
-| `classes`            | `className`                                              |
-| `containerClasses`   | `containerClassName`                                     |
-| `describedBy`        | `aria-describedby`                                       |
-| `for`                | `htmlFor`                                                |
-| `isStartButton`      | `start` on `Button.Composite`, which adds the icon       |
-| `legend`, and others | a part, such as `Fieldset.Legend` (see Parts and fields) |
+| Nunjucks                  | React                                                    |
+| ------------------------- | -------------------------------------------------------- |
+| `element`                 | `as`                                                     |
+| `attributes`              | rest props                                               |
+| `text`                    | `children`                                               |
+| `html`                    | `children`                                               |
+| `caller`                  | `children`                                               |
+| `classes`                 | `className`                                              |
+| `govuk-!-width-*`         | `width` on controls and summary list cells               |
+| `govuk-!-margin-bottom-*` | `marginBottom` on `Heading`, `Body` and `List`           |
+| `containerClasses`        | `containerClassName`                                     |
+| `describedBy`             | `aria-describedby`                                       |
+| `for`                     | `htmlFor`                                                |
+| `isStartButton`           | `start` on `Button.Composite`, which adds the icon       |
+| `legend`, and others      | a part, such as `Fieldset.Legend` (see Parts and fields) |
 
 The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), which the parity tests use to render govuk-frontend's fixtures through the parts. [`tests/composite`](tests/composite) renders them through each `Composite` and `Field`, skipping fixtures that use options left to the parts. Both double as a guide for moving from Nunjucks to React.
 

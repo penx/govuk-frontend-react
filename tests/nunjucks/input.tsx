@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 import { ErrorMessageComposite, FormGroup, Hint, Input, LabelComposite } from '../../src';
 import {
   attributes,
-  className,
   describedBy,
   errorMessage,
   formGroup,
   label,
   optional,
+  widthAndClassName,
   subcomponent,
   type Options,
 } from './helpers';
@@ -44,7 +44,7 @@ export default function input(options: Options) {
       )}
       {...optional('autoCapitalize', options.autocapitalize || undefined)}
       error={Boolean(error)}
-      className={className(options)}
+      {...widthAndClassName(options, 'govuk-input')}
       {...attributes(options.attributes)}
     />
   );

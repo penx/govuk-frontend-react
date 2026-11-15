@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 import { ErrorMessageComposite, FormGroup, Hint, LabelComposite, Select } from '../../src';
 import {
   attributes,
-  className,
   describedBy,
   errorMessage,
   formGroup,
   label,
   optional,
+  widthAndClassName,
   subcomponent,
   type Options,
 } from './helpers';
@@ -56,7 +56,7 @@ export default function select(options: Options) {
         {...optional('disabled', options.disabled || undefined)}
         {...optional('aria-describedby', describedBy(options.describedBy, hintId, errorId))}
         error={Boolean(error)}
-        className={className(options)}
+        {...widthAndClassName(options)}
         {...attributes(options.attributes)}
       >
         {items.map((item, index) => (

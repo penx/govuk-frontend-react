@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 import { ErrorMessageComposite, FormGroup, Hint, LabelComposite, Textarea } from '../../src';
 import {
   attributes,
-  className,
   describedBy,
   errorMessage,
   formGroup,
   label,
   optional,
+  widthAndClassName,
   subcomponent,
   type Options,
 } from './helpers';
@@ -42,7 +42,7 @@ export default function textarea(options: Options) {
           typeof options.spellcheck === 'boolean' ? options.spellcheck : undefined,
         )}
         error={Boolean(error)}
-        className={className(options)}
+        {...widthAndClassName(options)}
         {...attributes(options.attributes)}
       />
       {afterInput}

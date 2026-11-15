@@ -1,6 +1,6 @@
 import { CharacterCount } from '../../src';
 import type { Translation } from '../../src/utils/i18n';
-import { optional } from '../nunjucks/helpers';
+import { optional, widthAndClassName } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
 import { fieldProps, spellCheck, labelExpressible } from './field';
 
@@ -30,6 +30,7 @@ export default {
     !labelExpressible(options) ? null : (
       <CharacterCount.Field
         {...fieldProps(options)}
+        {...widthAndClassName(options)}
         {...optional('rows', options.rows as number)}
         {...optional('defaultValue', options.value as string)}
         {...spellCheck(options)}

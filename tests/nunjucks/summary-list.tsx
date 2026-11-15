@@ -1,6 +1,13 @@
 import type { ReactNode } from 'react';
 import { SummaryList } from '../../src';
-import { attributes, className, content, optional, type Options } from './helpers';
+import {
+  attributes,
+  className,
+  content,
+  optional,
+  widthAndClassName,
+  type Options,
+} from './helpers';
 
 type Actions = { items?: Options[]; classes?: string };
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -41,14 +48,14 @@ function list(options: Options) {
             noActions={anyRowHasActions && !actions?.items}
             className={className(row)}
           >
-            <SummaryList.Key className={className(row.key as Options)}>
+            <SummaryList.Key {...widthAndClassName(row.key as Options)}>
               {content(row.key as Options)}
             </SummaryList.Key>
-            <SummaryList.Value className={className(row.value as Options)}>
+            <SummaryList.Value {...widthAndClassName(row.value as Options)}>
               {content(row.value as Options)}
             </SummaryList.Value>
             {items.length ? (
-              <SummaryList.Actions {...optional('className', actions?.classes)}>
+              <SummaryList.Actions {...widthAndClassName(actions)}>
                 {items.length === 1 ? (
                   action(items[0] as Options, cardTitle)
                 ) : (

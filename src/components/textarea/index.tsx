@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { overrideClasses, type FluidWidth } from '../../overrides';
 import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
@@ -8,6 +9,7 @@ import { LabelComposite } from '../label';
 
 export type ControlProps = ComponentProps<'textarea'> & {
   error?: boolean;
+  width?: FluidWidth;
 };
 
 export type FieldProps = LabelFieldProps &
@@ -17,10 +19,15 @@ export type FieldProps = LabelFieldProps &
     errorMessage?: ReactNode;
   };
 
-export function Control({ className, error, rows, ...props }: ControlProps) {
+export function Control({ className, error, width, rows, ...props }: ControlProps) {
   return (
     <textarea
-      className={clsx('govuk-textarea', error && 'govuk-textarea--error', className)}
+      className={clsx(
+        'govuk-textarea',
+        error && 'govuk-textarea--error',
+        overrideClasses({ width }),
+        className,
+      )}
       rows={rows || 5}
       {...props}
     />

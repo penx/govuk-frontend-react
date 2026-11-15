@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { overrideClasses, type FluidWidth } from '../../overrides';
 import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { FormGroup } from '../../objects/form-group';
@@ -9,7 +10,8 @@ import { LabelComposite } from '../label';
 
 export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
   error?: boolean;
-  width?: 2 | 3 | 4 | 5 | 10 | 20 | 30;
+  /** A number of characters, or a fraction of the container. */
+  width?: 2 | 3 | 4 | 5 | 10 | 20 | 30 | FluidWidth;
   extraLetterSpacing?: boolean;
 };
 
@@ -36,9 +38,10 @@ export function Control({
     <input
       className={clsx(
         'govuk-input',
-        width && `govuk-input--width-${width}`,
+        typeof width === 'number' && `govuk-input--width-${width}`,
         extraLetterSpacing && 'govuk-input--extra-letter-spacing',
         error && 'govuk-input--error',
+        typeof width === 'string' && overrideClasses({ width }),
         className,
       )}
       type={type || 'text'}

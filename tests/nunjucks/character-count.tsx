@@ -8,6 +8,7 @@ import {
   errorMessage,
   label,
   optional,
+  widthAndClassName,
   subcomponent,
   type Options,
 } from './helpers';
@@ -61,7 +62,7 @@ export default function characterCount(options: Options) {
         {...optional('defaultValue', options.value as string | undefined)}
         aria-describedby={describedBy(`${id}-info`, hintId, errorId)}
         error={Boolean(error)}
-        className={className(options)}
+        {...widthAndClassName(options)}
         {...attributes(options.attributes)}
       />
       <CharacterCount.Message id={`${id}-info`} className={className(countMessage)}>

@@ -1,5 +1,5 @@
 import { Select } from '../../src';
-import { attributes, optional } from '../nunjucks/helpers';
+import { attributes, optional, widthAndClassName } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
 import { fieldProps, labelExpressible } from './field';
 
@@ -30,6 +30,7 @@ export default {
     return (
       <Select.Field
         {...fieldProps(options)}
+        {...widthAndClassName(options)}
         {...optional('defaultValue', selected && effectiveValue(selected))}
       >
         {items.map((item, index) => (
