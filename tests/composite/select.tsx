@@ -1,7 +1,7 @@
 import { Select } from '../../src';
 import { attributes, optional } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
-import { fieldProps } from './field';
+import { fieldProps, labelExpressible } from './field';
 
 type Item = { text?: string; value?: unknown; selected?: boolean; disabled?: boolean };
 
@@ -18,6 +18,7 @@ export default {
     'items.*.attributes',
   ],
   render: (options) => {
+    if (!labelExpressible(options)) return null;
     const items = ((options.items as Item[] | undefined) ?? []).filter(Boolean);
     const selected =
       items.find((item) => item.selected) ??

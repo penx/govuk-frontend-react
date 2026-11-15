@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
-import { isSet, joinIds } from '../../utils/field';
+import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { i18nAttributes } from '../../utils/i18n';
 import { FormGroup, type FormGroupProps } from '../../objects/form-group';
 import { Root as Button } from '../button';
@@ -87,7 +87,8 @@ export function Toggle({
   );
 }
 
-export type FieldProps = Omit<InputProps, 'error'> &
+export type FieldProps = LabelFieldProps &
+  Omit<InputProps, 'error'> &
   Omit<RootProps, keyof FormGroupProps> & {
     label?: ReactNode;
     hint?: ReactNode;
@@ -98,6 +99,8 @@ export function Field({
   id: idProp,
   name,
   label,
+  labelSize,
+  labelIsPageHeading,
   hint,
   errorMessage,
   showPasswordText,
@@ -123,7 +126,9 @@ export function Field({
       passwordShownAnnouncementText={passwordShownAnnouncementText}
       passwordHiddenAnnouncementText={passwordHiddenAnnouncementText}
     >
-      <LabelComposite htmlFor={id}>{label}</LabelComposite>
+      <LabelComposite htmlFor={id} size={labelSize} isPageHeading={labelIsPageHeading}>
+        {label}
+      </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       <Wrapper>
