@@ -145,6 +145,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Button         | 38/38            |
 | Details        | 10/10            |
 | Error message  | 9/9              |
+| Error summary  | 19/19            |
 | Fieldset       | 18/18            |
 | Footer         | 25/25            |
 | Generic header | 7/7              |

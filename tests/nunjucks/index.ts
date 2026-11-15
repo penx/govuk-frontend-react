@@ -5,6 +5,7 @@ import breadcrumbs from './breadcrumbs';
 import button from './button';
 import details from './details';
 import errorMessage from './error-message';
+import errorSummary from './error-summary';
 import fieldset from './fieldset';
 import footer from './footer';
 import genericHeader from './generic-header';
@@ -28,6 +29,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   button,
   details,
   'error-message': errorMessage,
+  'error-summary': errorSummary,
   fieldset,
   footer,
   'generic-header': genericHeader,
