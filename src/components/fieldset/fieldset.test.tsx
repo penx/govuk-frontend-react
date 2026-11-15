@@ -1,28 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import * as Fieldset from '.';
 
-describe('Fieldset', () => {
-  test('legend can be content', () => {
-    render(<Fieldset.Root legend="Address" />);
-    expect(screen.getByRole('group', { name: 'Address' })).toBeInTheDocument();
-  });
-
-  test('legend size adds the legend size modifier', () => {
-    render(<Fieldset.Root legend={{ children: 'Address', size: 'l' }} />);
+describe('Fieldset.Legend', () => {
+  test('size adds the legend size modifier', () => {
+    render(<Fieldset.Legend size="l">Address</Fieldset.Legend>);
     expect(screen.getByText('Address')).toHaveClass('govuk-fieldset__legend--l');
-  });
-
-  test('omits the legend when it has no content', () => {
-    const { container } = render(<Fieldset.Root legend="" />);
-    expect(container.querySelector('legend')).toBeNull();
-  });
-
-  test('Legend can be used directly', () => {
-    render(
-      <fieldset>
-        <Fieldset.Legend isPageHeading>Title</Fieldset.Legend>
-      </fieldset>,
-    );
-    expect(screen.getByRole('heading', { level: 1, name: 'Title' })).toBeInTheDocument();
   });
 });

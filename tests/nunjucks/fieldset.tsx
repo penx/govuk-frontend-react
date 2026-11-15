@@ -9,14 +9,15 @@ export default function fieldset(options: Options) {
       {...optional('role', options.role)}
       {...optional('aria-describedby', options.describedBy || undefined)}
       {...attributes(options.attributes)}
-      legend={
-        legend && {
-          children: content(legend),
-          className: className(legend),
-          isPageHeading: Boolean(legend.isPageHeading),
-        }
-      }
     >
+      {legend && (
+        <Fieldset.Legend
+          className={className(legend)}
+          isPageHeading={Boolean(legend.isPageHeading)}
+        >
+          {content(legend)}
+        </Fieldset.Legend>
+      )}
       {options.html ? html(options.html) : undefined}
     </Fieldset.Root>
   );
