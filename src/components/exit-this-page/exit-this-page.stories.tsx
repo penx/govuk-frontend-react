@@ -9,9 +9,13 @@ export default { title: 'Exit this page', component: ExitThisPage.Root } satisfi
 >;
 
 export const Default = {
+  render: () => <ExitThisPage.Composite />,
+};
+
+export const WithParts = {
   render: () => (
     <ExitThisPage.Root>
-      <ExitThisPage.Button />
+      <ExitThisPage.Button>Exit this page</ExitThisPage.Button>
     </ExitThisPage.Root>
   ),
 };

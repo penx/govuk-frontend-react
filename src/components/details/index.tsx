@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 
 export type RootProps = ComponentProps<'details'>;
@@ -23,4 +23,17 @@ export type TextProps = ComponentProps<'div'>;
 
 export function Text({ className, ...props }: TextProps) {
   return <div className={clsx('govuk-details__text', className)} {...props} />;
+}
+
+export type CompositeProps = RootProps & { summary: ReactNode };
+
+export function Composite({ summary, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Summary>
+        <SummaryText>{summary}</SummaryText>
+      </Summary>
+      <Text>{children}</Text>
+    </Root>
+  );
 }

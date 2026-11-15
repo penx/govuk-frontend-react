@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { Tag as BaseTag, type TagProps as BaseTagProps } from '../tag';
 
@@ -26,4 +26,16 @@ export type TextProps = ComponentProps<'span'>;
 
 export function Text({ className, ...props }: TextProps) {
   return <span className={clsx('govuk-phase-banner__text', className)} {...props} />;
+}
+
+export type CompositeProps = RootProps & { tag: ReactNode };
+
+export function Composite({ tag, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Content>
+        <Tag>{tag}</Tag> <Text>{children}</Text>
+      </Content>
+    </Root>
+  );
 }

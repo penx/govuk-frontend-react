@@ -2,21 +2,39 @@ import type { CompositeMapping } from './helpers';
 import characterCount from './character-count';
 import checkboxes from './checkboxes';
 import dateInput from './date-input';
+import details from './details';
+import errorMessage from './error-message';
+import exitThisPage from './exit-this-page';
+import fieldset from './fieldset';
 import fileUpload from './file-upload';
 import input from './input';
+import label from './label';
+import notificationBanner from './notification-banner';
+import panel from './panel';
 import passwordInput from './password-input';
+import phaseBanner from './phase-banner';
 import radios from './radios';
 import select from './select';
 import textarea from './textarea';
+import warningText from './warning-text';
 
 export const compositeMappings: Record<string, CompositeMapping> = {
   'character-count': characterCount,
   checkboxes,
   'date-input': dateInput,
+  details,
+  'error-message': errorMessage,
+  'exit-this-page': exitThisPage,
+  fieldset,
   'file-upload': fileUpload,
   input,
+  label,
+  'notification-banner': notificationBanner,
+  panel,
   'password-input': passwordInput,
+  'phase-banner': phaseBanner,
   radios,
   select,
   textarea,
+  'warning-text': warningText,
 };

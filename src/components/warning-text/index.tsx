@@ -38,3 +38,13 @@ export type RootProps = ComponentProps<'div'>;
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-warning-text', className)} {...props} />;
 }
+
+export type CompositeProps = RootProps & Pick<TextCompositeProps, 'iconFallbackText'>;
+
+export function Composite({ iconFallbackText, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <Icon /> <TextComposite iconFallbackText={iconFallbackText}>{children}</TextComposite>
+    </Root>
+  );
+}

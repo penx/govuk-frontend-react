@@ -1,4 +1,4 @@
-import { ExitThisPage } from '../../src';
+import { ExitThisPage, VisuallyHidden } from '../../src';
 import { attributes, className, content, optional, type Options } from './helpers';
 
 export default function exitThisPage(options: Options) {
@@ -14,7 +14,11 @@ export default function exitThisPage(options: Options) {
       {...attributes(options.attributes)}
     >
       <ExitThisPage.Button href={(options.redirectUrl as string) || undefined}>
-        {content(options)}
+        {content(options) ?? (
+          <>
+            <VisuallyHidden>Emergency</VisuallyHidden> Exit this page
+          </>
+        )}
       </ExitThisPage.Button>
     </ExitThisPage.Root>
   );

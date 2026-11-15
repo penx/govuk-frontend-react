@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 
@@ -44,4 +44,18 @@ export type RootProps = ComponentProps<'fieldset'>;
 
 export function Root({ className, ...props }: RootProps) {
   return <fieldset className={clsx('govuk-fieldset', className)} {...props} />;
+}
+
+export type CompositeProps = RootProps &
+  Pick<LegendCompositeProps, 'isPageHeading'> & {
+    legend?: ReactNode;
+  };
+
+export function Composite({ legend, isPageHeading, children, ...props }: CompositeProps) {
+  return (
+    <Root {...props}>
+      <LegendComposite isPageHeading={isPageHeading}>{legend}</LegendComposite>
+      {children}
+    </Root>
+  );
 }
