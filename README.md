@@ -2,7 +2,7 @@
 
 [govuk-frontend](https://github.com/alphagov/govuk-frontend) as React components.
 
-This is a direct port: each component renders the same HTML as govuk-frontend's own Nunjucks macro, and this is checked against every fixture that govuk-frontend publishes. Styles and JavaScript come from govuk-frontend itself.
+This is a direct port: each component renders the same HTML as govuk-frontend's own Nunjucks macro, and this is checked against every fixture that govuk-frontend publishes. Styles come from govuk-frontend itself. Components are markup only, with no client-side behaviour.
 
 It currently ports **govuk-frontend 6.6.0**. More opinionated components, and components govuk-frontend doesn't provide, belong in [govuk-react](https://github.com/govuk-react/govuk-react), which builds on this package.
 
@@ -53,10 +53,11 @@ The package is ES modules only.
 1. **A direct markup port.** Each component renders the same HTML as govuk-frontend's macro, even where React developers may expect a different pattern. Anything it derives can be overridden with a prop or by composing the parts.
 2. **Works wherever React renders.** No context, state or effects; where the macro derives a value from a parent, a composite presets it instead (`Table.RowHeader`). Every part renders on its own, so components work on the server, in Server Components, as templates and in separate islands. Opinions and enhancements belong in [govuk-react](https://github.com/govuk-react/govuk-react).
 3. **Compose parts, don't configure them.** Props take content, never objects to spread onto another part. Parts render only their own element, so spaces between inline parts are yours to write, as in HTML.
-4. **ES modules.** ESM only. A component with several parts is a module of named exports (`Input.Control`), never properties on a component.
-5. **`Root` is the outermost part,** and only exists when other parts sit inside it. Single-part components are named after themselves, and form controls have `Control` and the `Field` shorthand.
-6. **One component, one folder,** with its stories and tests. Styles come from govuk-frontend's CSS.
-7. **Tests that catch real problems.** Fixture parity proves the HTML. Unit tests cover only what parity can't see.
+4. **No govuk classes in your code.** Every class you need comes from a part or a prop. Where a component expects something from another package, such as the logo, it re-exports it as a part with the class applied.
+5. **ES modules.** ESM only. A component with several parts is a module of named exports (`Input.Control`), never properties on a component.
+6. **`Root` is the outermost part,** and only exists when other parts sit inside it. Single-part components are named after themselves, and form controls have `Control` and the `Field` shorthand.
+7. **One component, one folder,** with its stories and tests. Styles come from govuk-frontend's CSS.
+8. **Tests that catch real problems.** Fixture parity proves the HTML. Unit tests cover only what parity can't see.
 
 ## Conventions
 
