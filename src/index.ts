@@ -1,3 +1,9 @@
+export * from './core/body';
+export * from './core/caption';
+export * from './core/heading';
+export * from './core/link';
+export * from './core/list';
+export * from './core/section-break';
 export * from './components/back-link';
 export * as Breadcrumbs from './components/breadcrumbs';
 export * as Button from './components/button';
@@ -24,3 +30,4 @@ export * as WarningText from './components/warning-text';
 export * from './objects/button-group';
 export * from './objects/form-group';
 export * from './objects/width-container';
+export * from './utilities/visually-hidden';

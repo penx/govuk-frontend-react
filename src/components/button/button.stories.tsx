@@ -4,6 +4,7 @@ import { fn } from 'storybook/test';
 import fixtures from 'govuk-frontend/dist/govuk/components/button/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/button';
+import { Body } from '../../core/body';
 import * as Button from '.';
 
 const meta = {
@@ -50,13 +51,13 @@ export const WithReactRouter: Story = {
       <Button.Root as={Link} to="/missing">
         Bad link
       </Button.Root>
-      <p className="govuk-body">
+      <Body>
         <Routes>
           <Route path="/" element="Home" />
           <Route path="/about" element="About" />
           <Route path="*" element="404" />
         </Routes>
-      </p>
+      </Body>
     </MemoryRouter>
   ),
 };

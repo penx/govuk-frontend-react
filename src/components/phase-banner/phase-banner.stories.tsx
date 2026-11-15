@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/phase-banner/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/phase-banner';
+import { Link } from '../../core/link';
 import * as PhaseBanner from '.';
 
 export default { title: 'Phase banner', component: PhaseBanner.Root } satisfies Meta<
@@ -14,11 +15,8 @@ export const Default = {
       <PhaseBanner.Content>
         <PhaseBanner.Tag>Alpha</PhaseBanner.Tag>{' '}
         <PhaseBanner.Text>
-          This is a new service. Your{' '}
-          <a href="/feedback" className="govuk-link">
-            feedback
-          </a>{' '}
-          will help us to improve it.
+          This is a new service. Your <Link href="/feedback">feedback</Link> will help us to improve
+          it.
         </PhaseBanner.Text>
       </PhaseBanner.Content>
     </PhaseBanner.Root>
