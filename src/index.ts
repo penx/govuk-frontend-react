@@ -4,6 +4,6 @@ export * as Fieldset from './components/fieldset';
 export * from './components/hint';
 export * as Input from './components/input';
 export * from './components/label';
-export * from './components/select';
+export * as Select from './components/select';
 export * as Textarea from './components/textarea';
 export * from './objects/form-group';
