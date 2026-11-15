@@ -14,6 +14,7 @@ export * from './components/error-message';
 export * as ErrorSummary from './components/error-summary';
 export * as Feedback from './components/feedback';
 export * as Fieldset from './components/fieldset';
+export * as FileUpload from './components/file-upload';
 export * as Footer from './components/footer';
 export * as GenericHeader from './components/generic-header';
 export * as Header from './components/header';

@@ -19,6 +19,7 @@ export default defineConfig({
     'error-summary': 'src/components/error-summary/index.tsx',
     feedback: 'src/components/feedback/index.tsx',
     fieldset: 'src/components/fieldset/index.tsx',
+    'file-upload': 'src/components/file-upload/index.tsx',
     footer: 'src/components/footer/index.tsx',
     'generic-header': 'src/components/generic-header/index.tsx',
     header: 'src/components/header/index.tsx',
