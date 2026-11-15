@@ -33,6 +33,7 @@ export * as PasswordInput from './components/password-input';
 export * as PhaseBanner from './components/phase-banner';
 export * as Radios from './components/radios';
 export * as Select from './components/select';
+export * as ServiceNavigation from './components/service-navigation';
 export * from './components/skip-link';
 export * as SummaryList from './components/summary-list';
 export * as Table from './components/table';

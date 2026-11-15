@@ -174,6 +174,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Phase banner        | 7/7              |
 | Radios              | 43/43            |
 | Select              | 19/19            |
+| Service navigation  | 33/33            |
 | Skip link           | 9/9              |
 | Summary list        | 30/30            |
 | Table               | 21/21            |
@@ -183,7 +184,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
-The other 11 govuk-frontend components are planned.
+The other 10 govuk-frontend components are planned.
 
 ## Development
 
