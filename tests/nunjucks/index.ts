@@ -20,6 +20,7 @@ import hint from './hint';
 import input from './input';
 import insetText from './inset-text';
 import label from './label';
+import languageNavigation from './language-navigation';
 import notificationBanner from './notification-banner';
 import pagination from './pagination';
 import panel from './panel';
@@ -57,6 +58,7 @@ export const mappings: Record<string, (options: Options) => ReactElement> = {
   input,
   'inset-text': insetText,
   label,
+  'language-navigation': languageNavigation,
   'notification-banner': notificationBanner,
   pagination,
   panel,

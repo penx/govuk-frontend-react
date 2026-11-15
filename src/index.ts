@@ -24,6 +24,7 @@ export * from './components/hint';
 export * as Input from './components/input';
 export * from './components/inset-text';
 export * from './components/label';
+export * as LanguageNavigation from './components/language-navigation';
 export * as NotificationBanner from './components/notification-banner';
 export * as Pagination from './components/pagination';
 export * as Panel from './components/panel';
