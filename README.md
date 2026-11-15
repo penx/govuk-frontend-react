@@ -48,9 +48,18 @@ import { Label } from 'govuk-frontend-react/label';
 
 The package is ES modules only.
 
+## Design principles
+
+1. **A faithful port.** Every component renders the same HTML as govuk-frontend's Nunjucks macro and keeps its behaviour, even where React developers may expect a different pattern. For example, a form control's `id` falls back to its `name`. Anything a component derives can be overridden with an explicit prop or by composing the parts, so [govuk-react](https://github.com/govuk-react/govuk-react) can change the behaviour without forking.
+2. **Compose parts, don't configure them.** A prop never takes an object that is spread onto another part; the part is exported and you compose it instead. Props that take content, such as `label` on a `Field`, are fine.
+3. **ES modules all the way down.** The package is ESM only. A component with several parts is a module of named exports (`Input.Control`, `Fieldset.Legend`), and components are never attached to other components as properties.
+4. **`Root` means the outermost part.** It exists only when the other parts sit inside it. A single-part component is named after itself (`Label`), a form control's element is `Control`, and `Field` is the shorthand that renders the whole field.
+5. **One component, one folder.** Each component lives in `src/{type}/{name}/` with its stories and tests. Styles come from govuk-frontend's own CSS, with no CSS Modules for now.
+6. **Tests that catch real problems.** Fixture parity proves the HTML. Unit tests cover only React behaviour parity can't see, such as id wiring, refs and modifier props, and never implementation details.
+
 ## Conventions
 
-Common conventions used when rewriting the Nunjucks templates.
+How the [design principles](#design-principles) apply when rewriting the Nunjucks templates.
 
 ### BEM
 
@@ -58,10 +67,9 @@ When looking at govuk-frontend BEM class names:
 
 - Blocks become ES modules at `src/{type}/my-block/`, where `{type}` is `objects` or `components`, following govuk-frontend's ITCSS layers.
 - A block with elements exports each part as a named export, and the package root exports the module as a namespace.
-- `Root` is the part that the other parts sit inside, normally the outermost element. A module has a `Root` only when it has such a part. Form controls have none, because their outer element is a `FormGroup`; their form control element is `Control`, alongside the `Field` shorthand.
+- The part the others sit inside is `Root`. Form controls have none, because their outer element is a `FormGroup`.
 - A block without elements exports a single component named after the block.
 - Modifiers become props of the part.
-- Components are never attached to other components as properties.
 
 For example, a class name of `govuk-my-block__my-element--my-modifier` implies:
 
@@ -116,14 +124,12 @@ Form controls also export a `Field` shorthand that does what the Nunjucks macro 
 <Input.Field name="cost" label="Cost" hint="In pounds" errorMessage="Enter a cost" prefix="£" />
 ```
 
-### Faithful defaults
+### Overriding defaults
 
-Components behave as govuk-frontend does, even where React would usually do it differently. For example, a form control's `id` falls back to its `name`, so two copies of the same form on a page get duplicate ids.
+Following the first principle, the `Field` shorthand copies the macro's id handling, and each piece can be overridden:
 
-Anything a component derives can be overridden, so a library built on top, such as govuk-react, can change the behaviour without forking:
-
-- `id` on a `Field`. The hint and error message ids are derived from it, so `id={useId()}` makes all three unique.
-- The parts, which derive nothing, for full control over ids and `aria-describedby`.
+- Pass `id` to a `Field`. The hint and error message ids are derived from it, so `id={useId()}` makes all three unique.
+- Compose the parts, which derive nothing, for full control over ids and `aria-describedby`.
 
 ## HTML parity
 
@@ -154,3 +160,9 @@ npm run lint
 npm run typecheck
 npm run build
 ```
+
+## Contributing
+
+- One component per pull request. A pull request that builds on another open one stays in draft until its base merges.
+- Each pull request description says what it changes and includes a short usage example of the component or API.
+- Agree structural changes, such as new conventions or removing files, in an issue or discussion first.
