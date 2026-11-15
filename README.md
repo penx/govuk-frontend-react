@@ -27,7 +27,8 @@ Load govuk-frontend's styles as its [documentation](https://frontend.design-syst
 ```tsx
 import { Button, Fieldset, Label, Hint, ErrorMessage } from 'govuk-frontend-react';
 
-<Fieldset.Root legend={{ children: 'What is your address?', isPageHeading: true, size: 'l' }}>
+<Fieldset.Root>
+  <Fieldset.Legend isPageHeading size="l">What is your address?</Fieldset.Legend>
   <Label htmlFor="postcode">Postcode</Label>
   <Hint id="postcode-hint">For example, SW1A 2AA</Hint>
   <ErrorMessage id="postcode-error">Enter a postcode</ErrorMessage>

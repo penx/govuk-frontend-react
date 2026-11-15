@@ -1,6 +1,6 @@
-import type { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
-import { hasContent, isPropsObject } from '../../utils/is-props-object';
+import { hasContent } from '../../utils/is-props-object';
 
 export type HeadingProps = ComponentProps<'h1'>;
 
@@ -33,18 +33,8 @@ export function Legend({ className, isPageHeading, size, children, ...props }: L
   );
 }
 
-export type RootProps = ComponentProps<'fieldset'> & {
-  legend?: ReactNode | LegendProps;
-};
+export type RootProps = ComponentProps<'fieldset'>;
 
-export function Root({ className, legend, children, ...props }: RootProps) {
-  const legendProps: LegendProps = isPropsObject<LegendProps>(legend)
-    ? legend
-    : { children: legend };
-  return (
-    <fieldset className={clsx('govuk-fieldset', className)} {...props}>
-      <Legend {...legendProps} />
-      {children}
-    </fieldset>
-  );
+export function Root({ className, ...props }: RootProps) {
+  return <fieldset className={clsx('govuk-fieldset', className)} {...props} />;
 }
