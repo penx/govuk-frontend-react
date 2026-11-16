@@ -16,6 +16,7 @@
 - Form controls have a `Field`. Where `Root` is a single element around a list, the item's composite covers basic usage (`TaskList.ItemComposite`).
 - A composite may offer its items as an array prop, as a convenience. It always takes them as children too, never both at once, and its JSDoc recommends children.
 - Spaces between inline parts are yours to write, as in HTML.
+- Link parts take `asChild` to render your router's link instead of an `a`, with their classes merged on (`<Link asChild><RouterLink to="/">Home</RouterLink></Link>`).
 - Tabs is parts only: its tab list and panels repeat the same ids, so children can't build both.
 
 ## API styles by component
