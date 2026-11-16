@@ -18,8 +18,8 @@ export function actions(message: Message) {
         <Button.Root
           {...optional('href', action.href)}
           type={action.type || 'button'}
-          {...optional('name', action.name)}
-          {...optional('value', action.value)}
+          {...optional('name', action.name || undefined)}
+          {...optional('value', action.value || undefined)}
           className={className(action)}
           {...attributes(action.attributes)}
         >

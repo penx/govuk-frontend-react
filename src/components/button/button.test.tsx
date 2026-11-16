@@ -8,16 +8,6 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveClass(`govuk-button--${variant}`);
   });
 
-  test('omits empty name and value', () => {
-    render(
-      <Button.Root name="" value="">
-        Go
-      </Button.Root>,
-    );
-    expect(screen.getByRole('button')).not.toHaveAttribute('name');
-    expect(screen.getByRole('button')).not.toHaveAttribute('value');
-  });
-
   test('keeps href when as is set', () => {
     render(
       <Button.Root as="a" href="/next">

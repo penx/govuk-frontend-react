@@ -7,8 +7,8 @@ export default function button(options: Options) {
     <Button.Root
       {...optional('href', options.href || undefined)}
       {...optional('type', options.type)}
-      {...optional('name', options.name)}
-      {...optional('value', options.value)}
+      {...optional('name', options.name || undefined)}
+      {...optional('value', options.value || undefined)}
       {...optional('disabled', options.disabled || undefined)}
       {...optional('preventDoubleClick', options.preventDoubleClick)}
       {...optional('id', options.id)}

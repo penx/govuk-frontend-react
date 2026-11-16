@@ -60,8 +60,8 @@ export function Root({
   const elementProps = isButton
     ? {
         type: type || 'submit',
-        name: name || undefined,
-        value: value || undefined,
+        name,
+        value,
         disabled,
         'aria-disabled': disabled ? 'true' : undefined,
         'data-prevent-double-click':
