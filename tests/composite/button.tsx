@@ -21,8 +21,8 @@ export default {
     <Button.Composite
       {...optional('href', (options.href as string) || undefined)}
       {...optional('type', options.type as 'button')}
-      {...optional('name', options.name as string)}
-      {...optional('value', options.value as string)}
+      {...optional('name', (options.name as string) || undefined)}
+      {...optional('value', (options.value as string) || undefined)}
       {...optional('disabled', (options.disabled as boolean) || undefined)}
       {...optional('preventDoubleClick', options.preventDoubleClick as boolean)}
       {...optional('id', options.id as string)}

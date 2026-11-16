@@ -165,7 +165,7 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Language navigation | 13/13            |
 | Notification banner | 21/21            |
 | Pagination          | 15/15            |
-| Panel               | 18/19            |
+| Panel               | 19/19            |
 | Password input      | 12/12            |
 | Phase banner        | 7/7              |
 | Radios              | 43/43            |
