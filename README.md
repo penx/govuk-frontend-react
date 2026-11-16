@@ -178,8 +178,6 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
-The Panel fixture that differs is listed, with its reason, in `tests/known-differences.ts`.
-
 ## Development
 
 ```sh
