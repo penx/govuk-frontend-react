@@ -40,6 +40,8 @@ function serialiseChildren(children: ChildNode[], depth: number): string[] {
 
 const blockElements = new Set([
   'address',
+  'body',
+  'head',
   'article',
   'aside',
   'blockquote',

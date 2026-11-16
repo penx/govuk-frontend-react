@@ -178,6 +178,8 @@ Following the first principle, the `Field` shorthand copies the macro's id handl
 | Textarea            | 18/18            |
 | Warning text        | 8/8              |
 
+The page template (`Template`) and `MainWrapper` match govuk-frontend's `template.njk`, checked in `tests/template.test.tsx`. React orders `<head>` itself, and the template's inline script that adds `js-enabled` isn't ported, because it's client JS.
+
 ## Development
 
 ```sh
