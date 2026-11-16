@@ -1,22 +1,27 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
+import { Slot } from '../../utils/slot';
 
 export type LinkProps = ComponentProps<'a'> & {
   variant?: 'inverse' | 'muted' | 'text-colour';
   noUnderline?: boolean;
   noVisitedState?: boolean;
+  /** Render the only child (such as a router's link) instead of an `a`, with the link classes merged onto it. */
+  asChild?: boolean;
 };
 
 export function Link({
   variant,
   noUnderline,
   noVisitedState,
+  asChild,
   className,
   children,
   ...props
 }: LinkProps) {
+  const Element = asChild ? Slot : 'a';
   return (
-    <a
+    <Element
       className={clsx(
         'govuk-link',
         variant && `govuk-link--${variant}`,
@@ -27,6 +32,6 @@ export function Link({
       {...props}
     >
       {children}
-    </a>
+    </Element>
   );
 }
