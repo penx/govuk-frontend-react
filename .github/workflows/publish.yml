@@ -2,6 +2,11 @@ name: Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: npm dist-tag, such as alpha for a prerelease
+        required: true
+        default: latest
 
 permissions:
   contents: read
@@ -21,4 +26,6 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npm stage publish --access public
+      - run: npm stage publish --access public --tag "$TAG"
+        env:
+          TAG: ${{ inputs.tag }}
