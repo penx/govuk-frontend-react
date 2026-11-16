@@ -51,6 +51,8 @@ export default defineConfig({
     'button-group': 'src/objects/button-group/index.tsx',
     'form-group': 'src/objects/form-group/index.tsx',
     grid: 'src/objects/grid/index.tsx',
+    'main-wrapper': 'src/objects/main-wrapper/index.tsx',
+    template: 'src/objects/template/index.tsx',
     'width-container': 'src/objects/width-container/index.tsx',
     overrides: 'src/overrides/index.ts',
     'visually-hidden': 'src/utilities/visually-hidden/index.tsx',
