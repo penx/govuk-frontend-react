@@ -11,10 +11,13 @@ export default { title: 'Character count', component: CharacterCount.Root } sati
 export const Default = {
   render: () => (
     <CharacterCount.Field
-      name="more-detail"
-      label="Can you provide more detail?"
-      hint="Do not include personal or financial information"
+      name="withHint"
+      id="with-hint"
       maxLength={200}
+      label="Can you provide more detail?"
+      labelSize="l"
+      labelIsPageHeading
+      hint="Do not include personal or financial information like your National Insurance number or credit card details"
     />
   ),
 };

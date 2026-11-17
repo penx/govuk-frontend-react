@@ -9,7 +9,7 @@ export default { title: 'Password input', component: PasswordInput.Root } satisf
 >;
 
 export const Default = {
-  render: () => <PasswordInput.Field name="password" label="Password" />,
+  render: () => <PasswordInput.Field id="password-input" name="password" label="Password" />,
 };
 
 export const GovukFrontendFixtures = fixturesStory(nunjucks, fixtures);

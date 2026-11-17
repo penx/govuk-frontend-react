@@ -8,6 +8,11 @@ export type HeadingProps = ComponentProps<'h2'> & {
   marginBottom?: Spacing;
 };
 
+/**
+ * Use headings to structure content on pages.
+ *
+ * @see https://design-system.service.gov.uk/styles/headings/
+ */
 export function Heading({
   size,
   headingLevel = 2,

@@ -11,11 +11,12 @@ export default {
 
 export const Default = {
   render: () => (
-    <ServiceNavigation.Composite serviceName="Apply for a juggling licence" serviceHref="#/">
-      <ServiceNavigation.ItemComposite href="#/1" current>
-        Apply
+    <ServiceNavigation.Composite>
+      <ServiceNavigation.ItemComposite href="#">Navigation item 1</ServiceNavigation.ItemComposite>
+      <ServiceNavigation.ItemComposite href="#" active>
+        Navigation item 2
       </ServiceNavigation.ItemComposite>
-      <ServiceNavigation.ItemComposite href="#/2">Check status</ServiceNavigation.ItemComposite>
+      <ServiceNavigation.ItemComposite href="#">Navigation item 3</ServiceNavigation.ItemComposite>
     </ServiceNavigation.Composite>
   ),
 };
@@ -26,18 +27,23 @@ export const WithParts = {
       <ServiceNavigation.WidthContainer>
         <ServiceNavigation.Container>
           <ServiceNavigation.ServiceName>
-            <ServiceNavigation.Link href="#/">Apply for a juggling licence</ServiceNavigation.Link>
+            <ServiceNavigation.Link href="#">Service name</ServiceNavigation.Link>
           </ServiceNavigation.ServiceName>
           <ServiceNavigation.Wrapper>
             <ServiceNavigation.Toggle />
             <ServiceNavigation.List>
+              <ServiceNavigation.Item>
+                <ServiceNavigation.Link href="#">Navigation item 1</ServiceNavigation.Link>
+              </ServiceNavigation.Item>
               <ServiceNavigation.Item active>
-                <ServiceNavigation.Link href="#/1" aria-current="page">
-                  <ServiceNavigation.ActiveFallback>Apply</ServiceNavigation.ActiveFallback>
+                <ServiceNavigation.Link href="#">
+                  <ServiceNavigation.ActiveFallback>
+                    Navigation item 2
+                  </ServiceNavigation.ActiveFallback>
                 </ServiceNavigation.Link>
               </ServiceNavigation.Item>
               <ServiceNavigation.Item>
-                <ServiceNavigation.Link href="#/2">Check status</ServiceNavigation.Link>
+                <ServiceNavigation.Link href="#">Navigation item 3</ServiceNavigation.Link>
               </ServiceNavigation.Item>
             </ServiceNavigation.List>
           </ServiceNavigation.Wrapper>

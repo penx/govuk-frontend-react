@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/notification-banner/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/notification-banner';
+import { Body } from '../../core/body';
 import * as NotificationBanner from '.';
 
 export default {
@@ -32,7 +33,14 @@ export const Success = {
         <NotificationBanner.Title>Success</NotificationBanner.Title>
       </NotificationBanner.Header>
       <NotificationBanner.Content>
-        <NotificationBanner.Heading>Training outcome recorded</NotificationBanner.Heading>
+        <NotificationBanner.Heading>
+          Training outcome recorded and trainee withdrawn
+        </NotificationBanner.Heading>
+        <Body>
+          Contact{' '}
+          <NotificationBanner.Link href="#">example@department.gov.uk</NotificationBanner.Link> if
+          you think there’s a problem.
+        </Body>
       </NotificationBanner.Content>
     </NotificationBanner.Root>
   ),

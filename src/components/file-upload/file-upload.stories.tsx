@@ -9,11 +9,13 @@ export default { title: 'File upload', component: FileUpload.Control } satisfies
 >;
 
 export const Default = {
-  render: () => <FileUpload.Field name="file-upload" label="Upload a file" />,
+  render: () => <FileUpload.Field id="file-upload-1" name="fileUpload1" label="Upload a file" />,
 };
 
 export const Enhanced = {
-  render: () => <FileUpload.Field name="file-upload-enhanced" label="Upload a file" javascript />,
+  render: () => (
+    <FileUpload.Field id="file-upload-1" name="fileUpload1" label="Upload a file" javascript />
+  ),
 };
 
 export const GovukFrontendFixtures = fixturesStory(nunjucks, fixtures);

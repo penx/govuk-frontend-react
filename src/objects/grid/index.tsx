@@ -3,6 +3,11 @@ import { clsx } from 'clsx';
 
 export type GridRowProps = ComponentProps<'div'>;
 
+/**
+ * Organise the layout of the page into blocks.
+ *
+ * @see https://design-system.service.gov.uk/styles/layout/
+ */
 export function GridRow({ className, ...props }: GridRowProps) {
   return <div className={clsx('govuk-grid-row', className)} {...props} />;
 }

@@ -32,6 +32,7 @@ export function Legend({ className, size, children, ...props }: LegendProps) {
 }
 
 export type LegendCompositeProps = LegendProps & {
+  /** Whether the legend also acts as the heading for the page. */
   isPageHeading?: boolean;
 };
 
@@ -42,16 +43,28 @@ export function LegendComposite({ isPageHeading, children, ...props }: LegendCom
 
 export type RootProps = ComponentProps<'fieldset'>;
 
+/**
+ * Use the fieldset component to group related form inputs.
+ *
+ * @see https://design-system.service.gov.uk/components/fieldset/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <fieldset className={clsx('govuk-fieldset', className)} {...props} />;
 }
 
 export type CompositeProps = RootProps & {
+  /** The legend for the fieldset component. */
   legend?: ReactNode;
   legendSize?: LegendProps['size'];
+  /** Whether the legend also acts as the heading for the page. */
   legendIsPageHeading?: boolean;
 };
 
+/**
+ * Use the fieldset component to group related form inputs.
+ *
+ * @see https://design-system.service.gov.uk/components/fieldset/
+ */
 export function Composite({
   legend,
   legendSize,

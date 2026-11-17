@@ -10,14 +10,16 @@ export default meta;
 
 export const Field: StoryObj<typeof meta> = {
   args: {
+    id: 'sort',
     name: 'sort',
     label: 'Sort by',
-    defaultValue: 'published',
+    defaultValue: 'updated',
     children: (
       <>
         <option value="published">Recently published</option>
         <option value="updated">Recently updated</option>
         <option value="views">Most views</option>
+        <option value="comments">Most comments</option>
       </>
     ),
   },

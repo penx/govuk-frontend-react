@@ -20,6 +20,7 @@ export function Text({ className, ...props }: TextProps) {
 }
 
 export type TextCompositeProps = TextProps & {
+  /** The fallback text for the icon. Defaults to `"Warning"`. */
   iconFallbackText?: string;
 };
 
@@ -35,12 +36,22 @@ export function TextComposite({ iconFallbackText, children, ...props }: TextComp
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Use the warning text component when you need to warn users about something important, such as legal consequences of an action, or lack of action, that they might take.
+ *
+ * @see https://design-system.service.gov.uk/components/warning-text/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-warning-text', className)} {...props} />;
 }
 
 export type CompositeProps = RootProps & Pick<TextCompositeProps, 'iconFallbackText'>;
 
+/**
+ * Use the warning text component when you need to warn users about something important, such as legal consequences of an action, or lack of action, that they might take.
+ *
+ * @see https://design-system.service.gov.uk/components/warning-text/
+ */
 export function Composite({ iconFallbackText, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

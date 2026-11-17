@@ -6,6 +6,11 @@ export type SectionBreakProps = ComponentProps<'hr'> & {
   visible?: boolean;
 };
 
+/**
+ * Break up sections of content.
+ *
+ * @see https://design-system.service.gov.uk/styles/section-break/
+ */
 export function SectionBreak({ size, visible, className, ...props }: SectionBreakProps) {
   return (
     <hr

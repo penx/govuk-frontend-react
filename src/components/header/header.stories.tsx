@@ -11,8 +11,8 @@ export const Default = {
     <Header.Root>
       <Header.Container>
         <Header.Logo>
-          <Header.HomepageLink>
-            <Header.Logotype /> <Header.ProductName>Product Name</Header.ProductName>
+          <Header.HomepageLink href="#">
+            <Header.Logotype />
           </Header.HomepageLink>
         </Header.Logo>
       </Header.Container>

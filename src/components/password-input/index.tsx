@@ -11,14 +11,25 @@ import { Control, type ControlProps, Wrapper as InputWrapper } from '../input';
 import { LabelComposite } from '../label';
 
 export type RootProps = FormGroupProps & {
+  /** Button text when the password is hidden. Defaults to `"Show"`. */
   showPasswordText?: string;
+  /** Button text when the password is visible. Defaults to `"Hide"`. */
   hidePasswordText?: string;
+  /** Button text exposed to assistive technologies, like screen readers, when the password is hidden. Defaults to `"Show password"`. */
   showPasswordAriaLabelText?: string;
+  /** Button text exposed to assistive technologies, like screen readers, when the password is visible. Defaults to `"Hide password"`. */
   hidePasswordAriaLabelText?: string;
+  /** Announcement made to screen reader users when their password has become visible in plain text. Defaults to `"Your password is visible"`. */
   passwordShownAnnouncementText?: string;
+  /** Announcement made to screen reader users when their password has been obscured and is not visible. Defaults to `"Your password is hidden"`. */
   passwordHiddenAnnouncementText?: string;
 };
 
+/**
+ * Help users accessibly enter passwords.
+ *
+ * @see https://design-system.service.gov.uk/components/password-input/
+ */
 export function Root({
   showPasswordText,
   hidePasswordText,
@@ -90,11 +101,19 @@ export function Toggle({
 export type FieldProps = LabelFieldProps &
   Omit<InputProps, 'error'> &
   Omit<RootProps, keyof FormGroupProps> & {
+    /** The label used by the password input component. */
     label?: ReactNode;
+    /** Can be used to add a hint to the password input component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the password input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   };
 
+/**
+ * Help users accessibly enter passwords.
+ *
+ * @see https://design-system.service.gov.uk/components/password-input/
+ */
 export function Field({
   id: idProp,
   name,

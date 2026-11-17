@@ -9,7 +9,10 @@ const meta = { title: 'Inset text', component: InsetText } satisfies Meta<typeof
 export default meta;
 
 export const Default: StoryObj<typeof meta> = {
-  args: { children: 'It can take up to 8 weeks to register a lasting power of attorney.' },
+  args: {
+    children:
+      'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
+  },
 };
 
 export const GovukFrontendFixtures = fixturesStory(nunjucks, fixtures);

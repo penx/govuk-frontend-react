@@ -22,11 +22,17 @@ export function Control({ error, className, ...props }: ControlProps) {
 }
 
 export type WrapperProps = ComponentProps<'div'> & {
+  /** The text of the button that opens the file picker. Default is `"Choose file"`. */
   chooseFilesButtonText?: string;
+  /** The text displayed when no file has been chosen by the user. Default is `"No file chosen"`. */
   noFileChosenText?: string;
+  /** The text displayed when multiple files have been chosen by the user. The component will replace the `%{count}` placeholder with the number of files selected. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). */
   multipleFilesChosenText?: Translation;
+  /** The text informing users they can drop files. Default is `"or drop file"`. */
   dropInstructionText?: string;
+  /** The text announced by assistive technology when user drags files and enters the drop zone. Default is `"Entered drop zone"`. */
   enteredDropZoneText?: string;
+  /** The text announced by assistive technology when user drags files and leaves the drop zone without dropping. Default is `"Left drop zone"`. */
   leftDropZoneText?: string;
 };
 
@@ -58,12 +64,21 @@ export function Wrapper({
 export type FieldProps = LabelFieldProps &
   Omit<ControlProps, 'error'> &
   Omit<WrapperProps, keyof ComponentProps<'div'>> & {
+    /** The label used by the file upload component. */
     label?: ReactNode;
+    /** Can be used to add a hint to the file upload component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the file upload component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
+    /** Can be used to enable JavaScript enhancements for the component. */
     javascript?: boolean;
   };
 
+/**
+ * Help users select and upload a file.
+ *
+ * @see https://design-system.service.gov.uk/components/file-upload/
+ */
 export function Field({
   id: idProp,
   name,

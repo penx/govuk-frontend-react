@@ -9,19 +9,35 @@ import { LabelComposite } from '../label';
 import { Control, type ControlProps } from '../textarea';
 
 export type RootProps = FormGroupProps & {
+  /** The maximum number of characters (or words if `countType` is set to `"words"`). */
   maxLength?: number;
+  /** The maximum number of words. Replaced by the `maxLength` and `countType: "words"` options. */
   maxWords?: number;
+  /** The percentage value of the limit at which point the count message is displayed. If this attribute is set, the count message will be hidden by default. */
   threshold?: number;
+  /** The count type used to count the text – `"length"` or `"words"`. Defaults to `"length"`. */
   countType?: 'characters' | 'words' | 'length';
+  /** Message made available to assistive technologies to describe that the component accepts only a limited amount of content. It is visible on the page if `countType` is not supported or JavaScript is unavailable. The component will replace the `%{count}` placeholder with the value of the `maxLength` parameter. */
   textareaDescriptionText?: string;
+  /** Message displayed when the number of characters is under the configured maximum, `maxLength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining characters. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). */
   charactersUnderLimitText?: Translation;
+  /** Message displayed when the number of characters reaches the configured maximum, `maxLength`. This message is displayed visually and through assistive technologies. */
   charactersAtLimitText?: string;
+  /** Message displayed when the number of characters is over the configured maximum, `maxLength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). */
   charactersOverLimitText?: Translation;
+  /** Message displayed when the number of words is under the configured maximum, `maxLength` with `countType: "words"`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining words. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). */
   wordsUnderLimitText?: Translation;
+  /** Message displayed when the number of words reaches the configured maximum, `maxLength` with `countType: "words"`. This message is displayed visually and through assistive technologies. */
   wordsAtLimitText?: string;
+  /** Message displayed when the number of words is over the configured maximum, `maxLength` with `countType: "words"`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of words above the maximum. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). */
   wordsOverLimitText?: Translation;
 };
 
+/**
+ * Tell users how many characters or words they can enter into a textarea.
+ *
+ * @see https://design-system.service.gov.uk/components/character-count/
+ */
 export function Root({
   maxLength,
   maxWords,
@@ -76,11 +92,19 @@ export function Message({ className, ...props }: MessageProps) {
 export type FieldProps = LabelFieldProps &
   Omit<TextareaProps, 'error' | 'maxLength'> &
   Omit<RootProps, keyof FormGroupProps> & {
+    /** The label used by the character count component. */
     label?: ReactNode;
+    /** Can be used to add a hint to the character count component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the character count component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   };
 
+/**
+ * Tell users how many characters or words they can enter into a textarea.
+ *
+ * @see https://design-system.service.gov.uk/components/character-count/
+ */
 export function Field({
   id: idProp,
   name,

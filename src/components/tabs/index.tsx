@@ -5,6 +5,11 @@ import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Tabs can be a helpful way of letting users quickly switch between related information.
+ *
+ * @see https://design-system.service.gov.uk/components/tabs/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-tabs', className)} data-module="govuk-tabs" {...props} />;
 }

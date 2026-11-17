@@ -3,6 +3,11 @@ import { clsx } from 'clsx';
 
 export type SkipLinkProps = ComponentProps<'a'>;
 
+/**
+ * Use the skip link component to help keyboard-only users skip to the main content on a page.
+ *
+ * @see https://design-system.service.gov.uk/components/skip-link/
+ */
 export function SkipLink({ href, className, children, ...props }: SkipLinkProps) {
   return (
     <a

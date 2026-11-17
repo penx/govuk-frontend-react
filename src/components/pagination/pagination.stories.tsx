@@ -13,26 +13,25 @@ export const Default = {
   render: () => (
     <Pagination.Root>
       <Pagination.Previous>
-        <Pagination.PreviousLink href="/previous">
+        <Pagination.PreviousLink href="#">
           <Pagination.PreviousIcon /> <Pagination.PreviousLinkTitleComposite />
         </Pagination.PreviousLink>
       </Pagination.Previous>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.ItemLink href="/page/1">1</Pagination.ItemLink>
+          <Pagination.ItemLink href="#">1</Pagination.ItemLink>
         </Pagination.Item>
         <Pagination.Item current>
-          <Pagination.ItemLink href="/page/2" aria-current="page">
+          <Pagination.ItemLink href="#" aria-current="page">
             2
           </Pagination.ItemLink>
         </Pagination.Item>
-        <Pagination.Item ellipsis />
         <Pagination.Item>
-          <Pagination.ItemLink href="/page/9">9</Pagination.ItemLink>
+          <Pagination.ItemLink href="#">3</Pagination.ItemLink>
         </Pagination.Item>
       </Pagination.List>
       <Pagination.Next>
-        <Pagination.NextLink href="/next">
+        <Pagination.NextLink href="#">
           <Pagination.NextLinkTitleComposite /> <Pagination.NextIcon />
         </Pagination.NextLink>
       </Pagination.Next>

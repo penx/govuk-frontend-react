@@ -10,6 +10,11 @@ import { LabelComposite as BaseLabel, type LabelCompositeProps as BaseLabelProps
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Use the date input component to help users enter a memorable date.
+ *
+ * @see https://design-system.service.gov.uk/components/date-input/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-date-input', className)} {...props} />;
 }
@@ -40,11 +45,17 @@ export function Input({ className, inputMode = 'numeric', ...props }: InputProps
 
 export type FieldProps = LegendFieldProps &
   Omit<RootProps, 'defaultValue'> & {
+    /** This is used for the main component and to compose the ID attribute for each item. */
     id: string;
+    /** Specify `value` attributes for the date parts. */
     values?: { day?: string; month?: string; year?: string };
+    /** Optional prefix. This is used to prefix each item `name`, separated by `-`. */
     namePrefix?: string;
+    /** The legend for the fieldset used by the date input component. */
     legend: ReactNode;
+    /** Can be used to add a hint to a date input component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the date input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   };
 
@@ -54,6 +65,11 @@ const parts = [
   { name: 'year', label: 'Year', width: 4 },
 ] as const;
 
+/**
+ * Use the date input component to help users enter a memorable date.
+ *
+ * @see https://design-system.service.gov.uk/components/date-input/
+ */
 export function Field({
   id,
   namePrefix,

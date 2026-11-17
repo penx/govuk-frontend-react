@@ -13,13 +13,21 @@ export const Default = {
       <Table.Head>
         <Table.Row>
           <Table.ColumnHeader>Date</Table.ColumnHeader>
-          <Table.ColumnHeader numeric>Amount</Table.ColumnHeader>
+          <Table.ColumnHeader>Amount</Table.ColumnHeader>
         </Table.Row>
       </Table.Head>
       <Table.Body>
         <Table.Row>
           <Table.RowHeader>First 6 weeks</Table.RowHeader>
-          <Table.Cell numeric>£109.80 per week</Table.Cell>
+          <Table.Cell>£109.80 per week</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.RowHeader>Next 33 weeks</Table.RowHeader>
+          <Table.Cell>£109.80 per week</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.RowHeader>Total estimated pay</Table.RowHeader>
+          <Table.Cell>£4,282.20</Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table.Root>

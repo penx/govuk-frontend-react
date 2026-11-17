@@ -15,6 +15,11 @@ export type TagProps = ComponentProps<'strong'> & {
     | 'yellow';
 };
 
+/**
+ * The Tag component indicates the status of something, such as an item on a task list or a phase banner.
+ *
+ * @see https://design-system.service.gov.uk/components/tag/
+ */
 export function Tag({ className, colour, ...props }: TagProps) {
   return (
     <strong className={clsx('govuk-tag', colour && `govuk-tag--${colour}`, className)} {...props} />

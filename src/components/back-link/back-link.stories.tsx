@@ -9,7 +9,7 @@ const meta = { title: 'Back link', component: BackLink } satisfies Meta<typeof B
 
 export default meta;
 
-export const Default: StoryObj<typeof meta> = { args: { href: '/previous' } };
+export const Default: StoryObj<typeof meta> = { args: { href: '#' } };
 
 export const WithReactRouter: StoryObj<typeof meta> = {
   render: () => (

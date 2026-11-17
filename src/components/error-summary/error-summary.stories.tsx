@@ -11,11 +11,9 @@ export default { title: 'Error summary', component: ErrorSummary.Composite } sat
 export const Default = {
   render: () => (
     <ErrorSummary.Composite title="There is a problem">
-      <ErrorSummary.ListItemComposite href="#passport-issued">
+      <ErrorSummary.ListItemComposite href="#">Enter your full name</ErrorSummary.ListItemComposite>
+      <ErrorSummary.ListItemComposite href="#">
         The date your passport was issued must be in the past
-      </ErrorSummary.ListItemComposite>
-      <ErrorSummary.ListItemComposite href="#postcode">
-        Enter a postcode, like AA1 1AA
       </ErrorSummary.ListItemComposite>
     </ErrorSummary.Composite>
   ),
@@ -29,7 +27,7 @@ export const WithParts = {
         <ErrorSummary.Body>
           <ErrorSummary.List>
             <ErrorSummary.ListItem>
-              <ErrorSummary.ListItemLink href="#passport-issued">
+              <ErrorSummary.ListItemLink href="#">
                 The date your passport was issued must be in the past
               </ErrorSummary.ListItemLink>
             </ErrorSummary.ListItem>

@@ -19,13 +19,23 @@ export type AffixProps = ComponentProps<'div'>;
 
 export type FieldProps = LabelFieldProps &
   Omit<ControlProps, 'error' | 'prefix'> & {
+    /** The label used by the text input component. */
     label?: ReactNode;
+    /** Can be used to add a hint to a text input component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
+    /** Can be used to add a prefix to the text input component. */
     prefix?: ReactNode;
+    /** Can be used to add a suffix to the text input component. */
     suffix?: ReactNode;
   };
 
+/**
+ * Help users enter information with the text input component.
+ *
+ * @see https://design-system.service.gov.uk/components/text-input/
+ */
 export function Control({
   className,
   error,
@@ -62,6 +72,11 @@ export function Wrapper({ className, ...props }: AffixProps) {
   return <div className={clsx('govuk-input__wrapper', className)} {...props} />;
 }
 
+/**
+ * Help users enter information with the text input component.
+ *
+ * @see https://design-system.service.gov.uk/components/text-input/
+ */
 export function Field({
   id: idProp,
   name,

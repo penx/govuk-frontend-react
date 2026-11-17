@@ -3,6 +3,11 @@ import { clsx } from 'clsx';
 
 export type RootProps = ComponentProps<'details'>;
 
+/**
+ * Make a page easier to scan by letting users reveal more detailed information only if they need it.
+ *
+ * @see https://design-system.service.gov.uk/components/details/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <details className={clsx('govuk-details', className)} {...props} />;
 }
@@ -25,8 +30,16 @@ export function Text({ className, ...props }: TextProps) {
   return <div className={clsx('govuk-details__text', className)} {...props} />;
 }
 
-export type CompositeProps = RootProps & { summary: ReactNode };
+export type CompositeProps = RootProps & {
+  /** The summary element (the visible part of the details element). */
+  summary: ReactNode;
+};
 
+/**
+ * Make a page easier to scan by letting users reveal more detailed information only if they need it.
+ *
+ * @see https://design-system.service.gov.uk/components/details/
+ */
 export function Composite({ summary, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

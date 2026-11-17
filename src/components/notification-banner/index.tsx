@@ -5,10 +5,17 @@ import { hasContent } from '../../utils/has-content';
 const defaultTitleId = 'govuk-notification-banner-title';
 
 export type RootProps = ComponentProps<'div'> & {
+  /** Use to tell the user about the outcome of something they’ve just done. The notification banner sets `role` to `"alert"`. */
   success?: boolean;
+  /** If you set `success`, or `role` to `"alert"`, JavaScript moves the keyboard focus to the notification banner when the page loads. To disable this behaviour, set `disableAutoFocus` to `true`. */
   disableAutoFocus?: boolean;
 };
 
+/**
+ * Use a notification banner to tell the user about something they need to know about, but that’s not directly related to the page content.
+ *
+ * @see https://design-system.service.gov.uk/components/notification-banner/
+ */
 export function Root({ success, disableAutoFocus, className, ...props }: RootProps) {
   return (
     <div
@@ -35,6 +42,7 @@ export function Header({ className, ...props }: HeaderProps) {
 }
 
 export type TitleProps = ComponentProps<'h2'> & {
+  /** Sets heading level for the title only. You can only use values between `1` and `6` with this option. The default is `2`. */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
@@ -74,12 +82,20 @@ export function Link({ className, children, ...props }: LinkProps) {
 }
 
 export type CompositeProps = Omit<RootProps, 'title'> & {
+  /** The title that displays in the notification banner. Defaults to `"Important"`, or `"Success"` if you set `success`. */
   title?: ReactNode;
+  /** The `id` for the banner title, and the `aria-labelledby` attribute in the banner. Defaults to `"govuk-notification-banner-title"`. */
   titleId?: string;
+  /** Sets heading level for the title only. You can only use values between `1` and `6` with this option. The default is `2`. */
   titleHeadingLevel?: TitleProps['headingLevel'];
   heading?: ReactNode;
 };
 
+/**
+ * Use a notification banner to tell the user about something they need to know about, but that’s not directly related to the page content.
+ *
+ * @see https://design-system.service.gov.uk/components/notification-banner/
+ */
 export function Composite({
   title,
   titleId,
