@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { Slot } from '../../utils/slot';
 import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'ul'>;
@@ -29,13 +30,17 @@ export function NameAndHint({ className, ...props }: NameAndHintProps) {
   return <div className={clsx('govuk-task-list__name-and-hint', className)} {...props} />;
 }
 
-export type LinkProps = ComponentProps<'a'>;
+export type LinkProps = ComponentProps<'a'> & {
+  /** Render the only child (such as a router's link) instead of an `a`, with the link classes merged onto it. */
+  asChild?: boolean;
+};
 
-export function Link({ className, children, ...props }: LinkProps) {
+export function Link({ className, asChild, children, ...props }: LinkProps) {
+  const Element = asChild ? Slot : 'a';
   return (
-    <a className={clsx('govuk-link', 'govuk-task-list__link', className)} {...props}>
+    <Element className={clsx('govuk-link', 'govuk-task-list__link', className)} {...props}>
       {children}
-    </a>
+    </Element>
   );
 }
 

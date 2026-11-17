@@ -1,5 +1,6 @@
 import { Children, type ComponentProps, type ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { Slot } from '../../utils/slot';
 import { hasContent } from '../../utils/has-content';
 import { WidthContainer as BaseWidthContainer } from '../../objects/width-container';
 
@@ -55,13 +56,17 @@ export function ServiceName({ className, ...props }: ServiceNameProps) {
   return <span className={clsx('govuk-service-navigation__service-name', className)} {...props} />;
 }
 
-export type LinkProps = ComponentProps<'a'>;
+export type LinkProps = ComponentProps<'a'> & {
+  /** Render the only child (such as a router's link) instead of an `a`, with the link classes merged onto it. */
+  asChild?: boolean;
+};
 
-export function Link({ className, children, ...props }: LinkProps) {
+export function Link({ className, asChild, children, ...props }: LinkProps) {
+  const Element = asChild ? Slot : 'a';
   return (
-    <a className={clsx('govuk-service-navigation__link', className)} {...props}>
+    <Element className={clsx('govuk-service-navigation__link', className)} {...props}>
       {children}
-    </a>
+    </Element>
   );
 }
 
