@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
 import { clsx } from 'clsx';
+import { Slot } from '../../utils/slot';
 import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'div'>;
@@ -39,13 +40,17 @@ export function ListItem({ selected, className, ...props }: ListItemProps) {
   );
 }
 
-export type TabProps = ComponentProps<'a'>;
+export type TabProps = ComponentProps<'a'> & {
+  /** Render the only child (such as a router's link or a label) instead of an `a`, with the tab class merged onto it. */
+  asChild?: boolean;
+};
 
-export function Tab({ className, children, ...props }: TabProps) {
+export function Tab({ className, asChild, children, ...props }: TabProps) {
+  const Element = asChild ? Slot : 'a';
   return (
-    <a className={clsx('govuk-tabs__tab', className)} {...props}>
+    <Element className={clsx('govuk-tabs__tab', className)} {...props}>
       {children}
-    </a>
+    </Element>
   );
 }
 
