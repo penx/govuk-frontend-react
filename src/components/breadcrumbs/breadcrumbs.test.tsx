@@ -9,3 +9,16 @@ describe('Breadcrumbs.Root', () => {
     );
   });
 });
+
+describe('Breadcrumbs.Link', () => {
+  test('asChild renders the child with the link class', () => {
+    const { container } = render(
+      <Breadcrumbs.Link asChild>
+        <a href="/section">Section</a>
+      </Breadcrumbs.Link>,
+    );
+    expect(container.innerHTML).toBe(
+      '<a href="/section" class="govuk-breadcrumbs__link">Section</a>',
+    );
+  });
+});

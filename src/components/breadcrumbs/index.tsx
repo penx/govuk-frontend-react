@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { Slot } from '../../utils/slot';
 
 export type RootProps = ComponentProps<'nav'> & {
   collapseOnMobile?: boolean;
@@ -39,13 +40,17 @@ export function Item({ className, ...props }: ItemProps) {
   return <li className={clsx('govuk-breadcrumbs__list-item', className)} {...props} />;
 }
 
-export type LinkProps = ComponentProps<'a'>;
+export type LinkProps = ComponentProps<'a'> & {
+  /** Render the only child (such as a router's link) instead of an `a`, with the link class merged onto it. */
+  asChild?: boolean;
+};
 
-export function Link({ className, children, ...props }: LinkProps) {
+export function Link({ className, asChild, children, ...props }: LinkProps) {
+  const Element = asChild ? Slot : 'a';
   return (
-    <a className={clsx('govuk-breadcrumbs__link', className)} {...props}>
+    <Element className={clsx('govuk-breadcrumbs__link', className)} {...props}>
       {children}
-    </a>
+    </Element>
   );
 }
 

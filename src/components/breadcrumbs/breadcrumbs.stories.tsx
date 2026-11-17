@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
+import { Link as RouterLink, MemoryRouter } from 'react-router';
 import fixtures from 'govuk-frontend/dist/govuk/components/breadcrumbs/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/breadcrumbs';
@@ -23,6 +24,23 @@ export const Default = {
         <Breadcrumbs.Item aria-current="page">Travel abroad</Breadcrumbs.Item>
       </Breadcrumbs.List>
     </Breadcrumbs.Root>
+  ),
+};
+
+export const WithReactRouter = {
+  render: () => (
+    <MemoryRouter>
+      <Breadcrumbs.Root>
+        <Breadcrumbs.List>
+          <Breadcrumbs.Item>
+            <Breadcrumbs.Link asChild>
+              <RouterLink to="/">Home</RouterLink>
+            </Breadcrumbs.Link>
+          </Breadcrumbs.Item>
+          <Breadcrumbs.Item aria-current="page">Travel abroad</Breadcrumbs.Item>
+        </Breadcrumbs.List>
+      </Breadcrumbs.Root>
+    </MemoryRouter>
   ),
 };
 
