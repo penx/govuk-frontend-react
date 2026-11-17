@@ -2,11 +2,6 @@ name: Publish
 
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: npm dist-tag, such as alpha for a prerelease
-        required: true
-        default: latest
 
 permissions:
   contents: read
@@ -26,6 +21,4 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npm stage publish --access public --tag "$TAG"
-        env:
-          TAG: ${{ inputs.tag }}
+      - run: npm stage publish --access public --tag "$(node -p "require('./package.json').version.split('-')[1]?.split('.')[0] ?? 'latest'")"
