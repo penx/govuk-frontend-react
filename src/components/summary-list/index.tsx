@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
+import { Slot } from '../../utils/slot';
 import { overrideClasses, type FluidWidth } from '../../overrides';
 import { hasContent } from '../../utils/has-content';
 
@@ -89,13 +90,17 @@ export function ActionsListItem({ className, ...props }: ActionsListItemProps) {
   return <li className={clsx('govuk-summary-list__actions-list-item', className)} {...props} />;
 }
 
-export type ActionProps = ComponentProps<'a'>;
+export type ActionProps = ComponentProps<'a'> & {
+  /** Render the only child (such as a router's link) instead of an `a`, with the link classes merged onto it. */
+  asChild?: boolean;
+};
 
-export function Action({ className, children, ...props }: ActionProps) {
+export function Action({ className, asChild, children, ...props }: ActionProps) {
+  const Element = asChild ? Slot : 'a';
   return (
-    <a className={clsx('govuk-link', className)} {...props}>
+    <Element className={clsx('govuk-link', className)} {...props}>
       {children}
-    </a>
+    </Element>
   );
 }
 
