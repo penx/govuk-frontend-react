@@ -10,6 +10,11 @@ export type RootProps = ComponentProps<'section'> & {
   inverse?: boolean;
 };
 
+/**
+ * Service navigation helps users understand that they’re using your service and lets them navigate around your service.
+ *
+ * @see https://design-system.service.gov.uk/components/service-navigation/
+ */
 export function Root({
   as = 'div',
   inverse,
@@ -140,10 +145,11 @@ export function ActiveFallback({ className, ...props }: ActiveFallbackProps) {
 }
 
 export type ItemCompositeProps = Omit<ItemProps, 'children'> & {
+  /** URL of the navigation item anchor. */
   href?: string;
-  /** The current section. */
+  /** If `true`, indicates that the user is within this group of pages in the navigation hierarchy. */
   active?: boolean;
-  /** The current page. Implies `active`. */
+  /** If `true`, indicates that the user is currently on this page. This takes precedence over `active`. */
   current?: boolean;
   children?: ReactNode;
 };
@@ -168,11 +174,15 @@ export function ItemComposite({ href, active, current, children, ...props }: Ite
 }
 
 export type CompositeProps = Omit<RootProps, 'children'> & {
+  /** The name of your service. */
   serviceName?: ReactNode;
+  /** The homepage of your service. */
   serviceHref?: string;
+  /** The screen reader label for the mobile navigation menu. Defaults to the same value as `menuButtonText` if not specified. */
   navigationLabel?: string;
+  /** The text of the mobile navigation menu toggle. */
   menuButtonText?: string;
-  /** Defaults to true when there's more than one item. */
+  /** Whether the navigation should be collapsed inside a menu on mobile. Defaults to true if there is more than one navigation item. */
   collapseNavigationOnMobile?: boolean;
 } & (
     | { children?: ReactNode; items?: never }
@@ -183,7 +193,13 @@ export type CompositeProps = Omit<RootProps, 'children'> & {
       }
   );
 
-/** Children are `ItemComposite`s. */
+/**
+ * Service navigation helps users understand that they’re using your service and lets them navigate around your service.
+ *
+ * Children are `ItemComposite`s.
+ *
+ * @see https://design-system.service.gov.uk/components/service-navigation/
+ */
 export function Composite({
   serviceName,
   serviceHref,

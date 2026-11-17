@@ -10,6 +10,11 @@ export type LinkProps = ComponentProps<'a'> & {
   asChild?: boolean;
 };
 
+/**
+ * Use links to navigate between pages.
+ *
+ * @see https://design-system.service.gov.uk/styles/links/
+ */
 export function Link({
   variant,
   noUnderline,

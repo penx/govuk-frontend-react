@@ -14,11 +14,19 @@ export type ControlProps = ComponentProps<'select'> & {
 
 export type FieldProps = LabelFieldProps &
   Omit<ControlProps, 'error'> & {
+    /** The label used by the select component. */
     label?: ReactNode;
+    /** Can be used to add a hint to the select component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the select component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   };
 
+/**
+ * Help users select an item from a list.
+ *
+ * @see https://design-system.service.gov.uk/components/select/
+ */
 export function Control({ className, error, width, ...props }: ControlProps) {
   return (
     <select
@@ -33,6 +41,11 @@ export function Control({ className, error, width, ...props }: ControlProps) {
   );
 }
 
+/**
+ * Help users select an item from a list.
+ *
+ * @see https://design-system.service.gov.uk/components/select/
+ */
 export function Field({
   id: idProp,
   name,

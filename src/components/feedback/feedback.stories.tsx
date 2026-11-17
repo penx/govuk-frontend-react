@@ -13,7 +13,7 @@ export const Default = {
     <Feedback.Composite title="Help us improve this service">
       <Body>
         Tell us about your experience using this service.{' '}
-        <Link href="/feedback">Give us your feedback</Link>
+        <Link href="#">Give us your feedback</Link>
       </Body>
     </Feedback.Composite>
   ),

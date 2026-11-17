@@ -16,7 +16,7 @@ export const Default = {
           <LanguageNavigation.Text lang="en">English</LanguageNavigation.Text>
         </LanguageNavigation.ListItem>
         <LanguageNavigation.ListItem>
-          <LanguageNavigation.Link href="#/cy" lang="cy">
+          <LanguageNavigation.Link href="#" lang="cy">
             Cymraeg
           </LanguageNavigation.Link>
         </LanguageNavigation.ListItem>

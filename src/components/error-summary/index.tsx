@@ -2,8 +2,16 @@ import type { ComponentProps, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 
-export type RootProps = ComponentProps<'div'> & { disableAutoFocus?: boolean };
+export type RootProps = ComponentProps<'div'> & {
+  /** Prevent moving focus to the error summary when the page loads. */
+  disableAutoFocus?: boolean;
+};
 
+/**
+ * Use an error summary when there is a validation error.
+ *
+ * @see https://design-system.service.gov.uk/components/error-summary/
+ */
 export function Root({ disableAutoFocus, className, ...props }: RootProps) {
   return (
     <div
@@ -60,7 +68,10 @@ export function ListItem(props: ListItemProps) {
 /** The link to the field with the error. */
 export const ListItemLink = 'a';
 
-export type ListItemCompositeProps = ListItemProps & { href?: string };
+export type ListItemCompositeProps = ListItemProps & {
+  /** Href attribute for the error link item. If provided item will be an anchor. */
+  href?: string;
+};
 
 /** Links to the field with the error when there's an `href`. */
 export function ListItemComposite({ href, children, ...props }: ListItemCompositeProps) {
@@ -72,7 +83,9 @@ export function ListItemComposite({ href, children, ...props }: ListItemComposit
 }
 
 export type CompositeProps = Omit<RootProps, 'title' | 'children'> & {
+  /** The heading of the error summary block. */
   title: ReactNode;
+  /** The description of the errors. */
   description?: ReactNode;
 } & (
     | { children?: ReactNode; errors?: never }
@@ -83,7 +96,13 @@ export type CompositeProps = Omit<RootProps, 'title' | 'children'> & {
       }
   );
 
-/** Children are `ListItemComposite`s. */
+/**
+ * Use an error summary when there is a validation error.
+ *
+ * Children are `ListItemComposite`s.
+ *
+ * @see https://design-system.service.gov.uk/components/error-summary/
+ */
 export function Composite({ title, description, errors, children, ...props }: CompositeProps) {
   const list = errors
     ? errors.map((item, index) => <ListItemComposite key={index} {...item} />)

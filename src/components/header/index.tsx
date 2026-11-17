@@ -5,6 +5,11 @@ import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * The GOV.UK header shows users that they are on GOV.UK.
+ *
+ * @see https://design-system.service.gov.uk/components/header/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-header', className)} {...props} />;
 }
@@ -65,11 +70,19 @@ export function ProductName({ className, ...props }: ProductNameProps) {
 
 export type CompositeProps = RootProps &
   Pick<ContainerProps, 'fullWidth'> & {
+    /** The URL of the homepage. Defaults to the GOV.UK homepage. */
     homepageHref?: string;
+    /** Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/). */
     productName?: ReactNode;
+    /** Classes for the container, useful if you want to make the header fixed width. */
     containerClassName?: string;
   };
 
+/**
+ * The GOV.UK header shows users that they are on GOV.UK.
+ *
+ * @see https://design-system.service.gov.uk/components/header/
+ */
 export function Composite({
   homepageHref,
   productName,

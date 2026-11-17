@@ -12,6 +12,11 @@ export { GridRow, type GridRowProps } from '../../objects/grid';
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Ask users to give their feedback about your service at any point of the journey.
+ *
+ * @see https://design-system.service.gov.uk/components/feedback/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-feedback', 'govuk-width-container', className)} {...props} />;
 }
@@ -23,6 +28,7 @@ export function GridColumn({ width = 'two-thirds', ...props }: GridColumnProps) 
 }
 
 export type TitleProps = ComponentProps<'h2'> & {
+  /** Heading level, from `1` to `6`. Default is `2`. */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
@@ -39,10 +45,17 @@ export function Body({ className, ...props }: BodyProps) {
 
 export type CompositeProps = Omit<RootProps, 'title'> &
   Pick<TitleProps, 'headingLevel'> & {
+    /** The title of the Feedback component. */
     title: ReactNode;
   };
 
-/** Children are the body. */
+/**
+ * Ask users to give their feedback about your service at any point of the journey.
+ *
+ * Children are the body.
+ *
+ * @see https://design-system.service.gov.uk/components/feedback/
+ */
 export function Composite({ title, headingLevel, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

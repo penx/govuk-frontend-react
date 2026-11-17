@@ -13,22 +13,22 @@ export default { title: 'Cookie banner', component: CookieBanner.Root } satisfie
 
 export const Default = {
   render: () => (
-    <CookieBanner.Root>
+    <CookieBanner.Root aria-label="Cookies on [name of service]">
       <CookieBanner.MessageComposite
-        heading="Cookies on this government service"
+        heading="Cookies on [name of service]"
         actions={
           <>
-            <Button.Root name="cookies" value="accept">
-              Accept analytics cookies
-            </Button.Root>{' '}
-            <Button.Root name="cookies" value="reject">
-              Reject analytics cookies
-            </Button.Root>{' '}
-            <Link href="/cookies">View cookies</Link>
+            <Button.Root type="button">Accept analytics cookies</Button.Root>{' '}
+            <Button.Root type="button">Reject analytics cookies</Button.Root>{' '}
+            <Link href="#">View cookies</Link>
           </>
         }
       >
-        <Body>We use analytics cookies to help understand how users use our service.</Body>
+        <Body>We use some essential cookies to make this service work.</Body>
+        <Body>
+          We’d also like to use analytics cookies so we can understand how you use the service and
+          make improvements.
+        </Body>
       </CookieBanner.MessageComposite>
     </CookieBanner.Root>
   ),

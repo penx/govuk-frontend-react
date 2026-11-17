@@ -6,7 +6,7 @@
 4. **No govuk classes in your code.** Every class govuk-frontend's macros and fixtures use comes from a part or a prop, including width and margin overrides (`width="one-third"`, `marginBottom={0}`). Other override classes come from `overrideClasses({ fontWeight: 'bold' })`. Where a component expects something from another package, such as the logo, it re-exports it as a part with the class applied.
 5. **ES modules.** ESM only. A component with several parts is a module of named exports (`Input.Control`), never properties on a component.
 6. **`Root` is a component's outermost part,** and only exists when other parts sit inside it. A `Field` composes a form control inside its form group and fieldset, so its `Root` (if it has one) sits within them. Single-part components are named after themselves.
-7. **One component, one folder,** with its stories and tests. Styles come from govuk-frontend's CSS.
+7. **One component, one folder,** with its stories and tests. Styles come from govuk-frontend's CSS. Stories and JSDoc reuse the GOV.UK Design System's examples and text and govuk-frontend's fixtures and option descriptions, verbatim where they fit.
 8. **Tests that catch real problems.** Fixture parity proves the HTML. Unit tests cover only what parity can't see.
 
 ## Parts and composites

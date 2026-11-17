@@ -6,11 +6,17 @@ export type RootProps = ComponentProps<'div'> & {
   variant?: 'confirmation' | 'interruption';
 };
 
+/**
+ * Use the Panel component to display important information in within confirmation and interruption pages.
+ *
+ * @see https://design-system.service.gov.uk/components/panel/
+ */
 export function Root({ className, variant = 'confirmation', ...props }: RootProps) {
   return <div className={clsx('govuk-panel', `govuk-panel--${variant}`, className)} {...props} />;
 }
 
 export type TitleProps = ComponentProps<'h1'> & {
+  /** Heading level, from `1` to `6`. Default is `1`. */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
@@ -34,9 +40,15 @@ export function Actions({ className, ...props }: ActionsProps) {
 export type CompositeProps = Omit<RootProps, 'title'> &
   Pick<TitleProps, 'headingLevel'> & {
     title: ReactNode;
+    /** Can be used when creating an [interruption panel](https://design-system.service.gov.uk/components/panel/#interruption-panel) which will add a button or link. */
     actions?: ReactNode;
   };
 
+/**
+ * Use the Panel component to display important information in within confirmation and interruption pages.
+ *
+ * @see https://design-system.service.gov.uk/components/panel/
+ */
 export function Composite({ title, headingLevel, actions, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

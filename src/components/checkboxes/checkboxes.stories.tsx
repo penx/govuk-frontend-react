@@ -11,23 +11,30 @@ export default { title: 'Checkboxes', component: Checkboxes.Root } satisfies Met
 export const Default = {
   render: () => (
     <Checkboxes.Field
-      idPrefix="nationality"
-      legend="What is your nationality?"
+      idPrefix="waste"
+      legend="Which types of waste do you transport?"
+      legendSize="l"
+      legendIsPageHeading
       hint="Select all that apply"
     >
-      <Checkboxes.Item>
-        <Checkboxes.Input id="nationality" name="nationality" value="british" />
-        <Checkboxes.Label htmlFor="nationality">British</Checkboxes.Label>
-      </Checkboxes.Item>
-      <Checkboxes.Item>
-        <Checkboxes.Input id="nationality-2" name="nationality" value="irish" />
-        <Checkboxes.Label htmlFor="nationality-2">Irish</Checkboxes.Label>
-      </Checkboxes.Item>
-      <Checkboxes.Divider>or</Checkboxes.Divider>
-      <Checkboxes.Item>
-        <Checkboxes.Input id="nationality-3" name="nationality" value="other" />
-        <Checkboxes.Label htmlFor="nationality-3">Citizen of another country</Checkboxes.Label>
-      </Checkboxes.Item>
+      <Checkboxes.ItemComposite
+        id="waste"
+        name="waste"
+        value="carcasses"
+        label="Waste from animal carcasses"
+      />
+      <Checkboxes.ItemComposite
+        id="waste-2"
+        name="waste"
+        value="mines"
+        label="Waste from mines or quarries"
+      />
+      <Checkboxes.ItemComposite
+        id="waste-3"
+        name="waste"
+        value="farm"
+        label="Farm or agricultural waste"
+      />
     </Checkboxes.Field>
   ),
 };

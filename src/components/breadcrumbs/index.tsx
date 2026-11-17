@@ -3,10 +3,17 @@ import { clsx } from 'clsx';
 import { Slot } from '../../utils/slot';
 
 export type RootProps = ComponentProps<'nav'> & {
+  /** When true, the breadcrumbs will collapse to the first and last item only on tablet breakpoint and below. */
   collapseOnMobile?: boolean;
+  /** Use on dark backgrounds. */
   inverse?: boolean;
 };
 
+/**
+ * Help users orientate themselves and navigate pages within a hierarchical structure.
+ *
+ * @see https://design-system.service.gov.uk/components/breadcrumbs/
+ */
 export function Root({
   className,
   collapseOnMobile,
@@ -54,7 +61,10 @@ export function Link({ className, asChild, children, ...props }: LinkProps) {
   );
 }
 
-export type ItemCompositeProps = ItemProps & { href?: string };
+export type ItemCompositeProps = ItemProps & {
+  /** Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item. */
+  href?: string;
+};
 
 /** A link, or the current page when there's no `href`. */
 export function ItemComposite({ href, children, ...props }: ItemCompositeProps) {
@@ -79,7 +89,13 @@ export type CompositeProps = Omit<RootProps, 'children'> &
       }
   );
 
-/** Children are `ItemComposite`s. */
+/**
+ * Help users orientate themselves and navigate pages within a hierarchical structure.
+ *
+ * Children are `ItemComposite`s.
+ *
+ * @see https://design-system.service.gov.uk/components/breadcrumbs/
+ */
 export function Composite({ items, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

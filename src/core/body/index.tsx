@@ -7,6 +7,11 @@ export type BodyProps = ComponentProps<'p'> & {
   marginBottom?: Spacing;
 };
 
+/**
+ * Use paragraphs for your core content.
+ *
+ * @see https://design-system.service.gov.uk/styles/paragraphs/
+ */
 export function Body({ size, marginBottom, className, ...props }: BodyProps) {
   return (
     <p

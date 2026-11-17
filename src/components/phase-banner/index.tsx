@@ -4,6 +4,11 @@ import { Tag as BaseTag, type TagProps as BaseTagProps } from '../tag';
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Use the phase banner component to show users your service is still being worked on.
+ *
+ * @see https://design-system.service.gov.uk/components/phase-banner/
+ */
 export function Root({ className, ...props }: RootProps) {
   return (
     <div className={clsx('govuk-phase-banner', 'govuk-width-container', className)} {...props} />
@@ -28,8 +33,16 @@ export function Text({ className, ...props }: TextProps) {
   return <span className={clsx('govuk-phase-banner__text', className)} {...props} />;
 }
 
-export type CompositeProps = RootProps & { tag: ReactNode };
+export type CompositeProps = RootProps & {
+  /** The tag used by the phase banner component. */
+  tag: ReactNode;
+};
 
+/**
+ * Use the phase banner component to show users your service is still being worked on.
+ *
+ * @see https://design-system.service.gov.uk/components/phase-banner/
+ */
 export function Composite({ tag, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

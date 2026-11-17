@@ -9,6 +9,11 @@ import { WidthContainer } from '../width-container';
 
 export type RootProps = ComponentProps<'html'>;
 
+/**
+ * Template combines the boilerplate markup and components needed for a basic GOV.UK page.
+ *
+ * @see https://design-system.service.gov.uk/styles/page-template/
+ */
 export function Root({ lang = 'en', className, ...props }: RootProps) {
   return <html lang={lang} className={clsx('govuk-template', className)} {...props} />;
 }
@@ -89,7 +94,13 @@ export type CompositeProps = Omit<RootProps, 'title'> &
     footer?: ReactNode;
   };
 
-/** The whole page, as govuk-frontend's page template renders it. */
+/**
+ * Template combines the boilerplate markup and components needed for a basic GOV.UK page.
+ *
+ * The whole page, as govuk-frontend's page template renders it.
+ *
+ * @see https://design-system.service.gov.uk/styles/page-template/
+ */
 export function Composite({
   title,
   titleLang,

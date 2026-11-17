@@ -6,4 +6,10 @@ import * as Fieldset from '.';
 
 export default { title: 'Fieldset', component: Fieldset.Root } satisfies Meta<typeof Fieldset.Root>;
 
+export const Default = {
+  render: () => (
+    <Fieldset.Composite legend="Legend as page heading" legendSize="l" legendIsPageHeading />
+  ),
+};
+
 export const GovukFrontendFixtures = fixturesStory(nunjucks, fixtures);

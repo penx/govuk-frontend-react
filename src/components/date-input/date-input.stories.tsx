@@ -14,6 +14,8 @@ export const Default = {
       id="passport-issued"
       namePrefix="passport-issued"
       legend="When was your passport issued?"
+      legendSize="l"
+      legendIsPageHeading
       hint="For example, 27 3 2007"
     />
   ),

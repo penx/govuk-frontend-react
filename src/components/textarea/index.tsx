@@ -14,11 +14,19 @@ export type ControlProps = ComponentProps<'textarea'> & {
 
 export type FieldProps = LabelFieldProps &
   Omit<ControlProps, 'error'> & {
+    /** The label used by the textarea component. */
     label?: ReactNode;
+    /** Can be used to add a hint to the textarea component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the textarea component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   };
 
+/**
+ * Help users provide detailed information using the textarea component.
+ *
+ * @see https://design-system.service.gov.uk/components/textarea/
+ */
 export function Control({ className, error, width, rows, ...props }: ControlProps) {
   return (
     <textarea
@@ -34,6 +42,11 @@ export function Control({ className, error, width, rows, ...props }: ControlProp
   );
 }
 
+/**
+ * Help users provide detailed information using the textarea component.
+ *
+ * @see https://design-system.service.gov.uk/components/textarea/
+ */
 export function Field({
   id: idProp,
   name,

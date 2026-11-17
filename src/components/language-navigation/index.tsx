@@ -5,6 +5,11 @@ import { VisuallyHidden } from '../../utilities/visually-hidden';
 
 export type RootProps = ComponentProps<'nav'> & { inverse?: boolean };
 
+/**
+ * The Language navigation component helps users choose and switch between languages when using a service.
+ *
+ * @see https://design-system.service.gov.uk/components/language-navigation/
+ */
 export function Root({
   inverse,
   className,
@@ -65,8 +70,11 @@ export function Link({ lang, hrefLang, className, children, ...props }: LinkProp
 }
 
 export type ItemCompositeProps = Omit<LinkProps, 'href'> & {
+  /** Link to the current page in this language. */
   href?: string;
+  /** Whether this is the language of the current page. Defaults to `true` when `href` is not provided. */
   current?: boolean;
+  /** Visually hidden text after a language link to indicate what the link will do. Write it in the language of the link (for example, "Change the language to English"). */
   languageDescription?: ReactNode;
 };
 
@@ -107,7 +115,13 @@ export type CompositeProps = Omit<RootProps, 'children'> &
       }
   );
 
-/** Children are `ItemComposite`s. */
+/**
+ * The Language navigation component helps users choose and switch between languages when using a service.
+ *
+ * Children are `ItemComposite`s.
+ *
+ * @see https://design-system.service.gov.uk/components/language-navigation/
+ */
 export function Composite({ items, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

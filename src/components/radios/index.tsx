@@ -9,6 +9,11 @@ import { LabelComposite as BaseLabel, type LabelCompositeProps as BaseLabelProps
 
 export type RootProps = ComponentProps<'div'> & { inline?: boolean; small?: boolean };
 
+/**
+ * Let users select a single option from a list using the radios component.
+ *
+ * @see https://design-system.service.gov.uk/components/radios/
+ */
 export function Root({ inline, small, className, ...props }: RootProps) {
   return (
     <div
@@ -71,8 +76,11 @@ export function Conditional({ checked, className, ...props }: ConditionalProps) 
 
 export type ItemCompositeProps = InputProps & {
   id: string;
+  /** The label used by each radio item within the radios component. */
   label: ReactNode;
+  /** Can be used to add a hint to each radio item within the radios component. */
   hint?: ReactNode;
+  /** Provide additional content to reveal when the radio is checked. */
   conditional?: ReactNode;
 };
 
@@ -109,9 +117,13 @@ export function ItemComposite({
 
 export type FieldProps = LegendFieldProps &
   Omit<RootProps, 'children'> & {
+    /** This is used to prefix the `id` attribute for each radio item input, hint and error message, separated by `-`. */
     idPrefix: string;
+    /** The legend for the fieldset used by the radios component. */
     legend: ReactNode;
+    /** Can be used to add a hint to the radios component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the radios component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   } & (
     | { children?: ReactNode; items?: never }
@@ -122,8 +134,13 @@ export type FieldProps = LegendFieldProps &
       }
   );
 
-/** Children are `ItemComposite`s and `Divider`s. */
-
+/**
+ * Let users select a single option from a list using the radios component.
+ *
+ * Children are `ItemComposite`s and `Divider`s.
+ *
+ * @see https://design-system.service.gov.uk/components/radios/
+ */
 export function Field({
   idPrefix,
   legend,

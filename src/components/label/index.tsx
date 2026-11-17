@@ -25,6 +25,7 @@ export function LabelWrapper({ className, children, ...props }: LabelWrapperProp
 }
 
 export type LabelCompositeProps = LabelProps & {
+  /** Whether the label also acts as the heading for the page. */
   isPageHeading?: boolean;
 };
 

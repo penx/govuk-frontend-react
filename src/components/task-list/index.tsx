@@ -4,6 +4,11 @@ import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'ul'>;
 
+/**
+ * The task list component displays all the tasks a user needs to do, and allows users to easily identify which ones are done and which they still need to do.
+ *
+ * @see https://design-system.service.gov.uk/components/task-list/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <ul className={clsx('govuk-task-list', className)} {...props} />;
 }
@@ -64,10 +69,15 @@ export function Status({ cannotStartYet, className, ...props }: StatusProps) {
 export const Title = 'div';
 
 export type ItemCompositeProps = Omit<ItemProps, 'title' | 'withLink'> & {
+  /** This is used to prefix the `id` attribute for the task list item tag and hint, separated by `-`. */
   idPrefix: string;
+  /** The main title for the task within the task list component. */
   title: ReactNode;
+  /** The value of the link’s `href` attribute for the task list item. */
   href?: string;
+  /** Can be used to add a hint to each task within the task list component. */
   hint?: ReactNode;
+  /** The status for each task within the task list component. */
   status: ReactNode;
   cannotStartYet?: boolean;
 };
@@ -103,7 +113,10 @@ export function ItemComposite({
   );
 }
 
-export type CompositeProps = Omit<RootProps, 'children'> & { idPrefix?: string } & (
+export type CompositeProps = Omit<RootProps, 'children'> & {
+  /** Optional prefix. This is used to prefix the `id` attribute for the task list item tag and hint, separated by `-`. Defaults to `"task-list"`. */
+  idPrefix?: string;
+} & (
     | { children?: ReactNode; items?: never }
     | {
         children?: never;
@@ -112,7 +125,13 @@ export type CompositeProps = Omit<RootProps, 'children'> & { idPrefix?: string }
       }
   );
 
-/** Children are `ItemComposite`s. With `items`, each `idPrefix` defaults to `idPrefix` and its position. */
+/**
+ * The task list component displays all the tasks a user needs to do, and allows users to easily identify which ones are done and which they still need to do.
+ *
+ * Children are `ItemComposite`s. With `items`, each `idPrefix` defaults to `idPrefix` and its position.
+ *
+ * @see https://design-system.service.gov.uk/components/task-list/
+ */
 export function Composite({ idPrefix = 'task-list', items, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

@@ -8,6 +8,6 @@ const meta = { title: 'Tag', component: Tag } satisfies Meta<typeof Tag>;
 
 export default meta;
 
-export const Default: StoryObj<typeof meta> = { args: { children: 'Completed', colour: 'green' } };
+export const Default: StoryObj<typeof meta> = { args: { children: 'Completed' } };
 
 export const GovukFrontendFixtures = fixturesStory(nunjucks, fixtures);

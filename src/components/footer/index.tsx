@@ -9,6 +9,11 @@ export type { CrownProps };
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * The footer provides copyright, licensing and other information about your service and department.
+ *
+ * @see https://design-system.service.gov.uk/components/footer/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-footer', className)} {...props} />;
 }
@@ -27,6 +32,7 @@ type ColumnWidth =
   'full' | 'one-half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters';
 
 export type SectionProps = ComponentProps<'div'> & {
+  /** Width of each navigation section in the footer. You can pass any Design System grid width here – for example, `"one-third"`, `"two-thirds"` or `"one-half"`. Defaults to `"full"`. */
   width?: ColumnWidth | `${ColumnWidth}-from-desktop`;
 };
 
@@ -50,6 +56,7 @@ export function Heading({ className, children, ...props }: HeadingProps) {
 }
 
 export type ListProps = ComponentProps<'ul'> & {
+  /** Amount of columns to display items in navigation section of the footer. */
   columns?: 1 | 2 | 3;
 };
 
@@ -203,18 +210,27 @@ export function CopyrightLogo({ className, children, ...props }: CopyrightLogoPr
 }
 
 export type CompositeProps = RootProps & {
+  /** Classes that can be added to the inner container, useful if you want to make the footer full width. */
   containerClassName?: string;
-  /** `Section`s, shown above the meta links. */
+  /** The navigation section of the footer before a section break and the copyright and license information. Children are `Section`s. */
   navigation?: ReactNode;
+  /** Title for a meta item section. Defaults to `"Support links"`. */
   metaHeading?: ReactNode;
-  /** `InlineListItem`s. */
+  /** The meta links add content within a unordered list to the meta section of the footer component. Children are `InlineListItem`s. */
   metaLinks?: ReactNode;
+  /** Content to add to the meta section of the footer, which will appear below any meta links. */
   metaContent?: ReactNode;
-  /** Defaults to the Open Government Licence. Pass `false` to leave it out. */
+  /** The content licence information within the footer component. If your service provides its information under a different license than OGL, use `false` to hide both the OGL logo and licence text. Defaults to Open Government Licence (OGL) v3 licence. */
   licence?: ReactNode;
+  /** The copyright information in the footer component, this defaults to `"© Crown copyright"`. */
   copyright?: ReactNode;
 };
 
+/**
+ * The footer provides copyright, licensing and other information about your service and department.
+ *
+ * @see https://design-system.service.gov.uk/components/footer/
+ */
 export function Composite({
   containerClassName,
   navigation,

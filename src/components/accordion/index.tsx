@@ -4,15 +4,27 @@ import { hasContent } from '../../utils/has-content';
 import { i18nAttributes } from '../../utils/i18n';
 
 export type RootProps = ComponentProps<'div'> & {
+  /** The text content of the 'Hide all sections' button at the top of the accordion when all sections are expanded. */
   hideAllSectionsText?: string;
+  /** The text content of the 'Hide' button within each section of the accordion, which is visible when the section is expanded. */
   hideSectionText?: string;
+  /** Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is expanded. Defaults to `"Hide this section"`. */
   hideSectionAriaLabelText?: string;
+  /** The text content of the 'Show all sections' button at the top of the accordion when at least one section is collapsed. */
   showAllSectionsText?: string;
+  /** The text content of the 'Show' button within each section of the accordion, which is visible when the section is collapsed. */
   showSectionText?: string;
+  /** Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to `"Show this section"`. */
   showSectionAriaLabelText?: string;
+  /** Whether the expanded/collapsed state of the accordion should be saved when a user leaves the page and restored when they return. Default is `true`. */
   rememberExpanded?: boolean;
 };
 
+/**
+ * The accordion component lets users show and hide sections of related content on a page.
+ *
+ * @see https://design-system.service.gov.uk/components/accordion/
+ */
 export function Root({
   hideAllSectionsText,
   hideSectionText,
@@ -42,7 +54,10 @@ export function Root({
   );
 }
 
-export type SectionProps = ComponentProps<'div'> & { expanded?: boolean };
+export type SectionProps = ComponentProps<'div'> & {
+  /** Sets whether the section should be expanded when the page loads for the first time. Defaults to `false`. */
+  expanded?: boolean;
+};
 
 export function Section({ expanded, className, ...props }: SectionProps) {
   return (
@@ -64,6 +79,7 @@ export function SectionHeader({ className, ...props }: SectionHeaderProps) {
 }
 
 export type SectionHeadingProps = ComponentProps<'h2'> & {
+  /** Heading level, from `1` to `6`. Default is `2`. */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
@@ -94,10 +110,13 @@ export function SectionContent({ className, ...props }: SectionContentProps) {
 
 export type SectionCompositeProps = SectionProps &
   Pick<SectionHeadingProps, 'headingLevel'> & {
+    /** The `id` of the accordion, used as a prefix for the `id`s of the section contents and the buttons that open them. */
     accordionId: string;
     /** The section's position, from 1, used in its ids as the macro does. */
     index: number;
+    /** The heading of each accordion section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. */
     heading: ReactNode;
+    /** The summary line of each accordion section. The summary line is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. */
     summary?: ReactNode;
   };
 
@@ -126,7 +145,10 @@ export function SectionComposite({
 }
 
 export type CompositeProps = Omit<RootProps, 'id' | 'children'> &
-  Pick<SectionHeadingProps, 'headingLevel'> & { id: string } & (
+  Pick<SectionHeadingProps, 'headingLevel'> & {
+    /** Must be unique across the domain of your service if `rememberExpanded` is `true` (as the expanded state of individual instances of the component persists across page loads using [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-control` attributes. */
+    id: string;
+  } & (
     | { children?: ReactNode; sections?: never }
     | {
         children?: never;
@@ -135,7 +157,13 @@ export type CompositeProps = Omit<RootProps, 'id' | 'children'> &
       }
   );
 
-/** Children are `SectionComposite`s. With `sections`, it fills in their ids and heading level. */
+/**
+ * The accordion component lets users show and hide sections of related content on a page.
+ *
+ * Children are `SectionComposite`s. With `sections`, it fills in their ids and heading level.
+ *
+ * @see https://design-system.service.gov.uk/components/accordion/
+ */
 export function Composite({ id, headingLevel, sections, children, ...props }: CompositeProps) {
   return (
     <Root id={id} {...props}>

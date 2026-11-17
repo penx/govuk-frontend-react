@@ -9,15 +9,22 @@ export default { title: 'Footer', component: Footer.Composite } satisfies Meta<
 >;
 
 export const Default = {
+  render: () => <Footer.Composite />,
+};
+
+export const WithMeta = {
   render: () => (
     <Footer.Composite
       metaLinks={
         <>
           <Footer.InlineListItem>
-            <Footer.Link href="/help">Help</Footer.Link>
+            <Footer.Link href="#">Item 1</Footer.Link>
           </Footer.InlineListItem>
           <Footer.InlineListItem>
-            <Footer.Link href="/cookies">Cookies</Footer.Link>
+            <Footer.Link href="#">Item 2</Footer.Link>
+          </Footer.InlineListItem>
+          <Footer.InlineListItem>
+            <Footer.Link href="#">Item 3</Footer.Link>
           </Footer.InlineListItem>
         </>
       }
@@ -35,7 +42,7 @@ export const WithParts = {
             <Footer.MetaHeading />
             <Footer.InlineList>
               <Footer.InlineListItem>
-                <Footer.Link href="/help">Help</Footer.Link>
+                <Footer.Link href="#">Item 1</Footer.Link>
               </Footer.InlineListItem>
             </Footer.InlineList>
             <Footer.LicenceLogo /> <Footer.LicenceDescriptionComposite />

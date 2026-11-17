@@ -13,6 +13,11 @@ export { ButtonGroup, type ButtonGroupProps } from '../../objects/button-group';
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Allow users to accept or reject cookies which are not essential to making your service work.
+ *
+ * @see https://design-system.service.gov.uk/components/cookie-banner/
+ */
 export function Root({
   className,
   'aria-label': ariaLabel = 'Cookie banner',
@@ -63,7 +68,9 @@ export function GridColumn({ width = 'two-thirds', ...props }: GridColumnProps) 
 }
 
 export type MessageCompositeProps = MessageProps & {
+  /** The heading that displays in the message. */
   heading?: ReactNode;
+  /** The buttons and links that you want to display in the message. */
   actions?: ReactNode;
 };
 
@@ -83,7 +90,13 @@ export function MessageComposite({ heading, actions, children, ...props }: Messa
 
 export type CompositeProps = RootProps & Pick<MessageCompositeProps, 'heading' | 'actions'>;
 
-/** A banner with one message. Use `Root` and `MessageComposite` for more. */
+/**
+ * Allow users to accept or reject cookies which are not essential to making your service work.
+ *
+ * A banner with one message. Use `Root` and `MessageComposite` for more.
+ *
+ * @see https://design-system.service.gov.uk/components/cookie-banner/
+ */
 export function Composite({ heading, actions, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

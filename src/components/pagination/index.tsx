@@ -5,6 +5,11 @@ import { VisuallyHidden } from '../../utilities/visually-hidden';
 
 export type RootProps = ComponentProps<'nav'> & { block?: boolean };
 
+/**
+ * Help users navigate collections of numbered pages like search results.
+ *
+ * @see https://design-system.service.gov.uk/components/pagination/
+ */
 export function Root({
   block,
   className,
@@ -170,8 +175,11 @@ export function ItemLink({ children, ...props }: LinkProps) {
 }
 
 export type ItemCompositeProps = Omit<LinkProps, 'children'> & {
+  /** The pagination item text – usually a page number. Required unless the item is an ellipsis. */
   number?: string | number;
+  /** Set to `true` to indicate the current page the user is on. */
   current?: boolean;
+  /** Use this option if you want to specify an ellipsis at a given point between numbers. If you set this option as `true`, any other options for the item are ignored. */
   ellipsis?: boolean;
 };
 
@@ -187,11 +195,17 @@ export function ItemComposite({ number, current, ellipsis, ...props }: ItemCompo
 }
 
 export type CompositeProps = Omit<RootProps, 'block' | 'children'> & {
+  /** The previous page's URL. */
   previousHref?: string;
+  /** The text content of the link to the previous page. Defaults to `"Previous page"`, with 'page' being visually hidden. */
   previousText?: ReactNode;
+  /** The optional label that goes underneath the link to the previous page, providing further context for the user about where the link goes. */
   previousLabel?: ReactNode;
+  /** The next page's URL. */
   nextHref?: string;
+  /** The text content of the link to the next page. Defaults to `"Next page"`, with 'page' being visually hidden. */
   nextText?: ReactNode;
+  /** The optional label that goes underneath the link to the next page, providing further context for the user about where the link goes. */
   nextLabel?: ReactNode;
 } & (
     | { children?: ReactNode; items?: never }
@@ -202,6 +216,11 @@ export type CompositeProps = Omit<RootProps, 'block' | 'children'> & {
       }
   );
 
+/**
+ * Help users navigate collections of numbered pages like search results.
+ *
+ * @see https://design-system.service.gov.uk/components/pagination/
+ */
 export function Composite({
   previousHref,
   previousText,

@@ -6,6 +6,11 @@ export type RootProps = ComponentProps<'table'> & {
   smallTextUntilTablet?: boolean;
 };
 
+/**
+ * Use the table component to make information easier to compare and scan for users.
+ *
+ * @see https://design-system.service.gov.uk/components/table/
+ */
 export function Root({ className, smallTextUntilTablet, ...props }: RootProps) {
   return (
     <table
@@ -85,13 +90,20 @@ export function Cell({ className, numeric, ...props }: CellProps) {
 }
 
 export type CompositeProps = RootProps & {
+  /** Caption text. */
   caption?: ReactNode;
   captionSize?: CaptionProps['size'];
-  /** The column headers. */
+  /** Can be used to add a row of table header cells (`<th>`) at the top of the table component. */
   head?: ReactNode;
 };
 
-/** Children are the body rows. */
+/**
+ * Use the table component to make information easier to compare and scan for users.
+ *
+ * Children are the body rows.
+ *
+ * @see https://design-system.service.gov.uk/components/table/
+ */
 export function Composite({ caption, captionSize, head, children, ...props }: CompositeProps) {
   return (
     <Root {...props}>

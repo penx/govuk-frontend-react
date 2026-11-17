@@ -11,11 +11,49 @@ export default { title: 'Task list', component: TaskList.Root } satisfies Meta<
 
 export const Default = {
   render: () => (
+    <TaskList.Composite>
+      <TaskList.ItemComposite
+        idPrefix="company-details-1"
+        title="Company Directors"
+        href="#"
+        status="Completed"
+      />
+      <TaskList.ItemComposite
+        idPrefix="company-details-2"
+        title="Registered company details"
+        href="#"
+        status={<Tag colour="blue">Incomplete</Tag>}
+      />
+      <TaskList.ItemComposite
+        idPrefix="company-details-3"
+        title="Financial history"
+        href="#"
+        hint="Include 5 years of the company’s relevant financial information"
+        status={<Tag colour="blue">Incomplete</Tag>}
+      />
+      <TaskList.ItemComposite
+        idPrefix="company-details-4"
+        title="Business plan"
+        href="#"
+        status={<Tag colour="blue">Incomplete</Tag>}
+      />
+      <TaskList.ItemComposite
+        idPrefix="company-details-5"
+        title="References"
+        href="#"
+        status={<Tag colour="blue">Incomplete</Tag>}
+      />
+    </TaskList.Composite>
+  ),
+};
+
+export const WithParts = {
+  render: () => (
     <TaskList.Root>
       <TaskList.Item withLink>
         <TaskList.NameAndHint>
           <TaskList.Link href="#" aria-describedby="directors-status">
-            Company directors
+            Company Directors
           </TaskList.Link>
         </TaskList.NameAndHint>
         <TaskList.Status id="directors-status">Completed</TaskList.Status>

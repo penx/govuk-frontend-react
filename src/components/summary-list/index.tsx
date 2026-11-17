@@ -11,6 +11,11 @@ export type RootProps = ComponentProps<'dl'> & {
   noBorder?: boolean;
 };
 
+/**
+ * Use the summary list to summarise information, for example, a user’s responses at the end of a form.
+ *
+ * @see https://design-system.service.gov.uk/components/summary-list/
+ */
 export function Root({ className, noBorder, ...props }: RootProps) {
   return (
     <dl
@@ -108,8 +113,11 @@ export function ActionComposite({ visuallyHiddenText, children, ...props }: Acti
 }
 
 export type RowCompositeProps = RowProps & {
+  /** The reference content (key) for each row item in the summary list component. */
   term: ReactNode;
+  /** The value for each row item in the summary list component. */
   value: ReactNode;
+  /** The action link items within the row item of the summary list component. */
   actions?: ReactNode[];
 };
 
@@ -146,7 +154,13 @@ export type CompositeProps = Omit<RootProps, 'children'> &
       }
   );
 
-/** Children are `RowComposite`s. With `rows`, rows without actions get `noActions` when others have them. */
+/**
+ * Use the summary list to summarise information, for example, a user’s responses at the end of a form.
+ *
+ * Children are `RowComposite`s. With `rows`, rows without actions get `noActions` when others have them.
+ *
+ * @see https://design-system.service.gov.uk/components/summary-list/
+ */
 export function Composite({ rows, children, ...props }: CompositeProps) {
   const anyActions = rows?.some((row) => row.actions?.length);
   return (

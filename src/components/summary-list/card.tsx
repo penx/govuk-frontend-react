@@ -4,6 +4,11 @@ import { hasContent } from '../../utils/has-content';
 
 export type RootProps = ComponentProps<'div'>;
 
+/**
+ * Can be used to wrap a summary card around the summary list component.
+ *
+ * @see https://design-system.service.gov.uk/components/summary-list/
+ */
 export function Root({ className, ...props }: RootProps) {
   return <div className={clsx('govuk-summary-card', className)} {...props} />;
 }
@@ -15,6 +20,7 @@ export function TitleWrapper({ className, ...props }: TitleWrapperProps) {
 }
 
 export type TitleProps = ComponentProps<'h2'> & {
+  /** Heading level, from `1` to `6`. Default is `2`. */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
@@ -47,7 +53,9 @@ export function Content({ className, ...props }: ContentProps) {
 
 export type CompositeProps = Omit<RootProps, 'title'> &
   Pick<TitleProps, 'headingLevel'> & {
+    /** Data for the summary card header. */
     title?: ReactNode;
+    /** The action link items shown in the header within the summary card wrapped around the summary list component. */
     actions?: ReactNode[];
   };
 

@@ -9,6 +9,11 @@ import { LabelComposite as BaseLabel, type LabelCompositeProps as BaseLabelProps
 
 export type RootProps = ComponentProps<'div'> & { small?: boolean };
 
+/**
+ * Let users select one or more options by using the checkboxes component.
+ *
+ * @see https://design-system.service.gov.uk/components/checkboxes/
+ */
 export function Root({ small, className, ...props }: RootProps) {
   return (
     <div
@@ -68,8 +73,11 @@ export function Conditional({ checked, className, ...props }: ConditionalProps) 
 
 export type ItemCompositeProps = InputProps & {
   id: string;
+  /** The label used by each checkbox item within the checkboxes component. */
   label: ReactNode;
+  /** Can be used to add a hint to each checkbox item within the checkboxes component. */
   hint?: ReactNode;
+  /** Provide additional content to reveal when the checkbox is checked. */
   conditional?: ReactNode;
 };
 
@@ -106,9 +114,13 @@ export function ItemComposite({
 
 export type FieldProps = LegendFieldProps &
   Omit<RootProps, 'children'> & {
+    /** This is used to prefix the `id` attribute for each checkbox item input, hint and error message, separated by `-`. */
     idPrefix: string;
+    /** The legend for the fieldset used by the checkboxes component. */
     legend: ReactNode;
+    /** Can be used to add a hint to the checkboxes component. */
     hint?: ReactNode;
+    /** Can be used to add an error message to the checkboxes component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. */
     errorMessage?: ReactNode;
   } & (
     | { children?: ReactNode; items?: never }
@@ -119,8 +131,13 @@ export type FieldProps = LegendFieldProps &
       }
   );
 
-/** Children are `ItemComposite`s and `Divider`s. */
-
+/**
+ * Let users select one or more options by using the checkboxes component.
+ *
+ * Children are `ItemComposite`s and `Divider`s.
+ *
+ * @see https://design-system.service.gov.uk/components/checkboxes/
+ */
 export function Field({
   idPrefix,
   legend,

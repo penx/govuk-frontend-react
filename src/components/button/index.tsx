@@ -7,9 +7,12 @@ type OwnProps<As extends ElementType> = {
   as?: As;
   children?: ReactNode;
   className?: string;
+  /** The URL that the button should link to. */
   href?: string;
   variant?: Variant;
+  /** Use for the main call to action on your service's start page. */
   start?: boolean;
+  /** Prevent accidental double clicks on submit buttons from submitting forms multiple times. This has no effect if `href` is set. */
   preventDoubleClick?: boolean;
 };
 
@@ -38,6 +41,11 @@ export function StartIcon({ className, ...props }: StartIconProps) {
   );
 }
 
+/**
+ * Use the button component to help users carry out an action.
+ *
+ * @see https://design-system.service.gov.uk/components/button/
+ */
 export function Root(props: LinkProps): ReactNode;
 export function Root<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
 export function Root({
@@ -90,6 +98,11 @@ export function Root({
 /** Wraps a start button's content when it isn't plain text. */
 export const StartContent = 'span';
 
+/**
+ * Use the button component to help users carry out an action.
+ *
+ * @see https://design-system.service.gov.uk/components/button/
+ */
 export function Composite(props: LinkProps): ReactNode;
 export function Composite<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
 export function Composite({ start, children, ...props }: RootProps<ElementType>) {
