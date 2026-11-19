@@ -20,6 +20,19 @@ describe('InputField', () => {
     expect(input).toHaveClass('govuk-input--error');
   });
 
+  test('an aria-describedby that already names the error message, as form libraries pass, reads it once', () => {
+    render(
+      <InputField
+        name="name"
+        label="Name"
+        errorMessage="Enter your name"
+        aria-describedby="name-error"
+      />,
+    );
+    expect(screen.getByRole('textbox')).toHaveAttribute('aria-describedby', 'name-error');
+    expect(screen.getByRole('textbox')).toHaveAccessibleDescription('Error: Enter your name');
+  });
+
   test('a false errorMessage shows no error', () => {
     render(<InputField id="name" label="Name" errorMessage={false} />);
     expect(screen.getByRole('textbox')).not.toHaveClass('govuk-input--error');
