@@ -7,11 +7,11 @@ import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
 import { LabelComposite } from '../label';
 
-export type ControlProps = Omit<ComponentProps<'input'>, 'type' | 'value' | 'defaultValue'> & {
+export type FileUploadProps = Omit<ComponentProps<'input'>, 'type' | 'value' | 'defaultValue'> & {
   error?: boolean;
 };
 
-export function Control({ error, className, ...props }: ControlProps) {
+export function FileUpload({ error, className, ...props }: FileUploadProps) {
   return (
     <input
       className={clsx('govuk-file-upload', error && 'govuk-file-upload--error', className)}
@@ -21,7 +21,7 @@ export function Control({ error, className, ...props }: ControlProps) {
   );
 }
 
-export type WrapperProps = ComponentProps<'div'> & {
+export type FileUploadWrapperProps = ComponentProps<'div'> & {
   /** The text of the button that opens the file picker. Default is `"Choose file"`. */
   chooseFilesButtonText?: string;
   /** The text displayed when no file has been chosen by the user. Default is `"No file chosen"`. */
@@ -36,7 +36,7 @@ export type WrapperProps = ComponentProps<'div'> & {
   leftDropZoneText?: string;
 };
 
-export function Wrapper({
+export function FileUploadWrapper({
   chooseFilesButtonText,
   noFileChosenText,
   multipleFilesChosenText,
@@ -45,7 +45,7 @@ export function Wrapper({
   leftDropZoneText,
   className,
   ...props
-}: WrapperProps) {
+}: FileUploadWrapperProps) {
   return (
     <div
       className={clsx('govuk-file-upload-wrapper', className)}
@@ -61,9 +61,9 @@ export function Wrapper({
   );
 }
 
-export type FieldProps = LabelFieldProps &
-  Omit<ControlProps, 'error'> &
-  Omit<WrapperProps, keyof ComponentProps<'div'>> & {
+export type FileUploadFieldProps = LabelFieldProps &
+  Omit<FileUploadProps, 'error'> &
+  Omit<FileUploadWrapperProps, keyof ComponentProps<'div'>> & {
     /** The label used by the file upload component. */
     label?: ReactNode;
     /** Can be used to add a hint to the file upload component. */
@@ -79,7 +79,7 @@ export type FieldProps = LabelFieldProps &
  *
  * @see https://design-system.service.gov.uk/components/file-upload/
  */
-export function Field({
+export function FileUploadField({
   id: idProp,
   name,
   label,
@@ -96,12 +96,12 @@ export function Field({
   leftDropZoneText,
   'aria-describedby': describedBy,
   ...props
-}: FieldProps) {
+}: FileUploadFieldProps) {
   const id = idProp || name;
   const hintId = isSet(hint) ? `${id}-hint` : undefined;
   const errorId = isSet(errorMessage) ? `${id}-error` : undefined;
   const control = (
-    <Control
+    <FileUpload
       id={id}
       name={name}
       error={Boolean(errorId)}
@@ -118,7 +118,7 @@ export function Field({
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       {javascript ? (
-        <Wrapper
+        <FileUploadWrapper
           chooseFilesButtonText={chooseFilesButtonText}
           noFileChosenText={noFileChosenText}
           multipleFilesChosenText={multipleFilesChosenText}
@@ -127,7 +127,7 @@ export function Field({
           leftDropZoneText={leftDropZoneText}
         >
           {control}
-        </Wrapper>
+        </FileUploadWrapper>
       ) : (
         control
       )}

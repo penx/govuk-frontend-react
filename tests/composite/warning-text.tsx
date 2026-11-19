@@ -5,12 +5,12 @@ import type { CompositeMapping } from './helpers';
 export default {
   supports: ['text', 'html', 'iconFallbackText', 'classes', 'attributes'],
   render: (options) => (
-    <WarningText.Composite
+    <WarningText
       {...optional('iconFallbackText', options.iconFallbackText as string)}
       className={className(options)}
       {...attributes(options.attributes)}
     >
       {content(options)}
-    </WarningText.Composite>
+    </WarningText>
   ),
 } satisfies CompositeMapping;

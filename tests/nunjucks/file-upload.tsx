@@ -1,4 +1,11 @@
-import { ErrorMessageComposite, FileUpload, FormGroup, Hint, LabelComposite } from '../../src';
+import {
+  ErrorMessageComposite,
+  FileUpload,
+  FileUploadWrapper,
+  FormGroup,
+  Hint,
+  LabelComposite,
+} from '../../src';
 import type { Translation } from '../../src/utils/i18n';
 import {
   attributes,
@@ -29,7 +36,7 @@ export default function fileUpload(options: Options) {
   const errorId = error && `${id}-error`;
   const group = (options.formGroup as Options | undefined) ?? {};
   const control = (
-    <FileUpload.Control
+    <FileUpload
       id={id}
       {...optional('name', options.name)}
       {...optional('disabled', options.disabled || undefined)}
@@ -52,7 +59,7 @@ export default function fileUpload(options: Options) {
       {error && <ErrorMessageComposite id={errorId} {...error} />}
       {content(group.beforeInput as Options | undefined)}
       {options.javascript ? (
-        <FileUpload.Wrapper
+        <FileUploadWrapper
           {...Object.assign(
             {},
             ...texts.map((key) => optional(key, options[key] as Translation | undefined)),
@@ -61,7 +68,7 @@ export default function fileUpload(options: Options) {
           {...attributes(options.wrapperAttributes)}
         >
           {control}
-        </FileUpload.Wrapper>
+        </FileUploadWrapper>
       ) : (
         control
       )}

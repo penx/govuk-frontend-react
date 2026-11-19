@@ -2,23 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/warning-text/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/warning-text';
-import * as WarningText from '.';
+import { WarningText } from '.';
 
 const meta = {
   title: 'Warning text',
-  component: WarningText.Root,
-} satisfies Meta<typeof WarningText.Root>;
+  component: WarningText,
+} satisfies Meta<typeof WarningText>;
 
 export default meta;
 
 export const Default: StoryObj<typeof meta> = {
   render: (args) => (
-    <WarningText.Root {...args}>
-      <WarningText.Icon />{' '}
-      <WarningText.TextComposite>
-        You can be fined up to £5,000 if you do not register.
-      </WarningText.TextComposite>
-    </WarningText.Root>
+    <WarningText {...args}>You can be fined up to £5,000 if you do not register.</WarningText>
   ),
 };
 
