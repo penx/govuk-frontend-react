@@ -3,9 +3,9 @@ import fixtures from 'govuk-frontend/dist/govuk/components/input/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/input';
 import { FormGroup, LabelComposite } from '../..';
-import * as Input from '.';
+import { Input, InputField, InputPrefix, InputWrapper } from '.';
 
-const meta = { title: 'Input', component: Input.Field } satisfies Meta<typeof Input.Field>;
+const meta = { title: 'Input', component: InputField } satisfies Meta<typeof InputField>;
 
 export default meta;
 
@@ -25,10 +25,10 @@ export const Parts = {
       <LabelComposite htmlFor="cost" size="l" isPageHeading>
         What is the cost in pounds?
       </LabelComposite>
-      <Input.Wrapper>
-        <Input.Prefix>£</Input.Prefix>
-        <Input.Control id="cost" name="cost" width={5} spellCheck={false} />
-      </Input.Wrapper>
+      <InputWrapper>
+        <InputPrefix>£</InputPrefix>
+        <Input id="cost" name="cost" width={5} spellCheck={false} />
+      </InputWrapper>
     </FormGroup>
   ),
 };

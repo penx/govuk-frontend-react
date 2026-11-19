@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/textarea/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/textarea';
-import * as Textarea from '.';
+import { TextareaField } from '.';
 
-const meta = { title: 'Textarea', component: Textarea.Field } satisfies Meta<typeof Textarea.Field>;
+const meta = { title: 'Textarea', component: TextareaField } satisfies Meta<typeof TextareaField>;
 
 export default meta;
 

@@ -29,7 +29,7 @@ export default function textarea(options: Options) {
       {hint && <Hint id={hintId} {...hint} />}
       {error && <ErrorMessageComposite id={errorId} {...error} />}
       {beforeInput}
-      <Textarea.Control
+      <Textarea
         {...optional('id', id)}
         {...optional('name', options.name)}
         {...optional('rows', options.rows)}

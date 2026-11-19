@@ -1,4 +1,4 @@
-import { Textarea } from '../../src';
+import { TextareaField } from '../../src';
 import { optional, widthAndClassName } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
 import { fieldProps, spellCheck, labelExpressible } from './field';
@@ -7,7 +7,7 @@ export default {
   supports: [...fieldSupports, 'rows', 'value', 'autocomplete', 'spellcheck'],
   render: (options) =>
     !labelExpressible(options) ? null : (
-      <Textarea.Field
+      <TextareaField
         {...fieldProps(options)}
         {...widthAndClassName(options)}
         {...optional('rows', options.rows as number)}

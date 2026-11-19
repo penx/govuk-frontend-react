@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import * as Textarea from '.';
+import { TextareaField } from '.';
 
-describe('Textarea.Field', () => {
+describe('TextareaField', () => {
   test('wires the label, hint and error message to the textarea', () => {
     render(
-      <Textarea.Field
+      <TextareaField
         name="detail"
         label="Detail"
         hint="Do not include personal information"

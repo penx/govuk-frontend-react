@@ -6,7 +6,7 @@ import { FormGroup, type FormGroupProps } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
 import { Hint, type HintProps } from '../hint';
 import { LabelComposite } from '../label';
-import { Control, type ControlProps } from '../textarea';
+import { Textarea as Control, type TextareaProps as ControlProps } from '../textarea';
 
 export type RootProps = FormGroupProps & {
   /** The maximum number of characters (or words if `countType` is set to `"words"`). */

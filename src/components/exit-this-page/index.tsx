@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import { hasContent } from '../../utils/has-content';
 import { i18nAttributes } from '../../utils/i18n';
 import { VisuallyHidden } from '../../utilities/visually-hidden';
-import { Root as BaseButton, type LinkProps } from '../button';
+import { Button as BaseButton, type ButtonLinkProps } from '../button';
 
 export type RootProps = ComponentProps<'div'> & {
   /** Text announced by screen readers when Exit this Page has been activated via the keyboard shortcut. Defaults to `"Loading."`. */
@@ -42,7 +42,7 @@ export function Root({
   );
 }
 
-export type ButtonProps = Omit<LinkProps, 'href' | 'variant'> & { href?: string };
+export type ButtonProps = Omit<ButtonLinkProps, 'href' | 'variant'> & { href?: string };
 
 export function Button({ href, className, ...props }: ButtonProps) {
   return (

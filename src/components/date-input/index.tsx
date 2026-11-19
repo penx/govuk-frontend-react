@@ -5,7 +5,7 @@ import { FormGroup } from '../../objects/form-group';
 import { ErrorMessageComposite } from '../error-message';
 import * as Fieldset from '../fieldset';
 import { Hint } from '../hint';
-import { Control, type ControlProps } from '../input';
+import { Input as Control, type InputProps as ControlProps } from '../input';
 import { LabelComposite as BaseLabel, type LabelCompositeProps as BaseLabelProps } from '../label';
 
 export type RootProps = ComponentProps<'div'>;

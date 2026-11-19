@@ -4,10 +4,10 @@ import { hasContent } from '../../utils/has-content';
 import { isSet, joinIds, type LabelFieldProps } from '../../utils/field';
 import { i18nAttributes } from '../../utils/i18n';
 import { FormGroup, type FormGroupProps } from '../../objects/form-group';
-import { Root as Button } from '../button';
+import { Button } from '../button';
 import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
-import { Control, type ControlProps, Wrapper as InputWrapper } from '../input';
+import { Input as Control, type InputProps as ControlProps, InputWrapper } from '../input';
 import { LabelComposite } from '../label';
 
 export type RootProps = FormGroupProps & {

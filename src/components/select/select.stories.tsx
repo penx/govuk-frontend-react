@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/select/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/select';
-import * as Select from '.';
+import { SelectField } from '.';
 
-const meta = { title: 'Select', component: Select.Field } satisfies Meta<typeof Select.Field>;
+const meta = { title: 'Select', component: SelectField } satisfies Meta<typeof SelectField>;
 
 export default meta;
 

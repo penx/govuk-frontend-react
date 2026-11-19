@@ -15,7 +15,7 @@ export function actions(message: Message) {
     <Fragment key={i}>
       {i > 0 ? ' ' : null}
       {!action.href || action.type === 'button' ? (
-        <Button.Root
+        <Button
           {...optional('href', action.href)}
           type={action.type || 'button'}
           {...optional('name', action.name || undefined)}
@@ -24,7 +24,7 @@ export function actions(message: Message) {
           {...attributes(action.attributes)}
         >
           {action.text as string}
-        </Button.Root>
+        </Button>
       ) : (
         <Link className={className(action)} href={action.href} {...attributes(action.attributes)}>
           {action.text as string}

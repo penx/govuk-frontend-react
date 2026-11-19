@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { createRef } from 'react';
-import * as Input from '.';
+import { Input, InputField } from '.';
 
-describe('Input.Field', () => {
+describe('InputField', () => {
   test('wires the label, hint and error message to the input', () => {
     render(
-      <Input.Field
+      <InputField
         name="name"
         label="Name"
         hint="Your full name"
@@ -21,20 +21,20 @@ describe('Input.Field', () => {
   });
 
   test('a false errorMessage shows no error', () => {
-    render(<Input.Field id="name" label="Name" errorMessage={false} />);
+    render(<InputField id="name" label="Name" errorMessage={false} />);
     expect(screen.getByRole('textbox')).not.toHaveClass('govuk-input--error');
   });
 
   test('forwards ref to the input', () => {
     const ref = createRef<HTMLInputElement>();
-    render(<Input.Field id="name" label="Name" ref={ref} />);
+    render(<InputField id="name" label="Name" ref={ref} />);
     expect(ref.current).toBe(screen.getByRole('textbox'));
   });
 });
 
-describe('Input.Control', () => {
+describe('Input', () => {
   test('width and extraLetterSpacing add their modifiers', () => {
-    render(<Input.Control aria-label="Code" width={4} extraLetterSpacing />);
+    render(<Input aria-label="Code" width={4} extraLetterSpacing />);
     const input = screen.getByRole('textbox', { name: 'Code' });
     expect(input).toHaveClass('govuk-input--width-4', 'govuk-input--extra-letter-spacing');
     expect(input).not.toHaveAttribute('width');

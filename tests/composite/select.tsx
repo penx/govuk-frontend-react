@@ -1,4 +1,4 @@
-import { Select } from '../../src';
+import { SelectField } from '../../src';
 import { attributes, optional, widthAndClassName } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
 import { fieldProps, labelExpressible } from './field';
@@ -28,7 +28,7 @@ export default {
           )
         : undefined);
     return (
-      <Select.Field
+      <SelectField
         {...fieldProps(options)}
         {...widthAndClassName(options)}
         {...optional('defaultValue', selected && effectiveValue(selected))}
@@ -43,7 +43,7 @@ export default {
             {item.text}
           </option>
         ))}
-      </Select.Field>
+      </SelectField>
     );
   },
 } satisfies CompositeMapping;

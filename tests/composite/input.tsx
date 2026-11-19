@@ -1,4 +1,4 @@
-import { Input } from '../../src';
+import { InputField } from '../../src';
 import { optional, widthAndClassName } from '../nunjucks/helpers';
 import { contentOf, fieldSupports, type CompositeMapping } from './helpers';
 import { fieldProps, spellCheck, sub, labelExpressible } from './field';
@@ -17,7 +17,7 @@ export default {
   ],
   render: (options) =>
     !labelExpressible(options) ? null : (
-      <Input.Field
+      <InputField
         {...fieldProps(options)}
         {...widthAndClassName(options, 'govuk-input')}
         {...optional('type', options.type as string)}

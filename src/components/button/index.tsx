@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType, ReactNode } from 'react';
 import { clsx } from 'clsx';
 
-export type Variant = 'secondary' | 'warning' | 'inverse';
+export type ButtonVariant = 'secondary' | 'warning' | 'inverse';
 
 type OwnProps<As extends ElementType> = {
   as?: As;
@@ -9,22 +9,23 @@ type OwnProps<As extends ElementType> = {
   className?: string;
   /** The URL that the button should link to. */
   href?: string;
-  variant?: Variant;
+  variant?: ButtonVariant;
   /** Use for the main call to action on your service's start page. */
   start?: boolean;
   /** Prevent accidental double clicks on submit buttons from submitting forms multiple times. This has no effect if `href` is set. */
   preventDoubleClick?: boolean;
 };
 
-export type RootProps<As extends ElementType = 'button'> = OwnProps<As> &
+export type ButtonProps<As extends ElementType = 'button'> = OwnProps<As> &
   Omit<ComponentProps<As>, keyof OwnProps<As>>;
 
-export type LinkProps = Omit<OwnProps<'a'>, 'as' | 'href'> &
+export type ButtonLinkProps = Omit<OwnProps<'a'>, 'as' | 'href'> &
   Omit<ComponentProps<'a'>, keyof OwnProps<'a'>> & { as?: undefined; href: string };
 
-export type StartIconProps = ComponentProps<'svg'>;
+export type StartButtonIconProps = ComponentProps<'svg'>;
 
-export function StartIcon({ className, ...props }: StartIconProps) {
+/** The arrow on a start button. */
+export function StartButtonIcon({ className, ...props }: StartButtonIconProps) {
   return (
     <svg
       className={clsx('govuk-button__start-icon', className)}
@@ -46,9 +47,9 @@ export function StartIcon({ className, ...props }: StartIconProps) {
  *
  * @see https://design-system.service.gov.uk/components/button/
  */
-export function Root(props: LinkProps): ReactNode;
-export function Root<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
-export function Root({
+export function Button(props: ButtonLinkProps): ReactNode;
+export function Button<As extends ElementType = 'button'>(props: ButtonProps<As>): ReactNode;
+export function Button({
   as,
   children,
   className,
@@ -61,7 +62,7 @@ export function Root({
   value,
   disabled,
   ...rest
-}: RootProps<ElementType>) {
+}: ButtonProps<ElementType>) {
   const Element: ElementType = as ?? (href ? 'a' : 'button');
   const isButton = Element === 'button';
 
@@ -96,23 +97,28 @@ export function Root({
 }
 
 /** Wraps a start button's content when it isn't plain text. */
-export const StartContent = 'span';
+export const StartButtonContent = 'span';
 
 /**
- * Use the button component to help users carry out an action.
+ * Use a start button for the main call to action on your service's start page. Adds the arrow, and
+ * wraps content that isn't plain text in `StartButtonContent`.
  *
- * @see https://design-system.service.gov.uk/components/button/
+ * @see https://design-system.service.gov.uk/components/button/#start-buttons
  */
-export function Composite(props: LinkProps): ReactNode;
-export function Composite<As extends ElementType = 'button'>(props: RootProps<As>): ReactNode;
-export function Composite({ start, children, ...props }: RootProps<ElementType>) {
-  const Base = Root as (props: RootProps<ElementType>) => ReactNode;
-  if (!start) return <Base {...props}>{children}</Base>;
+export function StartButton(props: Omit<ButtonLinkProps, 'start'>): ReactNode;
+export function StartButton<As extends ElementType = 'button'>(
+  props: Omit<ButtonProps<As>, 'start'>,
+): ReactNode;
+export function StartButton({ children, ...props }: Omit<ButtonProps<ElementType>, 'start'>) {
   const text = typeof children === 'string' || typeof children === 'number';
   return (
-    <Base start {...props}>
-      {text || children === undefined ? children : <StartContent>{children}</StartContent>}{' '}
-      <StartIcon />
-    </Base>
+    <Button start {...props}>
+      {text || children === undefined ? (
+        children
+      ) : (
+        <StartButtonContent>{children}</StartButtonContent>
+      )}{' '}
+      <StartButtonIcon />
+    </Button>
   );
 }

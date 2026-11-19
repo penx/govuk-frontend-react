@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { createRef, type ComponentProps, type MouseEvent } from 'react';
-import * as Button from '.';
+import { Button } from '.';
 
 describe('Button', () => {
   test.each(['secondary', 'warning', 'inverse'] as const)('variant %s', (variant) => {
-    render(<Button.Root variant={variant}>Go</Button.Root>);
+    render(<Button variant={variant}>Go</Button>);
     expect(screen.getByRole('button')).toHaveClass(`govuk-button--${variant}`);
   });
 
   test('keeps href when as is set', () => {
     render(
-      <Button.Root as="a" href="/next">
+      <Button as="a" href="/next">
         Next
-      </Button.Root>,
+      </Button>,
     );
     expect(screen.getByRole('button')).toHaveAttribute('href', '/next');
   });
@@ -20,14 +20,14 @@ describe('Button', () => {
   test('link onClick receives an anchor event', () => {
     let target: HTMLAnchorElement | undefined;
     render(
-      <Button.Root
+      <Button
         href="#"
         onClick={(event: MouseEvent<HTMLAnchorElement>) => {
           target = event.currentTarget;
         }}
       >
         Go
-      </Button.Root>,
+      </Button>,
     );
     screen.getByRole('button').click();
     expect(target?.tagName).toBe('A');
@@ -35,9 +35,9 @@ describe('Button', () => {
 
   test('links do not get button-only attributes', () => {
     render(
-      <Button.Root href="/start" disabled type="button" name="n" value="v" preventDoubleClick>
+      <Button href="/start" disabled type="button" name="n" value="v" preventDoubleClick>
         Start
-      </Button.Root>,
+      </Button>,
     );
     const link = screen.getByRole('button', { name: 'Start' });
     for (const attribute of ['disabled', 'aria-disabled', 'type', 'name', 'value']) {
@@ -53,9 +53,9 @@ describe('Button', () => {
       </a>
     );
     render(
-      <Button.Root as={Link} to="/next">
+      <Button as={Link} to="/next">
         Next
-      </Button.Root>,
+      </Button>,
     );
     const link = screen.getByRole('button', { name: 'Next' });
     expect(link).toHaveAttribute('href', '/next');
@@ -64,7 +64,7 @@ describe('Button', () => {
 
   test('forwards ref to the element', () => {
     const ref = createRef<HTMLButtonElement>();
-    render(<Button.Root ref={ref}>Save</Button.Root>);
+    render(<Button ref={ref}>Save</Button>);
     expect(ref.current).toBe(screen.getByRole('button'));
   });
 });

@@ -7,13 +7,13 @@ import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
 import { LabelComposite } from '../label';
 
-export type ControlProps = ComponentProps<'select'> & {
+export type SelectProps = ComponentProps<'select'> & {
   error?: boolean;
   width?: FluidWidth;
 };
 
-export type FieldProps = LabelFieldProps &
-  Omit<ControlProps, 'error'> & {
+export type SelectFieldProps = LabelFieldProps &
+  Omit<SelectProps, 'error'> & {
     /** The label used by the select component. */
     label?: ReactNode;
     /** Can be used to add a hint to the select component. */
@@ -27,7 +27,7 @@ export type FieldProps = LabelFieldProps &
  *
  * @see https://design-system.service.gov.uk/components/select/
  */
-export function Control({ className, error, width, ...props }: ControlProps) {
+export function Select({ className, error, width, ...props }: SelectProps) {
   return (
     <select
       className={clsx(
@@ -46,7 +46,7 @@ export function Control({ className, error, width, ...props }: ControlProps) {
  *
  * @see https://design-system.service.gov.uk/components/select/
  */
-export function Field({
+export function SelectField({
   id: idProp,
   name,
   label,
@@ -56,7 +56,7 @@ export function Field({
   errorMessage,
   'aria-describedby': describedBy,
   ...props
-}: FieldProps) {
+}: SelectFieldProps) {
   const id = idProp || name;
   const hintId = isSet(hint) ? `${id}-hint` : undefined;
   const errorId = isSet(errorMessage) ? `${id}-error` : undefined;
@@ -68,7 +68,7 @@ export function Field({
       </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
-      <Control
+      <Select
         id={id}
         name={name}
         error={Boolean(errorId)}
