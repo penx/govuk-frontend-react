@@ -10,8 +10,6 @@ type OwnProps<As extends ElementType> = {
   /** The URL that the button should link to. */
   href?: string;
   variant?: ButtonVariant;
-  /** Use for the main call to action on your service's start page. */
-  start?: boolean;
   /** Prevent accidental double clicks on submit buttons from submitting forms multiple times. This has no effect if `href` is set. */
   preventDoubleClick?: boolean;
 };
@@ -54,7 +52,6 @@ export function Button({
   children,
   className,
   variant,
-  start,
   preventDoubleClick,
   href,
   type,
@@ -82,12 +79,7 @@ export function Button({
     <Element
       {...(href ? { href } : {})}
       {...elementProps}
-      className={clsx(
-        'govuk-button',
-        variant && `govuk-button--${variant}`,
-        start && 'govuk-button--start',
-        className,
-      )}
+      className={clsx('govuk-button', variant && `govuk-button--${variant}`, className)}
       data-module="govuk-button"
       {...rest}
     >
@@ -105,14 +97,12 @@ export const StartButtonContent = 'span';
  *
  * @see https://design-system.service.gov.uk/components/button/#start-buttons
  */
-export function StartButton(props: Omit<ButtonLinkProps, 'start'>): ReactNode;
-export function StartButton<As extends ElementType = 'button'>(
-  props: Omit<ButtonProps<As>, 'start'>,
-): ReactNode;
-export function StartButton({ children, ...props }: Omit<ButtonProps<ElementType>, 'start'>) {
+export function StartButton(props: ButtonLinkProps): ReactNode;
+export function StartButton<As extends ElementType = 'button'>(props: ButtonProps<As>): ReactNode;
+export function StartButton({ children, className, ...props }: ButtonProps<ElementType>) {
   const text = typeof children === 'string' || typeof children === 'number';
   return (
-    <Button start {...props}>
+    <Button className={clsx('govuk-button--start', className)} {...props}>
       {text || children === undefined ? (
         children
       ) : (
