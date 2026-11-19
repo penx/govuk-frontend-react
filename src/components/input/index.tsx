@@ -8,17 +8,17 @@ import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
 import { LabelComposite } from '../label';
 
-export type ControlProps = Omit<ComponentProps<'input'>, 'width'> & {
+export type InputProps = Omit<ComponentProps<'input'>, 'width'> & {
   error?: boolean;
   /** A number of characters, or a fraction of the container. */
   width?: 2 | 3 | 4 | 5 | 10 | 20 | 30 | FluidWidth;
   extraLetterSpacing?: boolean;
 };
 
-export type AffixProps = ComponentProps<'div'>;
+export type InputAffixProps = ComponentProps<'div'>;
 
-export type FieldProps = LabelFieldProps &
-  Omit<ControlProps, 'error' | 'prefix'> & {
+export type InputFieldProps = LabelFieldProps &
+  Omit<InputProps, 'error' | 'prefix'> & {
     /** The label used by the text input component. */
     label?: ReactNode;
     /** Can be used to add a hint to a text input component. */
@@ -36,14 +36,7 @@ export type FieldProps = LabelFieldProps &
  *
  * @see https://design-system.service.gov.uk/components/text-input/
  */
-export function Control({
-  className,
-  error,
-  width,
-  extraLetterSpacing,
-  type,
-  ...props
-}: ControlProps) {
+export function Input({ className, error, width, extraLetterSpacing, type, ...props }: InputProps) {
   return (
     <input
       className={clsx(
@@ -60,15 +53,15 @@ export function Control({
   );
 }
 
-export function Prefix({ className, ...props }: AffixProps) {
+export function InputPrefix({ className, ...props }: InputAffixProps) {
   return <div className={clsx('govuk-input__prefix', className)} aria-hidden="true" {...props} />;
 }
 
-export function Suffix({ className, ...props }: AffixProps) {
+export function InputSuffix({ className, ...props }: InputAffixProps) {
   return <div className={clsx('govuk-input__suffix', className)} aria-hidden="true" {...props} />;
 }
 
-export function Wrapper({ className, ...props }: AffixProps) {
+export function InputWrapper({ className, ...props }: InputAffixProps) {
   return <div className={clsx('govuk-input__wrapper', className)} {...props} />;
 }
 
@@ -77,7 +70,7 @@ export function Wrapper({ className, ...props }: AffixProps) {
  *
  * @see https://design-system.service.gov.uk/components/text-input/
  */
-export function Field({
+export function InputField({
   id: idProp,
   name,
   label,
@@ -89,13 +82,13 @@ export function Field({
   suffix,
   'aria-describedby': describedBy,
   ...props
-}: FieldProps) {
+}: InputFieldProps) {
   const id = idProp || name;
   const hintId = isSet(hint) ? `${id}-hint` : undefined;
   const errorId = isSet(errorMessage) ? `${id}-error` : undefined;
 
   const input = (
-    <Control
+    <Input
       id={id}
       name={name}
       error={Boolean(errorId)}
@@ -112,11 +105,11 @@ export function Field({
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
       {hasContent(prefix) || hasContent(suffix) ? (
-        <Wrapper>
-          {hasContent(prefix) && <Prefix>{prefix}</Prefix>}
+        <InputWrapper>
+          {hasContent(prefix) && <InputPrefix>{prefix}</InputPrefix>}
           {input}
-          {hasContent(suffix) && <Suffix>{suffix}</Suffix>}
-        </Wrapper>
+          {hasContent(suffix) && <InputSuffix>{suffix}</InputSuffix>}
+        </InputWrapper>
       ) : (
         input
       )}

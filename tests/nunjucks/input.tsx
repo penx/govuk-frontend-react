@@ -1,5 +1,14 @@
 import type { ReactNode } from 'react';
-import { ErrorMessageComposite, FormGroup, Hint, Input, LabelComposite } from '../../src';
+import {
+  ErrorMessageComposite,
+  FormGroup,
+  Hint,
+  Input,
+  InputPrefix,
+  InputSuffix,
+  InputWrapper,
+  LabelComposite,
+} from '../../src';
 import {
   attributes,
   describedBy,
@@ -28,7 +37,7 @@ export default function input(options: Options) {
   const errorId = error && `${id}-error`;
 
   const control = (
-    <Input.Control
+    <Input
       {...optional('id', id)}
       {...optional('name', options.name)}
       {...optional('type', options.type)}
@@ -55,13 +64,13 @@ export default function input(options: Options) {
       {hint && <Hint id={hintId} {...hint} />}
       {error && <ErrorMessageComposite id={errorId} {...error} />}
       {hasPrefix || hasSuffix || beforeInput || afterInput ? (
-        <Input.Wrapper {...subcomponent(options.inputWrapper)}>
+        <InputWrapper {...subcomponent(options.inputWrapper)}>
           {beforeInput}
-          {hasPrefix && <Input.Prefix {...prefix} />}
+          {hasPrefix && <InputPrefix {...prefix} />}
           {control}
-          {hasSuffix && <Input.Suffix {...suffix} />}
+          {hasSuffix && <InputSuffix {...suffix} />}
           {afterInput}
-        </Input.Wrapper>
+        </InputWrapper>
       ) : (
         control
       )}

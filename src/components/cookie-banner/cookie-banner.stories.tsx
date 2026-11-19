@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/cookie-banner/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/cookie-banner';
-import * as Button from '../button';
+import { Button } from '../button';
 import { Body } from '../../core/body';
 import { Link } from '../../core/link';
 import * as CookieBanner from '.';
@@ -18,8 +18,8 @@ export const Default = {
         heading="Cookies on [name of service]"
         actions={
           <>
-            <Button.Root type="button">Accept analytics cookies</Button.Root>{' '}
-            <Button.Root type="button">Reject analytics cookies</Button.Root>{' '}
+            <Button type="button">Accept analytics cookies</Button>{' '}
+            <Button type="button">Reject analytics cookies</Button>{' '}
             <Link href="#">View cookies</Link>
           </>
         }

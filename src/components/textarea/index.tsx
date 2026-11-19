@@ -7,13 +7,13 @@ import { ErrorMessageComposite } from '../error-message';
 import { Hint } from '../hint';
 import { LabelComposite } from '../label';
 
-export type ControlProps = ComponentProps<'textarea'> & {
+export type TextareaProps = ComponentProps<'textarea'> & {
   error?: boolean;
   width?: FluidWidth;
 };
 
-export type FieldProps = LabelFieldProps &
-  Omit<ControlProps, 'error'> & {
+export type TextareaFieldProps = LabelFieldProps &
+  Omit<TextareaProps, 'error'> & {
     /** The label used by the textarea component. */
     label?: ReactNode;
     /** Can be used to add a hint to the textarea component. */
@@ -27,7 +27,7 @@ export type FieldProps = LabelFieldProps &
  *
  * @see https://design-system.service.gov.uk/components/textarea/
  */
-export function Control({ className, error, width, rows, ...props }: ControlProps) {
+export function Textarea({ className, error, width, rows, ...props }: TextareaProps) {
   return (
     <textarea
       className={clsx(
@@ -47,7 +47,7 @@ export function Control({ className, error, width, rows, ...props }: ControlProp
  *
  * @see https://design-system.service.gov.uk/components/textarea/
  */
-export function Field({
+export function TextareaField({
   id: idProp,
   name,
   label,
@@ -57,7 +57,7 @@ export function Field({
   errorMessage,
   'aria-describedby': describedBy,
   ...props
-}: FieldProps) {
+}: TextareaFieldProps) {
   const id = idProp || name;
   const hintId = isSet(hint) ? `${id}-hint` : undefined;
   const errorId = isSet(errorMessage) ? `${id}-error` : undefined;
@@ -69,7 +69,7 @@ export function Field({
       </LabelComposite>
       {hintId && <Hint id={hintId}>{hint}</Hint>}
       {errorId && <ErrorMessageComposite id={errorId}>{errorMessage}</ErrorMessageComposite>}
-      <Control
+      <Textarea
         id={id}
         name={name}
         error={Boolean(errorId)}

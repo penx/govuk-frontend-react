@@ -12,7 +12,7 @@ type Action = {
 export function action(item: Action, index: number) {
   if (!item.href || item.type === 'button') {
     return (
-      <Button.Root
+      <Button
         key={index}
         variant="inverse"
         type={(item.type as 'button' | 'submit' | undefined) ?? 'button'}
@@ -21,7 +21,7 @@ export function action(item: Action, index: number) {
         {...attributes(item.attributes)}
       >
         {item.text}
-      </Button.Root>
+      </Button>
     );
   }
   return (

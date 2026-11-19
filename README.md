@@ -23,7 +23,7 @@ Load govuk-frontend's styles as its [documentation](https://frontend.design-syst
 ## Usage
 
 ```tsx
-import { Button, Fieldset, Label, Hint, ErrorMessageComposite } from 'govuk-frontend-react';
+import { Button, StartButton, Fieldset, Label, Hint, ErrorMessageComposite } from 'govuk-frontend-react';
 
 <Fieldset.Root>
   <Fieldset.LegendComposite isPageHeading size="l">What is your address?</Fieldset.LegendComposite>
@@ -33,8 +33,8 @@ import { Button, Fieldset, Label, Hint, ErrorMessageComposite } from 'govuk-fron
   …
 </Fieldset.Root>
 
-<Button.Root variant="secondary">Save as draft</Button.Root>
-<Button.Composite href="/start" start>Start now</Button.Composite>
+<Button variant="secondary">Save as draft</Button>
+<StartButton href="/start">Start now</StartButton>
 ```
 
 Each component is also its own module:
@@ -71,7 +71,7 @@ For example, a class name of `govuk-my-block__my-element--my-modifier` implies:
 - The block is `<MyBlock.Root />` and the element is `<MyBlock.MyElement />`.
 - `<MyBlock.MyElement />` accepts a prop `myModifier`.
 
-So `govuk-fieldset__legend--l` is `<Fieldset.Legend size="l" />`, `govuk-button--secondary` is `<Button.Root variant="secondary" />`, and `govuk-hint` is `<Hint />`. Where a set of modifiers are alternatives, such as sizes or button variants, they share one prop.
+So `govuk-fieldset__legend--l` is `<Fieldset.Legend size="l" />`, `govuk-button--secondary` is `<Button variant="secondary" />`, and `govuk-hint` is `<Hint />`. Where a set of modifiers are alternatives, such as sizes or button variants, they share one prop.
 
 BEM convention class name exceptions:
 
@@ -95,7 +95,7 @@ Where React prop names differ from the Nunjucks macro option names:
 | `containerClasses`        | `containerClassName`                                     |
 | `describedBy`             | `aria-describedby`                                       |
 | `for`                     | `htmlFor`                                                |
-| `isStartButton`           | `start` on `Button.Composite`, which adds the icon       |
+| `isStartButton`           | `StartButton`, which adds the icon                       |
 | `legend`, and others      | a part, such as `Fieldset.Legend` (see Parts and fields) |
 
 The full mapping for each component is in [`tests/nunjucks`](tests/nunjucks), which the parity tests use to render govuk-frontend's fixtures through the parts. [`tests/composite`](tests/composite) renders them through each `Composite` and `Field`, skipping fixtures that use options left to the parts. Both double as a guide for moving from Nunjucks to React.
@@ -109,17 +109,17 @@ Props never take an object that is spread onto another part. Where a Nunjucks ma
   <Label htmlFor="cost">Cost</Label>
   <Hint id="cost-hint">In pounds</Hint>
   <ErrorMessageComposite id="cost-error">Enter a cost</ErrorMessageComposite>
-  <Input.Wrapper>
-    <Input.Prefix>£</Input.Prefix>
-    <Input.Control id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
-  </Input.Wrapper>
+  <InputWrapper>
+    <InputPrefix>£</InputPrefix>
+    <Input id="cost" name="cost" error aria-describedby="cost-hint cost-error" />
+  </InputWrapper>
 </FormGroup>
 ```
 
-Form controls also export a `Field` shorthand that does what the Nunjucks macro does: it renders the form group, label, hint and error message, and wires up the ids. Its `label`, `hint`, `errorMessage`, `prefix` and `suffix` props take content only. `labelSize` and `labelIsPageHeading` size the label and make it the page heading, and fieldset-based Fields have `legendSize` and `legendIsPageHeading`. Anything else uses the parts.
+Form controls also export a `Field` shorthand, such as `InputField`, that does what the Nunjucks macro does: it renders the form group, label, hint and error message, and wires up the ids. Its `label`, `hint`, `errorMessage`, `prefix` and `suffix` props take content only. `labelSize` and `labelIsPageHeading` size the label and make it the page heading, and fieldset-based Fields have `legendSize` and `legendIsPageHeading`. Anything else uses the parts.
 
 ```tsx
-<Input.Field name="cost" label="Cost" hint="In pounds" errorMessage="Enter a cost" prefix="£" />
+<InputField name="cost" label="Cost" hint="In pounds" errorMessage="Enter a cost" prefix="£" />
 ```
 
 ### Overriding defaults

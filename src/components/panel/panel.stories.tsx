@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 import fixtures from 'govuk-frontend/dist/govuk/components/panel/fixtures.json';
 import { fixturesStory } from '../../../.storybook/fixtures';
 import nunjucks from '../../../tests/nunjucks/panel';
-import * as Button from '../button';
+import { Button } from '../button';
 import { Body } from '../../core/body';
 import { Link } from '../../core/link';
 import { ButtonGroup } from '../../objects/button-group';
@@ -30,9 +30,9 @@ export const Interruption = {
       title="Is your age correct?"
       actions={
         <ButtonGroup>
-          <Button.Root variant="inverse" type="button" href="#">
+          <Button variant="inverse" type="button" href="#">
             Yes, this is correct
-          </Button.Root>{' '}
+          </Button>{' '}
           <Link variant="inverse" href="#">
             No, change my age
           </Link>
