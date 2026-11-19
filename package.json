@@ -1,6 +1,6 @@
 {
   "name": "govuk-frontend-react",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "A direct port of govuk-frontend to React components, with HTML output that matches govuk-frontend",
   "type": "module",
   "types": "./dist/index.d.ts",
