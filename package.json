@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/penx/govuk-frontend-react.git"
+    "url": "git+https://github.com/govuk-react/govuk-frontend-react.git"
   },
   "keywords": [
     "govuk",
@@ -46,9 +46,9 @@
   "author": "Alasdair McLeay",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/penx/govuk-frontend-react/issues"
+    "url": "https://github.com/govuk-react/govuk-frontend-react/issues"
   },
-  "homepage": "https://github.com/penx/govuk-frontend-react#readme",
+  "homepage": "https://github.com/govuk-react/govuk-frontend-react#readme",
   "engines": {
     "node": ">=20"
   },
