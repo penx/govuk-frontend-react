@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import * as FileUpload from '.';
+import { FileUploadField } from '.';
 
-describe('FileUpload.Field', () => {
+describe('FileUploadField', () => {
   test('wires the hint and error message, and wraps the input when javascript is set', () => {
     render(
-      <FileUpload.Field
+      <FileUploadField
         name="photo"
         label="Upload a photo"
         hint="JPG or PNG"
@@ -20,7 +20,7 @@ describe('FileUpload.Field', () => {
 
   test('passes translations to the wrapper', () => {
     render(
-      <FileUpload.Field
+      <FileUploadField
         name="photo"
         label="Llun"
         javascript

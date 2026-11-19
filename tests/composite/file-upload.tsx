@@ -1,4 +1,4 @@
-import { FileUpload } from '../../src';
+import { FileUploadField } from '../../src';
 import type { Translation } from '../../src/utils/i18n';
 import { optional } from '../nunjucks/helpers';
 import { fieldSupports, type CompositeMapping } from './helpers';
@@ -17,7 +17,7 @@ export default {
   supports: [...fieldSupports, 'multiple', 'javascript', ...texts],
   render: (options) =>
     !labelExpressible(options) ? null : (
-      <FileUpload.Field
+      <FileUploadField
         {...fieldProps(options)}
         {...optional('multiple', (options.multiple as boolean) || undefined)}
         {...optional('javascript', (options.javascript as boolean) || undefined)}
